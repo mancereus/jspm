@@ -7,6 +7,9 @@
 	jspm install jquery
 	jspm install npm:lodash
 	
+	//type script plugin
+	jspm install ts
+	
 ## Run in browser
 
 	npm install -g serve
