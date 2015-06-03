@@ -12,3 +12,6 @@
 	npm install -g serve
  	serve
 	chrome htpp://localhost:3000
+	
+## distribute
+	jspm build (error in windows)
