@@ -1,6 +1,6 @@
 # Beispiel Programm for jspm
 
-## install 
+## install jspm
 
 	npm install -g jspm
 	jspm install
@@ -9,6 +9,11 @@
 	
 	//type script plugin
 	jspm install ts
+	
+## install bower polymer
+	bower init
+	bower update
+	//download and use seed-element
 	
 ## Run in browser
 
