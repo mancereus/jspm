@@ -1,5 +1,10 @@
 # Beispiel Programm for jspm
 
+## prerequisites
+
+* node.js
+* npm install -g jspm bower serve
+
 ## install jspm
 
 	npm install -g jspm
@@ -11,9 +16,7 @@
 	jspm install ts
 	
 ## install bower polymer
-	bower init
 	bower update
-	//download and use seed-element
 	
 ## Run in browser
 
