@@ -18,6 +18,7 @@
 ## install bower polymer
 	bower update
 	
+	
 ## Run in browser
 
 	npm install -g serve
