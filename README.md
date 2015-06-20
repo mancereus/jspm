@@ -12,6 +12,8 @@
 	jspm install jquery
 	jspm install npm:lodash
 	
+	jspm install text css json
+	
 	//type script plugin
 	jspm install ts
 	
@@ -22,7 +24,18 @@
 
 	npm install -g serve
  	serve
-	chrome htpp://localhost:3000
+	chrome http://localhost:3000
+	
+	oder
+	
+	npm install -g browser-sync --save-dev
+	
+	browser-sync start --server --files "*"
 	
 ## distribute
 	jspm build (error in windows)
+	
+## tasks
+
+* learn npm jspm gulp
+* how to deploy jspm version

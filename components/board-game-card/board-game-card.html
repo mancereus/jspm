@@ -1,0 +1,50 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-pages/iron-pages.html">
+<dom-module id="board-game-card">
+	<style>
+		:host {
+			display: inline-block;
+			position: relative;
+			background-color: white;
+			padding: 2px;
+			margin: 5px;
+			width: 200px;
+			height: 400px;
+			font-size: 1em;
+			font-weight: 300;
+		    page-break-inside: avoid;
+    		-webkit-region-break-inside: avoid; 
+		}
+	</style>
+	<template>
+		<iron-pages selected="1" on-click="{{ toggle }}">
+			<div>Background</div>
+			<div>test<content></content></div>
+		</iron-pages>
+	</template>
+</dom-module>
+	<script>
+		Polymer({
+			
+		    is: 'board-game-card',
+			properties: {
+    		  selected: "0",
+			  cardData: [],
+			  draggie: "",
+	        },
+            ready: function() {
+	          //draggie = new Draggabilly( this);
+	        },
+	        move: function() {
+	            this.style.top = (30 - this.offsetTop) + "px";
+	            this.style.left = (1680 - this.offsetLeft) + "px";
+	        },
+	        show: function() {
+	            this.$.selected = 1;
+	        },
+			toggle: function() {
+				var card = this.$.card;
+				card.selected = (card.selected + 1) % 2;
+			}
+		});
+	</script>
