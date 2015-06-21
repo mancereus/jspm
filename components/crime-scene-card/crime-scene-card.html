@@ -7,26 +7,40 @@
 		}
 	</style>
 	<template>
-	    <board-game-card><div><img id="fr" src="./img/front[[front]].png"/></div><div><img id="bck" src="./img/back{{back}}.png"/></div></board-game-card>
+	    <board-game-card open="{{open}}" ><div><img id="fr" src=""/></div><div><img id="bck" src=""/></div></board-game-card>
 	</template>
 </dom-module>
 	<script>
 		Polymer({
 		    is: 'crime-scene-card',
 			properties: {
-    		  front: Number,
-			  back: Number
+    		  front:  {
+		          type: Number,
+		          observer: '_frontChanged'
+	          },
+			  back: {
+		          type: Number,
+		          observer: '_backChanged'
+	          },
+			  open: {
+		          type: Boolean
+	          }
 	        },
             ready: function() {
-				fr.src="img/front" + this.front + ".png";
-				bck.src="img/back" + this.back + ".png";
-	          //draggie = new Draggabilly( this);
 	        },
+			_frontChanged: function(imgIdx) {
+				var imgstr = this.resolveUrl("img/front" + imgIdx + ".png");
+				this.$.fr.src = imgstr;
+			},
+			_backChanged: function(imgIdx) {
+				var imgstr = this.resolveUrl("img/back" + imgIdx + ".png");
+				this.$.bck.src = this.resolveUrl(imgstr);				
+			},
 	        move: function() {
 	            this.style.top = (30 - this.offsetTop) + "px";
 	            this.style.left = (1680 - this.offsetLeft) + "px";
 	        },
-	        show: function() {
+	        _show: function() {
 	            this.$.selected = 1;
 	        },
 			toggle: function() {

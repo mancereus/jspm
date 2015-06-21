@@ -1,0 +1,33 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../crime-scene-card/crime-scene-card.html">
+<dom-module id="crime-scene-board">
+	<style>
+		:host {
+		}
+	</style>
+	<template>
+    <crime-scene-card front="2" back="2"></crime-scene-card>
+    <crime-scene-card front="2" back="3" open="1"></crime-scene-card>
+	</template>
+</dom-module>
+	<script>
+		Polymer({
+		    is: 'crime-scene-board',
+			properties: {
+	        },
+            ready: function() {
+	        },
+	        move: function() {
+	            this.style.top = (30 - this.offsetTop) + "px";
+	            this.style.left = (1680 - this.offsetLeft) + "px";
+	        },
+	        show: function() {
+	            this.$.selected = 1;
+	        },
+			toggle: function() {
+				var card = this.$.card;
+				card.selected = (card.selected + 1) % 2;
+			}
+		});
+	</script>

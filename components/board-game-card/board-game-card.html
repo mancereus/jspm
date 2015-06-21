@@ -26,9 +26,10 @@
 		Polymer({
 		    is: 'board-game-card',
 			properties: {
-    		  selected: "0",
-			  cardData: [],
-			  draggie: "",
+    		  open:  {
+		          type: Boolean,
+		          observer: '_show'
+	          },
 	        },
             ready: function() {
 	          //draggie = new Draggabilly( this);
@@ -37,8 +38,12 @@
 	            this.style.top = (30 - this.offsetTop) + "px";
 	            this.style.left = (1680 - this.offsetLeft) + "px";
 	        },
-	        show: function() {
-	            this.$.selected = 1;
+	        _show: function(open) {
+				var card = this.$.card;
+				if(open)
+		            card.selected = 1;
+				else
+		            card.selected = 0;
 	        },
 			toggle: function() {
 				var card = this.$.card;
