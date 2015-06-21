@@ -1,36 +1,25 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/iron-pages/iron-pages.html">
-<dom-module id="board-game-card">
+<link rel="import" href="../board-game-card/board-game-card.html">
+<dom-module id="crime-scene-card">
 	<style>
 		:host {
-			display: inline-block;
-			position: relative;
-			background-color: gray;
-			border: 1px sloid black;
-			border-radius: 3px;
-			padding: 2px;
-			margin: 5px;
-			font-size: 1em;
-			font-weight: 300;
-		    page-break-inside: avoid;
-    		-webkit-region-break-inside: avoid; 
 		}
 	</style>
 	<template>
-		<iron-pages id="card" selected="0" on-click="toggle">
-			<content></content>
-		</iron-pages>
+	    <board-game-card><div><img id="fr" src="./img/front[[front]].png"/></div><div><img id="bck" src="./img/back{{back}}.png"/></div></board-game-card>
 	</template>
 </dom-module>
 	<script>
 		Polymer({
-		    is: 'board-game-card',
+		    is: 'crime-scene-card',
 			properties: {
-    		  selected: "0",
-			  cardData: [],
-			  draggie: "",
+    		  front: Number,
+			  back: Number
 	        },
             ready: function() {
+				fr.src="img/front" + this.front + ".png";
+				bck.src="img/back" + this.back + ".png";
 	          //draggie = new Draggabilly( this);
 	        },
 	        move: function() {
@@ -42,7 +31,6 @@
 	        },
 			toggle: function() {
 				var card = this.$.card;
-				
 				card.selected = (card.selected + 1) % 2;
 			}
 		});
