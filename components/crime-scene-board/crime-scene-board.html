@@ -7,6 +7,9 @@
 		}
 	</style>
 	<template>
+		<template is="dom-repeat" items="{{cards}}">
+		    <crime-scene-card front="{{item.front}}" back="{{item.back}}"></crime-scene-card>
+    </template>
     <crime-scene-card front="2" back="2"></crime-scene-card>
     <crime-scene-card front="2" back="3" open="1"></crime-scene-card>
 	</template>
@@ -16,9 +19,16 @@
 		    is: 'crime-scene-board',
 			properties: {
 	        },
-            ready: function() {
-	        },
-	        move: function() {
+ready: function() {
+        	this.cards = [];
+			for (var i = 1; i < 5; i++) {				
+				for (var j = 1; j < 5; j++) {
+					this.push('cards', {front: i, back: j});
+				}
+			}
+			
+		    },
+  	        move: function() {
 	            this.style.top = (30 - this.offsetTop) + "px";
 	            this.style.left = (1680 - this.offsetLeft) + "px";
 	        },
