@@ -7,9 +7,11 @@
 		}
 	</style>
 	<template>
+		<div style="width: 780px">
 		<template is="dom-repeat" items="{{cards}}">
-		    <crime-scene-card front="{{item.front}}" back="{{item.back}}" open="{{item.open}}"></crime-scene-card>
-    </template>
+		    <crime-scene-card on-click="swap" front="{{item.front}}" back="{{item.back}}" open="{{item.open}}" empty="{{item.empty}}"></crime-scene-card>
+	    </template>
+		</div>
 	</template>
 </dom-module>
 	<script>
@@ -27,6 +29,7 @@
 				}
 				this.shuffle(this.cards);
 				this.pop('cards');	
+				this.push('cards', {front: 7, back: 5, open: op, empty: true});
 			},
 			shuffle: function (o){
 			    for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
@@ -36,12 +39,40 @@
 	            this.style.top = (30 - this.offsetTop) + "px";
 	            this.style.left = (1680 - this.offsetLeft) + "px";
 	        },
+			rowBreak: function (idx, count) {
+				if(count < 16)
+					return false;
+				var rowbr = false;
+				if (idx > 0 && (idx+1)%4 == 0) {
+					rowbr =  true;
+				}
+				console.log("break:" + idx + " " + rowbr);
+				return rowbr;
+			},
 	        show: function() {
 	            this.$.selected = 1;
+	        },
+			getEmptyIdx: function() {
+				for (cardidx in  this.cards) {
+					if (this.cards[cardidx].empty) {
+						return cardidx;						
+					}
+				}
+	        },
+			swap: function(event) {
+				var index = event.model.index;
+				var emptyIndex = this.getEmptyIdx();
+				var diff = Math.abs(index - emptyIndex);
+				if (diff == 1 || diff == 4) {
+					var cardTmp = this.splice('cards', index, 1, this.cards[emptyIndex])[0];
+					this.splice('cards', emptyIndex, 1, cardTmp);
+				}
 	        },
 			toggle: function() {
 				var card = this.$.card;
 				card.selected = (card.selected + 1) % 2;
+				var idx = this.cards.indexOf(card);
+				this.swap(idx, idx+1);
 			}
 		});
 	</script>

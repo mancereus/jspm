@@ -24,9 +24,16 @@
 	          },
 			  open: {
 		          type: Boolean
+	          },
+			  empty: {
+		          type: Boolean,
+				  value: false
 	          }
 	        },
             ready: function() {
+				if (this.empty) {
+					this.id ="emptyCard";
+				}
 	        },
 			_frontChanged: function(imgIdx) {
 				var imgstr = this.resolveUrl("img/front" + imgIdx + ".png");
