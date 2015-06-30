@@ -5,6 +5,14 @@
 	<style>
 		:host {
 		}
+		#fr {
+			height:160px;
+			width:160px;
+		}
+		#bck {
+			height:160px;
+			width:160px;
+		}
 	</style>
 	<template>
 	    <board-game-card open="{{open}}" ><div><img id="fr" src=""/></div><div><img id="bck" src=""/></div></board-game-card>
@@ -36,11 +44,11 @@
 				}
 	        },
 			_frontChanged: function(imgIdx) {
-				var imgstr = this.resolveUrl("img/front" + imgIdx + ".png");
+				var imgstr = this.resolveUrl("img2/front" + imgIdx + ".png");
 				this.$.fr.src = imgstr;
 			},
 			_backChanged: function(imgIdx) {
-				var imgstr = this.resolveUrl("img/back" + imgIdx + ".png");
+				var imgstr = this.resolveUrl("img2/back" + imgIdx + ".png");
 				this.$.bck.src = this.resolveUrl(imgstr);				
 			},
 	        move: function() {
