@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "brun": "browser-sync start --server --files '*'"
+  },
   "jspm": {
     "directories": {},
     "dependencies": {
