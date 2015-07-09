@@ -34,7 +34,8 @@
 	browser-sync start --server --files "*"
 	
 ## distribute
-	jspm build (error in windows)
+
+	 jspm bundle script/app script/build.js
 	
 ## tasks
 
