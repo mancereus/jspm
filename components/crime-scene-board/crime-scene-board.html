@@ -5,6 +5,10 @@
 	<style>
 		:host {
 		}
+		.item {
+			width: 30px;
+			height: 30px;
+		}
 	</style>
 	<template>
 		<div style="width: 780px; float: left;">
@@ -22,13 +26,42 @@
 			<crime-scene-card front="{{solution.front}}" back="9" open="0" />
 		</div>
 		<div>
+			<h2 id="tries" >Tippzettel:</h2>
 			<table>
 				<tr>
-					<td><img src=""/></td>
 					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
+					<td><img class="item" src="img2/front1.png"/></td>
+					<td><img class="item" src="img2/front2.png"/></td>
+					<td><img class="item" src="img2/front3.png"/></td>
+					<td><img class="item" src="img2/front4.png"/></td>
+				</tr>
+				<tr>
+					<td><img class="item" src="img2/back1.png"/></td>
+					<td><input type="checkbox"/></td>
+					<td><input type="checkbox"/></td>
+					<td><input type="checkbox"/></td>
+					<td><input type="checkbox"/></td>
+				</tr>
+				<tr>
+					<td><img class="item" src="img2/back2.png"/></td>
+					<td><input type="checkbox"/></td>
+					<td><input type="checkbox"/></td>
+					<td><input type="checkbox"/></td>
+					<td><input type="checkbox"/></td>
+				</tr>
+				<tr>
+					<td><img class="item" src="img2/back3.png"/></td>
+					<td><input type="checkbox"/></td>
+					<td><input type="checkbox"/></td>
+					<td><input type="checkbox"/></td>
+					<td><input type="checkbox"/></td>
+				</tr>
+				<tr>
+					<td><img class="item" src="img2/back4.png"/></td>
+					<td><input type="checkbox"/></td>
+					<td><input type="checkbox"/></td>
+					<td><input type="checkbox"/></td>
+					<td><input type="checkbox"/></td>
 				</tr>
 			</table>
 		</div>
@@ -39,6 +72,8 @@
 		    is: 'crime-scene-board',
 			properties: {
 				solution: {}
+	        },
+			attached: function() {
 	        },
 			ready: function() {
 	        	this.cards = [];
@@ -63,6 +98,10 @@
 						return parseInt(cardidx); 			
 					}
 				}
+	        },
+			add: function() {
+				this.counter++;
+				this.$.tries;
 	        },
 			swap: function(event) {
 				var index = event.model.index;
