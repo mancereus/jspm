@@ -5,17 +5,16 @@
 	<style>
 		:host {
 		}
-		#fr {
-			height:160px;
-			width:160px;
-		}
-		#bck {
+		img {
 			height:160px;
 			width:160px;
 		}
 	</style>
 	<template>
-	    <board-game-card open="{{open}}" ><div><img id="fr" src=""/></div><div><img id="bck" src=""/></div></board-game-card>
+	    <board-game-card open="{{open}}">
+			<div><img src="{{frontUrl}}"/></div>
+			<div><img src="{{backUrl}}"/></div>
+		</board-game-card>
 	</template>
 </dom-module>
 	<script>
@@ -23,12 +22,19 @@
 		    is: 'crime-scene-card',
 			properties: {
     		  front:  {
-		          type: Number,
-		          observer: '_frontChanged'
+		          type: Number
+	          },
+			  frontUrl:  {
+		          type: String,
+				  computed: "_frontUrl(front)"
+				  
 	          },
 			  back: {
-		          type: Number,
-		          observer: '_backChanged'
+		          type: Number
+	          },
+			  backUrl:  {
+		          type: String,
+				  computed: "_backUrl(back)"
 	          },
 			  open: {
 		          type: Boolean
@@ -43,24 +49,11 @@
 					this.id ="emptyCard";
 				}
 	        },
-			_frontChanged: function(imgIdx) {
-				var imgstr = this.resolveUrl("img2/front" + imgIdx + ".png");
-				this.$.fr.src = imgstr;
+			_frontUrl: function() {
+				return this.resolveUrl("img2/front" + this.front + ".png");
 			},
-			_backChanged: function(imgIdx) {
-				var imgstr = this.resolveUrl("img2/back" + imgIdx + ".png");
-				this.$.bck.src = this.resolveUrl(imgstr);				
-			},
-	        move: function() {
-	            this.style.top = (30 - this.offsetTop) + "px";
-	            this.style.left = (1680 - this.offsetLeft) + "px";
-	        },
-	        _show: function() {
-	            this.$.selected = 1;
-	        },
-			toggle: function() {
-				var card = this.$.card;
-				card.selected = (card.selected + 1) % 2;
+			_backUrl: function() {
+				return this.resolveUrl("img2/back" + this.back + ".png");
 			}
 		});
 	</script>
