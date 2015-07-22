@@ -22,13 +22,13 @@
 	</div>
 </template>
 <script>
-	Polymer("game-meeple", {	
+	Polymer("game-meeple", {
 		top: 1060,
 		left: 800,
 		clicker: function(ev) {
 			ev.preventDefault();
-			ev.stopPropagation(); 
-			return false; 
+			ev.stopPropagation();
+			return false;
 		},
 		ready: function() {
 			console.log("game-meeple ready ");

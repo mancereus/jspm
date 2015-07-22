@@ -1,4 +1,6 @@
 {
+  "name": "polymer games",
+  "version": "1.0",
   "scripts": {
     "brun": "browser-sync start --server --files '*'"
   },
