@@ -29,7 +29,7 @@
 			<h2 id="tries" >Tippzettel:</h2>
 			<table>
 				<tr>
-					<td></td>
+					<td style="font-size: 14pt;">{{tipps}}</td>
 					<td><img class="item" src="img2/front1.png"/></td>
 					<td><img class="item" src="img2/front2.png"/></td>
 					<td><img class="item" src="img2/front3.png"/></td>
@@ -71,12 +71,17 @@
 	Polymer({
 		    is: 'crime-scene-board',
 			properties: {
-				solution: {}
+				solution: {},
+				tipps: {
+					type: Number,
+					default: 1
+				}
 	        },
 			attached: function() {
 	        },
 			ready: function() {
 	        	this.cards = [];
+				this.tipps = 0;
 				this.push('cards', {front: 7, back: 5, open: op, empty: true});
 				for (var i = 1; i < 5; i++) {				
 					for (var j = 1; j < 5; j++) {
@@ -112,22 +117,26 @@
 				if (diff == 1 && [4,8,12].indexOf(index) == -1) {
 					var emptyCard = this.splice('cards', emptyIndex, 1)[0];
 					this.splice('cards', index , 0, emptyCard);
+					this.tipps= this.tipps +1;
 				}
 				if (diff == -1 && [3,7,11].indexOf(index) == -1) {
 					var emptyCard = this.splice('cards', emptyIndex, 1)[0];
 					this.splice('cards', index , 0, emptyCard);
+					this.tipps++;
 				}
 				if (diff == 4) {
 					var indexCard = this.splice('cards', index, 1)[0];
 					var emptyCard = this.splice('cards', emptyIndex, 1)[0];
 					this.splice('cards', emptyIndex , 0, indexCard);
 					this.splice('cards', index , 0, emptyCard);
+					this.tipps++;
 				}
 				if (diff == -4) {
 					var emptyCard = this.splice('cards', emptyIndex, 1)[0];
 					var indexCard = this.splice('cards', index, 1)[0];
 					this.splice('cards', index , 0, emptyCard);
 					this.splice('cards', emptyIndex , 0, indexCard);
+					this.tipps++;
 				}
 	        }
 		});
