@@ -16,14 +16,10 @@
 				<crime-scene-card front="{{item.front}}" back="{{item.back}}"></crime-scene-card>
 			</template>
 		</div>
-		
-		<div style="width: 780px; page-break-after: always; border: 1px solid black">
-			break
-		</div>
-		
+		<div style="width: 780px; page-break-after: always; border: 1px solid black">break</div>
 		<div style="width: 780px;">
 			<template is="dom-repeat" items="{{cards}}">
-				<crime-scene-card front="{{item.front}}" back="{{item.back}}" open="open" ></crime-scene-card>
+				<crime-scene-card front="{{item.front}}" back="{{item.back}}" open="open"></crime-scene-card>
 			</template>
 		</div>
 	</template>
@@ -42,12 +38,12 @@
 	        },
 			ready: function() {
 	        	this.cards = [];
-				for (var i = 1; i < 7; i++) {				
+				for (var i = 1; i < 7; i++) {
 					for (var j = 1; j < 5; j++) {
 						this.push('cards', {front: i, back: j});
 					}
 				}
-					
+
 			}
 		});
 </script>
