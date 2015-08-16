@@ -3,7 +3,7 @@
 ## prerequisites
 
 * node.js
-* npm install -g jspm bower serve
+* npm install -g jspm bower
 
 ## install jspm
 
@@ -22,12 +22,6 @@
 
 
 ## Run in browser
-
-	npm install -g serve
- 	serve
-	chrome http://localhost:3000
-
-	oder
 
 	npm install -g browser-sync --save-dev
 
