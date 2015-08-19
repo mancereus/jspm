@@ -7,10 +7,8 @@
 
 ## install jspm
 
-	npm install -g jspm
 	jspm install
-	jspm install jquery
-	jspm install npm:lodash
+	jspm install jquery npm:lodash
 
 	jspm install text css json
 
