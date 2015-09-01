@@ -6,35 +6,25 @@
   <script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
   <link rel="import" href="bower_components/polymer/polymer.html">
   <link rel="import" href="bower_components/paper-card/paper-card.html">
+  <link rel="import" href="components/fantomas-card/fantomas-card.html">
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:900">
   <link rel="stylesheet" href="css/main.css">
-  <style>
-    .card {
-      border: 1px solid black;
-      margin: 1px;
-      padding: 8px;
-      width: 220px;
-      height: 380px;
-    }
-  </style>
 </head>
 
-<body>
+<body >
 
-  <template is="dom-bind" id="liste">
+  <template is="dom-bind" id="liste" >
+    <div style="float: left; display: inline;">
     <template is="dom-repeat" items="{{data}}" as="item">
-      <div class="card">
-        <div class="header">{{item.name}}</div>
-        <div class="content">{{item.text}}</div>
-        <div class="footer">
-          <paper-button>{{item.name}}</paper-button>
-        </div>
-      </div>
+      <fantomas-card data="{{item}}"/>
     </template>
-
+    </div>
   </template>
   <script>
-    liste.data = [{name:"Fantomas", text: "Du bist Fantomas, der Herr des Verbrechens", value: "X"}];
+    liste.data = [
+      {name:"Fantomas", typ: "special", value: "F", text: "Du bist Fantomas, der Herr des Verbrechens. Lege diese Karte am Anfang der Runde ab."},
+      {name:"Inspektor Juve", typ: "special", value: "J", text: "Du willst als Inspektor Juve Fantomas zur Strecke bringen. Lege diese Karte am Anfang der Runde ab. Falls in deiner Kartenhand auch Fantomas ist, bist du nur Fantomas."}
+      ];
   </script>
 
 </body>
