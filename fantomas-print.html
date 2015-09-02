@@ -16,14 +16,14 @@
   <template is="dom-bind" id="liste" >
     <div style="float: left; display: inline;">
     <template is="dom-repeat" items="{{data}}" as="item">
-      <fantomas-card data="{{item}}"/>
+      <fantomas-card data="{{item}}" style="float:left;"/>
     </template>
     </div>
   </template>
   <script>
     liste.data = [
       {name:"Fantomas", typ: "special", value: "F", text: "Du bist Fantomas, der Herr des Verbrechens. Lege diese Karte am Anfang der Runde ab."},
-      {name:"Inspektor Juve", typ: "special", value: "J", text: "Du willst als Inspektor Juve Fantomas zur Strecke bringen. Lege diese Karte am Anfang der Runde ab. Falls in deiner Kartenhand auch Fantomas ist, bist du nur Fantomas."}
+      {name:"Juve", typ: "special", value: "J", text: "Du willst als Inspektor Juve Fantomas zur Strecke bringen. Lege diese Karte am Anfang der Runde ab. Falls in deiner Kartenhand auch Fantomas ist, bist du nur Fantomas."}
       ];
   </script>
 

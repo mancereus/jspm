@@ -1,5 +1,6 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../../bower_components/paper-styles/paper-styles.html">
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
 <dom-module id="fantomas-card">
 	<style>
@@ -7,53 +8,43 @@
 
 		img {
 			height: 160px;
-			width: 160px;
-		}
-
-		[header] {
-			@apply(--layout-horizontal);
-			@apply(--layout-self-start);
-
-			width: 100%;
-		}
-
-		[headerCenter] {
-			width: 80%;
+			width: 120px;
 			text-align: center;
+			margin-left: 50px;
 		}
 
-		[leftCorner] {
-			font-size: 200%;
-		}
-
-		[rightCorner] {
-			font-size: 200%;
-		}
-		[content] {
-			@apply(--layout-self-center);
-		}
-
-
-		[card] {
-			@apply(--layout-vertical);
+		.card {
 			border: 1px solid black;
 			border-radius: 10px;
 			margin: 1px;
 			padding: 8px;
 			width: 220px;
 			height: 380px;
+			text-align:center;
+		}
+
+		.value {
+			font-size: 200%;
+			margin: 0 10px;
+		}
+
+		.rotate {
+			transform: rotate(180deg);
 		}
 	</style>
 	<template>
-		<div card>
-			<div header>
-				<div leftCorner>{{data.value}}</div>
-				<div headerCenter>{{data.name}}</div>
-				<div rightCorner>{{data.value}}</div>
+		<div class="vertical layout card">
+			<div class="horizontal layout">
+				<div class="value">{{data.value}}</div>
+				<div class="flex">{{data.name}}</div>
+				<div class="value">{{data.value}}</div>
 			</div>
-			<div content>{{data.text}}</div>
-			<div class="footer">
-				<paper-button>{{data.name}}</paper-button>
+			<img id="pic" />
+			<div class="flex">{{data.text}}</div>
+			<div class="layout horizontal rotate">
+				<div class="value">{{data.value}}</div>
+				<div class="flex">{{data.name}}</div>
+				<div class="value">{{data.value}}</div>
 			</div>
 		</div>
 	</template>
@@ -68,6 +59,7 @@
 			},
             ready: function() {
 				console.log(this.data);
+				 this.$.pic.setAttribute("src", this.resolveUrl("img/" + this.data.name + ".jpg"));
 	        }
 		});
 
