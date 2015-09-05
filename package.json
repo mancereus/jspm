@@ -21,6 +21,8 @@
     }
   },
   "devDependencies": {
-    "browser-sync": "~2.7.12"
+    "browser-sync": "~2.7.12",
+    "electron-prebuilt": "^0.30.6",
+    "jspm": "^0.16.1"
   }
 }

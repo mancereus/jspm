@@ -12,8 +12,8 @@
 	</style>
 	<template>
 	    <board-game-card open="{{open}}">
-			<div><img src="{{frontUrl}}"/></div>
-			<div><img src="{{backUrl}}"/></div>
+			<div style="background-color: green"><img src="{{frontUrl}}"/></div>
+			<div style="background-color: red"><img src="{{backUrl}}"/></div>
 		</board-game-card>
 	</template>
 </dom-module>
@@ -27,7 +27,7 @@
 			  frontUrl:  {
 		          type: String,
 				  computed: "_frontUrl(front)"
-				  
+
 	          },
 			  back: {
 		          type: Number

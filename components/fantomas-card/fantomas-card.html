@@ -1,0 +1,66 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../../bower_components/paper-styles/paper-styles.html">
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<dom-module id="fantomas-card">
+	<style>
+		:host {}
+
+		img {
+			height: 160px;
+			width: 120px;
+			text-align: center;
+			margin-left: 50px;
+		}
+
+		.card {
+			border: 1px solid black;
+			border-radius: 10px;
+			margin: 1px;
+			padding: 8px;
+			width: 220px;
+			height: 380px;
+			text-align:center;
+		}
+
+		.value {
+			font-size: 200%;
+			margin: 0 10px;
+		}
+
+		.rotate {
+			transform: rotate(180deg);
+		}
+	</style>
+	<template>
+		<div class="vertical layout card">
+			<div class="horizontal layout">
+				<div class="value">{{data.value}}</div>
+				<div class="flex">{{data.name}}</div>
+				<div class="value">{{data.value}}</div>
+			</div>
+			<img id="pic" />
+			<div class="flex">{{data.text}}</div>
+			<div class="layout horizontal rotate">
+				<div class="value">{{data.value}}</div>
+				<div class="flex">{{data.name}}</div>
+				<div class="value">{{data.value}}</div>
+			</div>
+		</div>
+	</template>
+</dom-module>
+<script>
+	Polymer({
+		    is: 'fantomas-card',
+			properties: {
+    		  data:  {
+		          type: Object
+	          }
+			},
+            ready: function() {
+				console.log(this.data);
+				 this.$.pic.setAttribute("src", this.resolveUrl("img/" + this.data.name + ".jpg"));
+	        }
+		});
+
+</script>
