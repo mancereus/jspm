@@ -5,7 +5,7 @@
 	</style>
 	<template>
 		<template is="dom-if" if="{{pageBreak}}">
-			<div style="width: 1400px; page-break-before: always; border: 1px solid black;">page break</div>
+			<div style="width: 800px; page-break-before: always; border: 1px solid black;">page break</div>
 		</template>
 	</template>
 </dom-module>
@@ -13,18 +13,15 @@
 	Polymer({
 		    is: 'page-break-div',
 			properties: {
-			  nmbr: {
+			  cols: {
 				  type: Number
 			  },
-			  max: {
+			  rows: {
 				  type: Number
-			  },
-			  pageBreak: {
-				  type: Boolean,
-				  computed: "isPageBreak(nmbr)"
 			  }
 			},
             ready: function() {
+				
 	        },
 	        isPageBreak: function() {
 	            return this.nmbr > 0 && this.nmbr % this.max == 0;

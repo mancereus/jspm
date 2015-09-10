@@ -1,0 +1,83 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../../bower_components/paper-styles/paper-styles.html">
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../fantomas-card/fantomas-card.html">
+<dom-module id="fantomas-print">
+  <style>
+    :host {}
+
+    .item {
+      width: 30px;
+      height: 30px;
+    }
+  </style>
+
+  <template>
+    <div  class="horizontal layout wrap">
+    <template is="dom-repeat" items="{{data}}" as="item" index-as="nmbr">
+      <page-break-div nmbr="{{nmbr}}" max="9"></page-break-div>
+      <fantomas-card data="{{item}}" ></fantomas-card>
+    </template>
+    </div>
+  </template>
+
+</dom-module>
+<script>
+  Polymer({
+		    is: 'fantomas-print',
+			properties: {
+				data: {type: Array,
+        value: function() {
+          return [
+              {name:"Fantomas", typ: "special", value: "F", text: "Du bist Fantomas, der Herr des Verbrechens. Lege diese Karte ab."},
+              {name:"Juve", typ: "special", value: "J", text: "Du bist Inspektor Juve und willst Fantomas zur Strecke bringen. Lege diese Karte ab. Falls in deiner Kartenhand auch Fantomas ist, bist du nur Fantomas."},
+              {name:"Beute      ", typ: "green", value: "1", text: "Die rote Wespe", points1: "F J: 2P", points2: "B: -2P", spieler: "nur bei 4,5,6 Spielern"},
+              {name:"Beute", typ: "green", value: "2", text: "Die abgetrennte Hand", points1: "F J: 2P", points2: "B: -2P"},
+              {name:"Beute ", typ: "green", value: "3", text: "Das tödliche Bouquet", points1: "F J: 2P", points2: "B: -2P"},
+              {name:"Beute  ", typ: "green", value: "4", text: "Der Tote, der tötet", points1: "F J: 2P", points2: "B: -2P"},
+              {name:"Beute   ", typ: "green", value: "5", text: "Die Geheimagentin", points1: "F J: 2P", points2: "B: -2P"},
+              {name:"Beute    ", typ: "green", value: "6", text: "Der leere Sarg", points1: "F J: 2P", points2: "B: -2P", spieler: "nur bei 4,5,6 Spielern"},
+              {name:"Beute     ", typ: "green", value: "7", text: "Die Agentur des Verbrechens", points1: "F J: 2P", points2: "B: -2P", spieler: "nur bei 4,6 Spielern"},
+              {name:"Ganoven", typ: "yellow", value: "1", text: "", points1: "B F: 1P", points2: "J: -1P"},
+              {name:"Ganoven", typ: "yellow", value: "2", text: "", points1: "B F: 1P", points2: "J: -1P"},
+              {name:"Ganoven", typ: "yellow", value: "3", text: "", points1: "B F: 1P", points2: "J: -1P"},
+              {name:"Ganoven", typ: "red", value: "1", text: "", points1: "B F: 1P", points2: "J: -1P"},
+              {name:"Ganoven", typ: "red", value: "2", text: "", points1: "B F: 1P", points2: "J: -1P"},
+              {name:"Ganoven", typ: "red", value: "3", text: "", points1: "B F: 1P", points2: "J: -1P"},
+              {name:"Ganoven", typ: "blue", value: "1", text: "", points1: "B F: 1P", points2: "J: -1P"},
+              {name:"Ganoven", typ: "blue", value: "2", text: "", points1: "B F: 1P", points2: "J: -1P"},
+              {name:"Ganoven", typ: "blue", value: "3", text: "", points1: "B F: 1P", points2: "J: -1P"},
+              {name:"Polizei", typ: "yellow", value: "4", text: "", points1: "B J: 1P", points2: "F: -1P"},
+              {name:"Polizei", typ: "yellow", value: "5", text: "", points1: "B J: 1P", points2: "F: -1P"},
+              {name:"Polizei", typ: "yellow", value: "6.", text: "", points1: "B J: 1P", points2: "F: -1P"},
+              {name:"Polizei", typ: "red", value: "4", text: "", points1: "B J: 1P", points2: "F: -1P"},
+              {name:"Polizei", typ: "red", value: "5", text: "", points1: "B J: 1P", points2: "F: -1P"},
+              {name:"Polizei", typ: "red", value: "6.", text: "", points1: "B J: 1P", points2: "F: -1P"},
+              {name:"Polizei", typ: "blue", value: "4", text: "", points1: "B J: 1P", points2: "F: -1P"},
+              {name:"Polizei", typ: "blue", value: "5", text: "", points1: "B J: 1P", points2: "F: -1P"},
+              {name:"Polizei", typ: "blue", value: "6.", text: "", points1: "B J: 1P", points2: "F: -1P"},
+              {name:"Bürger", typ: "yellow", value: "7", text: "", points1: "B: 1P", points2: "F: -1P"},
+              {name:"Bürger", typ: "yellow", value: "8", text: "", points1: "B: 1P", points2: "F: -1P"},
+              {name:"Bürger", typ: "yellow", value: "9", text: "", points1: "B: 1P", points2: "F: -1P"},
+              {name:"Bürger", typ: "red", value: "7", text: "", points1: "B: 1P", points2: "F: -1P"},
+              {name:"Bürger", typ: "red", value: "8", text: "", points1: "B: 1P", points2: "F: -1P"},
+              {name:"Bürger", typ: "red", value: "9.", text: "", points1: "B: 1P", points2: "F: -1P"},
+              {name:"Bürger", typ: "blue", value: "7", text: "", points1: "B: 1P", points2: "F: -1P"},
+              {name:"Bürger", typ: "blue", value: "8", text: "", points1: "B: 1P", points2: "F: -1P"},
+              {name:"Bürger", typ: "blue", value: "9.", text: "", points1: "B: 1P", points2: "F: -1P"}
+        ];
+      }
+      }
+		},
+    ready: function() {
+	        console.log("ready");
+	        console.log(this.data);
+    },
+    created: function() {
+	        console.log("created");
+    }
+
+    });
+
+</script>
