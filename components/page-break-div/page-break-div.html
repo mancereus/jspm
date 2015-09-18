@@ -1,16 +1,23 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <dom-module id="page-break-div">
-	<style>
-		:host {}
-	</style>
-	<template>
-		<template is="dom-if" if="{{pageBreak}}">
-			<div style="width: 600px; height:50px;page-break-after: always; border: 1px solid black;">page break</div>
-		</template>
-	</template>
+    <style>
+        :host {}
+
+        .break {
+            width: 710px;
+            margin: 0;
+            page-break-after: always;
+            border: 1px solid black;
+        }
+    </style>
+    <template>
+        <template is="dom-if" if="{{pageBreak}}">
+            <div class="break">page break</div>
+        </template>
+    </template>
 </dom-module>
 <script>
-	Polymer({
+    Polymer({
 		    is: 'page-break-div',
             properties: {
               nmbr: {
@@ -28,7 +35,7 @@
 
 	        },
 	        isPageBreak: function() {
-	            return this.nmbr > 0 && this.nmbr % this.max == 0;
+	            return (this.nmbr+1) % this.max == 0;
 	        }
 		});
 
