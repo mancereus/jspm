@@ -1,0 +1,17 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<script src="draggabilly.pkgd.js"></script>
+
+<script>
+  /** @polymerBehavior */
+  DraggableBehavior = {
+    properties: {
+      drag: {
+        type: Object
+      }
+    },
+    ready: function() {
+				var draggie = new Draggabilly(this, this.drag);
+        console.log('ready for ', draggie);
+    }
+  };
+</script>

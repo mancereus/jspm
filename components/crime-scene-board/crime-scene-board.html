@@ -13,8 +13,8 @@
 	<template>
 		<div style="width: 780px; float: left;">
 			<template is="dom-repeat" items="{{cards}}">
-				<crime-scene-card on-click="swap" front="{{item.front}}" back="{{item.back}}" open="{{item.open}}" 
-				empty="{{item.empty}}"></crime-scene-card>
+				<crime-scene-card on-click="swap" front="{{item.front}}" back="{{item.back}}" open="{{item.open}}"
+				empty="{{item.empty}}" drag="{axis: 'x'}"></crime-scene-card>
 			</template>
 		</div>
 		<div>
@@ -83,7 +83,7 @@
 	        	this.cards = [];
 				this.tipps = 0;
 				this.push('cards', {front: 7, back: 5, open: op, empty: true});
-				for (var i = 1; i < 5; i++) {				
+				for (var i = 1; i < 5; i++) {
 					for (var j = 1; j < 5; j++) {
 						var op = parseInt(Math.random()*2);
 						this.push('cards', {front: i, back: j, open: op});
@@ -91,7 +91,7 @@
 				}
 				this.shuffle(this.cards);
 				this.solution = this.pop('cards');
-					
+
 			},
 			shuffle: function (o){
 			    for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
@@ -100,7 +100,7 @@
 			getEmptyIdx: function() {
 				for (cardidx in  this.cards) {
 					if (this.cards[cardidx].empty) {
-						return parseInt(cardidx); 			
+						return parseInt(cardidx);
 					}
 				}
 	        },
@@ -110,7 +110,7 @@
 	        },
 			swap: function(event) {
 				var index = event.model.index;
-			
+
 				this.cards[index].open = !this.cards[index].open;
 				var emptyIndex = this.getEmptyIdx();
 				var diff = index - emptyIndex;

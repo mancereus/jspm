@@ -3,6 +3,7 @@
 
 <head>
 	<title>page break test</title>
+    <script src="../bower_components/draggabilly/dist/draggabilly.pkgd.js"></script>
 	<style>
 		.card {
 			width: 190px;
@@ -26,9 +27,13 @@
 </head>
 
 <body>
-	<div class="card">Test</div>
+	<div class="card draggable">Test</div>
 	<div class="page-break" >page-break</div>
-	<div class="card">Test Page 2</div>
+	<div class="card draggable">Test Page 2</div>
+	<script>
+		// only the first is draggable
+		var draggie = new Draggabilly('.draggable');
+	</script>
 </body>
 
 </html>

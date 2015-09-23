@@ -1,5 +1,6 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="..//draggable-behavior/draggable-behavior.html">
 <link rel="import" href="../board-game-card/board-game-card.html">
 <dom-module id="crime-scene-card">
 	<style>
@@ -20,6 +21,7 @@
 	<script>
 		Polymer({
 		    is: 'crime-scene-card',
+ 			behaviors: [DraggableBehavior],
 			properties: {
     		  front:  {
 		          type: Number
