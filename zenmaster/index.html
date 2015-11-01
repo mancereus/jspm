@@ -84,7 +84,7 @@
 
 <body>
 	<h1>ZenMeister</h1>
-	<h3>Dinge, die erleuchtet sind:</h3>
+	<h3>Finde ein Lösungswort mit den folgenden Eingenschaften:</h3>
 	<template id="tmpl" is="dom-bind">
 		<template is="dom-repeat" items="{{cards}}">
 
@@ -96,42 +96,17 @@
 				</div>
 			</div>
 		</template>
+		<span class="try">nichts gefunden? </span>
+		<input type="button" onClick="history.go(0)" value="neu laden">
+		<br/>
+		<span class="try">Lösung:</span>
+		<input class="try inp"></input>
 	</template>
 	<h3>Info:</h3>
 	<p class="info">Zuerst überprüft der Zenmaster, ob es mindestens einen Begriff gibt, auf den alle Kategorien zu treffen. (sonst neu laden.)
 		Die Schüler haben 10 Versuche und schreiben Begriffe auf einen Zettel. Der ZenMeister schreibt dahinter, welche Kategorien
 		zutreffen. (z.B: XOOX", falls die erste unde Letzte Kategorie stimmt.) Die Spieler versuchen wie bei MasterMind einen Begriff
 		zu finden, der auf alle Kategorien zutrifft.</p>
-	<h1>Schüler</h1>
-	<h3>ZenMeister, ist das erleuchtet?</h3>
-	<template id="tipTmpl" is="dom-bind">
-		<table style="margin-bottom: 500px;">
-			<tr>
-				<th></th>
-				<th>Versuch</th>
-				<th colspan="4">Ergebnis</th>
-			</tr>
-			<template is="dom-repeat" items="{{tips}}">
-				<tr>
-					<td><span class="try">{{index}}</span><span class="try">: </span></td>
-					<td>
-						<input class="try inp" value="{{item}}"></input>
-					</td>
-					<td>
-						<input type="checkbox"></input>
-					</td>
-					<td>
-						<input type="checkbox"></input>
-					</td>
-					<td>
-						<input type="checkbox"></input>
-					</td>
-					<td>
-						<input type="checkbox"></input>
-					</td>
-				</tr>
-			</template>
-		</table>
 
 	</template>
 	<script>
@@ -149,9 +124,6 @@
 		t.cards.push(datawie.pop());
 		t.cards.push(datawo.pop());
 		t.cards.push(datawofür.pop());
-
-		var tp = document.querySelector('#tipTmpl');
-		tp.tips = ["","","","","","","","","",""];
 	</script>
 </body>
 
