@@ -12,34 +12,34 @@
 		body {
 			background-color: cornflowerblue;
 		}
-		
+
 		.try {
 			font-size: 150%;
 			font-weight: bold;
 		}
-		
+
 		.inp {
 			width: 120px;
 		}
-		.wie {
+		.Inhalt {
 			background-color: lightblue;
 			width: 250px;
 			padding: 0;
 			margin: 5px;
 		}
-		.was {
+		.Form {
 			background-color: lightcoral;
 			width: 250px;
 			padding: 0;
 			margin: 5px;
 		}
-		.wo {
+		.Ort {
 			background-color: lightgreen;
 			width: 250px;
 			padding: 0;
 			margin: 5px;
 		}
-		.wofür {
+		.Extra {
 			background-color: lightyellow;
 			width: 250px;
 			padding: 0;
@@ -54,18 +54,18 @@
 			font-size: 150%;
 			font-weight: bold;
 		}
-		
+
 		.page-break {
 			page-break-after: always;
 			background-color: red;
 			width: 650px;
 		}
-		
+
 		img {
 			width: 120px;
 			height: 200px;
 		}
-		
+
 		.info {
 			width: 250px;
 			margin: 5px;
@@ -112,15 +112,15 @@
 			for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
 			return o;
 		};
-		t.shuffle(datawo);
-		t.shuffle(datawas);
-		t.shuffle(datawie);
-		t.shuffle(datawofür);
+		t.shuffle(dataform);
+		t.shuffle(datainhalt);
+		t.shuffle(dataort);
+		t.shuffle(dataextra);
 		t.cards = [];
-		t.cards.push(datawas.pop());
-		t.cards.push(datawie.pop());
-		t.cards.push(datawo.pop());
-		t.cards.push(datawofür.pop());
+		t.cards.push(dataform.pop());
+		t.cards.push(datainhalt.pop());
+		t.cards.push(dataort.pop());
+		t.cards.push(dataextra.pop());
 	</script>
 </body>
 
