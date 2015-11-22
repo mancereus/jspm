@@ -49,9 +49,8 @@ var dataort = [
     { type: "Ort", name: "gibt es auch im Wald oder Feld" },
     { type: "Ort", name: "gab es schon bei den alten Griechen oder Römern" },
     { type: "Ort", name: "gibt es in einem Wild West Film" },
-    { type: "Ort", name: "gibt in einer Sportanlage" },
     { type: "Ort", name: "gibt es in der Stadt" },
-    { type: "Ort", name: "es gibt weniger davon als vor 100 Jahren" },
+    { type: "Ort", name: "es gibt mehr davon als vor 100 Jahren" },
 ];
 var dataextra = [
     { type: "Extra", name: "schwimmt im Wasser oben" },

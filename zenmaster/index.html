@@ -104,14 +104,13 @@
 			</div>
 		</template>
 		<span class="try">nichts gefunden? </span>
-		<input type="button" onClick="history.go(0)" value="neu laden">
+		<input type="button" onclick="history.go(0)" value="neu laden">
 		<br/>
 		<h3>2. Schreibe deine Lösung auf:</h3>
 		<input style="width: 250px;" class="try inp"></input>
 		<h3>3. Die Schüler müssen mit 10 Versuchen einen Begriff finden der allen Eigenschaften entspricht. SIe dürfen sich 3mal einen Tipp zu einer Spalte geben lassen.</h3>
 	</template>
 
-	</template>
 	<script>
 		var t = document.querySelector('#tmpl');
 		t.shuffle =  function (o){
