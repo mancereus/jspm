@@ -1,5 +1,6 @@
 node_modules
 bower_components/
+components/bower_components
 .sass-cache
 _vulcanized
 _dist
