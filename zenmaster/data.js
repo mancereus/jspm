@@ -34,6 +34,7 @@ var datainhalt = [
     { type: "Inhalt", name: "enthält Stein" },
     { type: "Inhalt", name: "enthält Holz oder Äste" },
     { type: "Inhalt", name: "besteht aus Papier, Karton oder Stroh" },
+    { type: "Inhalt", name: "darauf sind manchmal Buchstaben, Zeichen oder Zahlen" },
 ];
 var dataort = [
     { type: "Ort", name: "ist oft im Büro" },
@@ -53,20 +54,14 @@ var dataort = [
     { type: "Ort", name: "es gibt mehr davon als vor 100 Jahren" },
 ];
 var dataextra = [
-    { type: "Extra", name: "schwimmt im Wasser oben" },
-    { type: "Extra", name: "macht Geräusche, selbständig oder bei normalen Gebrauch" },
-    { type: "Extra", name: "gibt es in unterschiedlichen Farben" },
-    { type: "Extra", name: "fühlt sich glatt an" },
-    { type: "Extra", name: "glänzt, strahlt oder leuchtet" },
-    { type: "Extra", name: "kann man in eine Weinflassche giessen/ schieben" },
-    { type: "Extra", name: "tritt meist in größeren Mengen auf" },
-    { type: "Extra", name: "geht kaputt, wenn man sich darauf setzt" },
-    { type: "Extra", name: "kann sich selbständig bewegen" },
-    { type: "Extra", name: "riecht eher schlecht, stinkt" },
-    { type: "Extra", name: "schmeckt gut" },
-    { type: "Extra", name: "wird nach einmaligem Gebrauch oft weggeworfen" },
-    { type: "Extra", name: "wird am Fliessband produziert" },
-    { type: "Extra", name: "kostet weniger als 20 Euro" },
-    { type: "Extra", name: "kann ohne Elektrizität kaum verwendet werden" },
-    { type: "Extra", name: "darauf sind manchmal Buchstaben, Zeichen oder Zahlen" },
+    { type: "Bewegung", name: "schwimmt im Wasser oben" },
+    { type: "Bewegung", name: "ist praktisch unbeweglich" },
+    { type: "Bewegung", name: "kann von eimen Menschen bewegt werden" },
+    { type: "Bewegung", name: "kann sich selbständig bewegen" },
+    { type: "Bewegung", name: "fliegt oder schwebt" },
+    { type: "Bewegung", name: "hat Räder zur Bewegung" },
+    { type: "Bewegung", name: "kann in der Strassenbahn transportiert werden" },
+    { type: "Bewegung", name: "bewegt sich auf 2 Beinen oder Rädern" },
+    { type: "Bewegung", name: "bewegt sich sehr langsam" },
+    { type: "Bewegung", name: "bewegt sich mit Elektrizität oder Brennstoff" },
 ];
