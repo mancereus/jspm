@@ -16,6 +16,7 @@
 	jspm install ts
 
 ## install bower polymer
+
 	bower update
 
 
@@ -26,6 +27,7 @@
 	browser-sync start --server --files "*"
 
 ## Test
+
 	export PYTHON=d:/sde/cygwin/bin/python2.7.exe
 	npm install -g web-component-tester
 
