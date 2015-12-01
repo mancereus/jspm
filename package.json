@@ -23,6 +23,7 @@
   "devDependencies": {
     "browser-sync": "~2.7.12",
     "electron-prebuilt": "^0.30.6",
+    "gulp-vulcanize": "^6.1.0",
     "jspm": "^0.16.1"
   }
 }

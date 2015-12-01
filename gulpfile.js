@@ -1,5 +1,16 @@
 var gulp = require('gulp');
 var markdown = require('gulp-markdown');
+var vulcanize = require('gulp-vulcanize');
+
+gulp.task('vulcan', function () {
+    return gulp.src('zenmaster/tipps.html')
+        .pipe(vulcanize({
+            abspath: '',
+            excludes: [],
+            stripExcludes: false
+        }))
+        .pipe(gulp.dest('dest'));
+});
 
 gulp.task('markdown', function() {
     gulp.src('**/*.md')

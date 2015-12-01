@@ -65,17 +65,17 @@
 			<tr>
 				<th></th>
 				<th width="180px">Versuch</th>
-				<th width="40px">Form</th>
-				<th width="40px">Inhalt</th>
-				<th width="40px">Ort</th>
-				<th width="40px">Extra</th>
+				<th width="40px">Form oder Größe</th>
+				<th width="40px">Inhalt oder Bestandteil</th>
+				<th width="40px">Ort oder Zeit</th>
+				<th width="40px">Bewegung oder Transport</th>
 			</tr>
 			<template is="dom-repeat" items="{{tips}}">
 				<template is="dom-if" if="{{isTipp(item)}}">
 					<tr>
 						<td><span class="try">{{index}}</span><span class="try">: </span></td>
 						<td>
-							<input class="try inp" value="{{item}}"></input>
+							<input class="try inp"></input>
 						</td>
 						<td>
 							<paper-checkbox></paper-checkbox>
@@ -95,7 +95,7 @@
 					<tr>
 						<td><span class="try">{{index}}</span><span class="try">: </span></td>
 						<td>
-							<input class="try inp" value="{{item}}"></input>
+							<input class="try inp"></input>
 						</td>
 						<td>
 							<paper-radio-button name$="{{item}}"></paper-radio-button>
