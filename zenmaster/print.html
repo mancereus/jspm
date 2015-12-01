@@ -3,10 +3,10 @@
 
 <head>
 	<title>ZenMeister Beta</title>
-	<script src="webcomponents-lite.js"></script>
+	<script src="../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+	<link rel="import" href="../bower_components/polymer/polymer.html">
 	<script src="data.js"></script>
-	<link rel="import" href="polymer.html">
-	<link rel="stylesheet" href="main.css">
+	<link rel="stylesheet" href="../css/main.css">
 
 	<style>
 		.try {
@@ -118,8 +118,8 @@
 		t.cards = [];
 		t.cards = t.cards.concat(dataform);
 		t.cards = t.cards.concat(datainhalt);
-		/*t.cards = t.cards.concat(dataort);
-		t.cards = t.cards.concat(dataextra);*/
+		t.cards = t.cards.concat(dataort);
+		t.cards = t.cards.concat(dataextra);
 	</script>
 </body>
 
