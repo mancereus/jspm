@@ -18,7 +18,7 @@ var datainhalt = [
     { type: "Inhalt", name: "mit Rad oder vollständig drehbarem Teil" },
     { type: "Inhalt", name: "mit Gelenk oder beweglichem Teil" },
     { type: "Inhalt", name: "hat ein mit Loch, durch das man durchschauen kann" },
-    { type: "Inhalt", name: "darauf sind normalerweise Buchstaben, Zeichen oder Zahlen" },
+    { type: "Inhalt", name: "darauf sind Buchstaben, Zeichen oder Zahlen" },
 ];
 var dataort = [
     { type: "Ort", name: "kann ich innerhalb von 5 Minuten hierherbringen" },

@@ -45,7 +45,7 @@
 			height: 102px;
 		}
 
-		.Extra {
+		.Bewegung {
 			border: 6px solid yellow;
 			border-radius: 4px;
 			padding: 0;
@@ -97,6 +97,7 @@
 
 <body>
 	<template id="tmpl" is="dom-bind">
+		<div style="width:1050px">
 		<template is="dom-repeat" items="{{cards}}">
 
 			<div class="card">
@@ -109,15 +110,16 @@
 				</div>
 			</div>
 		</template>
+		</div>
 	</template>
 
 	<script>
 		var t = document.querySelector('#tmpl');
 		t.cards = [];
-		/*t.cards = t.cards.concat(dataform);
+		t.cards = t.cards.concat(dataform);
 		t.cards = t.cards.concat(datainhalt);
-		t.cards = t.cards.concat(dataort);*/
-		t.cards = t.cards.concat(dataextra);
+		/*t.cards = t.cards.concat(dataort);
+		t.cards = t.cards.concat(dataextra);*/
 	</script>
 </body>
 
