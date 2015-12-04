@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "brun": "browser-sync start --server --no-notify --files '*'"
+    "brun": "browser-sync start --server --no-notify --files 'app/*'"
   },
   "jspm": {
     "directories": {},

@@ -1,7 +1,7 @@
 node_modules
 bower_components/
 dest/
-components/bower_components
+app/components/bower_components
 .sass-cache
 _vulcanized
 _dist

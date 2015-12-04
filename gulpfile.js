@@ -10,7 +10,7 @@ gulp.task('clean', function () {
 })
 
 gulp.task('vulcan', function () {
-  return gulp.src('zenmaster/*.html')
+  return gulp.src('app/zenmaster/*.html')
     .pipe(vulcanize({
       abspath: '',
       excludes: [],
@@ -22,12 +22,12 @@ gulp.task('vulcan', function () {
 })
 
 gulp.task('css', function () {
-  return gulp.src('css/*.css')
+  return gulp.src('app/css/*.css')
     .pipe(gulp.dest('dest'))
 })
 
 gulp.task('js', function () {
-  return gulp.src('zenmaster/*.js')
+  return gulp.src('app/zenmaster/*.js')
     .pipe(gulp.dest('dest'))
 })
 

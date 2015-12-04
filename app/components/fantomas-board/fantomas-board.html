@@ -1,0 +1,104 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../fantomas-card/fantomas-card.html">
+<dom-module id="fantomas-board">
+	<style>
+		:host {
+		}
+		.item {
+			width: 30px;
+			height: 30px;
+		}
+	</style>
+	<template>
+		<div style="width: 780px;">
+			<template is="dom-repeat" items="{{cards}}">
+				<fantomas-card on-click="swap" front="{{item.front}}" back="{{item.back}}" open="{{item.open}}"
+				empty="{{item.empty}}"></fantomas-card>
+			</template>
+		</div>
+		<div>
+			<h2>Person:</h2>
+			<fantomas-card front="9" back="{{solution.back}}" />
+		</div>
+		<div>
+			<h2>Ort:</h2>
+			<fantomas-card front="{{solution.front}}" back="9" open="0" />
+		</div>
+
+	</template>
+</dom-module>
+<script>
+	Polymer({
+		    is: 'fantomas-board',
+			properties: {
+				solution: {},
+				tipps: {
+					type: Number,
+					default: 1
+				}
+	        },
+			attached: function() {
+	        },
+			ready: function() {
+	        	this.cards = [];
+				this.tipps = 0;
+				this.push('cards', {front: 7, back: 5, open: op, empty: true});
+				for (var i = 1; i < 5; i++) {
+					for (var j = 1; j < 5; j++) {
+						var op = parseInt(Math.random()*2);
+						this.push('cards', {front: i, back: j, open: op});
+					}
+				}
+				this.shuffle(this.cards);
+				this.solution = this.pop('cards');
+
+			},
+			shuffle: function (o){
+			    for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+			    return o;
+			},
+			getEmptyIdx: function() {
+				for (cardidx in  this.cards) {
+					if (this.cards[cardidx].empty) {
+						return parseInt(cardidx);
+					}
+				}
+	        },
+			add: function() {
+				this.counter++;
+				this.$.tries;
+	        },
+			swap: function(event) {
+				var index = event.model.index;
+
+				this.cards[index].open = !this.cards[index].open;
+				var emptyIndex = this.getEmptyIdx();
+				var diff = index - emptyIndex;
+				if (diff == 1 && [4,8,12].indexOf(index) == -1) {
+					var emptyCard = this.splice('cards', emptyIndex, 1)[0];
+					this.splice('cards', index , 0, emptyCard);
+					this.tipps= this.tipps +1;
+				}
+				if (diff == -1 && [3,7,11].indexOf(index) == -1) {
+					var emptyCard = this.splice('cards', emptyIndex, 1)[0];
+					this.splice('cards', index , 0, emptyCard);
+					this.tipps++;
+				}
+				if (diff == 4) {
+					var indexCard = this.splice('cards', index, 1)[0];
+					var emptyCard = this.splice('cards', emptyIndex, 1)[0];
+					this.splice('cards', emptyIndex , 0, indexCard);
+					this.splice('cards', index , 0, emptyCard);
+					this.tipps++;
+				}
+				if (diff == -4) {
+					var emptyCard = this.splice('cards', emptyIndex, 1)[0];
+					var indexCard = this.splice('cards', index, 1)[0];
+					this.splice('cards', index , 0, emptyCard);
+					this.splice('cards', emptyIndex , 0, indexCard);
+					this.tipps++;
+				}
+	        }
+		});
+</script>

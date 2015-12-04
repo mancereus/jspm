@@ -1,0 +1,42 @@
+<link rel="import" href="../../../bower_components/polymer/polymer.html">
+<dom-module id="page-break-div">
+    <style>
+        :host {}
+
+        .break {
+            width: 710px;
+            margin: 0;
+            page-break-after: always;
+            border: 1px solid black;
+        }
+    </style>
+    <template>
+        <template is="dom-if" if="{{pageBreak}}">
+            <div class="break">page break</div>
+        </template>
+    </template>
+</dom-module>
+<script>
+    Polymer({
+		    is: 'page-break-div',
+            properties: {
+              nmbr: {
+                  type: Number
+              },
+              max: {
+                  type: Number
+              },
+              pageBreak: {
+                  type: Boolean,
+                  computed: "isPageBreak(nmbr)"
+              }
+            },
+            ready: function() {
+
+	        },
+	        isPageBreak: function() {
+	            return (this.nmbr+1) % this.max == 0;
+	        }
+		});
+
+</script>
