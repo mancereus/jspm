@@ -7,3 +7,4 @@ _vulcanized
 _dist
 _tmp
 /jspm_packages/
+.idea/
