@@ -2,7 +2,16 @@ var gulp = require('gulp')
 var markdown = require('gulp-markdown')
 var vulcanize = require('gulp-vulcanize')
 var del = require('del')
+var browserSync = require('browser-sync').create();
 
+// Static server
+gulp.task('brun', function() {
+    browserSync.init({
+        server: {
+            baseDir: "app/"
+        }
+    });
+});
 gulp.task('clean', function () {
   return del([
     'dest/**/*'

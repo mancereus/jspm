@@ -1,7 +1,7 @@
-<link rel="import" href="../../bower_components/polymer/polymer.html">
-<link rel="import" href="../../bower_components/iron-pages/iron-pages.html">
-<link rel="import" href="../fantomas-card/fantomas-card.html">
-<dom-module id="fantomas-board">
+<link rel="import" href="../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="crime-scene-card.html">
+<dom-module id="crime-scene-board">
 	<style>
 		:host {
 		}
@@ -11,26 +11,65 @@
 		}
 	</style>
 	<template>
-		<div style="width: 780px;">
+		<div style="width: 780px; float: left;">
 			<template is="dom-repeat" items="{{cards}}">
-				<fantomas-card on-click="swap" front="{{item.front}}" back="{{item.back}}" open="{{item.open}}"
-				empty="{{item.empty}}"></fantomas-card>
+				<crime-scene-card on-click="swap" front="{{item.front}}" back="{{item.back}}" open="{{item.open}}"
+				empty="{{item.empty}}" drag="{axis: 'x'}"></crime-scene-card>
 			</template>
 		</div>
 		<div>
 			<h2>Person:</h2>
-			<fantomas-card front="9" back="{{solution.back}}" />
+			<crime-scene-card front="9" back="{{solution.back}}" />
 		</div>
 		<div>
 			<h2>Ort:</h2>
-			<fantomas-card front="{{solution.front}}" back="9" open="0" />
+			<crime-scene-card front="{{solution.front}}" back="9" open="0" />
 		</div>
-
+		<div>
+			<h2 id="tries" >Tippzettel:</h2>
+			<table>
+				<tr>
+					<td style="font-size: 14pt;">{{tipps}}</td>
+					<td><img class="item" src="img2/front1.png"/></td>
+					<td><img class="item" src="img2/front2.png"/></td>
+					<td><img class="item" src="img2/front3.png"/></td>
+					<td><img class="item" src="img2/front4.png"/></td>
+				</tr>
+				<tr>
+					<td><img class="item" src="img2/back1.png"/></td>
+					<td><input type="checkbox"/></td>
+					<td><input type="checkbox"/></td>
+					<td><input type="checkbox"/></td>
+					<td><input type="checkbox"/></td>
+				</tr>
+				<tr>
+					<td><img class="item" src="img2/back2.png"/></td>
+					<td><input type="checkbox"/></td>
+					<td><input type="checkbox"/></td>
+					<td><input type="checkbox"/></td>
+					<td><input type="checkbox"/></td>
+				</tr>
+				<tr>
+					<td><img class="item" src="img2/back3.png"/></td>
+					<td><input type="checkbox"/></td>
+					<td><input type="checkbox"/></td>
+					<td><input type="checkbox"/></td>
+					<td><input type="checkbox"/></td>
+				</tr>
+				<tr>
+					<td><img class="item" src="img2/back4.png"/></td>
+					<td><input type="checkbox"/></td>
+					<td><input type="checkbox"/></td>
+					<td><input type="checkbox"/></td>
+					<td><input type="checkbox"/></td>
+				</tr>
+			</table>
+		</div>
 	</template>
 </dom-module>
 <script>
 	Polymer({
-		    is: 'fantomas-board',
+		    is: 'crime-scene-board',
 			properties: {
 				solution: {},
 				tipps: {
