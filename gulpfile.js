@@ -19,7 +19,7 @@ gulp.task('clean', function () {
 })
 
 gulp.task('vulcan', function () {
-  return gulp.src('app/zenmaster/*.html')
+  return gulp.src('app/*/*.html')
     .pipe(vulcanize({
       abspath: '',
       excludes: [],
@@ -36,13 +36,13 @@ gulp.task('css', function () {
 })
 
 gulp.task('js', function () {
-  return gulp.src('app/zenmaster/*.js')
+  return gulp.src('app/*/*.js')
     .pipe(gulp.dest('dest'))
 })
 
 gulp.task('publish', function () {
   return gulp.src('dest/*')
-    .pipe(gulp.dest('../mancereus.github.com/zenmaster'))
+    .pipe(gulp.dest('../mancereus.github.com'))
 })
 
 gulp.task('markdown', function () {
@@ -57,4 +57,6 @@ gulp.task('mdwatch', function () {
   gulp.watch('**/*.md', ['markdown'])
 })
 
-gulp.task('default', ['clean', 'vulcan', 'publish'])
+gulp.task('default', ['clean'], function() {
+    gulp.start('vulcan', 'js','css', 'publish');
+});

@@ -1,6 +1,5 @@
 <link rel="import" href="../../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../../bower_components/iron-pages/iron-pages.html">
-<link rel="import" href="../crime-scene-card/crime-scene-card.html">
 <dom-module id="crime-scene-board">
 	<style>
 		:host {
@@ -9,7 +8,6 @@
 	<template>
 		<div style="width: 780px">
 			<template is="dom-repeat" items="{{cards}}">
-				<crime-scene-card on-click="swap" front="{{item.front}}" back="{{item.back}}" open="{{item.open}}" empty="{{item.empty}}"></crime-scene-card>
 			</template>
 		</div>
 	</template>
