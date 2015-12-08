@@ -1,0 +1,94 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../../bower_components/paper-ripple/paper-ripple.html">
+<link rel="import" href="../../bower_components/paper-material/paper-material.html">
+  <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<dom-module id="game-show-details">
+  <style>
+    /* TODO(polyup): For speed, consider reworking these styles with .classes
+                     and #ids rather than [attributes].
+    */
+    [layout] {
+      @apply(--layout);
+    }
+    [layout][vertical] {
+      @apply(--layout-vertical);
+    }
+    [layout][center] {
+      @apply(--layout-center);
+    }
+  </style>
+  <style>
+		:host {
+			display: block;
+			position: relative;
+			background-color: white;
+			padding: 2px;
+			margin: 5px;
+			width: 500px;
+			height: 800px;
+			font-size: 1em;
+			font-weight: 300;
+		}
+		h2 {
+			margin: 0;
+			font-size: 1.8rem;
+			font-weight: 300;
+		}
+		.card-header .picture {
+			width: 70px;
+			margin: 10px;
+		}
+		.card-header .picture.symbol {
+			border-radius: 50%;
+			border: 2px solid green;
+			opacity: 0.5;
+		}
+	</style>
+  <template>
+	<div class="card-header">
+		<div layout="" vertical="" center="">
+			<h2 style="font-size:42px">{{titleText}}</h2>
+			<img src="{{computeSrc(imgSrc)}}" style="width:60%;height:300px" class$="{{computeClass(cardData)}}">
+
+			<div style="font-size:36px">{{text}}</div>
+			<template is="dom-if" if="{{ cardData.flavour }}">
+				<div class="handle" style="width:90%; font-size: 36px;margin: 1px 32px 1px 15px;font-style:italic;">{{cardData.flavour}}</div>
+			</template>
+
+		</div>
+	</div>
+	<paper-material elevation="2"></paper-material>
+</template>
+  <script>
+    Polymer({
+      is: 'game-show-details',
+      properties: {
+        cardData: { notify: true },
+        imgSrc: {
+          type: String,
+          value: 'Jack',
+          notify: true
+        },
+        symbol: { notify: true },
+        text: { notify: true },
+        titleText: { notify: true }
+      },
+      ready: function () {
+      },
+      show: function (details) {
+        //alert ("okDetails");
+        this.imgSrc = details.card.name;
+        this.text = details.card.Aktion;
+        this.titleText = details.card.name;
+      },
+      listeners: { handleShowcard: 'showCard' },
+      computeClass: function (cardData) {
+        return 'picture ' + cardData.imgclass;
+      },
+      computeSrc: function (imgSrc) {
+        return '../img/' + imgSrc + '.png';
+      }
+    });
+  </script>
+</dom-module>

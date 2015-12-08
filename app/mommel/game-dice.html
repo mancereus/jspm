@@ -1,0 +1,60 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="../../bower_components/paper-ripple/paper-ripple.html">
+<dom-module id="game-dice">
+  <style>
+		:host {
+			overflow: hidden;
+			/*cursor: move;*/
+			 float: left;
+			z-index: 2000;
+			width: 80px;
+			max-width: 120px;
+			margin: 2px;
+		}
+		h1 {
+			width: 90%;
+			border-radius: 10%;
+			color: black;
+			margin: 2px;
+			background-color: white;
+			border: 3px solid black;
+			font-size: 36pt;
+			text-align: center;
+			vertical-align: middle;
+		}
+	</style>
+  <template>
+	<div name="dice" draggable="true" on-click="clicker">
+		<h1>{{diceValue}}</h1>
+	</div>
+</template>
+  <script>
+    Polymer({
+      is: 'game-dice',
+      properties: {
+        charSet: {
+          type: String,
+          value: 'ABCDEF',
+          notify: true
+        },
+        diceValue: {
+          type: String,
+          value: ''
+        }
+      },
+      clicker: function (ev) {
+        var input = document.getElementById('wordInput');
+        input.value = input.value + this.diceValue;
+        ev.preventDefault();
+        ev.stopPropagation();
+        return false;
+      },
+      ready: function () {
+        console.log('game-dice ready ');
+        var draggie = new Draggabilly(this);
+        this.diceValue = this.charSet.charAt(Math.floor(Math.random() * this.charSet.length));
+      }
+    });
+  </script>
+</dom-module>

@@ -1,0 +1,27 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../../bower_components/voice-elements/dist/voice-player.html">
+
+<dom-module id="game-help">
+  <template>
+	<voice-player id="player" accent="de-DE" text="{{ text }}"></voice-player>
+	<paper-icon-button icon="polymer" size="140" on-click="talk"></paper-icon-button>
+
+</template>
+  <script>
+    Polymer({
+      is: 'game-help',
+      properties: {
+        text: {
+          type: String,
+          value: '',
+          notify: true
+        }
+      },
+      talk: function () {
+        this.$.player.cancel();
+        this.$.player.speak();
+      }
+    });
+  </script>
+</dom-module>

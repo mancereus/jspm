@@ -31,7 +31,12 @@ gulp.task('vulcan', function () {
 })
 
 gulp.task('css', function () {
-  return gulp.src('app/css/*.css')
+  return gulp.src('app/*/*.css')
+    .pipe(gulp.dest('dest'))
+})
+
+gulp.task('img', function () {
+  return gulp.src('app/**/*.png')
     .pipe(gulp.dest('dest'))
 })
 
@@ -41,7 +46,7 @@ gulp.task('js', function () {
 })
 
 gulp.task('publish', function () {
-  return gulp.src('dest/*')
+  return gulp.src('dest/*/*')
     .pipe(gulp.dest('../mancereus.github.com'))
 })
 
@@ -57,6 +62,6 @@ gulp.task('mdwatch', function () {
   gulp.watch('**/*.md', ['markdown'])
 })
 
-gulp.task('default', ['clean'], function() {
-    gulp.start('vulcan', 'js','css', 'publish');
+gulp.task('default', ['clean','vulcan', 'img', 'js','css'], function() {
+    gulp.start('publish');
 });

@@ -1,0 +1,54 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="../../bower_components/paper-ripple/paper-ripple.html">
+<dom-module id="game-meeple">
+  <style>
+		:host {
+			position: absolute;
+			top: {{top}}px;
+			left: {{left}}px;
+			color: #fff;
+			overflow: hidden;
+			cursor: move;
+		}
+		core-icon.sized {
+			height: 128px;
+			width: 128px;
+		}
+	</style>
+  <template>
+	<div draggable="true">
+		<iron-icon src="{{computeSrc(imgSrc)}}" class="sized" style="border: 3px solid blue; "></iron-icon>
+	</div>
+</template>
+  <script>
+    Polymer({
+      is: 'game-meeple',
+      properties: {
+        imgSrc: { notify: true },
+        left: {
+          type: Number,
+          value: 800,
+          notify: true
+        },
+        top: {
+          type: Number,
+          value: 1060,
+          notify: true
+        }
+      },
+      clicker: function (ev) {
+        ev.preventDefault();
+        ev.stopPropagation();
+        return false;
+      },
+      ready: function () {
+        console.log('game-meeple ready ');
+        var draggie = new Draggabilly(this);
+      },
+      computeSrc: function (imgSrc) {
+        return '../img/' + imgSrc + '.png';
+      }
+    });
+  </script>
+</dom-module>

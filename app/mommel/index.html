@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Mommel</title>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <script src="../js/draggabilly.pkgd.js"></script>
+  <link rel="import" href="../../bower_components/polymer/polymer.html">
+  <link rel="import" href="../../bower_components/font-roboto/roboto.html">
+  <link rel="import" href="../../bower_components/paper-header-panel/paper-header-panel.html">
+  <link rel="import" href="../../bower_components/paper-toolbar/paper-toolbar.html">
+  <link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
+  <link rel="import" href="../../bower_components/iron-input/iron-input.html">
+  <link rel="import" href="../../bower_components/paper-item/paper-item.html">
+  <link rel="import" href="../../bower_components/paper-menu/paper-menu.html">
+  <link rel="import" href="mommel-board.html">
+
+  <link rel="stylesheet" href="../css/main.css">
+
+  <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+</head>
+
+<body class="fullbleed layout vertical">
+  <paper-header-panel class="flex">
+    <paper-toolbar>Buchstabensets</paper-toolbar>
+    <paper-menu>
+      <paper-item undefined="Scrabble">
+        <a href="?kons=NNNNNNNNNSSSSSSSRRRRRRTTTTTTDDDDHHHHGGGLLLMMMMBBWZCCFFKKPJVXQY&amp;vok=EEEEEEEEEEEEEEEIIIIIIUUUUUUAAAAAOOOÄÖÜ"
+        target="_self"></a>
+      </paper-item>
+      <paper-item undefined="Unser Vorschlag">
+        <a href="?kons=NNNNNNSSSSSRRRRRTTTTDDDDHHHLLLCCGGMMBBWWFKZPVJYXQ&amp;vok=EEEEEEEIIIIIIAAAAAUUUOOÄÖÜ" target="_self"></a>
+      </paper-item>
+      <paper-item undefined="Flache Verteilung">
+        <a href="?kons=BBCCDDFFGGHHJJKKLLMMNNPPQQRRSSTTVVWWXXYYZZ&amp;vok=AAEEIIOOUUÄÄÖÖÜÜ" target="_self"></a>
+      </paper-item>
+      <paper-item undefined=""></paper-item>
+      <div style="font-size: 16px;">Über die Browser URL können auch eigene Verteilungen ausprobiert werden!</div>
+      <paper-item undefined=""></paper-item>
+      <paper-item undefined="Neues Beispiel laden">
+        <a href="javascript:history.go(0)" target="_self"></a>
+      </paper-item>
+    </paper-menu>
+  </paper-header-panel>
+  <mommel-board/>
+</body>
+
+</html>

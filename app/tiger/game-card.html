@@ -1,0 +1,180 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../../bower_components/paper-ripple/paper-ripple.html">
+<link rel="import" href="../../bower_components/paper-material/paper-material.html">
+<link rel="import" href="../../bower_components/voice-elements/dist/voice-player.html">
+<link rel="import" href="game-piece.html">
+  <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<dom-module id="game-card">
+  <style>
+    /* TODO(polyup): For speed, consider reworking these styles with .classes
+                     and #ids rather than [attributes].
+    */
+    [self-stretch] {
+      @apply(--layout-self-stretch);
+    }
+    [layout] {
+      @apply(--layout);
+    }
+    [layout][vertical] {
+      @apply(--layout-vertical);
+    }
+    [layout][center] {
+      @apply(--layout-center);
+    }
+    [fit] {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+  </style>
+  <style>
+		:host {
+			display: block;
+			position: relative;
+			background-color: white;
+			padding: 2px;
+			margin: 5px;
+			width: 200px;
+			height: 300px;
+			font-size: 1em;
+			font-weight: 300;
+		    page-break-inside: avoid;
+    		-webkit-region-break-inside: avoid;
+		}
+		.card-header {
+			margin: 3px;
+			background-color: yellow;
+		}
+		.card-header h2 {
+			margin: 0;
+			font-size: 1.8rem;
+			font-weight: 300;
+		}
+		.card-header .picture {
+			width: 70px;
+			border: 1px dotted black;
+			margin: 10px;
+		}
+		.card-header .picture.symbol {
+			border-radius: 50%;
+			border: 2px solid green;
+			opacity: 0.5;
+		}
+	</style>
+  <template>
+	<iron-pages id="card" on-click=" toggle " on-mouseenter=" sendCard ">
+	<div>
+		<img flex="" self-stretch="" src="{{computeSrc(cardData)}}" style="width: 99%; height: 300px">
+		<template is="dom-if" if="{{ cardData.task }}">
+		<div style="position: absolute; font-size: 64px;font-weight: bold; opacity: 0.5;text-align: center; background-color: white; left: 30px;top: 40px;">
+			Akt <span>{{cardData.akt}}</span><br>
+			<span>{{ cardData.order }}</span>.
+		</div>
+		</template>
+	</div>
+	<div class="card-header">
+		<voice-player id="player" accent="de-DE" text="{{ cardData.Aktion }}"></voice-player>
+		<div layout="" vertical="" center="">
+			<h2>{{cardData.name}}</h2>
+			<template is="dom-if" if="{{ cardData.akt }}">
+				<div fit="" style="left: 5px;top: 12px">
+				<template is="dom-if" if="{{ cardData.task }}"><img src="../img/Stern.png" style="width:30px;height: 30px;" alt="">
+				</template>					 <span style="padding: 2px 4px;border-radius: 50%; border: 1px solid black;background-color: white; "><span>{{cardData.akt}}</span><span>{{cardData.variant}}</span></span>
+				</div>
+			</template>
+			<img src="{{computeSrc(cardData)}}" style="{{computeImg(cardData)}}" class$="{{computeClass(cardData)}}">
+
+			<div class="handle" style="width:90%; font-size: 13px;margin: 1px 32px 1px 15px;">{{cardData.Aktion}}</div>
+			<template is="dom-if" if="{{ cardData.flavour }}">
+			<div class="handle" style="width:90%; font-size: 13px;margin: 1px 32px 1px 15px;font-style:italic;">{{cardData.flavour}}</div>
+			</template>
+			<div class="handle" style="width:90%; font-size: 9px;margin: 1px 32px 1px 15px;"><span>{{ cardData.type }}</span> (<span>{{ cardData.akt }}</span> <span>{{cardData.level}}</span>)</div>
+			<template is="dom-if" if="{{ cardData.ver }}">
+				<div fit="" style="left: 168px;"><img src="../img/vertic.jpg" style="width:30px;height: 296px;" alt=""></div>
+			</template>
+			<template is="dom-if" if="{{ cardData.hor }}">
+				<div fit="" style="top: 266px;"><img src="../img/horiz.jpg" style="height:30px; width: 196px;" alt=""></div>
+			</template>
+			<template is="dom-if" if="{{ item }}">
+				<game-piece img="{{computeImg(cardData)}}" imgclass="{{cardData.imgclass}}"></game-piece>
+			</template>
+		</div>
+	</div>
+</iron-pages>
+<paper-material elevation="1"></paper-material>
+</template>
+  <script>
+    Polymer({
+      is: 'game-card',
+      properties: {
+        cardData: {
+          type: Array,
+          value: function () {
+            return [];
+          },
+          notify: true
+        },
+        draggie: {
+          type: String,
+          value: ''
+        },
+        item: { notify: true },
+        selected: {
+          type: String,
+          value: '0',
+          notify: true
+        }
+      },
+      ready: function () {
+        this.$.card.selected = this.selected;
+        draggie = new Draggabilly(this);
+      },
+      // draggie.on( 'dragEnd', function( draggieInstance, event, pointer ) {
+      // 	draggieInstance.disable();
+      // });
+      sendCard: function () {
+        var card = this.$.card;
+        if (card.selected == 1) {
+          this.fire('show-card', { card: this.cardData });
+        }
+      },
+      move: function () {
+        this.style.top = 30 - this.offsetTop + 'px';
+        this.style.left = 1680 - this.offsetLeft + 'px';
+      },
+      fix: function () {
+      },
+      //draggie.disable();
+      show: function () {
+        var card = this.$.card;
+        card.selected = 1;
+      },
+      toggle: function () {
+        var card = this.$.card;
+        if (card.selected == 0) {
+          this.$.player.cancel();
+          this.$.player.speak();
+        } else {
+          this.$.player.cancel();
+          return;
+        }
+        card.selected = 1;
+        //(card.selected + 1) % 2;
+        card.className = card.className + ' clicked';
+        this.fire('show-card', { card: this.cardData });
+      },
+      computeSrc: function (cardData) {
+        return '../img/back' + cardData.task + '.png';
+      },
+      computeClass: function (cardData) {
+        return 'picture ' + cardData.imgclass;
+      },
+      computeImg: function (cardData) {
+        return '../img/' + cardData.name + '.png';
+      }
+    });
+  </script>
+</dom-module>
