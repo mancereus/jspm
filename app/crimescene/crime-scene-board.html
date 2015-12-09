@@ -3,8 +3,8 @@
 <link rel="import" href="crime-scene-card.html">
 <dom-module id="crime-scene-board">
 	<style>
-		:host {
-		}
+		:host {}
+
 		.item {
 			width: 30px;
 			height: 30px;
@@ -13,8 +13,8 @@
 	<template>
 		<div style="width: 780px; float: left;">
 			<template is="dom-repeat" items="{{cards}}">
-				<crime-scene-card on-click="swap" front="{{item.front}}" back="{{item.back}}" open="{{item.open}}"
-				empty="{{item.empty}}" drag="{axis: 'x'}"></crime-scene-card>
+				<crime-scene-card on-click="swap" front="{{item.front}}" back="{{item.back}}" open="{{item.open}}" empty="{{item.empty}}"
+				drag="{axis: 'x'}"></crime-scene-card>
 			</template>
 		</div>
 		<div>
@@ -26,42 +26,74 @@
 			<crime-scene-card front="{{solution.front}}" back="9" open="0" />
 		</div>
 		<div>
-			<h2 id="tries" >Tippzettel:</h2>
+			<h2 id="tries">Tippzettel:</h2>
 			<table>
 				<tr>
 					<td style="font-size: 14pt;">{{tipps}}</td>
-					<td><img class="item" src="img2/front1.png"/></td>
-					<td><img class="item" src="img2/front2.png"/></td>
-					<td><img class="item" src="img2/front3.png"/></td>
-					<td><img class="item" src="img2/front4.png"/></td>
+					<td><img class="item" src="img2/front1.png" /></td>
+					<td><img class="item" src="img2/front2.png" /></td>
+					<td><img class="item" src="img2/front3.png" /></td>
+					<td><img class="item" src="img2/front4.png" /></td>
 				</tr>
 				<tr>
-					<td><img class="item" src="img2/back1.png"/></td>
-					<td><input type="checkbox"/></td>
-					<td><input type="checkbox"/></td>
-					<td><input type="checkbox"/></td>
-					<td><input type="checkbox"/></td>
+					<td><img class="item" src="img2/back1.png" /></td>
+					<td>
+						<input type="checkbox" />
+					</td>
+					<td>
+						<input type="checkbox" />
+					</td>
+					<td>
+						<input type="checkbox" />
+					</td>
+					<td>
+						<input type="checkbox" />
+					</td>
 				</tr>
 				<tr>
-					<td><img class="item" src="img2/back2.png"/></td>
-					<td><input type="checkbox"/></td>
-					<td><input type="checkbox"/></td>
-					<td><input type="checkbox"/></td>
-					<td><input type="checkbox"/></td>
+					<td><img class="item" src="img2/back2.png" /></td>
+					<td>
+						<input type="checkbox" />
+					</td>
+					<td>
+						<input type="checkbox" />
+					</td>
+					<td>
+						<input type="checkbox" />
+					</td>
+					<td>
+						<input type="checkbox" />
+					</td>
 				</tr>
 				<tr>
-					<td><img class="item" src="img2/back3.png"/></td>
-					<td><input type="checkbox"/></td>
-					<td><input type="checkbox"/></td>
-					<td><input type="checkbox"/></td>
-					<td><input type="checkbox"/></td>
+					<td><img class="item" src="img2/back3.png" /></td>
+					<td>
+						<input type="checkbox" />
+					</td>
+					<td>
+						<input type="checkbox" />
+					</td>
+					<td>
+						<input type="checkbox" />
+					</td>
+					<td>
+						<input type="checkbox" />
+					</td>
 				</tr>
 				<tr>
-					<td><img class="item" src="img2/back4.png"/></td>
-					<td><input type="checkbox"/></td>
-					<td><input type="checkbox"/></td>
-					<td><input type="checkbox"/></td>
-					<td><input type="checkbox"/></td>
+					<td><img class="item" src="img2/back4.png" /></td>
+					<td>
+						<input type="checkbox" />
+					</td>
+					<td>
+						<input type="checkbox" />
+					</td>
+					<td>
+						<input type="checkbox" />
+					</td>
+					<td>
+						<input type="checkbox" />
+					</td>
 				</tr>
 			</table>
 		</div>
@@ -78,7 +110,7 @@
 				}
 	        },
 			attached: function() {
-	        },
+    		},
 			ready: function() {
 	        	this.cards = [];
 				this.tipps = 0;
@@ -140,4 +172,5 @@
 				}
 	        }
 		});
+
 </script>

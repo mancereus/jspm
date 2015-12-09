@@ -33,11 +33,7 @@
     Polymer({
       is: 'game-dice',
       properties: {
-        charSet: {
-          type: String,
-          value: 'ABCDEF',
-          notify: true
-        },
+        charset: String,
         diceValue: {
           type: String,
           value: ''
@@ -53,7 +49,7 @@
       ready: function () {
         console.log('game-dice ready ');
         var draggie = new Draggabilly(this);
-        this.diceValue = this.charSet.charAt(Math.floor(Math.random() * this.charSet.length));
+        this.diceValue = this.charset.charAt(Math.floor(Math.random() * this.charset.length));
       }
     });
   </script>
