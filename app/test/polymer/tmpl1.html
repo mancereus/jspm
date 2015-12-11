@@ -1,0 +1,129 @@
+<!doctype html>
+<html>
+
+<head>
+	<title>polymer test template 1</title>
+	<script src="../../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+	<link rel="import" href="../../../bower_components/polymer/polymer.html">
+
+</head>
+
+<body>
+	<h2>minimal template with attribute</h2>
+	<x-minTmpl></x-minTmpl>
+	<dom-module id="x-minTmpl">
+
+		<template>I am {{name}}!</template>
+
+		<script>
+			Polymer({
+				is: 'x-minTmpl',
+				properties: {
+					name: {
+						type: String,
+						value: "test xy!"
+					}
+				}
+			});
+		</script>
+
+	</dom-module>
+
+	<hr/>
+
+	<h2>local dom selector</h2>
+	<p>For locating dynamically-created nodes in your element’s local DOM, use the $$ method:
+		this.$$(selector)
+		$$ returns the first node in the local DOM that matches selector.</p>
+	<x-selector></x-selector>
+
+	<dom-module id="x-selector">
+
+		<template>
+			<h4 id="name">Test</h4>
+			<h4 id="name2"></h4>
+		</template>
+
+		<script>
+			Polymer({
+				is: 'x-selector',
+				ready: function() {
+					this.$.name2.textContent = this.$$('h4').outerHTML;
+				}
+			});
+		</script>
+
+	</dom-module>
+
+	<hr/>
+
+	<h2>access local id and add content to template</h2>
+	<x-custom>
+		<span class="greet">Hello World</span>
+		<span class="name">Name</span>
+	</x-custom>
+
+	<dom-module id="x-custom">
+
+		<template>
+			<h4 id="name"></h4>
+			<h4 id="name2"></h4>
+			<content select=".greet"></content> from <content select=".name"></content>!
+		</template>
+
+		<script>
+			Polymer({
+				is: 'x-custom',
+				ready: function() {
+					this.$.name.textContent = this.tagName;
+					this.$.name2.textContent = this.$$('h4').outerHTML;
+				}
+			});
+		</script>
+
+	</dom-module>
+
+	<hr/>
+
+	<h2>access inner Dom by DOM API</h2>
+	<x-foo>
+		<span>1 Content is here</span>
+		<div>2 Content is here</div>
+		<span>3 Content is here</span>
+	</x-foo>
+
+	<dom-module id="x-foo">
+
+		<template>
+			<h4 id="header">HEADER</h4>
+			<content></content>
+			<h4 id="footer">FOOTER</h4>
+			<input type="button" onclick="{{insert}}" value="insert"/>
+		</template>
+
+		<script>
+			Polymer({
+				is: 'x-foo',
+				ready: function() {
+					var lightDomDiv = Polymer.dom(this).querySelector('div');
+					var insertionPoint = Polymer.dom(this.root).querySelector('content');
+					var distributed = Polymer.dom(insertionPoint).getDistributedNodes()[3]; //contains #text elements
+					var insertedTo = Polymer.dom(lightDomDiv).getDestinationInsertionPoints()[0];
+
+					// the following should be true:
+					console.log(distributed === lightDomDiv);
+					console.log(insertedTo === insertionPoint);
+				},
+				insert: function() {
+					var insertionPoint = Polymer.dom(this.root).querySelector('content');
+					Polymer.dom(insertionPoint).appendChild("test");
+				}
+			});
+		</script>
+
+	</dom-module>
+
+
+</body>
+
+</html>

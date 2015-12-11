@@ -1,45 +1,28 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="game-card.html">
 
-  <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
 <dom-module id="game-board">
-  <style>
-    /* TODO(polyup): For speed, consider reworking these styles with .classes
-                     and #ids rather than [attributes].
-    */
-    [layout] {
-      @apply(--layout);
-    }
-    [layout][horizontal] {
-      @apply(--layout-horizontal);
-    }
-    [layout][wrap] {
-      @apply(--layout-wrap);
-    }
-    [layout][center] {
-      @apply(--layout-center);
-    }
-  </style>
   <style>
     :host {
       display: block;
     }
+
     game-card {
       margin: 3px;
     }
   </style>
   <template>
-
-  <div id="field" layout="" horizontal="" wrap="" center="">
-    <template is="dom-repeat" items="{{cards}}" as="card" index-as="cardIndex">
-      <game-card imgsrc="{{card.name}}" carddata="{{card}}" item="{{card.imgclass}}">
-    </game-card>
+    <div id="field" >
+      <template is="dom-repeat" items="{{cards}}" as="card" index-as="cardIndex">
+        <game-card imgsrc="{{card.name}}" carddata="{{card}}" item="{{card.imgclass}}">
+        </game-card>
+      </template>
+    </div>
   </template>
-</div>
-</template>
   <script src="../js/base.js"></script>
   <script>
-  function get(name){
+    function get(name){
    if(name=(new RegExp('[?&]'+encodeURIComponent(name)+'=([^&]*)')).exec(location.search))
     return decodeURIComponent(name[1]);
   }
@@ -64,7 +47,8 @@
     akt = 1;
   }
   loadjscssfile("../js/data" + akt+ ".js", "js")
-</script>
+
+  </script>
   <script>
     StopIteration = function () {
     };
