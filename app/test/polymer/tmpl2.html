@@ -13,7 +13,7 @@
 	<h2>minimal template with attribute</h2>
 	<template is="dom-bind">
 		<tst-data data="{{data}}"></tst-data>
-		<tst-arr data="{{data}}"></tst-arr>
+		<tst-view data="{{data}}"></tst-view>
 	</template>
 
 	<dom-module id="tst-data">
@@ -33,7 +33,7 @@
 
 	</dom-module>
 
-	<dom-module id="tst-arr">
+	<dom-module id="tst-view">
 
 		<template>
 			<template is="dom-repeat" items="{{data}}">
@@ -45,7 +45,7 @@
 
 		<script>
 			Polymer({
-				is: 'tst-arr',
+				is: 'tst-view',
 				properties: {
 					name: {
 						type: String,
