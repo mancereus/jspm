@@ -39,10 +39,10 @@
 		<template>
 			<input type="button" on-click="insert" value="insert" />
 			<template is="dom-repeat" items="{{data.stack}}">
-				{{item.key}}
+				<div on-tap="tapElement">{{item.key}}</div>
 			</template>
 			<br>
-			<input type="button" on-click="move" value="move" />
+			<input type="button" on-click="move" to="player1" value="move" />
 			<template is="dom-repeat" items="{{data.player1}}">
 				{{item.key}}
 			</template>
@@ -65,6 +65,10 @@
 				observers: [
 					'dataModified(data.splices)'
 				],
+				tapElement: function(e) {
+					this.push('data.player1', e.model.item);
+					var item = this.splice('data.stack',e.model.index, 1);
+				},
 				insert: function() {
 					this.push('data.stack', {key:"Jack"});
 				},

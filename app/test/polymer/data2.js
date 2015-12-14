@@ -1,9 +1,9 @@
 var cards = {
   stack: [	{key: 'wK', name: 'white king'},
-    {key: 'wK', name: 'white queen'},
-    {key: 'wK', name: 'white rogue'},
-    {key: 'wK', name: 'white pawn'},
-    {key: 'wK', name: 'white pawn'},
+    {key: 'wQ', name: 'white queen'},
+    {key: 'wR', name: 'white rogue'},
+    {key: 'wP', name: 'white pawn'},
+    {key: 'wP', name: 'white pawn'},
 	],
   player1: [{key: 'c'}, {key: 'd2'}]
 }
