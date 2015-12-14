@@ -85,7 +85,7 @@
 
 	<hr/>
 
-	<h2>access inner Dom by DOM API</h2>
+	<h2>access inner Dom by DOM API - Distributed children</h2>
 	<x-foo>
 		<span>1 Content is here</span>
 		<div>2 Content is here</div>
@@ -98,7 +98,7 @@
 			<h4 id="header">HEADER</h4>
 			<content></content>
 			<h4 id="footer">FOOTER</h4>
-			<input type="button" onclick="{{insert}}" value="insert"/>
+			<input type="button" on-click="insert" value="insert"/>
 		</template>
 
 		<script>
@@ -115,8 +115,45 @@
 					console.log(insertedTo === insertionPoint);
 				},
 				insert: function() {
+					Polymer.dom(this).appendChild("test");
+				}
+			});
+		</script>
+
+	</dom-module>
+
+	<h2>access inner Dom by DOM API - Effective children</h2>
+	<x-eff>
+		<span>1 Content is here</span>
+		<div>2 Content is here</div>
+		<span>3 Content is here</span>
+	</x-eff>
+
+	<dom-module id="x-eff">
+
+		<template>
+			<h4 id="header">HEADER</h4>
+			<content></content>
+			<h4 id="footer">FOOTER</h4>
+			<input type="button" on-click="insert" value="insert"/>
+		</template>
+
+		<script>
+			Polymer({
+				is: 'x-eff',
+				ready: function() {
+					var lightDomDiv = Polymer.dom(this).querySelector('div');
 					var insertionPoint = Polymer.dom(this.root).querySelector('content');
-					Polymer.dom(insertionPoint).appendChild("test");
+					var distributed = Polymer.dom(insertionPoint).getDistributedNodes()[3]; //contains #text elements
+					var insertedTo = Polymer.dom(lightDomDiv).getDestinationInsertionPoints()[0];
+
+					// the following should be true:
+					console.log(distributed === lightDomDiv);
+					console.log(insertedTo === insertionPoint);
+				},
+				insert: function() {
+					var effectiveChildren = Polymer.dom(element).getEffectiveChildNodes();
+					Polymer.dom(this).appendChild("test");
 				}
 			});
 		</script>

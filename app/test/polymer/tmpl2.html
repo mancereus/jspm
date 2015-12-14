@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+
+<head>
+	<title>polymer test template 1</title>
+	<script src="../../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+	<link rel="import" href="../../../bower_components/polymer/polymer.html">
+
+</head>
+
+<body>
+	<h1>Array handling</h1>
+	<h2>minimal template with attribute</h2>
+	<template is="dom-bind">
+		<tst-data data="{{data}}"></tst-data>
+		<tst-arr data="{{data}}"></tst-arr>
+	</template>
+
+	<dom-module id="tst-data">
+		<script>
+			Polymer({
+		is: 'tst-data',
+		properties: {
+			data: {
+				notify: true,
+				value: function() {
+					return ["a","b"];
+					}
+			}
+		}
+	});
+		</script>
+
+	</dom-module>
+
+	<dom-module id="tst-arr">
+
+		<template>
+			<template is="dom-repeat" items="{{data}}">
+				{{item}}
+			</template>
+			<input type="button" on-click="insert" value="insert" />
+
+		</template>
+
+		<script>
+			Polymer({
+				is: 'tst-arr',
+				properties: {
+					name: {
+						type: String,
+						value: "test xy!"
+					},
+					data: {
+						type: Array,
+						value: function() {return [];}
+					}
+				},
+				observers: [
+					'dataModified(data.splices)'
+				],
+				insert: function() {
+					this.push('data', "Jack");
+				},
+				dataModified: function(changeRecord) {
+					console.log("mod" + changeRecord);
+					if(changeRecord != undefined) {
+						console.log(changeRecord.keySplices);
+						console.log(changeRecord.indexSplices);
+					}
+				}
+			});
+		</script>
+
+	</dom-module>
+	<hr/>
+
+
+
+</body>
+
+</html>

@@ -105,7 +105,10 @@
         this.cards.splice(42, 0, actionIter.next());
         this.cards.splice(48, 0, actionIter.next());
 
+      },
+      attachedXX: function() {
         this.style.width = this.width;
+        var distNodes = Polymer.dom(this.$.field).getDistributedNodes();
         this.$.field.children[9].show();
         this.$.field.children[13].show();
         this.$.field.children[17].show();
