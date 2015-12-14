@@ -4,6 +4,7 @@
 <head>
 	<title>polymer test template 1</title>
 	<script src="../../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+	<script src="data2.js"></script>
 	<link rel="import" href="../../../bower_components/polymer/polymer.html">
 
 </head>
@@ -24,7 +25,7 @@
 			data: {
 				notify: true,
 				value: function() {
-					return ["a","b"];
+					return cards;
 					}
 			}
 		}
@@ -36,10 +37,15 @@
 	<dom-module id="tst-view">
 
 		<template>
-			<template is="dom-repeat" items="{{data}}">
-				{{item}}
-			</template>
 			<input type="button" on-click="insert" value="insert" />
+			<template is="dom-repeat" items="{{data.stack}}">
+				{{item.key}}
+			</template>
+			<br>
+			<input type="button" on-click="move" value="move" />
+			<template is="dom-repeat" items="{{data.player1}}">
+				{{item.key}}
+			</template>
 
 		</template>
 
@@ -60,7 +66,11 @@
 					'dataModified(data.splices)'
 				],
 				insert: function() {
-					this.push('data', "Jack");
+					this.push('data.stack', {key:"Jack"});
+				},
+				move: function() {
+					var item = this.pop('data.stack');
+					this.push('data.player1', item);
 				},
 				dataModified: function(changeRecord) {
 					console.log("mod" + changeRecord);
