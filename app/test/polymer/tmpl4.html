@@ -1,0 +1,128 @@
+<!doctype html>
+<html>
+
+<head>
+	<title>polymer Events</title>
+	<script src="../../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+	<link rel="import" href="../../../bower_components/polymer/polymer.html">
+	<link rel="import" href="../../../bower_components/font-roboto/roboto.html">
+	<style>
+		body {
+			font-family: Roboto, 'Noto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+		}
+	</style>
+</head>
+
+<body>
+    <h2>Event listener for elements with id</h2>
+    <x-custom></x-custom>
+
+    <dom-module id="x-custom">
+
+    <template>
+        <h1>Title tap</h1>
+        <div>any of my children!</div>
+        <div id="special">I am special!</div>
+
+
+        <div>any of my children!<div id="special2">I am special inside!</div></div>
+
+    </template>
+
+    <script>
+
+        Polymer({
+            is: 'x-custom',
+            listeners: {
+                'tap': 'regularTap',
+                'special.tap': 'specialTap',
+                'special2.tap': 'specialTap'
+            },
+            regularTap: function(e) {
+                alert("Thank you for tapping");
+            },
+            specialTap: function(e) {
+                alert("It was special tapping");
+            }
+        });
+
+    </script>
+
+    </dom-module>
+
+    <hr>
+    <h2>Event listener on-*</h2>
+    <x-track></x-track>
+
+    <dom-module id="x-track">
+
+    <template>
+        <button on-click="handleClick">Kick Me</button>
+    </template>
+
+    <script>
+
+        Polymer({
+          is: 'x-track',
+          handleClick: function() {
+            alert('Ow!');
+          }
+        });
+
+    </script>
+
+    </dom-module>
+
+    <hr>
+   <h2>Event DragMe</h2>
+    <drag-me></drag-me>
+
+    <dom-module id="drag-me">
+        <template>
+            <style>
+            #dragme {
+                width: 50px;
+                height: 50px;
+                background: orange;
+            }
+            .container {
+                width: 200px;
+                height: 200px;
+                background: gray;
+            }
+            </style>
+            <div id="dragme" on-track="handleTrack">{{message}}</div>
+            <div class="container">Text1</div>
+            <div class="container">text2</div>
+            <div class="container">text3</div>
+        </template>
+
+        <script>
+            Polymer({
+            is: 'drag-me',
+            handleTrack: function(e) {
+                switch(e.detail.state) {
+                case 'start':
+                    this.message = 'Tracking started!';
+                    break;
+                case 'track':
+                    this.message = 'Tracking in progress... ' +
+                    e.detail.x + ', ' + e.detail.y;
+                    break;
+                case 'end':
+                    this.message = 'Tracking ended on ' + e.detail.sourceEvent.srcElement;
+
+                    break;
+                }
+            }
+            });
+
+        </script>
+
+    </dom-module>
+
+    <hr>
+    <h2>Event retargeting ??</h2>
+</body>
+
+</html>

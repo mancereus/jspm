@@ -16,7 +16,19 @@
 		<tst-data data="{{data}}"></tst-data>
 		<tst-view data="{{data}}"></tst-view>
 	</template>
-
+    <style>
+        div {
+            padding: 4px;
+            width: 40px;
+            border: 1px solid blue;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+    </style>
 	<dom-module id="tst-data">
 		<script>
 			Polymer({
@@ -38,15 +50,16 @@
 
 		<template>
 			<input type="button" on-click="insert" value="insert" />
-			<template is="dom-repeat" items="{{data.stack}}">
-				<div on-tap="tapElement">{{item.key}}</div>
-			</template>
+                <template is="dom-repeat" items="{{data.stack}}">
+                    <div on-track="trackElement" draggable="true">{{item.key}}</div>
+                </template>
 			<br>
 			<input type="button" on-click="move" to="player1" value="move" />
+            <div container="player1">
 			<template is="dom-repeat" items="{{data.player1}}">
-				{{item.key}}
+				<div>{{item.key}}</div>
 			</template>
-
+            </div>
 		</template>
 
 		<script>
@@ -67,10 +80,29 @@
 				],
 				tapElement: function(e) {
 					this.push('data.player1', e.model.item);
-					var item = this.splice('data.stack',e.model.index, 1);
+					this.splice('data.stack',e.model.index, 1);
 				},
+				trackElement: function(e) {
+                    switch(e.detail.state) {
+                    case 'start':
+                        console.log('Tracking started!');
+                        break;
+                    case 'track':
+                        console.log('Tracking in progress... ' +
+                        e.detail.x + ', ' + e.detail.y);
+                        break;
+                    case 'end':
+                        console.log(e.model.item);
+                        console.log('Tracking ended on ' + e.detail.hover());
+
+                        break;
+                    }
+                },
 				insert: function() {
 					this.push('data.stack', {key:"Jack"});
+				},
+				handleDrop: function() {
+					console.log("handleDrop");
 				},
 				move: function() {
 					var item = this.pop('data.stack');
