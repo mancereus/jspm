@@ -1,5 +1,6 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="game-card.html">
+<link rel="import" href="../../bower_components/paper-styles/paper-styles.html">
 
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
 <dom-module id="game-board">
@@ -13,7 +14,7 @@
     }
   </style>
   <template>
-    <div id="field" >
+    <div id="field" style="width: 800px;" class="layout horizontal wrap">
       <template is="dom-repeat" items="{{cards}}" as="card" index-as="cardIndex">
         <game-card imgsrc="{{card.name}}" carddata="{{card}}" item="{{card.imgclass}}">
         </game-card>
@@ -47,7 +48,6 @@
     akt = 1;
   }
   loadjscssfile("../js/data" + akt+ ".js", "js")
-
   </script>
   <script>
     StopIteration = function () {
@@ -99,14 +99,15 @@
         var actions = shuffle(initActions);
         this.cards = shuffle(initcards);
         var actionIter = arrayLikeIterator(actions);
+
+      },
+      attachedXX: function() {
         this.cards.splice(0, 0, actionIter.next());
         this.cards.splice(6, 0, actionIter.next());
         this.cards.splice(24, 0, start);
         this.cards.splice(42, 0, actionIter.next());
         this.cards.splice(48, 0, actionIter.next());
 
-      },
-      attachedXX: function() {
         this.style.width = this.width;
         var distNodes = Polymer.dom(this.$.field).getDistributedNodes();
         this.$.field.children[9].show();

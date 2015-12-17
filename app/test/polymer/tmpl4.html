@@ -2,15 +2,15 @@
 <html>
 
 <head>
-	<title>polymer Events</title>
-	<script src="../../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
-	<link rel="import" href="../../../bower_components/polymer/polymer.html">
-	<link rel="import" href="../../../bower_components/font-roboto/roboto.html">
-	<style>
-		body {
-			font-family: Roboto, 'Noto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-		}
-	</style>
+    <title>polymer Events</title>
+    <script src="../../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+    <link rel="import" href="../../../bower_components/polymer/polymer.html">
+    <link rel="import" href="../../../bower_components/font-roboto/roboto.html">
+    <style>
+        body {
+            font-family: Roboto, 'Noto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+    </style>
 </head>
 
 <body>
@@ -19,19 +19,20 @@
 
     <dom-module id="x-custom">
 
-    <template>
-        <h1>Title tap</h1>
-        <div>any of my children!</div>
-        <div id="special">I am special!</div>
+        <template>
+            <h1>Title tap</h1>
+            <div>any of my children!</div>
+            <div id="special">I am special!</div>
 
 
-        <div>any of my children!<div id="special2">I am special inside!</div></div>
+            <div>any of my children!
+                <div id="special2">I am special inside!</div>
+            </div>
 
-    </template>
+        </template>
 
-    <script>
-
-        Polymer({
+        <script>
+            Polymer({
             is: 'x-custom',
             listeners: {
                 'tap': 'regularTap',
@@ -45,8 +46,7 @@
                 alert("It was special tapping");
             }
         });
-
-    </script>
+        </script>
 
     </dom-module>
 
@@ -56,40 +56,39 @@
 
     <dom-module id="x-track">
 
-    <template>
-        <button on-click="handleClick">Kick Me</button>
-    </template>
+        <template>
+            <button on-click="handleClick">Kick Me</button>
+        </template>
 
-    <script>
-
-        Polymer({
+        <script>
+            Polymer({
           is: 'x-track',
           handleClick: function() {
             alert('Ow!');
           }
         });
-
-    </script>
+        </script>
 
     </dom-module>
 
     <hr>
-   <h2>Event DragMe</h2>
+    <h2>Event DragMe</h2>
     <drag-me></drag-me>
 
     <dom-module id="drag-me">
         <template>
             <style>
-            #dragme {
-                width: 50px;
-                height: 50px;
-                background: orange;
-            }
-            .container {
-                width: 200px;
-                height: 200px;
-                background: gray;
-            }
+                #dragme {
+                    width: 50px;
+                    height: 50px;
+                    background: orange;
+                }
+
+                .container {
+                    width: 200px;
+                    height: 200px;
+                    background: gray;
+                }
             </style>
             <div id="dragme" on-track="handleTrack">{{message}}</div>
             <div class="container">Text1</div>
@@ -116,7 +115,6 @@
                 }
             }
             });
-
         </script>
 
     </dom-module>

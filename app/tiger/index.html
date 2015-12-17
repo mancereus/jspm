@@ -14,8 +14,8 @@
   <link rel="import" href="game-help.html">
   <link rel="import" href="game-meeple.html">
   <link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
-  <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
-  <link rel="import" href="game-show-details.html">
+  <link rel="import" href="../../bower_components/paper-styles/paper-styles.html">
+  <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">  <link rel="import" href="game-show-details.html">
   <link rel="stylesheet" href="../css/main.css">
 </head>
 
@@ -30,7 +30,9 @@
       </select>
       <!-- <voice-player id="player" accent="de-DE" autoplay text="Willkommen in Dschungel. Die grüne Hölle erwartet dich."></voice-player> -->
     </paper-toolbar>
-    <div class="container">
+  </paper-header-panel>
+
+    <div class="container layout horizontal ">
       <div>
         <game-board id="board">
         </game-board>
@@ -81,7 +83,6 @@
     </div>
 
     <game-meeple imgsrc="Jack" top="1060" left="800"></game-meeple>
-  </paper-header-panel>
 
 
 
