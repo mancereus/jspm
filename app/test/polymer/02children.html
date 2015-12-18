@@ -9,8 +9,8 @@
 </head>
 
 <body>
-
-
+	<h1>dynamic access to light DOM</h1>
+	<hr>
 	<h2>Distributed children</h2>
 	<x-foo>
 		<span>1 Content is here</span>
@@ -21,10 +21,11 @@
 	<dom-module id="x-foo">
 
 		<template>
-			<h4 id="header">HEADER</h4>
-			<content></content>
-			<h4 id="footer">FOOTER</h4>
-			<input type="button" on-click="insert" value="insert"/>
+			<h4 id="header">DIVS</h4>
+			<content select="div"></content>
+			<h4 id="footer">SPAN</h4>
+			<content select="span"></content>
+			<input type="button" on-click="insert" value="insert" />
 		</template>
 
 		<script>
@@ -48,9 +49,10 @@
 
 	</dom-module>
 
+	<hr>
 	<h2>access inner Dom by DOM API - Effective children</h2>
 	<x-eff>
-		<span>1 Content is here</span>
+		<span>1 Content is herexx</span>
 		<div>2 Content is here</div>
 		<span>3 Content is here</span>
 	</x-eff>
@@ -58,10 +60,11 @@
 	<dom-module id="x-eff">
 
 		<template>
-			<h4 id="header">HEADER</h4>
-			<content></content>
+			test
+			<h4>HEADER</h4>
+			<content id="content"></content>
 			<h4 id="footer">FOOTER</h4>
-			<input type="button" on-click="insert" value="insert"/>
+			<input type="button" on-click="insert" value="insert" />
 		</template>
 
 		<script>
@@ -78,8 +81,8 @@
 					console.log(insertedTo === insertionPoint);
 				},
 				insert: function() {
-					var effectiveChildren = Polymer.dom(element).getEffectiveChildNodes();
-					Polymer.dom(this).appendChild("test");
+					var effectiveChildren = Polymer.dom(this.$.content).getEffectiveChildNodes();
+					Polymer.dom(this.$.content).appendChild(document.createElement("div"));
 				}
 			});
 		</script>
