@@ -32,17 +32,12 @@
 			Polymer({
 				is: 'x-foo',
 				ready: function() {
-					var lightDomDiv = Polymer.dom(this).querySelector('div');
-					var insertionPoint = Polymer.dom(this.root).querySelector('content');
-					var distributed = Polymer.dom(insertionPoint).getDistributedNodes()[3]; //contains #text elements
-					var insertedTo = Polymer.dom(lightDomDiv).getDestinationInsertionPoints()[0];
-
-					// the following should be true:
-					console.log(distributed === lightDomDiv);
-					console.log(insertedTo === insertionPoint);
 				},
 				insert: function() {
-					Polymer.dom(this).appendChild("test");
+					var div = document.createElement("div");
+					div.innerHTML = "test";
+					//Polymer.dom(this.$.footer).appendChild(div);
+					Polymer.dom(this).appendChild(div);
 				}
 			});
 		</script>
@@ -71,18 +66,12 @@
 			Polymer({
 				is: 'x-eff',
 				ready: function() {
-					var lightDomDiv = Polymer.dom(this).querySelector('div');
-					var insertionPoint = Polymer.dom(this.root).querySelector('content');
-					var distributed = Polymer.dom(insertionPoint).getDistributedNodes()[3]; //contains #text elements
-					var insertedTo = Polymer.dom(lightDomDiv).getDestinationInsertionPoints()[0];
-
-					// the following should be true:
-					console.log(distributed === lightDomDiv);
-					console.log(insertedTo === insertionPoint);
 				},
 				insert: function() {
-					var effectiveChildren = Polymer.dom(this.$.content).getEffectiveChildNodes();
-					Polymer.dom(this.$.content).appendChild(document.createElement("div"));
+					var effectiveChildren = Polymer.dom(this).getEffectiveChildNodes();
+					var div = document.createElement("div");
+					div.innerHTML = "test" + effectiveChildren.length;
+					Polymer.dom(this).appendChild(div);
 				}
 			});
 		</script>

@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "dev": "browser-sync start --server --files \"**/*\" --startPath \"/app/test/polymer\" --directory --no-notify"
+    "dev": "browser-sync start --server --files \"app/**/*,dest/**/*,bower_components/**/*\" --startPath \"/app/test/polymer\" --directory --no-notify"
   },
   "jspm": {
     "directories": {},
