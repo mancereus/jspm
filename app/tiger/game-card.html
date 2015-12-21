@@ -12,6 +12,7 @@
             display: block;
             position: relative;
             background-color: white;
+            border: 1px solid black;
             padding: 2px;
             margin: 5px;
             width: 200px;
@@ -122,9 +123,6 @@
         this.style.top = 30 - this.offsetTop + 'px';
         this.style.left = 1680 - this.offsetLeft + 'px';
       },
-      fix: function () {
-      },
-      //draggie.disable();
       show: function () {
         var card = this.$.card;
         card.selected = 1;

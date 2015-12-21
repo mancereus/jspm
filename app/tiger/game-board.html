@@ -14,7 +14,7 @@
         }
     </style>
     <template>
-        <div id="field" style="width: 1500px;" class="layout horizontal wrap"  on-showdetails="showCard">
+        <div id="field" style="width: 1500px;" class="layout horizontal wrap" on-showdetails="showCard">
             <template id="cards" is="dom-repeat" items="{{cards}}" as="card" index-as="cardIndex">
                 <game-card imgsrc="{{card.name}}" carddata="{{card}}" item="{{card.imgclass}}">
                 </game-card>
@@ -107,49 +107,45 @@
         this.splice('cards', 24, 0, start);
         this.splice('cards', 42, 0, actionIter.next());
         this.splice('cards', 48, 0, actionIter.next());
-        this.cards[9].selected = 1;
+        this.async(function() {
+            // code that formerly resided in `domReady`
+                this.$.field.children[8].show();
+                this.$.field.children[12].show();
+                this.$.field.children[16].show();
+                this.$.field.children[18].show();
+                this.$.field.children[24].show();
+                this.$.field.children[30].show();
+                this.$.field.children[32].show();
+                this.$.field.children[36].show();
+                this.$.field.children[40].show();
+ var startarr = [
+                    8,
+                    12,
+                    16,
+                    18,
+                    24,
+                    30,
+                    32,
+                    36,
+                    40,
+                ];
+                var questarr = [
+                    0,
+                    6,
+                    42,
+                    48
+                ];
+                for (var i = 1; i <= 49; i++) {
+                    if (startarr.contains(i)) {
+                        this.$.field.children[i].show();
+                    } else {
+                        if (!questarr.contains(i)) {
+                            this.$.field.children[i].move();
+                        }
+                    }
+                }
+        });
 
-      },
-      attachedx: function() {
-        this.style.width = this.width;
-        this.$.field.children[9].show();
-        this.$.field.children[13].show();
-        this.$.field.children[17].show();
-        this.$.field.children[19].show();
-        this.$.field.children[25].show();
-        this.$.field.children[31].show();
-        this.$.field.children[33].show();
-        this.$.field.children[41].show();
-        this.$.field.children[37].show();
-        var startarr = [
-          9,
-          13,
-          17,
-          19,
-          25,
-          31,
-          33,
-          41,
-          37
-        ];
-        var questarr = [
-          1,
-          7,
-          43,
-          49
-        ];
-        for (var i = 1; i <= 49; i++) {
-          if (startarr.contains(i)) {
-            this.$.field.children[i].show();
-            this.$.field.children[i].fix();
-          } else {
-            if (!questarr.contains(i)) {
-              this.$.field.children[i].move();
-            } else {
-              this.$.field.children[i].fix();
-            }
-          }
-        }
       },
       openAll: function () {
         for (var i = 0; i < 49; i++) {
