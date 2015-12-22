@@ -21,7 +21,7 @@
             </template>
         </div>
     </template>
-    <script src="../js/base.js"></script>
+    <script src="js/base.js"></script>
     <script>
         function get(name){
    if(name=(new RegExp('[?&]'+encodeURIComponent(name)+'=([^&]*)')).exec(location.search))
@@ -47,7 +47,7 @@
   if (akt == undefined) {
     akt = 1;
   }
-  loadjscssfile("../js/data" + akt+ ".js", "js")
+  loadjscssfile("js/data" + akt+ ".js", "js")
     </script>
     <script>
         StopIteration = function () {
