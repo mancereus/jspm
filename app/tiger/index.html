@@ -13,6 +13,7 @@
   <link rel="import" href="game-board.html">
   <link rel="import" href="game-help.html">
   <link rel="import" href="game-meeple.html">
+  <link rel="import" href="game-hexagon.html">
   <link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
   <link rel="import" href="../../bower_components/paper-styles/paper-styles.html">
   <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">  <link rel="import" href="game-show-details.html">
@@ -23,7 +24,7 @@
   <paper-header-panel>
     <paper-toolbar>
       <h2>Die grüne Hölle</h2>
-      <select id="akt" onchange="document.location.href = '/tiger/index.html?akt=' + this.value">
+      <select id="akt" onchange="document.location.href = '?akt=' + this.value">
         <option value="1">Akt 1</option>
         <option value="2">Akt 2</option>
         <option value="3">Akt 3</option>
@@ -36,6 +37,8 @@
       <div>
         <game-board id="board">
         </game-board>
+        <game-hexagon imgsrc="Jack" top="1060" left="720"></game-hexagon>
+
       </div>
       <div style="margin-top: 150px;">
         <div id="inv">
@@ -82,7 +85,6 @@
       </div>
     </div>
 
-    <game-meeple imgsrc="Jack" top="1060" left="800"></game-meeple>
 
 
 

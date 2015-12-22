@@ -29,6 +29,7 @@
 			height: 800px;
 			font-size: 1em;
 			font-weight: 300;
+            line-height: 1.2em;
 		}
 		h2 {
 			margin: 0;
@@ -51,9 +52,9 @@
 			<h2 style="font-size:42px">{{titleText}}</h2>
 			<img src="{{computeSrc(imgSrc)}}" style="width:60%;height:300px" class$="{{computeClass(cardData)}}">
 
-			<div style="font-size:36px">{{text}}</div>
+			<div style="font-size:36px;line-height: 1.2em;">{{text}}</div>
 			<template is="dom-if" if="{{ cardData.flavour }}">
-				<div class="handle" style="width:90%; font-size: 36px;margin: 1px 32px 1px 15px;font-style:italic;">{{cardData.flavour}}</div>
+				<div class="handle" style="width:90%; font-size: 24px;margin: 1px 32px 1px 15px;font-style:italic;">{{cardData.flavour}}</div>
 			</template>
 
 		</div>
