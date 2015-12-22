@@ -1,19 +1,9 @@
-# Beispiel Programm for jspm
+# Protogames
 
 ## prerequisites
 
 * node.js
 * npm install -g jspm bower
-
-## install jspm
-
-	jspm install
-	jspm install jquery npm:lodash
-
-	jspm install text css json
-
-	//type script plugin
-	jspm install ts
 
 ## install bower polymer
 
@@ -40,11 +30,6 @@
 		opts.drivers.ie.version
 	)
 
-## distribute
-
-	 jspm bundle script/app script/build.js
 
 ## tasks
 
-* learn npm jspm gulp
-* how to deploy jspm version
