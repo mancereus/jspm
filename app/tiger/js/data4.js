@@ -1,4 +1,5 @@
 var actcards = [
+
     { name: "Weg", Aktion: "", flavour: "Jane: 'Was war das für ein Geräusch?'", hor: "true", type: "Basiskarte" },
     { name: "Weg", Aktion: "", flavour: "Jane: 'Was für eine schöne Pflanze.' Jack: 'Vorsicht, die ist giftig.'", ver: "true", type: "Basiskarte" },
     { name: "Weg", Aktion: "", flavour: "Jane: 'Diese Stille ist unheimlich.'", ver: "true", type: "Basiskarte" },
@@ -29,21 +30,21 @@ var actcards = [
     { name: "Weg", level: "schwer", Aktion: "", flavour: "Jack: 'Pause.'", ver: "true", hor: "true", type: "Basiskarte" },
     { name: "Fels", level: "schwer", Aktion: "Du kannst dieses Feld nicht betreten und nicht mit der Liane überfliegen.", type: "Basiskarte" },
 
-    { name: "Boot", akt: "3", Aktion: "Wenn du das Boot zum Fluss brinsgt, kannst du mit Jack, Jane und Prof. Hampton das Abenteuer erfolgreich beenden.", hor: true, imgclass: "symbol", type: "Feldkarte" },
-    { name: "Dynamit", akt: "3", Aktion: "Mit dem Dynamit kannst du einen Felsen sprengen. Lege das Dynamit dazu von einem Nachbarfeld ohne Wand dazwischen auf den Felsen.", imgclass: "symbol", type: "Feldkarte" },
-    { name: "Fels", akt: "3", Aktion: "Du kannst dieses Feld nicht betreten und nicht mit der Liane überfliegen. Mit Dynamit und Gura Gora auf einem Felsen, kannst du diesen sprengen und Gura Gora begraben.", type: "Feldkarte" },
-    { name: "Heissluftballon", color: "H", akt: "3", imgclass: "symbol", Aktion: "Ihr findet einen alten Heissluftballon. Er scheint noch zu funktionieren, hat aber keine Luft.", warn: "Boot", bgc: "blue", type: "Feldkarte" },
-    { name: "Ureinwohner", akt: "3", Aktion: "Die Ureinwohner durchstreifen das Tal. Ihr könnt euch vorbeischleichen, wenn auf jeder Inventarkarte 1 Feld frei ist. Sonst fangen und töten Sie euch.", type: "Feldkarte" },
-    { name: "Ureinwohner", akt: "3", Aktion: "Die Ureinwohner durchstreifen das Tal. Ihr könnt euch vorbeischleichen, wenn auf jeder Inventarkarte 1 Feld frei ist. Sonst fangen und töten Sie euch.", type: "Feldkarte" },
-    { name: "Ureinwohner", akt: "3", Aktion: "Die Ureinwohner durchstreifen das Tal. Ihr könnt euch vorbeischleichen, wenn auf jeder Inventarkarte 1 Feld frei ist. Sonst fangen und töten Sie euch.", type: "Feldkarte" },
-    { name: "Liane", akt: "3", Aktion: "Mit der Liane kann man einmal waagrecht oder senkrecht beliebig weit über Wände auf ein offenes Feld springen. Lege die Liane dann in den Vorrat.", hor: "true", ver: "true", imgclass: "symbol", type: "Feldkarte" },
-    { name: "Liane", akt: "3", Aktion: "Mit der Liane kann man einmal waagrecht oder senkrecht beliebig weit über Wände auf ein offenes Feld springen. Lege die Liane dann in den Vorrat.", hor: "true", ver: "true", imgclass: "symbol", type: "Feldkarte" },
-    { name: "Liane", akt: "3", Aktion: "Mit der Liane kann man einmal waagrecht oder senkrecht beliebig weit über Wände auf ein offenes Feld springen. Lege die Liane dann in den Vorrat.", hor: "true", ver: "true", imgclass: "symbol", type: "Feldkarte" },
-    { name: "Liane", akt: "3", Aktion: "Mit der Liane kann man einmal waagrecht oder senkrecht beliebig weit über Wände auf ein offenes Feld springen. Lege die Liane dann in den Vorrat.", ver: "true", imgclass: "symbol", type: "Feldkarte" },
-    { name: "Machete", akt: "3", Aktion: "Die Machete kann eine Dschungelwand öffnen. Lege die Machete dazu auf die Wand.", hor: "true", imgclass: "symbol", type: "Feldkarte" },
-    { name: "Machete", akt: "3", Aktion: "Die Machete kann eine Dschungelwand öffnen. Lege die Machete dazu auf die Wand.", hor: "true", imgclass: "symbol", type: "Feldkarte" },
-    { name: "Schw. Kugel", akt: "3", Aktion: "Die schwarze Kugel ist faustgross und aus einem unbekannten Material. Sie scheint von innen heraus zu leuchten.", imgclass: "symbol", ver: "true", type: "Feldkarte" },
-    { name: "Weiße Kugel", akt: "3", Aktion: "Die weisse Kugel ist faustgross und aus einem unbekannten Material. Sie scheint von innen heraus zu leuchten.", imgclass: "symbol", hor: "true", type: "Feldkarte" }
+    { name: "Boot", akt: "4", Aktion: "Wenn du das Boot zum Fluss brinsgt, kannst du mit Jack, Jane und Prof. Hampton das Abenteuer erfolgreich beenden.", hor: true, imgclass: "symbol", type: "Feldkarte" },
+    { name: "Dynamit", akt: "4", Aktion: "Mit dem Dynamit kannst du einen Felsen sprengen. Lege das Dynamit dazu von einem Nachbarfeld ohne Wand dazwischen auf den Felsen.", imgclass: "symbol", type: "Feldkarte" },
+    { name: "Fels", akt: "4", Aktion: "Du kannst dieses Feld nicht betreten und nicht mit der Liane überfliegen. Mit Dynamit und Gura Gora auf einem Felsen, kannst du diesen sprengen und Gura Gora begraben.", type: "Feldkarte" },
+    { name: "Heissluftballon", color: "H", akt: "4", imgclass: "symbol", Aktion: "Ihr findet einen alten Heissluftballon. Er scheint noch zu funktionieren, hat aber keine Luft.", warn: "Boot", bgc: "blue", type: "Feldkarte" },
+    { name: "Ureinwohner", akt: "4", Aktion: "Die Ureinwohner durchstreifen das Tal. Ihr könnt euch vorbeischleichen, wenn auf jeder Inventarkarte 1 Feld frei ist. Sonst fangen und töten Sie euch.", type: "Feldkarte" },
+    { name: "Ureinwohner", akt: "4", Aktion: "Die Ureinwohner durchstreifen das Tal. Ihr könnt euch vorbeischleichen, wenn auf jeder Inventarkarte 1 Feld frei ist. Sonst fangen und töten Sie euch.", type: "Feldkarte" },
+    { name: "Ureinwohner", akt: "4", Aktion: "Die Ureinwohner durchstreifen das Tal. Ihr könnt euch vorbeischleichen, wenn auf jeder Inventarkarte 1 Feld frei ist. Sonst fangen und töten Sie euch.", type: "Feldkarte" },
+    { name: "Liane", akt: "4", Aktion: "Mit der Liane kann man einmal waagrecht oder senkrecht beliebig weit über Wände auf ein offenes Feld springen. Lege die Liane dann in den Vorrat.", hor: "true", ver: "true", imgclass: "symbol", type: "Feldkarte" },
+    { name: "Liane", akt: "4", Aktion: "Mit der Liane kann man einmal waagrecht oder senkrecht beliebig weit über Wände auf ein offenes Feld springen. Lege die Liane dann in den Vorrat.", hor: "true", ver: "true", imgclass: "symbol", type: "Feldkarte" },
+    { name: "Liane", akt: "4", Aktion: "Mit der Liane kann man einmal waagrecht oder senkrecht beliebig weit über Wände auf ein offenes Feld springen. Lege die Liane dann in den Vorrat.", hor: "true", ver: "true", imgclass: "symbol", type: "Feldkarte" },
+    { name: "Liane", akt: "4", Aktion: "Mit der Liane kann man einmal waagrecht oder senkrecht beliebig weit über Wände auf ein offenes Feld springen. Lege die Liane dann in den Vorrat.", ver: "true", imgclass: "symbol", type: "Feldkarte" },
+    { name: "Machete", akt: "4", Aktion: "Die Machete kann eine Dschungelwand öffnen. Lege die Machete dazu auf die Wand.", hor: "true", imgclass: "symbol", type: "Feldkarte" },
+    { name: "Machete", akt: "4", Aktion: "Die Machete kann eine Dschungelwand öffnen. Lege die Machete dazu auf die Wand.", hor: "true", imgclass: "symbol", type: "Feldkarte" },
+    { name: "Schw. Kugel", akt: "4", Aktion: "Die schwarze Kugel ist faustgross und aus einem unbekannten Material. Sie scheint von innen heraus zu leuchten.", imgclass: "symbol", ver: "true", type: "Feldkarte" },
+    { name: "Weiße Kugel", akt: "4", Aktion: "Die weisse Kugel ist faustgross und aus einem unbekannten Material. Sie scheint von innen heraus zu leuchten.", imgclass: "symbol", hor: "true", type: "Feldkarte" }
 ];
 
 var initActions = [

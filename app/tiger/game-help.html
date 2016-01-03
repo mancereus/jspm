@@ -3,13 +3,13 @@
 <link rel="import" href="../../bower_components/voice-elements/dist/voice-player.html">
 
 <dom-module id="game-help">
-  <template>
-	<voice-player id="player" accent="de-DE" text="{{ text }}"></voice-player>
-	<paper-icon-button icon="polymer" size="140" on-click="talk"></paper-icon-button>
+    <template>
+        <voice-player id="player" accent="de-DE" text="{{ text }}"></voice-player>
+        <paper-icon-button icon="polymer" size="140" on-click="talk"></paper-icon-button>
 
-</template>
-  <script>
-    Polymer({
+    </template>
+    <script>
+        Polymer({
       is: 'game-help',
       properties: {
         text: {
@@ -19,9 +19,11 @@
         }
       },
       talk: function () {
-        this.$.player.cancel();
-        this.$.player.speak();
+        if(this.$.player != undefined) {
+          this.$.player.cancel();
+          this.$.player.speak();
+        }
       }
     });
-  </script>
+    </script>
 </dom-module>
