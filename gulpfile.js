@@ -36,7 +36,7 @@ gulp.task('css', function () {
 })
 
 gulp.task('img', function () {
-  return gulp.src('app/**/*.png')
+  return gulp.src(['app/**/*.png','app/**/*.jpg'])
     .pipe(gulp.dest('dest'))
 })
 
@@ -62,6 +62,6 @@ gulp.task('mdwatch', function () {
   gulp.watch('**/*.md', ['markdown'])
 })
 
-gulp.task('default', ['clean','vulcan', 'img', 'js','css'], function() {
+gulp.task('default', ['vulcan', 'img', 'js','css'], function() {
     gulp.start('publish');
 });

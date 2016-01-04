@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>polymer game items</title>
+    <script src="../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="../../bower_components/dragula.js/dist/dragula.js"></script>
+
+    <link rel="import" href="../../bower_components/polymer/polymer.html">
+    <link rel="import" href="../../bower_components/paper-styles/paper-styles.html">
+    <link rel="import" href="../../bower_components/iron-pages/iron-pages.html">
+    <link rel="import" href="../../bower_components/paper-card/paper-card.html">
+    <link rel="import" href="../../bower_components/paper-button/paper-button.html">
+    <link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+    <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+    <link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
+    <link rel="import" href="../../bower_components/font-roboto/roboto.html">
+    <link rel="import" href="board-game-dice/board-game-dice.html">
+    <link rel="import" href="board-game-dice/board-game-dice-box.html">
+
+    <link href="../../bower_components/dragula.js/dist/dragula.min.css" rel="stylesheet" type="text/css" />
+    <style>
+        body {
+            font-family: Roboto, 'Noto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+
+        [draggable] {
+            -moz-user-select: none;
+            -khtml-user-select: none;
+            -webkit-user-select: none;
+            user-select: none;
+            /* Required to make elements draggable in old WebKit */
+            -khtml-user-drag: element;
+            -webkit-user-drag: element;
+        }
+
+        .drag {
+            height: 150px;
+            width: 150px;
+            float: left;
+            border: 2px solid #666666;
+            background-color: #ccc;
+            margin-right: 5px;
+            -webkit-border-radius: 10px;
+            -ms-border-radius: 10px;
+            -moz-border-radius: 10px;
+            border-radius: 10px;
+            -webkit-box-shadow: inset 0 0 3px #000;
+            -ms-box-shadow: inset 0 0 3px #000;
+            box-shadow: inset 0 0 3px #000;
+            text-align: center;
+            cursor: move;
+        }
+
+        .column header {
+            color: #fff;
+            text-shadow: #000 0 1px;
+            box-shadow: 5px;
+            padding: 5px;
+            background: -moz-linear-gradient(left center, rgb(0, 0, 0), rgb(79, 79, 79), rgb(21, 21, 21));
+            background: -webkit-gradient(linear, left top, right top, color-stop(0, rgb(0, 0, 0)), color-stop(0.50, rgb(79, 79, 79)), color-stop(1, rgb(21, 21, 21)));
+            background: -webkit-linear-gradient(left center, rgb(0, 0, 0), rgb(79, 79, 79), rgb(21, 21, 21));
+            background: -ms-linear-gradient(left center, rgb(0, 0, 0), rgb(79, 79, 79), rgb(21, 21, 21));
+            border-bottom: 1px solid #ddd;
+            -webkit-border-top-left-radius: 10px;
+            -moz-border-radius-topleft: 10px;
+            -ms-border-radius-topleft: 10px;
+            border-top-left-radius: 10px;
+            -webkit-border-top-right-radius: 10px;
+            -ms-border-top-right-radius: 10px;
+            -moz-border-radius-topright: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        .column.over {
+            border: 2px dashed #000;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>html5 draggable</h2>
+    <div id="columns2" class="drag">
+        <board-game-dice dark></board-game-dice>
+        <board-game-dice></board-game-dice>
+        <board-game-dice dark></board-game-dice>
+
+    </div>
+    <div id="columns" class="drag">
+        <board-game-dice dark></board-game-dice>
+    </div>
+    <script>
+        var containers = [document.getElementById("columns"),document.getElementById("columns2")];
+        var cont2 = Array.prototype.slice.call(document.getElementsByClassName("drag"), 0);;
+        drake = dragula(cont2, {})
+        .on('drop', function (el) {
+            el.className += ' ex-moved';
+        });
+    </script>
+</body>
+
+</html>

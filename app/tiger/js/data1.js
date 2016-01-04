@@ -1,4 +1,4 @@
-var actcards = [
+var initcards = [
     { name: "Weg", Aktion: "", flavour: "Jane: 'Ob ich ihm von meiner Suche erzählen kann?'", hor: "true", type: "Basiskarte" },
     { name: "Weg", Aktion: "", flavour: "Jane: 'Was für eine schöne Pflanze.' Jack: 'Vorsicht, die ist giftig.'", ver: "true", type: "Basiskarte" },
     { name: "Weg", Aktion: "", flavour: "Jane: 'Jack hat ein düsteres Geheimnis, das spüre ich.'", ver: "true", type: "Basiskarte" },
@@ -49,7 +49,7 @@ var actcards = [
 
 var initActions = [
     { name: "Lager", akt: "1", color: "H", Aktion: "Du findest ein verlassenes Lager. Du kannst bis zu 2 Dinge aus dem Vorrat auf passende leere Karten legen. (z.B.: Liane auf Lianenkarte)", warn: "Edelstein", bgc: "green", win: "Edelstein", bgcwin: "green", task: true, type: "Aktionskarte" },
-   
+
     { name: "Tierfalle", akt: "1", color: "H", Aktion: "Dein Bein verletzt sich in einer Tierfalle des Großwildjägers. Du kannst bis zu einem anderen Eckfeld pro Zug nur 3 Felder weit ziehen.", task: true, fuss: "-1", type: "Aktionskarte" },
     { name: "Karte", akt: "1", color: "H", Aktion: "Du findest eine Karte des Dschungels. Ab sofort kannst du Karten auch diagonal anlegen.", task: true, type: "Aktionskarte" },
     { name: "Whiskykiste", akt: "1", color: "H", Aktion: "Jack findet eine Kiste voll Whisky. Falls der aktive Spieler in den letzten 24 Stunden keinen Alkohol getrunken hat, kann sich auch Jack beherrschen. Ansonsten säuft er sich voll und verliert einen Gegenstand aus dem Inventar.", task: true, type: "Aktionskarte" },

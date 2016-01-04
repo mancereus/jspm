@@ -23,139 +23,138 @@
     </template>
     <script src="js/base.js"></script>
     <script>
-        function get(name){
-   if(name=(new RegExp('[?&]'+encodeURIComponent(name)+'=([^&]*)')).exec(location.search))
-    return decodeURIComponent(name[1]);
-  }
-  function loadjscssfile(filename, filetype){
-   if (filetype=="js"){ //if filename is a external JavaScript file
-    var fileref=document.createElement('script')
-    fileref.setAttribute("type","text/javascript")
-    fileref.setAttribute("src", filename)
-  }
-   else if (filetype=="css"){ //if filename is an external CSS file
-    var fileref=document.createElement("link")
-    fileref.setAttribute("rel", "stylesheet")
-    fileref.setAttribute("type", "text/css")
-    fileref.setAttribute("href", filename)
-  }
-  if (typeof fileref!="undefined")
-    document.getElementsByTagName("head")[0].appendChild(fileref)
-  }
+        function get(name) {
+            if (name = (new RegExp('[?&]' + encodeURIComponent(name) + '=([^&]*)')).exec(location.search))
+                return decodeURIComponent(name[1]);
+        }
+        function loadjscssfile(filename, filetype) {
+            if (filetype == "js") { //if filename is a external JavaScript file
+                var fileref = document.createElement('script')
+                fileref.setAttribute("type", "text/javascript")
+                fileref.setAttribute("src", filename)
+            }
+            else if (filetype == "css") { //if filename is an external CSS file
+                var fileref = document.createElement("link")
+                fileref.setAttribute("rel", "stylesheet")
+                fileref.setAttribute("type", "text/css")
+                fileref.setAttribute("href", filename)
+            }
+            if (typeof fileref != "undefined")
+                document.getElementsByTagName("head")[0].appendChild(fileref)
+        }
 
-  var akt = get("akt");
-  if (akt == undefined) {
-    akt = 1;
-  }
-  loadjscssfile("js/data" + akt+ ".js", "js")
-    </script>
-    <script>
+        var akt = get("akt");
+        if (akt == undefined) {
+            akt = 1;
+        }
+        loadjscssfile("js/data" + akt + ".js", "js")
+
+
         StopIteration = function () {
-    };
-    StopIteration.prototype = new Error();
-    StopIteration.name = 'StopIteration';
-    StopIteration.message = 'StopIteration';
-    arrayLikeIterator = function (arrayLike) {
-      var i = 0;
-      return {
-        'next': function () {
-          if (i >= arrayLike.length) {
-            throw StopIteration;
-          }
-          return arrayLike[i++];
+        };
+        StopIteration.prototype = new Error();
+        StopIteration.name = 'StopIteration';
+        StopIteration.message = 'StopIteration';
+        arrayLikeIterator = function (arrayLike) {
+            var i = 0;
+            return {
+                'next': function () {
+                    if (i >= arrayLike.length) {
+                        throw StopIteration;
+                    }
+                    return arrayLike[i++];
+                }
+            };
+        };
+        function shuffle(o) {
+            for (var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+            return o;
         }
-      };
-    };
-    function shuffle(o) {
-      for (var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
-      return o;
-    }
-    ;
-    Array.prototype.contains = function (obj) {
-      var i = this.length;
-      while (i--) {
-        if (this[i] === obj) {
-          return true;
-        }
-      }
-      return false;
-    };
-    Polymer({
-      is: 'game-board',
-      properties: {
-        cards: { notify: true },
-        // initialize the element's model
-        width: {
-          type: String,
-          value: '1480px',
-          notify: true
-        }
-      },
-      created: function () {
-      },
-      ready: function () {
-        //initcards.push.apply(initcards, hart);
-        initcards.push.apply(initcards, actcards);
-
-      },
-      attached: function() {
-        var actions = shuffle(initActions);
-        this.cards = shuffle(initcards);
-        var actionIter = arrayLikeIterator(actions);
-        this.splice('cards', 0, 0, actionIter.next());
-        this.splice('cards', 6, 0, actionIter.next());
-        this.splice('cards', 24, 0, start);
-        this.splice('cards', 42, 0, actionIter.next());
-        this.splice('cards', 48, 0, actionIter.next());
-        this.async(function() {
-            // code that formerly resided in `domReady`
-                this.$.field.children[8].show();
-                this.$.field.children[12].show();
-                this.$.field.children[16].show();
-                this.$.field.children[18].show();
-                this.$.field.children[24].show();
-                this.$.field.children[30].show();
-                this.$.field.children[32].show();
-                this.$.field.children[36].show();
-                this.$.field.children[40].show();
-                var startarr = [
-                    8,
-                    12,
-                    16,
-                    18,
-                    24,
-                    30,
-                    32,
-                    36,
-                    40,
-                ];
-                var questarr = [
-                    0,
-                    6,
-                    42,
-                    48
-                ];
-                for (var i = 1; i <= 49; i++) {
-                    if (startarr.contains(i)) {
-                        this.$.field.children[i].show();
-                    } else {
-                        if (!questarr.contains(i)) {
-                            this.$.field.children[i].move();
+        ;
+        Array.prototype.contains = function (obj) {
+            var i = this.length;
+            while (i--) {
+                if (this[i] === obj) {
+                    return true;
+                }
+            }
+            return false;
+        };
+        Polymer({
+            is: 'game-board',
+            properties: {
+                cards: { notify: true },
+                // initialize the element's model
+                width: {
+                    type: String,
+                    value: '1480px',
+                    notify: true
+                }
+            },
+            created: function () {
+            },
+            ready: function () {
+                //initcards.push.apply(initcards, hart);
+                //initcards.push.apply(initcards, actcards);
+            },
+            attached: function () {
+                var actions = shuffle(initActions);
+                this.cards = shuffle(initcards);
+                var actionIter = arrayLikeIterator(actions);
+                this.splice('cards', 0, 0, actionIter.next());
+                this.splice('cards', 6, 0, actionIter.next());
+                this.splice('cards', 24, 0, start);
+                this.splice('cards', 42, 0, actionIter.next());
+                this.splice('cards', 48, 0, actionIter.next());
+                this.async(function () {
+                    // code that formerly resided in `domReady`
+                    this.$.field.children[8].show();
+                    this.$.field.children[12].show();
+                    this.$.field.children[16].show();
+                    this.$.field.children[18].show();
+                    this.$.field.children[24].show();
+                    this.$.field.children[30].show();
+                    this.$.field.children[32].show();
+                    this.$.field.children[36].show();
+                    this.$.field.children[40].show();
+                    var startarr = [
+                        8,
+                        12,
+                        16,
+                        18,
+                        24,
+                        30,
+                        32,
+                        36,
+                        40,
+                    ];
+                    var questarr = [
+                        0,
+                        6,
+                        42,
+                        48
+                    ];
+                    for (var i = 1; i <= 49; i++) {
+                        if (startarr.contains(i)) {
+                            this.$.field.children[i].show();
+                        } else {
+                            if (!questarr.contains(i)) {
+                                this.$.field.children[i].move();
+                            }
                         }
                     }
-                }
-        });
+                });
 
-      },
-      openAll: function () {
-        for (var i = 0; i < 49; i++) {
-          this.$.field.children[i].show();
-        }
-      },
-      showCard: function (e, details, sender) {
-        var infocard = document.getElementById('details');
-        infocard.show(details);
-      }
-    });
+            },
+            openAll: function () {
+                for (var i = 0; i < 49; i++) {
+                    this.$.field.children[i].show();
+                }
+            },
+            showCard: function (e, details, sender) {
+                var infocard = document.getElementById('details');
+                infocard.show(details);
+            }
+        });
     </script>
 </dom-module>

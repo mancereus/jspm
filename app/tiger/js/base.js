@@ -18,6 +18,3 @@ var extrem = [
  ];
 
  var initActions = [ ];
-
-
- var start = {name: "Akt I", color : "H", Aktion: "Janes Vater Prof Hampton ist bei der Suche nach der alten Zivilisation Mu verschollen. Jane sucht nach Hinweisen, um ihren Vater wiederzufinden.",type: "Startkarte"};

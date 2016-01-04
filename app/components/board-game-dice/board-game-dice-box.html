@@ -1,0 +1,36 @@
+<!doctype html>
+
+<link rel="import" href="../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../bower_components/paper-styles/paper-styles.html">
+<link rel="import" href="../../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../../../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../dragula-container/dragula-container.html">
+
+
+<dom-module id="board-game-dice-box">
+    <template>
+        <content></content>
+    </template>
+
+</dom-module>
+
+<script>
+    Polymer({
+        is: 'board-game-dice-box',
+        behaviors: [DragulaBehavior],
+          ready: function() {
+	      },
+          reroll: function(e) {
+              var children = Polymer.dom(this).children;
+              console.log(children.length);
+              children.forEach(function(e) {
+                  if (e.reroll) {
+                    e.reroll();
+                  }
+              });
+          },
+
+  });
+
+</script>

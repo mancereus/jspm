@@ -1,4 +1,4 @@
-var actcards = [
+var initcards = [
 
     { name: "Weg", Aktion: "", flavour: "Jane: 'Was war das für ein Geräusch?'", hor: "true", type: "Basiskarte" },
     { name: "Weg", Aktion: "", flavour: "Jane: 'Was für eine schöne Pflanze.' Jack: 'Vorsicht, die ist giftig.'", ver: "true", type: "Basiskarte" },

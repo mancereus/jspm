@@ -1,5 +1,5 @@
- var actcards =  [
- 
+ var initcards =  [
+
  {name: "Weg", Aktion: "",flavour: "Jane: 'Was war das für ein Geräusch?'",hor: "true",type: "Basiskarte"},
  {name: "Weg", Aktion: "",flavour: "Jane: 'Was für eine schöne Pflanze.' Jack: 'Vorsicht, die ist giftig.'",ver: "true",type: "Basiskarte"},
  {name: "Weg", Aktion: "",flavour: "Jane: 'Diese Stille ist unheimlich.'",ver: "true",type: "Basiskarte"},
@@ -25,11 +25,11 @@
  {name: "Hängebrücke", Aktion: "Die Hängebrücke kannst du mit vollem Inventar nicht überqueren. Lege Dinge dazu auf ihr Feld zurück." ,type: "Basiskarte"},
  {name: "Schlange", Aktion: "Die Schlange hat ein tödliches Gift und beisst dich. Lege ein Gegengift hier ab, um vor der Schlange geschützt zu sein.", warn:"Gegengift",hor: "true",type: "Basiskarte"},
  {name: "Gegengift", Aktion: "Das Gegengift schützt dich vor einer Schlange. Lege das Gegengift dazu auf die Schlange. ",hor: "true", imgclass:"symbol",type: "Basiskarte"},
- {name: "Fels", Aktion: "Du kannst dieses Feld nicht betreten und nicht mit der Liane überfliegen.",type: "Basiskarte"},    
+ {name: "Fels", Aktion: "Du kannst dieses Feld nicht betreten und nicht mit der Liane überfliegen.",type: "Basiskarte"},
     {name: "Weg", level: "schwer", Aktion: "",flavour: "Jack: 'Pause.'",ver: "true",hor: "true",type: "Basiskarte"},
  {name: "Weg", level: "schwer", Aktion: "",flavour: "Jack: 'Pause.'",ver: "true",hor: "true",type: "Basiskarte"},
  {name: "Fels", level: "schwer", Aktion: "Du kannst dieses Feld nicht betreten und nicht mit der Liane überfliegen.",type: "Basiskarte"},
-  
+
  {name: "Artefakt", akt: "2", Aktion: "Du findest ein Artefakt der verschollenen Zivilisation. Bringe alle 4 Teile zum Taleingang", imgclass:"symbol",hor: "true",type: "Feldkarte"},
  {name: "Artefakt", akt: "2", Aktion: "Du findest ein Artefakt der verschollenen Zivilisation. Bringe alle 4 Teile zum Taleingang", imgclass:"symbol",hor: "true",type: "Feldkarte"},
  {name: "Artefakt", akt: "2", Aktion: "Du findest ein Artefakt der verschollenen Zivilisation. Bringe alle 4 Teile zum Taleingang", imgclass:"symbol",ver: "true",type: "Feldkarte"},
