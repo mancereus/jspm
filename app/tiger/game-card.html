@@ -22,17 +22,17 @@
             page-break-inside: avoid;
             -webkit-region-break-inside: avoid;
         }
-
+        
         .card-header {
             margin: 3px;
         }
-
+        
         .card-header h2 {
             margin: 0;
             font-size: 1.8rem;
             font-weight: 300;
         }
-
+        
         .card-header .picture {
             width: 70px;
             border: 1px dotted black;
@@ -40,7 +40,7 @@
             width: 60%;
             height: 100px;
         }
-
+        
         .card-header .picture.symbol {
             border-radius: 50%;
             border: 2px solid green;
@@ -120,8 +120,8 @@
         }
       },
       move: function () {
-        this.style.top = 30 - this.offsetTop + 'px';
-        this.style.left = 1680 - this.offsetLeft + 'px';
+        this.style.top = 55 - this.offsetTop + 'px';
+        this.style.left = 1880 - this.offsetLeft + 'px';
       },
       show: function () {
         var card = this.$.card;
@@ -129,12 +129,14 @@
       },
       toggle: function () {
         var card = this.$.card;
-        if (card.selected == 0) {
-          this.$.player.cancel();
-          this.$.player.speak();
-        } else {
-          this.$.player.cancel();
-          return;
+        if(this.$.player != undefined) {
+            if (card.selected == 0) {
+            this.$.player.cancel();
+            this.$.player.speak();
+            } else {
+            //this.$.player.cancel();
+            return;
+            }
         }
         card.selected = 1;
         //(card.selected + 1) % 2;

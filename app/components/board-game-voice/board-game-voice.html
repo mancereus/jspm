@@ -1,0 +1,21 @@
+<link rel="import" href="../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../bower_components/iron-pages/iron-pages.html">
+<dom-module id="board-game-voice">
+	<template>
+		<voice-player/>
+	</template>
+</dom-module>
+	<script>
+		Polymer({
+		    is: 'board-game-voice',
+			properties: {
+    		  open:  {
+		          type: Boolean,
+		          observer: '_show'
+	          },
+	        },
+            ready: function() {
+	          //draggie = new Draggabilly( this);
+	        }
+		});
+	</script>
