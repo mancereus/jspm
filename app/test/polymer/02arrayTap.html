@@ -13,11 +13,20 @@
 </head>
 
 <body>
-    <h1>Array handling</h1>
-    <h2>minimal template with attribute</h2>
+    <h1>Array moving</h1>
+    <h2>move items between arrays</h2>
     <template is="dom-bind">
         <tst-data data="{{data}}"></tst-data>
-        <tst-view data="{{data}}"></tst-view>
+                    <board-game-container container="stack" data="{{data}}">
+                <board-game-dice></board-game-dice>
+            </board-game-container>
+            <board-game-container container="player1" data="{{data}}">
+                </board-game-container>
+            <board-game-container container="player2" data="{{data}}">
+                </board-game-container>
+            <board-game-container container="player3" data="{{data}}">
+                </board-game-container>
+
     </template>
     <style>
         .container {
@@ -57,62 +66,7 @@
 
     </dom-module>
 
-    <dom-module id="tst-view">
 
-        <template>
-            <board-game-container container="stack" data="{{data}}">
-                <board-game-dice></board-game-dice>
-            </board-game-container>
-            <board-game-container container="player1" data="{{data}}">
-                </board-game-container>
-            <board-game-container container="player2" data="{{data}}">
-                </board-game-container>
-            <board-game-container container="player3" data="{{data}}">
-                </board-game-container>
-        </template>
-
-        <script>
-            Polymer({
-                is: 'tst-view',
-                properties: {
-                    name: {
-                        type: String,
-                        value: "test xy!"
-                    },
-                    data: {
-                        type: Array,
-                        value: function () { return []; }
-                    }
-                            },
-                   trackElement: function (e) {
-                        switch (e.detail.state) {
-                            case 'start':
-                                console.log('Tracking started!');
-                                break;
-                            case 'track':
-                                console.log('Tracking in progress... ' +
-                                    e.detail.x + ', ' + e.detail.y);
-                                break;
-                            case 'end':
-                                console.log(e.model.item);
-                                var container = e.detail.hover().getAttribute('container');
-                                var srccontainer = e.target.parentElement.getAttribute('container');
-                                if (container == srccontainer) {
-                                    var removearr = this.splice('data.' + srccontainer, e.model.index, 1);
-                                    this.push('data.' + container, removearr[0]);
-
-                                } else {
-                                    this.push('data.' + container, e.model.item);
-                                    this.splice('data.' + srccontainer, e.model.index, 1);
-
-                                }
-                                break;
-                    }
-                },
-            });
-        </script>
-
-    </dom-module>
     <hr/>
 
 

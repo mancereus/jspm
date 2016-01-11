@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>polymer array properties</title>
+    <script src="../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="data2.js"></script>
+    <link rel="import" href="../../bower_components/paper-drawer-panel/paper-drawer-panel.html">
+	<link rel="import" href="../../bower_components/polymer/polymer.html">
+	<link rel="import" href="../../bower_components/paper-header-panel/paper-header-panel.html">
+	<link rel="import" href="../../bower_components/paper-toolbar/paper-toolbar.html">
+	<link rel="import" href="../../bower_components/paper-styles/paper-styles.html">
+	<link rel="import" href="../../bower_components/paper-menu/paper-menu.html">
+	<link rel="import" href="../../bower_components/iron-pages/iron-pages.html">
+	<link rel="import" href="../../bower_components/paper-tabs/paper-tabs.html">
+	<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+	<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+	<link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
+	<link rel="import" href="../../bower_components/font-roboto/roboto.html">
+	<style>
+		body {
+			font-family: Roboto, 'Noto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+		}
+	</style>
+        <link rel="import" href="../components/board-game-dice/board-game-dice.html">
+        <link rel="import" href="hotdice-container.html">
+        <link rel="import" href="../components/board-game-container/board-game-container.html">
+
+
+</head>
+
+<body>
+    <h1>Hot Dice</h1>
+    <h2>test</h2>
+    <template is="dom-bind">
+        <tst-data data="{{data}}"></tst-data>
+            <hotdice-container container="stack" data="{{data}}">
+            </hotdice-container>
+            <hotdice-container container="player1" data="{{data}}">
+            </hotdice-container>
+
+    </template>
+    <style>
+        .container {
+            display: flex;
+            cursor: pointer;
+            justify-content: space-around;
+            align-content: space-between;
+            padding: 4px;
+            background-color: lightgray;
+        }
+        .item {
+            border: 1px solid blue;
+            background-color: white;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+
+        }
+    </style>
+    <dom-module id="tst-data">
+        <script>
+            Polymer({
+		is: 'tst-data',
+		properties: {
+			data: {
+				notify: true,
+				value: function() {
+					return cards;
+					}
+			}
+		}
+	});
+        </script>
+
+    </dom-module>
+
+
+    <hr/>
+
+
+
+</body>
+
+</html>
