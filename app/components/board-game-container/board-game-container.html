@@ -1,1 +1,96 @@
 <!doctype html>
+<link rel="import" href="../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../bower_components/paper-styles/paper-styles.html">
+<link rel="import" href="../../../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../../../bower_components/iron-flex-layout/iron-flex-layout.html">
+
+<dom-module id="board-game-container">
+
+    <template>
+         <style>
+        :host {
+            display: flex;
+            cursor: pointer;
+            justify-content: space-around;
+            align-content: space-between;
+            padding: 4px;
+            border: 1px solid red;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+    </style>
+    <paper-card heading="{{container}}">
+        <div style="width: 400px; height: 100px; ">
+            <iron-icon icon="refresh" on-tap="refresh"></iron-icon>
+            <template is="dom-repeat" id="tmpl">
+                <div on-track="trackElement" draggable="true">
+                    <iron-icon icon="home"></iron-icon>{{item.key}}</div>
+            </template>
+        </div>
+        </paper-card>
+    </template>
+
+    <script>
+        Polymer({
+                is: 'board-game-container',
+                properties: {
+                    container: {
+                        type: String,
+                        value: "stack"
+                    },
+                    data: {
+                        type: Array,
+                        value: function () { return []; }
+                    }
+                            },
+                    dataitems: {
+                        type: Array,
+                        value: function (data, container) {
+                             return this.data[this.container];
+                        },
+                        notify: true
+                    },
+                     observers: [
+                        'refresh(data.player2.splices)'
+                    ],
+                   attached: function (e) {
+                       this.$.tmpl.set('items',this.data[this.container]);
+                   },
+                   refresh: function (e) {
+                        this.$.tmpl.render();
+                   },
+                   trackElement: function (e) {
+                        switch (e.detail.state) {
+                            case 'start':
+                                console.log('Tracking started!');
+                                break;
+                            case 'track':
+                                console.log('Tracking in progress... ' +
+                                    e.detail.x + ', ' + e.detail.y);
+                                break;
+                            case 'end':
+                                console.log(e.model.item);
+                                var container = e.detail.hover().getAttribute('container');
+                                //var srccontainer = e.target.parentElement.getAttribute('container');
+                                var srccontainer = this.container;
+                                if (container == srccontainer) {
+                                    var removearr = this.splice('data.' + srccontainer, e.model.index, 1);
+                                    this.push('data.' + container, removearr[0]);
+
+                                }
+                                else {
+                                    this.push('data.' + container, e.model.item);
+                                    this.splice('data.' + srccontainer, e.model.index, 1);
+                                }
+                                this.$.tmpl.render();
+                                break;
+                    }
+                },
+            });
+    </script>
+
+</dom-module>

@@ -1,0 +1,130 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>polymer array properties</title>
+    <script src="../../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="data2.js"></script>
+    <link rel="import" href="imports.html">
+        <link rel="import" href="../../components/board-game-dice/board-game-dice.html">
+        <link rel="import" href="../../components/board-game-container/board-game-container.html">
+
+
+</head>
+
+<body>
+    <h1>Array handling</h1>
+    <h2>minimal template with attribute</h2>
+    <template is="dom-bind">
+        <tst-data data="{{data}}"></tst-data>
+        <tst-view data="{{data}}"></tst-view>
+    </template>
+    <style>
+        .container {
+            display: flex;
+            cursor: pointer;
+            justify-content: space-around;
+            align-content: space-between;
+            padding: 4px;
+            background-color: lightgray;
+        }
+        .item {
+            border: 1px solid blue;
+            background-color: white;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+
+        }
+    </style>
+    <dom-module id="tst-data">
+        <script>
+            Polymer({
+		is: 'tst-data',
+		properties: {
+			data: {
+				notify: true,
+				value: function() {
+					return cards;
+					}
+			}
+		}
+	});
+        </script>
+
+    </dom-module>
+
+    <dom-module id="tst-view">
+
+        <template>
+            <div class="container" container="stack" style="width: 400px; height: 100px; ">
+                <template is="dom-repeat" items="{{data.stack}}">
+
+                    <div class="item" on-track="trackElement" draggable="true"><iron-icon icon="home"></iron-icon>{{item.key}}</div>
+                </template>
+            </div>
+            <br>
+            <div class="container"  container="player1" style="width: 400px; height: 100px; ">
+                <template is="dom-repeat" items="{{data.player1}}">
+                    <div class="item"  on-track="trackElement" draggable="true"><board-game-dice></board-game-dice>
+                {{item.key}}</div>
+                </template>
+            </div>
+            <board-game-container container="player2" data="{{data}}">
+                </board-game-container>
+            <board-game-container container="player3" data="{{data}}">
+                </board-game-container>
+        </template>
+
+        <script>
+            Polymer({
+                is: 'tst-view',
+                properties: {
+                    name: {
+                        type: String,
+                        value: "test xy!"
+                    },
+                    data: {
+                        type: Array,
+                        value: function () { return []; }
+                    }
+                            },
+                   trackElement: function (e) {
+                        switch (e.detail.state) {
+                            case 'start':
+                                console.log('Tracking started!');
+                                break;
+                            case 'track':
+                                console.log('Tracking in progress... ' +
+                                    e.detail.x + ', ' + e.detail.y);
+                                break;
+                            case 'end':
+                                console.log(e.model.item);
+                                var container = e.detail.hover().getAttribute('container');
+                                var srccontainer = e.target.parentElement.getAttribute('container');
+                                if (container == srccontainer) {
+                                    var removearr = this.splice('data.' + srccontainer, e.model.index, 1);
+                                    this.push('data.' + container, removearr[0]);
+
+                                } else {
+                                    this.push('data.' + container, e.model.item);
+                                    this.splice('data.' + srccontainer, e.model.index, 1);
+
+                                }
+                                break;
+                    }
+                },
+            });
+        </script>
+
+    </dom-module>
+    <hr/>
+
+
+
+</body>
+
+</html>
