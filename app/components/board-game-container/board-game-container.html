@@ -9,12 +9,8 @@
     <template>
          <style>
         :host {
-            display: flex;
             cursor: pointer;
-            justify-content: space-around;
-            align-content: space-between;
             padding: 4px;
-            border: 1px solid red;
             -webkit-touch-callout: none;
             -webkit-user-select: none;
             -khtml-user-select: none;
@@ -22,14 +18,21 @@
             -ms-user-select: none;
             user-select: none;
         }
+        #tmpl {
+            display: flex;
+            justify-content: space-around;
+            align-content: space-between;
+        }
     </style>
-    <paper-card heading="{{container}}">
-        <div style="width: 400px; height: 100px; ">
-            <iron-icon icon="refresh" on-tap="refresh"></iron-icon>
+    <paper-card heading="{{container}}" container="{{container}}">
+         <div class="card-content">
             <template is="dom-repeat" id="tmpl">
                 <div on-track="trackElement" draggable="true">
-                    <iron-icon icon="home"></iron-icon>{{item.key}}</div>
+                <iron-icon icon="home"></iron-icon>{{item.key}}</div>
             </template>
+      </div>
+      <div class="card-actions">
+            <iron-icon icon="refresh" on-tap="reroll"></iron-icon>
         </div>
         </paper-card>
     </template>
@@ -47,21 +50,33 @@
                         value: function () { return []; }
                     }
                             },
-                    dataitems: {
-                        type: Array,
-                        value: function (data, container) {
-                             return this.data[this.container];
-                        },
-                        notify: true
-                    },
                      observers: [
-                        'refresh(data.player2.splices)'
+                        'refresh(data.*)'
                     ],
+                   ready: function (e) {
+                       var template = Polymer.dom(this).querySelector('template');
+                       if(template) {
+                           this.templatize(template);
+                       }
+                   },
                    attached: function (e) {
                        this.$.tmpl.set('items',this.data[this.container]);
                    },
+                   getItems: function (e) {
+                       return this.data[this.container];
+                   },
                    refresh: function (e) {
                         this.$.tmpl.render();
+                   },
+                   _getContainer: function (el) {
+                        if (el.hasAttribute('container'))
+                            return el.getAttribute('container');
+                        while (el.parentElement) {
+                            el = el.parentElement;
+                            if (el.hasAttribute('container'))
+                                return el.getAttribute('container');
+                        }
+                       return null;
                    },
                    trackElement: function (e) {
                         switch (e.detail.state) {
@@ -74,8 +89,7 @@
                                 break;
                             case 'end':
                                 console.log(e.model.item);
-                                var container = e.detail.hover().getAttribute('container');
-                                //var srccontainer = e.target.parentElement.getAttribute('container');
+                                var container = this._getContainer(e.detail.hover());
                                 var srccontainer = this.container;
                                 if (container == srccontainer) {
                                     var removearr = this.splice('data.' + srccontainer, e.model.index, 1);
@@ -86,7 +100,6 @@
                                     this.push('data.' + container, e.model.item);
                                     this.splice('data.' + srccontainer, e.model.index, 1);
                                 }
-                                this.$.tmpl.render();
                                 break;
                     }
                 },

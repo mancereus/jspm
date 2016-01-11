@@ -60,19 +60,11 @@
     <dom-module id="tst-view">
 
         <template>
-            <div class="container" container="stack" style="width: 400px; height: 100px; ">
-                <template is="dom-repeat" items="{{data.stack}}">
-
-                    <div class="item" on-track="trackElement" draggable="true"><iron-icon icon="home"></iron-icon>{{item.key}}</div>
-                </template>
-            </div>
-            <br>
-            <div class="container"  container="player1" style="width: 400px; height: 100px; ">
-                <template is="dom-repeat" items="{{data.player1}}">
-                    <div class="item"  on-track="trackElement" draggable="true"><board-game-dice></board-game-dice>
-                {{item.key}}</div>
-                </template>
-            </div>
+            <board-game-container container="stack" data="{{data}}">
+                <board-game-dice></board-game-dice>
+            </board-game-container>
+            <board-game-container container="player1" data="{{data}}">
+                </board-game-container>
             <board-game-container container="player2" data="{{data}}">
                 </board-game-container>
             <board-game-container container="player3" data="{{data}}">
