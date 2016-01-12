@@ -31,7 +31,7 @@
         <paper-card heading="{{container}}" container="{{container}}">
             <div class="card-content">
                 <template is="dom-repeat" id="tmpl">
-                    <board-game-dice on-track="trackElement" draggable="true"></board-game-dice>
+                    <board-game-dice on-track="trackElement" draggable="true" color="{{item.color}}" items="{{item.items}}" val="{{item.val}}"></board-game-dice>
                 </template>
             </div>
             <div class="card-actions">
@@ -45,7 +45,8 @@
             is: 'hotdice-container',
             behaviors: [DraggableContainerBehavior],
             reroll: function () {
-
+                Polymer.dom(this.root).querySelectorAll("board-game-dice")
+                    .forEach(function(entry) {entry.reroll()});
             }
         });
     </script>
