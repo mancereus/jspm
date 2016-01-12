@@ -32,7 +32,7 @@ var dataort = [
 var dataextra = [
     { type: "Bewegung", name: "bewegt sich selbständig mit Beinen oder Rädern" },
     { type: "Bewegung", name: "bewegt sich selbständig, aber sehr langsam" },
-    { type: "Bewegung", name: "bewegt sich selbständig mit Elektrizität oder Brennstoff" },
+    { type: "Bewegung", name: "bewegt sich mit Elektrizität oder Brennstoff" },
     { type: "Bewegung", name: "fliegt oder schwebt" },
     { type: "Bewegung", name: "kann von einem Menschen nicht bewegt werden" },
     { type: "Bewegung", name: "kann von einem Menschen bewegt werden" },

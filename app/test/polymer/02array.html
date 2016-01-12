@@ -51,7 +51,7 @@
 		<template>
 			<input type="button" on-click="insert" value="insert" />
                 <template is="dom-repeat" items="{{data.stack}}">
-                    <div on-track="trackElement" draggable="true">{{item.key}}</div>
+                    <div on-track="trackElement" on-tap="tapElement" draggable="true">{{item.key}}</div>
                 </template>
 			<br>
 			<input type="button" on-click="move" to="player1" value="move" />

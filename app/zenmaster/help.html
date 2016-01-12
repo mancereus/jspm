@@ -1,0 +1,137 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>ZenMeister Beta</title>
+    <link rel="import" href="../../bower_components/polymer/polymer.html">
+    <script src="data.js"></script>
+    <link rel="stylesheet" href="../css/main.css">
+
+    <style>
+        body {}
+
+        .try {
+            font-size: 150%;
+            font-weight: bold;
+        }
+
+        .inp {
+            width: 120px;
+        }
+
+        .Inhalt {
+            border-bottom: 1px solid lightblue;
+            padding: 0;
+            margin: 5px;
+        }
+
+        .Form {
+            border-bottom: 1px solid lightcoral;
+            padding: 0;
+            margin: 5px;
+        }
+
+        .Ort {
+            border-bottom: 1px solid lightgreen;
+            padding: 0;
+            margin: 5px;
+        }
+
+        .Bewegung {
+            border-bottom: 1px solid yellow;
+            padding: 0;
+            margin: 5px;
+        }
+
+        .card {
+            margin: 2px;
+            width: 300px;
+            border: 1px solid black;
+            display: flex;
+            justify-content: space-around;
+            flex-direction: column;
+            padding: 5px 10px;
+        }
+
+        .pagebreak {
+            page-break-before: always;
+            background-color: red;
+            width: 650px;
+            height: 450px;
+        }
+
+        img {
+            width: 120px;
+            height: 200px;
+        }
+
+        .info {
+            width: 250px;
+            margin: 5px;
+            border: 1px solid black;
+            background-color: lightgray;
+        }
+
+        .header {
+            text-align: center;
+            width: 240px;
+            font-size: 60%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <template id="tmpl" is="dom-bind">
+        <div style="display:flex;flex-wrap: wrap;">
+            <div class="card">
+                <h2>A) Form oder Größe</h2>
+                <p style="height: 200px;">Wie ist die Gestalt des Dings? Rund oder Eckig? Flach? Groß oder Klein? Welche Größe hat es?</p>
+                <template is="dom-repeat" items="{{dataform}}">
+                    <div class$="{{item.type}}">
+                        <div>{{item.name}}</div>
+                    </div>
+                </template>
+            </div>
+            <div class="card">
+                <h2>B) Inhalt oder Bestandteil</h2>
+                <p style="height: 200px;">Welche Bestandteile hat das Ding? Räder oder Gelenke? Welches Gewicht hat es?</p>
+                <template is="dom-repeat" items="{{datainhalt}}">
+                    <div class$="{{item.type}}">
+                        <div>{{item.name}}</div>
+                    </div>
+                </template>
+            </div>
+            <div class="pagebreak">pagebreak</div>
+            <div class="card">
+                <h2>C) Ort oder Zeit</h2>
+                <p style="height: 200px;">Zu welcher Zeit gibt es das Ding häufiger? Winter oder Sommer? Früher oder Jetzt? An welchen Orten gibt es das häufiger? Stadt oder Wald? In der Nähe oder weiter weg?</p>
+                <template is="dom-repeat" items="{{dataort}}">
+                    <div class$="{{item.type}}">
+                        <div>{{item.name}}</div>
+                    </div>
+                </template>
+            </div>
+            <div class="card">
+                <h2>D) Bewegung od. Transport</h2>
+                <p style="height: 200px;">Knass sich das Ding selbständig bewegen? Schnell oder langsam? Kann es von Menschen bewegt werden? Schwimmt es? Fliegt es?</p>
+                <template is="dom-repeat" items="{{dataextra}}">
+                    <div class$="{{item.type}}">
+                        <div>{{item.name}}</div>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </template>
+
+    <script>
+        var t = document.querySelector('#tmpl');
+		t.dataform = dataform;
+		t.datainhalt = datainhalt ;
+		t.dataort = dataort;
+		t.dataextra = dataextra;
+    </script>
+</body>
+
+</html>
