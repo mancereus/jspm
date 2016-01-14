@@ -34,9 +34,9 @@
     <h2>test</h2>
     <template is="dom-bind">
         <tst-data data="{{data}}"></tst-data>
-        <hotdice-container container="stack" data="{{data}}">
+        <hotdice-container class="container" container="stack" data="{{data}}">
         </hotdice-container>
-        <hotdice-container container="player1" data="{{data}}">
+        <hotdice-container  class="container" container="roll" data="{{data}}">
         </hotdice-container>
 
     </template>
@@ -44,6 +44,8 @@
         .container {
             display: flex;
             cursor: pointer;
+            flex-wrap: wrap;
+            max-width: 600px;
             justify-content: space-around;
             align-content: space-between;
             padding: 4px;
@@ -74,7 +76,7 @@
 			}
 		},
         ready: function() {
-            this.data.keys = Object.keys(this.data);
+
         }
 	});
         </script>

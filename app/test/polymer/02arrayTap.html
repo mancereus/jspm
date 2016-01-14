@@ -8,6 +8,7 @@
     <link rel="import" href="imports.html">
         <link rel="import" href="../../components/board-game-dice/board-game-dice.html">
         <link rel="import" href="../../components/board-game-container/board-game-container.html">
+        <link rel="import" href="../../hotdice/hotdice-container.html">
 
 
 </head>
@@ -20,8 +21,8 @@
                     <board-game-container container="stack" data="{{data}}">
                 <board-game-dice></board-game-dice>
             </board-game-container>
-            <board-game-container container="player1" data="{{data}}">
-                </board-game-container>
+            <hotdice-container container="player1" data="{{data}}">
+                </hotdice-container>
             <board-game-container container="player2" data="{{data}}">
                 </board-game-container>
             <board-game-container container="player3" data="{{data}}">
