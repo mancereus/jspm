@@ -1,12 +1,12 @@
  var initcards =  [
 
  {name: "Weg", Aktion: "",flavour: "Jane: 'Was war das für ein Geräusch?'",hor: "true",type: "Basiskarte"},
- {name: "Weg", Aktion: "",flavour: "Jane: 'Was für eine schöne Pflanze.' Jack: 'Vorsicht, die ist giftig.'",ver: "true",type: "Basiskarte"},
- {name: "Weg", Aktion: "",flavour: "Jane: 'Diese Stille ist unheimlich.'",ver: "true",type: "Basiskarte"},
+ {name: "Weg", Aktion: "",flavour: "Jane: 'Ich bin auf der Suche nach meinem Vater.' Jack: 'Vorsicht, die ist giftig.'",ver: "true",type: "Basiskarte"},
+ {name: "Weg", Aktion: "",flavour: "Jane: 'Prof. Hampton ist mein Vater.'",ver: "true",type: "Basiskarte"},
  {name: "Weg", Aktion: "",flavour: "Jack: 'Wir sollten umkehren.'",ver: "true",type: "Basiskarte"},
  {name: "Weg", Aktion: "",flavour: "Jack: 'Hier geht es nicht weiter.'",ver: "true",hor: "true",type: "Basiskarte"},
- {name: "Weg", Aktion: "",flavour: "Jane: 'Puuh, diese Luft bringt mich um.'",ver: "true",type: "Basiskarte"},
- {name: "Weg", Aktion: "",flavour: "Jack: 'Dein Vater ist vermutlich schon tot.' Jane: 'Nein, er lebt noch.'",hor: "true",type: "Basiskarte"},
+ {name: "Weg", Aktion: "",flavour: "Jane: 'Prof. Hampton ist bei der Suche nach El Dorade verschollen.'",ver: "true",type: "Basiskarte"},
+ {name: "Weg", Aktion: "",flavour: "Jack: 'Prof. Hampton ist vermutlich schon tot.' Jane: 'Nein, er lebt noch.'",hor: "true",type: "Basiskarte"},
  {name: "Weg", Aktion: "",flavour: "Jack: 'Hier können wir rasten.'",hor: "true",type: "Basiskarte"},
  {name: "Weg", Aktion: "",flavour: "Jane: 'Hier waren wir doch schon mal.'",hor: "true", type: "Basiskarte"},
  {name: "Rucksack", Aktion: "Du findest einen alten Rucksack. Nimm die Inventarkarte Rucksack hinzu. damit kannsz du zwei Dinge mehr tragen.",ver: "true", type: "Basiskarte"},
@@ -49,15 +49,15 @@
 
  var initActions = [
  {name: "Jäger", akt: "2", Aktion: "Der Großwildjäger Stoephasius klaut dir alle Artefakte und bringt sie zur gegenüberliegenden Eckkarte. Mit der Pistole kannst du sie ihm dort abnehmen.",info:"warn", bgc:"orange", win:"Fluss", bgcwin:"blue",task: true,type: "Aktionskarte"},
- {name: "Gefangen", akt: "2", Aktion: "Jack wird von den Kannibalen überrascht und gefangen. Gib den Kannibalen den Schrumpfkopf. Dann lassen sie Jack frei.",info:"warn", bgc:"orange", win:"Fluss", bgcwin:"blue",task: true,type: "Aktionskarte"},
- {name: "Diamantenmine", akt: "2", color : "H",Aktion: "Mit der Fackel findest du in der dunklen Mine grosse Diamenten. Wenn du Sie herausholst, verlierst du die Fackel.", info:"warn", win:"Diamantenmine", bgcwin:"green", imgclass:"symbol", task: true,type: "Aktionskarte"},
+ {name: "Gefangen", akt: "2", Aktion: "Jack wird von den Kannibalen überrascht und gefangen. Jane muss den Kannibalen den Schrumpfkopf geben, dann lassen sie Jack frei. Bis dahin kannst du Jacks Inventarkarte nicht verwenden.",info:"warn", bgc:"orange", win:"Fluss", bgcwin:"blue",task: true,type: "Aktionskarte"},
+ {name: "Diamantenmine", akt: "2", color : "H",Aktion: "Mit der Fackel findest du in der dunklen Mine grosse Diamanten. Wenn du Sie herausholst, verlierst du die Fackel.", info:"warn", win:"Diamantenmine", bgcwin:"green", imgclass:"symbol", task: true,type: "Aktionskarte"},
  {name: "Tiger", akt: "2", color : "H",Aktion: "Ein Tiger überrascht euch und jagt euch 2 Felder diagonal zur Mitte. Ihr könnt die Aktion auf diesem Feld ignorieren.", task: true,type: "Erweiterung Aktionskarte"},
- {name: "Königin", akt: "2", color : "H",Aktion: "Jane wird von den Kannibalen als Dschungelkönigin verehrt. Lege mit der Fackel ein Feuer, dann kannst du Jane unbemerkt befreien. Die Fackel geht in den Vorrat.", task: true,type: "Erweiterung Aktionskarte"},
+ {name: "Königin", akt: "2", color : "H",Aktion: "Jane wird von den Kannibalen als Dschungelkönigin verehrt. Lege mit der Fackel ein Feuer, dann kann Jane unbemerkt fliehen. Die Fackel geht in den Vorrat.", task: true,type: "Erweiterung Aktionskarte"},
+ {name: "Schatzkammer", akt: "2",variant:"d", Aktion: "Ihr habt die Schatzkammer der Kannibalen gefunden. Wenn ihr die 4 Artefakte hier ablegt, findet Jane die genaue Beschreibung von El Dorado. Über einen versteckten Höhlenausgang könnt ihr das Tal verlassen. The FIN.", bgc:"orange", win:"Fluss", bgcwin:"blue",task: true,type: "Erweiterung Aktionskarte"},
  ];
 
  var secondActions = [
  {name: "Fluss", akt: "3", variant:"d",Aktion: "Ihr könnt mit dem Boot am Fluss das Abenteuer hier erfolgreich beenden.", bgc:"orange", win:"Fluss", bgcwin:"blue",task: true,type: "Erweiterung Aktionskarte"},
- {name: "Schatzkammer", akt: "3",variant:"d", Aktion: "Ihr habt die Schatzkammer der Ureinwohner gefunden. Mit den beiden Kugeln öffnet ihr ein Portal, dass euch aus dem Dschungel teleportiert. Jack, Jane und Prof. Hampton das Abenteuer hier erfolgreich beenden.", bgc:"orange", win:"Fluss", bgcwin:"blue",task: true,type: "Erweiterung Aktionskarte"}
 ];
 
  var start = {name: "Akt II", akt: "2",color : "H",  task: true,

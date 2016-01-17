@@ -8,7 +8,7 @@ var initcards = [
     { name: "Weg", Aktion: "", flavour: "Jack: 'Wer hat wohl meinen Bezintank manipuliert?'", hor: "true", type: "Basiskarte" },
     { name: "Weg", Aktion: "", flavour: "Jack: 'Hier können wir rasten.'", hor: "true", type: "Basiskarte" },
     { name: "Weg", Aktion: "", flavour: "Jane: 'Hier waren wir doch schon mal.'", hor: "true", type: "Basiskarte" },
-    { name: "Weg", Aktion: "", flavour: "Anstelle des Rucksacks..", hor: "true", type: "Basiskarte" },
+    { name: "Weg", Aktion: "", flavour: "Jane: Prof. Hampton ist ein berühmter Archeoöloge.", hor: "true", type: "Basiskarte" },
     { name: "Machete", Aktion: "Die Machete kann eine Dschungelwand öffnen. Lege die Machete dazu auf die Wand.", ver: "true", imgclass: "symbol", type: "Basiskarte" },
     { name: "Machete", Aktion: "Die Machete kann eine Dschungelwand öffnen. Lege die Machete dazu auf die Wand.", hor: "true", ver: "true", imgclass: "symbol", type: "Basiskarte" },
     { name: "Machete", Aktion: "Die Machete kann eine Dschungelwand öffnen. Lege die Machete dazu auf die Wand.", hor: "true", imgclass: "symbol", type: "Basiskarte" },
@@ -20,8 +20,8 @@ var initcards = [
     { name: "Höhle", Aktion: "Wenn man die Fackel besitzt, kann man von dieser Höhle direkt zu einer anderen Höhlenkarte ziehen.", ver: "true", info: "info", bgc: "blue", type: "Basiskarte" },
     { name: "Höhle", Aktion: "Wenn man die Fackel besitzt, kann man von dieser Höhle direkt zu einer anderen Höhlenkarte ziehen.", ver: "true", info: "info", bgc: "blue", type: "Basiskarte" },
     { name: "Fackel", Aktion: "Mit einer Fackel kann man von einer Höhle zu einer anderen ziehen. Die Fackel darf man dabei behalten.", ver: "true", imgclass: "symbol", pagebreak: "pagebreak", type: "Basiskarte" },
-    { name: "Hängebrücke",info: "warn", Aktion: "Die Hängebrücke kannst du mit vollem Inventar nicht überqueren. Lege Dinge dazu auf ihr Feld zurück.", type: "Basiskarte" },
-    { name: "Hängebrücke",info: "warn", Aktion: "Die Hängebrücke kannst du mit vollem Inventar nicht überqueren. Lege Dinge dazu auf ihr Feld zurück.", type: "Basiskarte" },
+    { name: "Hängebrücke", info: "warn", Aktion: "Die Hängebrücke kannst du mit vollem Inventar nicht überqueren. Lege Dinge dazu auf ihr Feld zurück.", type: "Basiskarte" },
+    { name: "Hängebrücke", info: "warn", Aktion: "Die Hängebrücke kannst du mit vollem Inventar nicht überqueren. Lege Dinge dazu auf ihr Feld zurück.", type: "Basiskarte" },
     { name: "Hängebrücke", info: "warn", Aktion: "Die Hängebrücke kannst du mit vollem Inventar nicht überqueren. Lege Dinge dazu auf ihr Feld zurück.", type: "Basiskarte" },
     { name: "Schlange", Aktion: "Die Schlange hat ein tödliches Gift und beisst dich. Lege ein Gegengift hier ab, um vor der Schlange geschützt zu sein.", info: "problem", hor: "true", type: "Basiskarte" },
     { name: "Gegengift", Aktion: "Das Gegengift schützt dich vor einer Schlange. Lege das Gegengift dazu auf die Schlange. ", hor: "true", imgclass: "symbol", type: "Basiskarte" },
@@ -48,18 +48,19 @@ var initcards = [
 
 
 var initActions = [
-    { name: "Lager", akt: "1", color: "H", Aktion: "Du findest ein verlassenes Lager. Du kannst bis zu 2 Dinge aus dem Vorrat auf passende leere Karten legen. (z.B.: Liane auf Lianenkarte)", info: "info", bgc: "green", win: "Edelstein", bgcwin: "green", task: true, type: "Aktionskarte" },
- {name: "Überfall", akt: "1", color : "H",Aktion: "Jack kommt ins Lager zurück und Jane ist verschwunden. Er findet Spuren eines Kampfes und Pfeile der Ureinwohner. Lege Janes Inventarkarte zur Seite.", info:"Voodoopuppe", win:"Jane2", bgcwin:"green", task: true,type: "Aktionskarte"},
+    { name: "Lager", akt: "1", color: "H", Aktion: "Du findest ein verlassenes Lager. Du kannst bis zu 2 Dinge aus dem Vorrat auf passende leere Karten legen. (z.B.: Liane auf Lianenkarte)", bgc: "green", win: "Edelstein", task: true, type: "Aktionskarte" },
+    { name: "Überfall", akt: "1", color: "H", Aktion: "Jack kommt ins Lager zurück und Jane ist verschwunden. Er findet Spuren eines Kampfes und Pfeile der Kannibalen. Lege Janes Inventarkarte zur Seite.", info: "Voodoopuppe", win: "Jane2", bgcwin: "green", task: true, type: "Aktionskarte" },
 
     { name: "Tierfalle", akt: "1", color: "H", Aktion: "Dein Bein verletzt sich in einer Tierfalle des Großwildjägers. Du kannst bis zu einem anderen Eckfeld pro Zug nur 3 Felder weit ziehen.", task: true, fuss: "-1", type: "Aktionskarte" },
     { name: "Karte", akt: "1", color: "H", Aktion: "Du findest eine Karte des Dschungels. Ab sofort kannst du Karten auch diagonal anlegen.", task: true, type: "Aktionskarte" },
     { name: "Whiskykiste", akt: "1", color: "H", Aktion: "Jack findet eine Kiste voll Whisky. Falls du in den letzten 24 Stunden keinen Alkohol getrunken hat, kann sich auch Jack beherrschen. Ansonsten säuft er sich voll und verliert einen Gegenstand aus dem Inventar.", task: true, type: "Aktionskarte" },
-    { name: "Treibsand", akt: "1", color: "H", Aktion: "Jack bleibt im Treibsand stecken. Jane muss eine Liane hierherbringen, um ihn zu retten. Gib die Liane dazu ab.", task: true, type: "Erweiterung Aktionskarte" },
+    { name: "Treibsand", akt: "1", color: "H", Aktion: "Jack bleibt im Treibsand stecken. Jane muss eine Liane hierherbringen, um ihn zu retten. Gib die Liane dazu ab. Bisdahin kannst du Jacks Inventarkarte nicht verwenden.", task: true, type: "Erweiterung Aktionskarte" },
     { name: "Sturm", akt: "1", color: "H", Aktion: "Ein Sturm zieht durch den Dschungel. Alle verwendeten Macheten kommen auf Machetenfelder zurück.", task: true, type: "Erweiterung Aktionskarte" },
+    { name: "Abendrot", akt: "1", color: "H", Aktion: "Im Sonnenuntergang verliebt sich Jack in Jane. Er weiss nicht, ob Sie seine Liebe erwidert. Schau dir die nächsten drei Karten vom Stapel an und lege Sie gemeinsam zurück oder unter den Stapel.", bgc: "green", win: "Edelstein", bgcwin: "green", task: true, type: "Aktionskarte" },
 ];
 
 var secondActions = [
-     { name: "Abendrot", akt: "1", color: "H", Aktion: "Im Sonnenuntergang verliebt sich Jack in Jane. Er weiss nicht, ob Sie seine Liebe erwidert. Schau dir die nächsten drei Karten vom Stapel an und lege Sie gemeinsam zurück oder unter den Stapel.", info: "info", bgc: "green", win: "Edelstein", bgcwin: "green", task: true, type: "Aktionskarte" },
+
     { name: "Rucksack", Aktion: "Du findest einen alten Rucksack. Nimm die Inventarkarte Rucksack hinzu und lege den Rucksack darauf.", ver: "true", imgclass: "symbol", type: "Basiskarte" },
 ];
 
