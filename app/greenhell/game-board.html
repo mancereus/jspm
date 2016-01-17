@@ -8,7 +8,7 @@
         :host {
             display: block;
         }
-
+        
         game-card {
             margin: 3px;
         }
@@ -44,6 +44,7 @@
         }
 
         var akt = get("akt");
+        var open = get("open");
         if (akt == undefined) {
             akt = 1;
         }
@@ -139,10 +140,14 @@
                             this.$.field.children[i].show();
                         } else {
                             if (!questarr.contains(i)) {
-                                this.$.field.children[i].move();
+                                if (open == undefined)
+                                  this.$.field.children[i].move();
+                                else
+                                  this.$.field.children[i].show();
                             }
                         }
                     }
+
                 });
 
             },

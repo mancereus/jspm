@@ -27,6 +27,7 @@
     "electron-prebuilt": "^0.30.6",
     "gulp": "^3.9.0",
     "gulp-vulcanize": "^6.1.0",
+    "gulp-markdown": "^1.2.0",    
     "jspm": "^0.16.1"
   }
 }
