@@ -1,6 +1,7 @@
 var gulp = require('gulp')
 var markdown = require('gulp-markdown')
 var vulcanize = require('gulp-vulcanize')
+var polybuild = require('polybuild')
 var del = require('del')
 var browserSync = require('browser-sync').create();
 
@@ -27,6 +28,12 @@ gulp.task('vulcan', function () {
       inlineCss: false,
       stripExcludes: false
     }))
+    .pipe(gulp.dest('dest'))
+})
+
+gulp.task('polybuild', function () {
+  return gulp.src('app/**/*.html')
+    .pipe(polybuild({maximumCrush: true}))
     .pipe(gulp.dest('dest'))
 })
 
@@ -62,6 +69,6 @@ gulp.task('mdwatch', function () {
   gulp.watch('**/*.md', ['markdown'])
 })
 
-gulp.task('default', ['vulcan', 'img', 'js','css'], function() {
+gulp.task('default', ['polybuild', 'img', 'js','css'], function() {
     gulp.start('publish');
 });
