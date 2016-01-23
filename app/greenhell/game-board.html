@@ -62,7 +62,7 @@
                 actionids: {
                     type: Array,
                     value: function() {
-                        return ["home"];
+                        return ["home",undefined,undefined,undefined];
                     }
                 },
                 cards: { notify: true },
@@ -85,9 +85,17 @@
                     this.data = data2;
                 }
                 var actions = shuffle(this.data.initActions);
-                
+                var actOut = [];
+                this.actionids.forEach(function(actionid) {
+                    var  item = actions.filter(function(el) {
+                          return el.order == actionid;
+                    })[0];
+                    var idx = actions.indexOf(item);
+                    actions.splice(idx,1);
+                    actOut.push(item);
+                });
                 this.cards = shuffle(this.data.initcards);
-                var actionIter = actions.entries();
+                var actionIter = shuffle(actOut).entries();
                 this.splice('cards', 0, 0, actionIter.next().value[1]);
                 this.splice('cards', 6, 0, actionIter.next().value[1]);
                 this.splice('cards', 24, 0, this.data.start);
