@@ -1,46 +1,38 @@
-<link rel="import" href="../../bower_components/polymer/polymer.html">
-<link rel="import" href="game-card.html">
-<link rel="import" href="../../bower_components/paper-styles/paper-styles.html">
+<!DOCTYPE html>
+<html>
 
-<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
-<dom-module id="game-board">
-    <style>
-        :host {
-            display: block;
-        }
-        
-        game-card {
-            margin: 3px;
-        }
-    </style>
-    <template>
-        <div id="field" style="width: 1500px;" class="layout horizontal wrap" on-showdetails="showCard">
-            <template id="cards" is="dom-repeat" items="{{cards}}" as="card" index-as="cardIndex">
-                <game-card imgsrc="{{card.name}}" carddata="{{card}}" item="{{card.imgclass}}">
-                </game-card>
-            </template>
-        </div>
-    </template>
-    <script src="js/base.js"></script>
-    <script>
-        function get(name) {
+<head>
+    <link rel="import" href="../../bower_components/polymer/polymer.html">
+    <link rel="import" href="game-card.html">
+    <link rel="import" href="../../bower_components/paper-styles/paper-styles.html">
+
+    <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+</head>
+
+<body>
+
+    <dom-module id="game-board">
+        <style>
+            :host {
+                display: block;
+            }
+            
+            game-card {
+                margin: 3px;
+            }
+        </style>
+        <template>
+            <div id="field" style="width: 1500px;" class="layout horizontal wrap" on-showdetails="showCard">
+                <template id="cards" is="dom-repeat" items="{{cards}}" as="card" index-as="cardIndex">
+                    <game-card imgsrc="{{card.name}}" carddata="{{card}}" akt="{{data.akt}}" item="{{card.imgclass}}">
+                    </game-card>
+                </template>
+            </div>
+        </template>
+        <script>
+            function get(name) {
             if (name = (new RegExp('[?&]' + encodeURIComponent(name) + '=([^&]*)')).exec(location.search))
                 return decodeURIComponent(name[1]);
-        }
-        function loadjscssfile(filename, filetype) {
-            if (filetype == "js") { //if filename is a external JavaScript file
-                var fileref = document.createElement('script')
-                fileref.setAttribute("type", "text/javascript")
-                fileref.setAttribute("src", filename)
-            }
-            else if (filetype == "css") { //if filename is an external CSS file
-                var fileref = document.createElement("link")
-                fileref.setAttribute("rel", "stylesheet")
-                fileref.setAttribute("type", "text/css")
-                fileref.setAttribute("href", filename)
-            }
-            if (typeof fileref != "undefined")
-                document.getElementsByTagName("head")[0].appendChild(fileref)
         }
 
         var akt = get("akt");
@@ -48,25 +40,7 @@
         if (akt == undefined) {
             akt = 1;
         }
-        loadjscssfile("js/data" + akt + ".js", "js")
 
-
-        StopIteration = function () {
-        };
-        StopIteration.prototype = new Error();
-        StopIteration.name = 'StopIteration';
-        StopIteration.message = 'StopIteration';
-        arrayLikeIterator = function (arrayLike) {
-            var i = 0;
-            return {
-                'next': function () {
-                    if (i >= arrayLike.length) {
-                        throw StopIteration;
-                    }
-                    return arrayLike[i++];
-                }
-            };
-        };
         function shuffle(o) {
             for (var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
             return o;
@@ -84,6 +58,13 @@
         Polymer({
             is: 'game-board',
             properties: {
+                data: Object,
+                actionids: {
+                    type: Array,
+                    value: function() {
+                        return ["home"];
+                    }
+                },
                 cards: { notify: true },
                 // initialize the element's model
                 width: {
@@ -95,18 +76,23 @@
             created: function () {
             },
             ready: function () {
-                //initcards.push.apply(initcards, hart);
-                //initcards.push.apply(initcards, actcards);
             },
             attached: function () {
-                var actions = shuffle(initActions);
-                this.cards = shuffle(initcards);
-                var actionIter = arrayLikeIterator(actions);
-                this.splice('cards', 0, 0, actionIter.next());
-                this.splice('cards', 6, 0, actionIter.next());
-                this.splice('cards', 24, 0, start);
-                this.splice('cards', 42, 0, actionIter.next());
-                this.splice('cards', 48, 0, actionIter.next());
+                if (akt == 1) {
+                    this.data = data1;
+                }
+                if (akt == 2) {
+                    this.data = data2;
+                }
+                var actions = shuffle(this.data.initActions);
+                
+                this.cards = shuffle(this.data.initcards);
+                var actionIter = actions.entries();
+                this.splice('cards', 0, 0, actionIter.next().value[1]);
+                this.splice('cards', 6, 0, actionIter.next().value[1]);
+                this.splice('cards', 24, 0, this.data.start);
+                this.splice('cards', 42, 0, actionIter.next().value[1]);
+                this.splice('cards', 48, 0, actionIter.next().value[1]);
                 this.async(function () {
                     // code that formerly resided in `domReady`
                     this.$.field.children[8].show();
@@ -135,13 +121,19 @@
                         42,
                         48
                     ];
-                    for (var i = 1; i <= 49; i++) {
+                    for (var i = 0; i <= 49; i++) {
                         if (startarr.contains(i)) {
                             this.$.field.children[i].show();
                         } else {
                             if (!questarr.contains(i)) {
                                 if (open == undefined)
                                   this.$.field.children[i].move();
+                                else
+                                  this.$.field.children[i].show();
+                            }
+                            else {
+                                 if (open == undefined)
+                                    ;
                                 else
                                   this.$.field.children[i].show();
                             }
@@ -159,7 +151,10 @@
             showCard: function (e, details, sender) {
                 var infocard = document.getElementById('details');
                 infocard.show(details);
-            }
+            } 
         });
-    </script>
-</dom-module>
+        </script>
+    </dom-module>
+</body>
+
+</html>

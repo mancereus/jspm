@@ -23,9 +23,9 @@ gulp.task('vulcan', function () {
     .pipe(vulcanize({
       abspath: '',
       excludes: [],
-      inlineScripts: false,
-      inlineCss: false,
-      stripExcludes: false
+      inlineScripts: true,
+      inlineCss: true,
+      stripExcludes: true
     }))
     .pipe(gulp.dest('dest'))
 })
