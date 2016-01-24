@@ -56,5 +56,6 @@ var data2 = {
         { name: "Schatzkammer", order:"home", Aktion: "Ihr habt die Schatzkammer der Kannibalen gefunden. Wenn ihr die 4 Artefakte hier ablegt, findet Jane die genaue Beschreibung von El Dorado. Über einen versteckten Höhlenausgang könnt ihr das Tal verlassen. The FIN.", task: true }
     ], 
     start: {name: "Akt II", task: true,
-    Aktion: "Ihr erreicht das 'Reich der Schlangen', in dem Prof Hampton verschwunden ist. Sucht nach dem Zugang zum verschollenen Tal."}
+    Aktion: "Ihr erreicht das 'Reich der Schlangen', in dem Prof Hampton verschwunden ist. Sucht nach dem Zugang zum verschollenen Tal."},
+    order: ['home',undefined,undefined,undefined]
  }

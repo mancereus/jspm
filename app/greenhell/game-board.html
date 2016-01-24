@@ -59,23 +59,13 @@
             is: 'game-board',
             properties: {
                 data: Object,
-                actionids: {
-                    type: Array,
-                    value: function() {
-                        return ["home",undefined,undefined,undefined];
-                    }
-                },
-                cards: { notify: true },
+               cards: { notify: true },
                 // initialize the element's model
                 width: {
                     type: String,
                     value: '1480px',
                     notify: true
                 }
-            },
-            created: function () {
-            },
-            ready: function () {
             },
             attached: function () {
                 if (akt == 1) {
@@ -86,7 +76,7 @@
                 }
                 var actions = shuffle(this.data.initActions);
                 var actOut = [];
-                this.actionids.forEach(function(actionid) {
+                this.data.order.forEach(function(actionid) {
                     var  item = actions.filter(function(el) {
                           return el.order == actionid;
                     })[0];
