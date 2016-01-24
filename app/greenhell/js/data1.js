@@ -49,11 +49,11 @@ var data1 = {
     ],
     initActions: [
         { name: "Fluss", order: "home", Aktion: "Wenn ihr den Weg zum 'Reich der Schlangen' kennt, könnt ihr mit dem Boot über den Fluss dorthin fahren und den Akt 1 beenden.", task: true },
-        { name: "Mine", order: "home", Aktion: "In dieser Mine wurde vor langer Zeit nach Diaenten geschürft. Wenn alle 4  Höhlen im Spielplan gefunden sind, könnt ihr über diese Mine in den nächsten Akt wechseln. Dabei musst du eine Fackel abgeben. Verwende in Akt 2 eine Aktionskarte mit '44'", task: true },
+        { name: "Mine", order: "home", Aktion: "In dieser Mine wurde vor langer Zeit nach Diaenten geschürft. Wenn alle 4  Höhlen im Spielplan gefunden sind, könnt ihr über diese Mine in den nächsten Akt wechseln. Dabei musst du eine Fackel abgeben. Verwende in Akt 2 eine Aktionskarte mit 'Mine'", task: true },
         { name: "Lager", Aktion: "Du findest ein verlassenes Lager. Du kannst bis zu 2 Dinge aus dem Vorrat auf passende leere Karten legen. (z.B.: Liane auf Lianenkarte)", task: true },
-        { name: "Überfall", Aktion: "Jack kommt ins Lager zurück und Jane ist verschwunden. Er findet Spuren eines Kampfes und Pfeile der Kannibalen. Lege Janes Inventarkarte zur Seite.Verwende in Akt 2 eine Aktionskarte mit '33'", task: true },
+        { name: "Überfall", Aktion: "Jack kommt ins Lager zurück und Jane ist verschwunden. Er findet Spuren eines Kampfes und Pfeile der Kannibalen. Lege Janes Inventarkarte zur Seite.Verwende in Akt 2 eine Aktionskarte mit 'Jane'", task: true },
 
-        { name: "Tierfalle", Aktion: "Dein Bein verletzt sich in einer Tierfalle des Großwildjägers. Du kannst bis zu einem anderen Eckfeld pro Zug nur 3 Felder weit ziehen.", task: true },
+        { name: "Tierfalle", Aktion: "Dein Bein verletzt sich in einer Tierfalle des Großwildjägers. Du kannst bis zu einem anderen Eckfeld pro Zug nur 3 Felder weit ziehen.Verwende in Akt 2 eine Aktionskarte mit 'Jäger'", task: true },
         { name: "Karte", Aktion: "Du findest eine Karte des Dschungels. Ab sofort kannst du Karten auch diagonal anlegen.", task: true },
         { name: "Whiskykiste", Aktion: "Jack findet eine Kiste voll Whisky. Falls du in den letzten 24 Stunden keinen Alkohol getrunken hat, kann sich auch Jack beherrschen. Ansonsten säuft er sich voll und verliert einen Gegenstand aus dem Inventar.", task: true },
         { name: "Treibsand", Aktion: "Jack bleibt im Treibsand stecken. Jane muss eine Liane hierherbringen, um ihn zu retten. Gib die Liane dazu ab. Bis dahin kannst du Jacks Inventarkarte nicht verwenden.", task: true },
@@ -61,5 +61,5 @@ var data1 = {
         { name: "Abendrot", Aktion: "Im Sonnenuntergang verliebt sich Jack in Jane. Er weiss nicht, ob Sie seine Liebe erwidert. Schau dir die nächsten drei Karten vom Stapel an und lege Sie gemeinsam zurück oder unter den Stapel.", task: true },
     ],
     start: { name: "Akt I", Aktion: "Jane hat den Piloten Jack für eine geheime Expedition in den Dschungel engagiert. Jack hat Alkoholprobleme und versucht für den Auftrag nüchtern zu bleiben. Das Flugzeug stürzt kurz vor dem Ziel ab. Jemand hat die Tanks durchlöchert...", task: true, type: "Startkarte" },
-    order: ['home',undefined,undefined,undefined]
+    order: [{key:'home', name: 'Ausgang'},undefined,undefined,undefined]
 }
