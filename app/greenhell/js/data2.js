@@ -57,5 +57,5 @@ var data2 = {
     ], 
     start: {name: "Akt II", task: true,
     Aktion: "Ihr erreicht das 'Reich der Schlangen', in dem Prof Hampton verschwunden ist. Sucht nach dem Zugang zum verschollenen Tal."},
-    order: ['home',undefined,undefined,undefined]
+    order: [{key:'home', name: 'Ausgang'},undefined,undefined,undefined]
  }
