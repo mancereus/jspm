@@ -42,7 +42,9 @@
     "paper-drawer-panel": "PolymerElements/paper-drawer-panel#~1.0.6",
     "paper-tabs": "PolymerElements/paper-tabs#~1.2.4",
     "Sortable": "~1.4.2",
-    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#~1.0.3"
+    "dragula.js": "dragula#~3.6.2",
+    "iron-ajax": "PolymerElements/iron-ajax#~1.1.1",
+    "iron-localstorage": "PolymerElements/iron-localstorage#~1.0.5"
   },
   "devDependencies": {
     "test-fixture": "polymerelements/test-fixture#^1.0.0"

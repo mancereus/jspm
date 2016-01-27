@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="import" href="../../bower_components/polymer/polymer.html">
+    <link rel="import" href="game-card.html">
+    <link rel="import" href="../../bower_components/paper-styles/paper-styles.html">
+    <link rel="import" href="../../bower_components/paper-header-panel/paper-header-panel.html">
+    <link rel="import" href="../../bower_components/paper-toolbar/paper-toolbar.html">
+    <link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
+    <link rel="import" href="../../bower_components/iron-localstorage/iron-localstorage.html">
+    <link rel="import" href="game-help.html">
+    <link rel="import" href="game-meeple.html">
+    <link rel="import" href="game-hexagon.html">
+    <link rel="import" href="../../bower_components/paper-checkbox/paper-checkbox.html">
+    <link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+    <link rel="import" href="../../bower_components/paper-styles/paper-styles.html">
+    <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+    <link rel="import" href="game-show-details.html">
+
+    <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+</head>
+
+<body>
+
+    <dom-module id="game-board">
+        <style>
+            :host {
+                display: block;
+            }
+            
+            game-card {
+                margin: 3px;
+            }
+        </style>
+        <template>
+
+            <div class="container layout horizontal ">
+                <div>
+                    <div id="field" style="width: 1500px;" class="layout horizontal wrap" on-showdetails="showCard">
+                        <template id="cards" is="dom-repeat" items="{{cards}}" as="card" index-as="cardIndex">
+                            <game-card imgsrc="{{card.name}}" carddata="{{card}}" akt="{{data.akt}}" item="{{card.imgclass}}">
+                            </game-card>
+                        </template>
+                        <game-hexagon imgsrc="Jack" top="-1140" left="680"></game-hexagon>
+                    </div>
+                </div>
+                <div>
+                    <h1 style="font-size: 500%; margin: 20px 30px;">Die grüne Hölle</h1>
+                    <select id="akt" style="font-size: 300%; margin-top: 20px;margin-left: 50px;" onchange="document.location.href = '?akt=' + this.value">
+                        <option value="">choose akt</option>
+                        <option value="1">Akt 1</option>
+                        <option value="2">Akt 2</option>
+                        <option value="1&open=true">Akt 1 offen</option>
+                        <option value="2&open=true">Akt 2 offen</option>
+                    </select>
+                    <input type="text" value="{{data.order::changed}}">
+                        <template is="dom-repeat" items="{{data.order}}" >
+                            {{item.name}}
+                        </template>
+
+                    <div id="inv" style="margin-top: 350px;background-color: #4CBF80;padding: 10px; border: 2px solid green">
+                        <h2 style="font-size: 300%; margin-right: 30px;">Inventar</h2>
+                        <table>
+                            <tr>
+                                <td>
+                                    <h2>Jack</h2>
+                                    <div class="layout horizontal" style="padding-top: 30px;background-color:#eee; border: 2px solid black; height:160px; width: 350px">
+                                        <div style="width: 120px; height:120px; border: 1px solid black; background-color: #aaa;border-radius: 50%"></div>
+                                        <div style="width: 120px; height:120px; border: 1px solid black; background-color: white;border-radius: 50%">
+                                            <img src="img/Jack.png" style="border-radius: 50%;width:100px;height:100px; margin-top: 10px;margin-left: 10px;">
+                                        </div>
+                                        <div style="width: 120px; height:120px; border: 1px solid black; background-color: #aaa;border-radius: 50%"></div>
+                                    </div>
+                                    <h2>Jane</h2>
+                                    <div class="layout horizontal" style="padding-top: 30px;background-color:#eee; border: 2px solid black; height:160px; width: 350px">
+                                        <div style="width: 120px; height:120px; border: 1px solid black; background-color: #aaa;border-radius: 50%"></div>
+                                        <div style="width: 120px; height:120px; border: 1px solid black; background-color: white;border-radius: 50%">
+                                            <img src="img/Jane2.png" style="border-radius: 50%;width:100px;height:100px;margin-top: 10px;margin-left: 10px;">
+                                        </div>
+                                        <div style="width: 120px; height:120px; border: 1px solid black; background-color: #aaa;border-radius: 50%"></div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <h2>Rucksack</h2>
+                                    <div class="layout horizontal" style="padding-top: 30px;background-color:#eee; border: 2px solid black; height:160px; width: 350px">
+                                        <div style="width: 120px; height:120px; border: 1px solid black; background-color: #aaa;border-radius: 50%"></div>
+                                        <div style="width: 120px; height:120px; border: 1px solid black; background-color: white;border-radius: 50%">
+                                            <img src="img/Rucksack.png" style="opacity: 0.6;width:100px;height:100px">
+                                        </div>
+                                        <div style="width: 120px; height:120px; border: 1px solid black; background-color: #aaa;border-radius: 50%"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <h2 style="font-size: 300%; margin-right: 30px;">Kartenstapel</h2>
+
+                    <div id="bigCard" style="background-color:white; border: 2px solid black; height:850px; width: 550px; margin-left: 300px;">
+                        <game-show-details id="details"></game-show-details>
+                    </div>
+                </div>
+            </div>
+
+        </template>
+        <script>
+            function get(name) {
+            if (name = (new RegExp('[?&]' + encodeURIComponent(name) + '=([^&]*)')).exec(location.search))
+                return decodeURIComponent(name[1]);
+        }
+
+        var akt = get("akt");
+        var open = get("open");
+        if (akt == undefined) {
+            akt = 1;
+        }
+
+        function shuffle(o) {
+            for (var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+            return o;
+        }
+        ;
+        Array.prototype.contains = function (obj) {
+            var i = this.length;
+            while (i--) {
+                if (this[i] === obj) {
+                    return true;
+                }
+            }
+            return false;
+        };
+        Polymer({
+            is: 'game-board',
+            properties: {
+                data: Object,
+               cards: { notify: true },
+                // initialize the element's model
+                width: {
+                    type: String,
+                    value: '1480px',
+                    notify: true
+                }
+            },
+            attached: function () {
+                if (akt == 1) {
+                    this.data = data1;
+                }
+                if (akt == 2) {
+                    this.data = data2;
+                }
+                var actions = shuffle(this.data.initActions);
+                var actOut = [];
+                this.data.order.forEach(function(actionid) {
+                    var  item = actions.filter(function(el) {
+                        if (actionid == undefined)
+                            return el.order == undefined;
+                        return el.order == actionid.key;
+                    })[0];
+                    var idx = actions.indexOf(item);
+                    actions.splice(idx,1);
+                    actOut.push(item);
+                });
+                this.cards = shuffle(this.data.initcards);
+                var actionIter = shuffle(actOut).entries();
+                this.splice('cards', 0, 0, actionIter.next().value[1]);
+                this.splice('cards', 6, 0, actionIter.next().value[1]);
+                this.splice('cards', 24, 0, this.data.start);
+                this.splice('cards', 42, 0, actionIter.next().value[1]);
+                this.splice('cards', 48, 0, actionIter.next().value[1]);
+                this.async(function () {
+                    // code that formerly resided in `domReady`
+                    this.$.field.children[8].show();
+                    this.$.field.children[12].show();
+                    this.$.field.children[16].show();
+                    this.$.field.children[18].show();
+                    this.$.field.children[24].show();
+                    this.$.field.children[30].show();
+                    this.$.field.children[32].show();
+                    this.$.field.children[36].show();
+                    this.$.field.children[40].show();
+                    var startarr = [
+                        8,
+                        12,
+                        16,
+                        18,
+                        24,
+                        30,
+                        32,
+                        36,
+                        40,
+                    ];
+                    var questarr = [
+                        0,
+                        6,
+                        42,
+                        48
+                    ];
+                    for (var i = 0; i <= 49; i++) {
+                        if (startarr.contains(i)) {
+                            this.$.field.children[i].show();
+                        } else {
+                            if (!questarr.contains(i)) {
+                                if (open == undefined)
+                                  this.$.field.children[i].move();
+                                else
+                                  this.$.field.children[i].show();
+                            }
+                            else {
+                                 if (open == undefined)
+                                    ;
+                                else
+                                  this.$.field.children[i].show();
+                            }
+                        }
+                    }
+
+                });
+
+            },
+            openAll: function () {
+                for (var i = 0; i < 49; i++) {
+                    this.$.field.children[i].show();
+                }
+            },
+            showCard: function (e, details, sender) {
+                var infocard = document.getElementById('details');
+                infocard.show(details);
+            } 
+        });
+        </script>
+    </dom-module>
+</body>
+
+</html>
