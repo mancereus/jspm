@@ -32,73 +32,23 @@
     <script src="js/data2.js"></script>
     <script src="js/data3.js"></script>
     <script>
-        var initcards =  [];
-         var initActions = [];
-  </template>
-</div>
-</template>
-<script>
- var initcards =  [
-
-];
- var initActions = [
- ];
-</script>
-  <script>        var initcards=[];</script>
-<script>        initcards.push.apply(initcards,actcards);</script>
-<script>        initcards.push.apply(initcards,initActions);</script>
-<script>        initcards.push.apply(initcards,secondActions);</script>
-<script src="js/data1.js"></script>
-<script>        initcards.push.apply(initcards,actcards);</script>
-<script>        initcards.push.apply(initcards,initActions);</script>
-<script>        initcards.push.apply(initcards,secondActions);</script>
-<script src="js/data2.js"></script>
-<script>        initcards.push.apply(initcards,actcards);</script>
-<script>        initcards.push.apply(initcards,initActions);</script>
-<script>        initcards.push.apply(initcards,secondActions);</script>
-<script src="js/data3.js"></script>
-<script>        initcards.push.apply(initcards,actcards);</script>
-<script>        initcards.push.apply(initcards,initActions);</script>
-
-<!--
-<script>        initcards.push.apply(initcards,normal);</script>
-<script>        initcards.push.apply(initcards,hart);</script>
-<script>        initcards.push.apply(initcards,extrem);</script>
-  <script src="js/data2.js"></script>
-<script src="js/data3.js"></script>
- -->
-<!--<script src="js/data1.js"></script>
-<script>        initcards.push.apply(initcards,initActions);</script>
-<script src="js/data2.js"></script>
-<script>        initcards.push.apply(initcards,initActions);</script>
-<script src="js/data3.js"></script>
-<script>        initcards.push.apply(initcards,initActions);</script>-->
-<script>
-  StopIteration = function () {};
-  StopIteration.prototype = new Error();
-  StopIteration.name = 'StopIteration';
-  StopIteration.message = 'StopIteration';
->>>>>>> a6d91702b0a284ff7fabcc0152bd7afac47ab1bf:app/greenhell/print-board.html
-
+        var initcards=[];
+    </script>
+    <script>
         initcards.push.apply(initcards,actcards);
         initcards.push.apply(initcards,initActions);
         initcards.push.apply(initcards,secondActions);
-        StopIteration = function () {
-            };
-        StopIteration.prototype = new Error();
-        StopIteration.name = 'StopIteration';
-        StopIteration.message = 'StopIteration';
-        arrayLikeIterator = function (arrayLike) {
-            var i = 0;
-            return {
-                'next': function () {
-                if (i >= arrayLike.length) {
-                    throw StopIteration;
-                }
-                return arrayLike[i++];
-                }
-            };
-        };
+        initcards.push.apply(initcards,actcards);
+        initcards.push.apply(initcards,initActions);
+        initcards.push.apply(initcards,secondActions);
+        initcards.push.apply(initcards,actcards);
+        initcards.push.apply(initcards,initActions);
+        initcards.push.apply(initcards,secondActions);
+        initcards.push.apply(initcards,actcards);
+        initcards.push.apply(initcards,initActions);
+        initcards.push.apply(initcards,actcards);
+        initcards.push.apply(initcards,initActions);
+        initcards.push.apply(initcards,secondActions);
     function shuffle(o) {
       for (var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
       return o;
@@ -126,7 +76,6 @@
         }
       },
       created: function () {
-        var actions = initActions;
         this.cards = initcards;
       },
       ready: function () {
