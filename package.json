@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "dev": "browser-sync start --server --files \"app/**/*,dest/**/*,bower_components/**/*\" --startPath \"/app/test/polymer\" --directory --no-notify"
+    "dev": "browser-sync start --server --files \"app/**/*,dest/**/*,bower_components/**/*\" --startPath \"/app\" --directory --no-notify"
   },
   "jspm": {
     "directories": {},
@@ -27,10 +27,11 @@
     "electron-prebuilt": "^0.30.6",
     "gulp": "^3.9.0",
     "gulp-vulcanize": "^6.1.0",
-    "gulp-markdown": "^1.2.0",    
+    "gulp-markdown": "^1.2.0",
     "jspm": "^0.16.1"
   },
   "dependencies": {
+    "gulp-crisper": "^1.0.0",
     "polybuild": "^1.1.0",
     "polyclean": "^1.3.1"
   }
