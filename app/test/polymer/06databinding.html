@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>polymer Events</title>
+    <script src="../../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+    <link rel="import" href="../../../bower_components/polymer/polymer.html">
+    <link rel="import" href="../../../bower_components/font-roboto/roboto.html">
+    <link rel="import" href="../../../bower_components/iron-demo-helpers/demo-snippet.html">
+    <link rel="import" href="../../../bower_components/iron-input/iron-input.html">
+    <style>
+        body {
+            font-family: Roboto, 'Noto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <template id="tmpl1" is="dom-bind">
+        <h2>data bind custom elements</h2>
+        <input is="iron-input" bind-value="{{inpStr}}" prevent-invalid-input allowed-pattern="[0-9]">
+        <input is="iron-input" bind-value="{{inpStr}}">
+        <h2>data bind native html elements</h2>
+        <input type="date" value="{{inpDate::input}}">
+        <input type="text" value="{{inpDate::input}}">
+        <h2>Data bind native element with select {{inp1}}</h2>
+        <input type="text" value="{{inpInt::input}}">
+        <input type="text" value="{{inpInt::input}}">
+        <select name="sel" value="{{inpInt::input}}">
+            <option value="">???</option>
+            <option value="1">one </option>
+            <option value="2">two</option>
+            <option value="3">three</option>
+        </select>
+        <h2>data bind array</h2>
+        <template is="dom-repeat" items="{{inpArray}}">
+            <input type="text" value="{{item::input}}">
+        </template>
+        <template is="dom-repeat" items="{{inpArray}}">
+            <input type="text" value="{{item::input}}">
+        </template>
+        <h2>data bind array 2D</h2>
+        <h3>Array A</h3>
+        <template is="dom-repeat" items="{{inpArray2}}" as="row">
+            <template is="dom-repeat" items="{{row}}">
+                <input type="text" value="{{item::input}}">
+            </template>
+        </template>
+        <h3>Array B</h3>
+        <template is="dom-repeat" items="{{inpArray2}}" as="row">
+            <template is="dom-repeat" items="{{row}}">
+                <input type="text" value="{{item::input}}">
+            </template>
+        </template>
+        <h2>data bind Object</h2>
+        <h3>Object >>{{inpObj.name}}<<</h3>
+        <template is="dom-repeat" items="{{inpObj.data}}">
+            <input type="text" value="{{item::input}}">
+        </template>
+        <template is="dom-repeat" items="{{inpObj.data}}">
+            <input type="text" value="{{item::input}}">
+        </template>
+    </template>
+
+    <script>
+        var tmpl = document.querySelector("#tmpl1");
+              tmpl.addEventListener('dom-change', function() {
+                 tmpl.inpStr = "12345";
+                 tmpl.inpInt = "1";
+                 tmpl.inpDate = "1922-12-12";
+                 tmpl.inpArray = [1,2,3,'vier'];
+                 tmpl.inpArray2 = [[1,2,3,'vier'],
+                 [5,6,7,'acht'],
+                 [9,10,11,'zwölf']];
+                 tmpl.inpObj = {name: "test",
+                    data: [1,2,3,4]};
+             });
+    </script>
+
+    <hr>
+</body>
+
+</html>

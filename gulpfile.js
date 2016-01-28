@@ -1,6 +1,8 @@
 var gulp = require('gulp')
 var markdown = require('gulp-markdown')
 var vulcanize = require('gulp-vulcanize')
+var crisper = require('gulp-crisper')
+var polybuild = require('polybuild')
 var del = require('del')
 var browserSync = require('browser-sync').create();
 
@@ -27,6 +29,13 @@ gulp.task('vulcan', function () {
       inlineCss: true,
       stripExcludes: true
     }))
+    .pipe(crisper())
+    .pipe(gulp.dest('dest'))
+})
+
+gulp.task('polybuild', function () {
+  return gulp.src('app/**/*.html')
+    .pipe(polybuild({maximumCrush: true}))
     .pipe(gulp.dest('dest'))
 })
 
