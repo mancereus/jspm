@@ -44,7 +44,8 @@
     "Sortable": "~1.4.2",
     "dragula.js": "dragula#~3.6.2",
     "iron-ajax": "PolymerElements/iron-ajax#~1.1.1",
-    "iron-localstorage": "PolymerElements/iron-localstorage#~1.0.5"
+    "iron-localstorage": "PolymerElements/iron-localstorage#~1.0.5",
+    "paper-toggle-button": "PolymerElements/paper-toggle-button#~1.0.14"
   },
   "devDependencies": {
     "test-fixture": "polymerelements/test-fixture#^1.0.0"

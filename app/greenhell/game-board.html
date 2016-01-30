@@ -13,6 +13,7 @@
     <link rel="import" href="game-meeple.html">
     <link rel="import" href="game-hexagon.html">
     <link rel="import" href="../../bower_components/paper-checkbox/paper-checkbox.html">
+    <link rel="import" href="../../bower_components/paper-toggle-button/paper-toggle-button.html">
     <link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
     <link rel="import" href="../../bower_components/paper-styles/paper-styles.html">
     <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
@@ -28,10 +29,15 @@
             :host {
                 display: block;
             }
-           
+            
+            select {
+                font-size: 300%;
+                margin-top: 20px;
+                margin-left: 50px;
+            }
         </style>
         <template>
-
+            <iron-localstorage auto id="local" name="config" value="{{config}}"></iron-localstorage>
             <div class="container layout horizontal ">
                 <div>
                     <div id="field" style="width: 1500px;" class="layout horizontal wrap" on-showdetails="showCard">
@@ -44,19 +50,52 @@
                 </div>
                 <div>
                     <h1 style="font-size: 500%; margin: 20px 30px;">Die grüne Hölle</h1>
-                    <select id="akt" style="font-size: 300%; margin-top: 20px;margin-left: 50px;" onchange="document.location.href = '?akt=' + this.value">
-                        <option value="">choose akt</option>
-                        <option value="1">Akt 1</option>
-                        <option value="2">Akt 2</option>
-                        <option value="1&open=true">Akt 1 offen</option>
-                        <option value="2&open=true">Akt 2 offen</option>
-                    </select>
-                    <input type="text" value="{{data.order::changed}}">
-                        <template is="dom-repeat" items="{{data.order}}" >
-                            {{item.name}}
-                        </template>
+                    <table>
+                        <tr>
+                            <td>
+                                <h2>Konfiguration</h2></td>
+                            <td>
+                                <select id="akt" value="{{config.akt::input}}">
+                                    <option value="">choose akt</option>
+                                    <option value="1">Akt 1</option>
+                                    <option value="2">Akt 2</option>
+                                </select>
+                            </td>
+                            <td>
+                                <paper-toggle-button noink checked="{{config.open}}">
+                                    <h2>Alle offen</h2></paper-toggle-button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h2>Akt 1</h2></td>
+                            <td>
+                                <select id="sterne" value="{{config.stars::input}}">
+                                    <option value="0">ohne Sterne</option>
+                                    <option value="1">ein Stern</option>
+                                    <option value="2">zwei Sterne</option>
+                                    <option value="3">drei Sterne</option>
+                                    <option value="4">vier Sterne</option>
+                                </select>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h2>Akt 2</h2></td>
+                            <td>
+                                <input type="text" value="{{config.order::changed}}">
+                            </td>
+                            <td>
+                                <template is="dom-repeat" items="{{config.order}}">
+                                    {{item.name}}
+                                </template>
+                            </td>
+                        </tr>
+                    </table>
 
-                    <div id="inv" style="margin-top: 350px;background-color: #4CBF80;padding: 10px; border: 2px solid green">
+
+                    <div id="inv" style="margin-top: 120px;background-color: #4CBF80;padding: 10px; border: 2px solid green">
                         <h2 style="font-size: 300%; margin-right: 30px;">Inventar</h2>
                         <table>
                             <tr>
@@ -98,7 +137,6 @@
                     </div>
                 </div>
             </div>
-
         </template>
         <script>
             function get(name) {
@@ -106,11 +144,6 @@
                 return decodeURIComponent(name[1]);
         }
 
-        var akt = get("akt");
-        var open = get("open");
-        if (akt == undefined) {
-            akt = 1;
-        }
 
         function shuffle(o) {
             for (var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
@@ -130,6 +163,7 @@
             is: 'game-board',
             properties: {
                 data: Object,
+                config: Object,
                cards: { notify: true },
                 // initialize the element's model
                 width: {
@@ -138,16 +172,27 @@
                     notify: true
                 }
             },
+            observers: [
+                "configChanged(config.*)"
+            ],
             attached: function () {
-                if (akt == 1) {
+                if (this.config.akt == 1) {
                     this.data = data1;
                 }
-                if (akt == 2) {
+                if (this.config.akt == 2) {
                     this.data = data2;
                 }
                 var actions = shuffle(this.data.initActions);
                 var actOut = [];
-                this.data.order.forEach(function(actionid) {
+                if (this.config == null) {
+                    this.config = {};
+                    this.config.akt = 1;
+                    this.notifyPath('config.akt',this.config.path);
+                    this.config.open = false;
+                    this.config.order = [{ key: 'home', name: 'Ausgang' }, undefined, undefined, undefined];
+                    this.config.stars = 0;
+                }
+                this.config.order.forEach(function(actionid) {
                     var  item = actions.filter(function(el) {
                         if (actionid == undefined)
                             return el.order == undefined;
@@ -197,15 +242,13 @@
                             this.$.field.children[i].show();
                         } else {
                             if (!questarr.contains(i)) {
-                                if (open == undefined)
+                                if (!this.config.open)
                                   this.$.field.children[i].move();
                                 else
                                   this.$.field.children[i].show();
                             }
                             else {
-                                 if (open == undefined)
-                                    ;
-                                else
+                                 if (!this.config.open)
                                   this.$.field.children[i].show();
                             }
                         }
@@ -222,7 +265,16 @@
             showCard: function (e, details, sender) {
                 var infocard = document.getElementById('details');
                 infocard.show(details);
-            } 
+            },
+            configChanged: function(changeRecord) {
+                console.log('path: ' + changeRecord.path);
+                console.log('value: ' + changeRecord.value);
+            },
+            refresh: function () {
+                console.log("refresh");
+                this.$.local.
+                history.go(0);
+            }, 
         });
         </script>
     </dom-module>

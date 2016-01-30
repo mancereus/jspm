@@ -49,7 +49,6 @@
         return false;
       },
       ready: function () {
-        console.log('game-piece ready ');
         var draggie = new Draggabilly(this);
         draggie.on('dragStart', function (draggieInstance, event, pointer) {
           event.preventDefault();
