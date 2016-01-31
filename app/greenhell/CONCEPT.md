@@ -26,7 +26,7 @@ Jane hat ihren Vater gefunden und Gora Gora besiegt.
 Die Kannibalen sind wieder friedlich.
 
 ## Rückseite
-
+  
 * Rückseitensymbol auf Aktionskarten 
 * Exit: für den Ausgang
 * A,B,C,D,E für Folgekarten in Akt 2
