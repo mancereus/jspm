@@ -48,12 +48,22 @@ var data2 = {
         { name: "Taleingang", Aktion: "Mit den 4 Artefakten kannst du den Eingang zum verschollenen Tal öffnen. und beendest Akt II. Lege die Artefakte dazu hier ab.", hor: "true" }
     ],
     initActions: [
-        { name: "Jäger", Aktion: "Der Großwildjäger Stoephasius klaut dir alle Artefakte und bringt sie zur gegenüberliegenden Eckkarte. Mit der Pistole kannst du sie ihm dort abnehmen.", info: "warn", bgc: "orange", win: "Fluss", bgcwin: "blue", task: true, type: "Aktionskarte" },
-        { name: "Gefangen", Aktion: "Jack wird von den Kannibalen überrascht und gefangen. Jane muss den Kannibalen den Schrumpfkopf geben, dann lassen sie Jack frei. Bis dahin kannst du Jacks Inventarkarte nicht verwenden. ", task: true, type: "Aktionskarte" },
-        { name: "Diamantenmine", Aktion: "Mit der Fackel findest du in der dunklen Mine grosse Diamanten. Wenn du Sie herausholst, verlierst du die Fackel.", info: "warn", win: "Diamantenmine", bgcwin: "green", imgclass: "symbol", task: true, type: "Aktionskarte" },
         { name: "Tiger", Aktion: "Ein Tiger überrascht euch und jagt euch 2 Felder diagonal zur Mitte. Ihr könnt die Aktion auf diesem Feld ignorieren.", task: true },
-        { name: "Königin", Aktion: "Jane wird von den Kannibalen als Dschungelkönigin verehrt. Lege mit der Fackel ein Feuer, dann kann Jane unbemerkt fliehen. Die Fackel geht in den Vorrat.", task: true },
-        { name: "Schatzkammer", order:"home", Aktion: "Ihr habt die Schatzkammer der Kannibalen gefunden. Wenn ihr die 4 Artefakte hier ablegt, findet Jane die genaue Beschreibung von El Dorado. Über einen versteckten Höhlenausgang könnt ihr das Tal verlassen. The FIN.", task: true }
+        { name: "Alligator", Aktion: "Am Fluss wird Jack von einem Alligator angefallen. Wenn ihr keine Pistole habt, wird er verletzt und ihr könnt pro Zug nur maximal 4 Schritte gehen.", task: true },
+        { name: "Affenhorde",  Aktion: "Die Affenhorde klaut einen offen liegenden Gegenstand auf dem Plan. Wähle einen Gegenstand aus und lege ihn den Vorrat", info: "problem", task: true },
+
+        { name: "Jäger", order: "accessibility", Aktion: "Der Großwildjäger Stoephasius klaut dir alle Artefakte und bringt sie zur gegenüberliegenden Eckkarte. Mit der Pistole kannst du sie ihm dort abnehmen.", info: "warn", bgc: "orange", win: "Fluss", bgcwin: "blue", task: true, type: "Aktionskarte" },
+
+        { name: "Gefangen", order: "build", Aktion: "Jack wird von den Kannibalen überrascht und gefangen. Jane muss den Kannibalen den Schrumpfkopf geben, dann lassen sie Jack frei. Bis dahin kannst du Jacks Inventarkarte nicht verwenden. ", task: true, type: "Aktionskarte" },
+
+        { name: "Diamantenmine", order: "select-all", Aktion: "Mit der Fackel findest du in der dunklen Mine grosse Diamanten. Wenn du Sie herausholst, verlierst du die Fackel.", info: "warn", win: "Diamantenmine", bgcwin: "green", imgclass: "symbol", task: true, type: "Aktionskarte" },
+        { name: "Schatzkammer", order:"select-all", Aktion: "Ihr habt die Schatzkammer der Kannibalen gefunden. Wenn ihr die 4 Artefakte hier ablegt, findet Jane die genaue Beschreibung von El Dorado. Über einen versteckten Höhlenausgang könnt ihr das Tal verlassen. The FIN.", task: true },
+
+
+        { name: "Königin", order: "gesture", Aktion: "Jane wird von den Kannibalen als Dschungelkönigin verehrt. Lege mit der Fackel ein Feuer, dann kann Jane unbemerkt fliehen. Die Fackel geht in den Vorrat.", task: true },
+        { name: "Freunde", order: "gesture", Aktion: "Jane hat sich mit den Kannibalen angefreundet. Sie erfährt von Prof. Hampton. Er war vor mehreren Monate auch hier und ist weiter zur sagenhaften Stadt El Dorado gezogen.", task: true },
+
+        { name: "Fluss", order: "home", Aktion: "Wenn du alle anderen Aktionskarten erfüllt hast, könnt ihr mit dem Boot über den Fluss das Abenteuer beenden.", task: true },
     ], 
     start: {name: "Akt II", task: true,
     Aktion: "Ihr erreicht das 'Reich der Schlangen', in dem Prof Hampton verschwunden ist. Sucht nach dem Zugang zum verschollenen Tal."},

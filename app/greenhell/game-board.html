@@ -46,6 +46,9 @@
                             </game-card>
                         </template>
                         <game-hexagon imgsrc="Jack" top="-1140" left="680"></game-hexagon>
+                    <template is="dom-repeat" items="{{vorrat}}" index-as="index">
+                        <game-piece img="img/{{item}}.png" top="{{getTop(-2080, index, 120)}}" left="2250" imgclass="symbol"></game-piece>
+                    </template>
                     </div>
                 </div>
                 <div>
@@ -56,7 +59,6 @@
                                 <h2>Konfiguration</h2></td>
                             <td>
                                 <select id="akt" value="{{config.akt::input}}">
-                                    <option value="">choose akt</option>
                                     <option value="1">Akt 1</option>
                                     <option value="2">Akt 2</option>
                                 </select>
@@ -66,36 +68,42 @@
                                     <h2>Alle offen</h2></paper-toggle-button>
                             </td>
                         </tr>
+                        <template is="dom-if" if="{{isAkt(config.akt, 1)}}">
                         <tr>
                             <td>
                                 <h2>Akt 1</h2></td>
                             <td>
-                                <select id="sterne" value="{{config.stars::input}}">
+                                <select  id="sterne" value="{{config.stars::input}}">
                                     <option value="0">ohne Sterne</option>
                                     <option value="1">ein Stern</option>
                                     <option value="2">zwei Sterne</option>
                                     <option value="3">drei Sterne</option>
-                                    <option value="4">vier Sterne</option>
                                 </select>
                             </td>
-                            <td></td>
+                            <td>
+                            </td>
                         </tr>
+                        </template>
                         <tr>
                             <td>
                                 <h2>Akt 2</h2></td>
                             <td>
-                                <input type="text" value="{{config.order::changed}}">
+                                <paper-toggle-button noink checked="{{config.check.jaeger}}">
+                                    <h2><iron-icon icon="accessibility"></iron-icon> Jäger</h2></paper-toggle-button>
+                                <paper-toggle-button noink checked="{{config.check.jane}}">
+                                    <h2><iron-icon icon="gesture"></iron-icon> Jane</h2></paper-toggle-button>
+                                <paper-toggle-button noink checked="{{config.check.jack}}">
+                                    <h2><iron-icon icon="build"></iron-icon> Jack</h2></paper-toggle-button>
+                                <paper-toggle-button noink checked="{{config.check.mine}}">
+                                    <h2><iron-icon icon="select-all"></iron-icon> Mine</h2></paper-toggle-button>
                             </td>
                             <td>
-                                <template is="dom-repeat" items="{{config.order}}">
-                                    {{item.name}}
-                                </template>
                             </td>
                         </tr>
                     </table>
 
 
-                    <div id="inv" style="margin-top: 120px;background-color: #4CBF80;padding: 10px; border: 2px solid green">
+                    <div id="inv" style="margin-top: 50px;background-color: #4CBF80;padding: 10px; border: 2px solid green">
                         <h2 style="font-size: 300%; margin-right: 30px;">Inventar</h2>
                         <table>
                             <tr>
@@ -136,6 +144,9 @@
                         <game-show-details id="details"></game-show-details>
                     </div>
                 </div>
+                <div>
+                    <h1>Vorrat</h1>
+                </div>
             </div>
         </template>
         <script>
@@ -164,6 +175,10 @@
             properties: {
                 data: Object,
                 config: Object,
+                vorrat: {
+                    type: Array,
+                    value: ['Fackel','Liane','Liane','Machete','Machete','Gegengift','Gegengift','Boot','Schrumpfkopf','Rucksack','Tagebuch']
+                },
                cards: { notify: true },
                 // initialize the element's model
                 width: {
@@ -176,32 +191,67 @@
                 "configChanged(config.*)"
             ],
             attached: function () {
+                if (this.config == undefined) {
+                    this.config = {};
+                    this.config.check = {};
+                    this.config.akt = 1;
+                    this.config.akt2 = {};
+                    this.notifyPath('config.akt',this.config.path);
+                    this.config.open = false;
+                    this.config.stars = 0;
+                }
                 if (this.config.akt == 1) {
                     this.data = data1;
                 }
                 if (this.config.akt == 2) {
                     this.data = data2;
+                    
                 }
+                
                 var actions = shuffle(this.data.initActions);
-                var actOut = [];
-                if (this.config == null) {
-                    this.config = {};
-                    this.config.akt = 1;
-                    this.notifyPath('config.akt',this.config.path);
-                    this.config.open = false;
-                    this.config.order = [{ key: 'home', name: 'Ausgang' }, undefined, undefined, undefined];
-                    this.config.stars = 0;
+                var actIn = [];
+                 if (this.config.akt == 1) {
+                   this.config.akt1 = ['home', undefined, undefined, undefined];
+                    for (var i=0; i<this.config.stars;i++) {
+                        this.config.akt1[i+1] = 'star';
+                    }
+                   actIn = this.config.akt1;
+                    
                 }
-                this.config.order.forEach(function(actionid) {
+                 if (this.config.akt == 2) {
+                    if(this.config.check == undefined)
+                        this.config.check = {};
+                   this.config.akt2 = ['home'];
+                   if(this.config.check.jane) {
+                       this.config.akt2.push('gesture');
+                   }
+                   if(this.config.check.jaeger) {
+                       this.config.akt2.push('accessibility');
+                   }
+                   if(this.config.check.jack) {
+                       this.config.akt2.push('build');
+                   }
+                   if(this.config.check.mine) {
+                       this.config.akt2.push('select-all');
+                   }
+                     for (var i=this.config.akt2.length; i<4;i++) {
+                        this.config.akt2[i+1] = undefined;
+                    }
+                   actIn = this.config.akt2;
+                }
+                console.log(actIn);
+                var actOut = [];
+                actIn.forEach(function(actionid) {
                     var  item = actions.filter(function(el) {
-                        if (actionid == undefined)
+                        if (actionid == undefined||actionid == null)
                             return el.order == undefined;
-                        return el.order == actionid.key;
+                        return el.order == actionid;
                     })[0];
                     var idx = actions.indexOf(item);
                     actions.splice(idx,1);
                     actOut.push(item);
                 });
+                
                 this.cards = shuffle(this.data.initcards);
                 var actionIter = shuffle(actOut).entries();
                 this.splice('cards', 0, 0, actionIter.next().value[1]);
@@ -248,7 +298,7 @@
                                   this.$.field.children[i].show();
                             }
                             else {
-                                 if (!this.config.open)
+                                 if (this.config.open)
                                   this.$.field.children[i].show();
                             }
                         }
@@ -265,6 +315,15 @@
             showCard: function (e, details, sender) {
                 var infocard = document.getElementById('details');
                 infocard.show(details);
+            },
+            isAkt: function (akt, target) {
+                return akt == target;
+            },
+            getTop: function (base, index,step) {
+                return base +index*step;
+            },
+            getLeft: function (base, index) {
+                return base+index*20;
             },
             configChanged: function(changeRecord) {
                 console.log('path: ' + changeRecord.path);

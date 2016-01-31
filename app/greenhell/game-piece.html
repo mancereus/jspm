@@ -3,12 +3,11 @@
 <link rel="import" href="../../bower_components/paper-ripple/paper-ripple.html">
 <dom-module id="game-piece">
   <style>
-		:host {
+      :host {z-index: 2000;}
+		div {
 			position: absolute;
 			width: 112px;
 			height: 112px;
-			top: -200px;
-			left: 0px;
 			border-radius: 50%;
 			color: #fff;
 			overflow: hidden;
@@ -40,6 +39,8 @@
     Polymer({
       is: 'game-piece',
       properties: {
+          top: Number,
+          left: Number,
         img: { notify: true },
         imgclass: { notify: true }
       },
@@ -47,6 +48,14 @@
         ev.preventDefault();
         ev.stopPropagation();
         return false;
+      },
+      attached: function () {
+          if(this.top) {
+              this.style.top = this.top + "px";
+          }
+          if(this.left) {
+              this.style.left = this.left + "px";
+          }
       },
       ready: function () {
         var draggie = new Draggabilly(this);
