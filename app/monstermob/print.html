@@ -3,6 +3,10 @@
 
 <head>
 	<meta charset="utf-8">
+    <script src="../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+    <link rel="import" href="../../bower_components/polymer/polymer.html">
+    <link rel="import" href="../components/page-break-div/page-break-div.html">
+    <script src="data.js"></script>
 	<title>MonsterMob</title>
 	<style>
 		.card {
@@ -12,6 +16,7 @@
 			display: inline-block;
 			text-align: center;
 			vertical-align: middle;
+            margin: 1px;
 		}
 		
 		.page-break {
@@ -38,7 +43,9 @@
 			font-size: 18pt;
 			font-weight: bold;
 			margin: 2px 0 2px 0;
-			width: 80%;
+			width: 98%;
+            display: flex;
+            justify-content: space-around
 		}
 		.titel {
 			display: inline-block;
@@ -65,7 +72,7 @@
 		}
 		
 		.icon {
-			margin-top: 10px;
+			margin-top: 5px;
 			width: 113px;
 			height: 44px;
 		}
@@ -73,97 +80,25 @@
 </head>
 
 <body>
-	<div class="card dark">
-		<div class="head"><span class="count">4x</span><div class="titel">Mob</div></div>
-		<img src="img/mob2.png"></img>
-		<hr/><img class="icon" src="img/mobicon.png"></img>
-	</div>
-	<div class="card dark">
-		<div class="head"><span class="count">4x</span><div class="titel">Mob</div></div>
-		<img src="img/mob2.png"></img>
-		<hr/><img class="icon" src="img/mobicon.png"></img>
-	</div>
-	<div class="card dark">
-		<div class="head"><span class="count">4x</span><div class="titel">Mob</div></div>
-		<img src="img/mob2.png"></img>
-		<hr/><img class="icon" src="img/mobicon.png"></img>
-	</div>
-	<div class="card dark">
-		<div class="head"><span class="count">4x</span><div class="titel">Mob</div></div>
-		<img src="img/mob2.png"></img>
-		<hr/><img class="icon" src="img/mobicon.png"></img>
-	</div>
-	<div class="card dark">
-		<div class="head"><span class="count">3x</span><div class="titel">Biss</div></div>
-		<img src="img/biss.jpg"></img>
-		<hr/><img class="icon" src="img/bissicon.png"></img>
-	</div>
-	<div class="card dark">
-		<div class="head"><span class="count">3x</span><div class="titel">Biss</div></div>
-		<img src="img/biss.jpg"></img>
-		<hr/><img class="icon" src="img/bissicon.png"></img>
-	</div>
-	<div class="card dark">
-		<div class="head"><span class="count">3x</span><div class="titel">Biss</div></div>
-		<img src="img/biss.jpg"></img>
-		<hr/><img class="icon" src="img/bissicon.png"></img>
-	</div>
-	<div class="card dark">
-		<div class="head"><span class="count">3x</span><div class="titel">Dieb</div></div>
-		<img src="img/dieb.jpg"></img>
-		<hr/><img class="icon" src="img/diebicon.png"></img>
-	</div>
-	<div class="card dark">
-		<div class="head"><span class="count">3x</span><div class="titel">Dieb</div></div>
-		<img src="img/dieb.jpg"></img>
-		<hr/><img class="icon" src="img/diebicon.png"></img>
-	</div>
-	<div class="page-break">page-break</div>
-	<div class="card dark">
-		<div class="head"><span class="count">3x</span><div class="titel">Dieb</div></div>
-		<img src="img/dieb.jpg"></img>
-		<hr/><img class="icon" src="img/diebicon.png"></img>
-	</div>
-	<div class="card">
-		<div class="head"><span class="count">2x</span><div class="titel">Herz</div></div>
-		<img src="img/herz.jpg"></img>
-		<hr/><img class="icon" src="img/herzicon.png"></img>
-	</div>
-	<div class="card">
-		<div class="head"><span class="count">2x</span><div class="titel">Herz</div></div>
-		<img src="img/herz.jpg"></img>
-		<hr/><img class="icon" src="img/herzicon.png"></img>
-	</div>
-	<div class="card">
-		<div class="head"><span class="count">4x</span><div class="titel">Schatz</div></div>
-		<img src="img/schatz.png"></img>
-		<hr/><img class="icon" src="img/schatzicon.png"></img>
-	</div>
-	<div class="card">
-		<div class="head"><span class="count">4x</span><div class="titel">Schatz</div></div>
-		<img src="img/schatz.png"></img>
-		<hr/><img class="icon" src="img/schatzicon.png"></img>
-	</div>
-	<div class="card">
-		<div class="head"><span class="count">4x</span><div class="titel">Schatz</div></div>
-		<img src="img/schatz.png"></img>
-		<hr/><img class="icon" src="img/schatzicon.png"></img>
-	</div>
-	<div class="card">
-		<div class="head"><span class="count">4x</span><div class="titel">Schatz</div></div>
-		<img src="img/schatz.png"></img>
-		<hr/><img class="icon" src="img/schatzicon.png"></img>
-	</div>
-	<div class="card">
-		<div class="head"><span class="count">2x</span><div class="titel">Tür</div></div>
-		<img src="img/tuer.jpg"></img>
-		<hr/><img class="icon" src="img/tuericon.png"></img>
-	</div>
-	<div class="card">
-		<div class="head"><span class="count">2x</span><div class="titel">Tür</div></div>
-		<img src="img/tuer.jpg"></img>
-		<hr/><img class="icon" src="img/tuericon.png"></img>
-	</div>
+        <template id="tmpl" is="dom-bind">
+        <div style="width:1050px">
+            <template is="dom-repeat" items="{{cards}}">
+
+                <div class$="card {{item.dark}}" >
+                    <div class="head"><span class="count">{{item.count}}x</span><div class="titel">{{item.type}}</div><span class="count">{{item.subtype}}</span></div>
+                    <img src="img/{{item.type}}.png"></img>
+                    <hr/><img class="icon" src="img/{{item.type}}icon.png"></img>
+                </div>
+                <page-break-div nmbr="{{index}}" max="18"></page-break-div>
+            </template>
+        </div>
+    </template>
+
+    <script>
+        var t = document.querySelector('#tmpl');
+		t.cards = cards;
+    </script>
+	
 </body>
 
 </html>
