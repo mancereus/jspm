@@ -2,7 +2,7 @@
 <html>
 
 <head>
-	<title>ZenMeister Beta</title>
+	<title>ZenMeister</title>
 	<link rel="import" href="../../bower_components/polymer/polymer.html">
 	<script src="data.js"></script>
 	<link rel="stylesheet" href="../css/main.css">
@@ -90,13 +90,13 @@
 <body>
 	<h1>ZenMeister</h1>
 	<h2>Der ZenMeister versucht seine Schüler auf den Weg der Erleuchtung zu bringen...</h2>
-	<h3>1. Finde ein Lösungswort mit den folgenden Eingenschaften:</h3>
+	<h3>1. Finde ein DIng  mit den folgenden Eingenschaften:</h3>
 	<template id="tmpl" is="dom-bind">
 		<template is="dom-repeat" items="{{cards}}">
 
 			<div class$="{{item.type}}">
 				<div class="card">
-					<span class="header">{{item.type}}</span><span class="header"> ?</span>
+					<span class="header">{{item.type}} / {{item.type2}}</span>
 					<br/>
 					<span>{{item.name}}</span>
 				</div>
@@ -107,7 +107,7 @@
 		<br/>
 		<h3>2. Schreibe deine Lösung auf:</h3>
 		<input style="width: 250px;" class="try inp"></input>
-		<h3>3. Die Schüler müssen mit 10 Versuchen einen Begriff finden der allen Eigenschaften entspricht. SIe dürfen sich 3mal einen Tipp zu einer Spalte geben lassen.</h3>
+		<h3>3. Die Schüler müssen mit 7 Versuchen einen Begriff finden der allen Eigenschaften entspricht. SIe dürfen sich 3mal einen Tipp zu einer Spalte geben lassen.</h3>
 	</template>
 
 	<script>
