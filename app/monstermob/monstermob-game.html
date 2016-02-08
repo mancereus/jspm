@@ -3,8 +3,8 @@
 <link rel="import" href="../../bower_components/paper-styles/paper-styles.html">
 <link rel="import" href="../../bower_components/paper-card/paper-card.html">
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
-
 <link rel="import" href="monstermob-container.html">
+<link rel="import" href="monstermob-card.html">
 
 <dom-module id="monstermob-game">
 
@@ -28,15 +28,8 @@
             }
         </style>
         <template is="dom-repeat" items="{{players}}">
-
-            <paper-card heading="{{item}}" container="{{item}}">
-                <div class="card-content">
-                    {{item}}xx
-                </div>
-                <div class="card-actions">
-                    <iron-icon icon="refresh" on-tap="reroll"></iron-icon>
-                </div>
-            </paper-card>
+            <monstermob-container container="{{item}}" data="{{data}}">
+            </monstermob-container>
 
         </template>
     </template>
@@ -45,13 +38,44 @@
         Polymer({
             is: 'monstermob-game',
             properties: {
+                data: Array,
                 players : {
                     type:Array,
                     value: function() {
-                        return ['player1','player2','player3'];
+                        return [
+                            {name:'player1', life: 2, gold: 1},
+                            {name:'player2', life: 2, gold: 1},
+                            {name:'player3', life: 2, gold: 1},
+                            {name:'player4', life: 2, gold: 1},
+                        ];
                     }
                 }
             },
+            ready: function() {
+                this.data = this.shuffle(cards);   
+                var count = 0;
+                for(idx in this.players) {
+                    this.data[count++].owner = this.players[idx].name;
+                    this.data[count++].owner = this.players[idx].name;
+                }
+            },
+            refill: function() {
+                var count = 0;
+                for(idx in this.players) {
+                    var filtered = this.data.filter(isOwner(this.players[idx].name));
+                    if (filtered.length == 1) {
+                    }
+                }
+            },
+			isOwner: function (item , own){
+                return item.owner == own;
+            },
+			shuffle: function (o){
+			    for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+			    return o;
+			},
+            attached: function() {
+            }
         });
     </script>
 

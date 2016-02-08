@@ -2,8 +2,9 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/paper-styles/paper-styles.html">
 <link rel="import" href="../../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../../bower_components/paper-slider/paper-slider.html">
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
-<link rel="import" href="../components/board-game-dice/board-game-dice.html">
+<link rel="import" href="monstermob-card.html">
 
 <link rel="import" href="../components/board-game-container/DraggableContainerBehavior.html">
 
@@ -21,16 +22,33 @@
                 -ms-user-select: none;
                 user-select: none;
             }
-
-            #tmpl {
+          paper-slider.red {
+            --paper-slider-knob-color: var(--paper-red-500);
+            --paper-slider-active-color: var(--paper-red-500);
+          }
+          paper-slider.yellow {
+            --paper-slider-knob-color: var(--google-yellow-500);
+            --paper-slider-active-color: var(--google-yellow-500);
+          }
+            .knobs {
                 display: flex;
                 justify-content: space-around;
                 align-content: space-between;
             }
         </style>
-        <paper-card heading="{{container}}" container="{{container}}" on-drop-card="dropCard">
+        <paper-card heading="{{container.name}}" container="{{container.name}}" on-drop-card="dropCard">
             <div class="card-content">
-                <template is="dom-repeat" id="tmpl">
+                <div class="knobs">                    
+                <div>
+                    Life
+                </div>
+                <paper-slider class="red" min="0" max="5" snaps editable pin value="{{container.life}}"></paper-slider>
+                <div>
+                    Gold
+                </div>                
+                <paper-slider class="yellow" min="0" max="5" snaps editable pin value="{{container.gold}}"></paper-slider>                
+                </div>
+                <template is="dom-repeat" items="{{data}}" filter="hasOwner">
                     <monstermob-card data="{{item}}" draggable="true" ></monstermob-card>
                 </template>
             </div>
@@ -43,11 +61,29 @@
     <script>
         Polymer({
             is: 'monstermob-container',
-            behaviors: [DraggableContainerBehavior],
+            properties: {
+            container: {
+                type: Object
+            },
+            data: {
+                type: Array,
+                value: function () { return []; }
+            }
+                    },
+                observers: [
+                'refresh(data.*)'
+            ],
+            hasOwner: function (item) {
+                    return item.owner == this.container.name;
+            },
+            attached: function() {
+                console.log(this.data);
+            },
             dropCard: function (e) {
                 console.log("dropCard " + e);
                 
             }
+
         });
     </script>
 
