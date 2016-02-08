@@ -1,0 +1,50 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="monstermob-game.html">
+<script src="data.js"></script>
+<title>MonsterMob</title>
+<link href="monstermob.css" rel="stylesheet" type="text/css" />
+
+<dom-module id="monstermob-card">
+
+    <template>
+        <div class$="card {{data.dark}}">
+            <div class="head"><span class="count">{{data.count}}x</span>
+                <div class="titel">{{data.type}}</div><span class="count">{{data.subtype}}</span></div>
+            <img src="img/{{data.type}}.png"></img>
+            <hr/><img class="icon" src="img/{{data.type}}icon.png"></img>
+        </div>
+    </template>
+
+    <script>
+        Polymer({
+            is: 'monstermob-card',
+            properties: {
+                data: Object
+            },
+            listeners: {
+                'track': 'handleTrack',
+            },
+            regularTap: function (e) {
+                console.log("Thank you for tapping");
+            },
+            attached: function () {
+                console.log(this.data);
+            },
+            handleTrack: function (e) {
+                switch (e.detail.state) {
+                    case 'start':
+                        console.log('Tracking started!');
+                        break;
+                    case 'track':
+                        console.log('Tracking in progress... ');
+                        break;
+                    case 'end':
+                        var target = e.detail.hover();
+                        this.fire("dropCard", this.data, {node: target});
+                        break;
+                }
+            }
+        });
+    </script>
+
+</dom-module>

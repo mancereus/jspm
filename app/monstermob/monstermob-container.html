@@ -1,0 +1,54 @@
+<!doctype html>
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-styles/paper-styles.html">
+<link rel="import" href="../../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../components/board-game-dice/board-game-dice.html">
+
+<link rel="import" href="../components/board-game-container/DraggableContainerBehavior.html">
+
+<dom-module id="monstermob-container">
+
+    <template>
+        <style>
+            :host {
+                cursor: pointer;
+                padding: 4px;
+                -webkit-touch-callout: none;
+                -webkit-user-select: none;
+                -khtml-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+            }
+
+            #tmpl {
+                display: flex;
+                justify-content: space-around;
+                align-content: space-between;
+            }
+        </style>
+        <paper-card heading="{{container}}" container="{{container}}" on-drop-card="dropCard">
+            <div class="card-content">
+                <template is="dom-repeat" id="tmpl">
+                    <monstermob-card data="{{item}}" draggable="true" ></monstermob-card>
+                </template>
+            </div>
+            <div class="card-actions">
+                <iron-icon icon="refresh" on-tap="reroll"></iron-icon>
+            </div>
+        </paper-card>
+    </template>
+
+    <script>
+        Polymer({
+            is: 'monstermob-container',
+            behaviors: [DraggableContainerBehavior],
+            dropCard: function (e) {
+                console.log("dropCard " + e);
+                
+            }
+        });
+    </script>
+
+</dom-module>

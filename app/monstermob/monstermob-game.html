@@ -1,0 +1,58 @@
+<!doctype html>
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-styles/paper-styles.html">
+<link rel="import" href="../../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+
+<link rel="import" href="monstermob-container.html">
+
+<dom-module id="monstermob-game">
+
+    <template>
+        <style>
+            :host {
+                cursor: pointer;
+                padding: 4px;
+                -webkit-touch-callout: none;
+                -webkit-user-select: none;
+                -khtml-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+            }
+            
+            #tmpl {
+                display: flex;
+                justify-content: space-around;
+                align-content: space-between;
+            }
+        </style>
+        <template is="dom-repeat" items="{{players}}">
+
+            <paper-card heading="{{item}}" container="{{item}}">
+                <div class="card-content">
+                    {{item}}xx
+                </div>
+                <div class="card-actions">
+                    <iron-icon icon="refresh" on-tap="reroll"></iron-icon>
+                </div>
+            </paper-card>
+
+        </template>
+    </template>
+
+    <script>
+        Polymer({
+            is: 'monstermob-game',
+            properties: {
+                players : {
+                    type:Array,
+                    value: function() {
+                        return ['player1','player2','player3'];
+                    }
+                }
+            },
+        });
+    </script>
+
+</dom-module>
