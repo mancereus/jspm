@@ -2,6 +2,8 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/paper-styles/paper-styles.html">
 <link rel="import" href="../../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../../bower_components/iron-icon/iron-icon.html">
 <link rel="import" href="../../bower_components/paper-slider/paper-slider.html">
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="monstermob-card.html">
@@ -22,69 +24,88 @@
                 -ms-user-select: none;
                 user-select: none;
             }
-          paper-slider.red {
-            --paper-slider-knob-color: var(--paper-red-500);
-            --paper-slider-active-color: var(--paper-red-500);
-          }
-          paper-slider.yellow {
-            --paper-slider-knob-color: var(--google-yellow-500);
-            --paper-slider-active-color: var(--google-yellow-500);
-          }
+            
+            paper-slider.red {
+                --paper-slider-knob-color: var(--paper-red-500);
+                --paper-slider-active-color: var(--paper-red-500);
+            }
+            
+            paper-slider.yellow {
+                --paper-slider-knob-color: var(--google-yellow-500);
+                --paper-slider-active-color: var(--google-yellow-500);
+            }
+            
+            paper-button {
+                background-color: var(--paper-green-500) !important;
+                color: white !important;
+                padding: 4px;
+            }
+            
             .knobs {
                 display: flex;
                 justify-content: space-around;
                 align-content: space-between;
             }
         </style>
-        <paper-card heading="{{container.name}}" container="{{container.name}}" on-drop-card="dropCard">
+        <paper-card heading="{{container.name}} {{activePlayer}}" container="{{container.name}}" on-drop-card="dropCard">
             <div class="card-content">
-                <div class="knobs">                    
-                <div>
-                    Life
-                </div>
-                <paper-slider class="red" min="0" max="5" snaps editable pin value="{{container.life}}"></paper-slider>
-                <div>
-                    Gold
-                </div>                
-                <paper-slider class="yellow" min="0" max="5" snaps editable pin value="{{container.gold}}"></paper-slider>                
+                <div class="knobs">
+                    <div>
+                        Life
+                    </div>
+                    <paper-slider class="red" min="0" max="5" snaps editable pin value="{{container.life}}"></paper-slider>
+                    <div>
+                        Gold
+                    </div>
+                    <paper-slider class="yellow" min="0" max="5" snaps editable pin value="{{container.gold}}"></paper-slider>
                 </div>
                 <template is="dom-repeat" items="{{data}}" filter="hasOwner">
-                    <monstermob-card data="{{item}}" draggable="true" ></monstermob-card>
+                    <monstermob-card data="{{item}}" draggable="true"></monstermob-card>
                 </template>
             </div>
             <div class="card-actions">
-                <iron-icon icon="refresh" on-tap="reroll"></iron-icon>
+                Aktionen: 
+                <template is="dom-if" if="{{!container.active}}">
+                    <paper-button on-tap="makeTip">
+                        <iron-icon icon="menu"></iron-icon>
+                        Tippen
+                    </paper-button>
+
+                </template>
             </div>
         </paper-card>
     </template>
 
     <script>
-        Polymer({
-            is: 'monstermob-container',
-            properties: {
+    Polymer({
+        is: 'monstermob-container',
+        properties: {
             container: {
                 type: Object
             },
             data: {
                 type: Array,
                 value: function () { return []; }
-            }
-                    },
-                observers: [
-                'refresh(data.*)'
-            ],
-            hasOwner: function (item) {
-                    return item.owner == this.container.name;
             },
-            attached: function() {
-                console.log(this.data);
-            },
-            dropCard: function (e) {
-                console.log("dropCard " + e);
-                
+            activePlayer: {
+                type: String,
+                computed: 'isActive(container)'
             }
+        },
+        isActive: function (container) {
+            return container.active ? "am Zug" : "";
+        },
+        hasOwner: function (item) {
+            return item.owner == this.container.name;
+        },
+        attached: function () {
+            console.log(this.data);
+        },
+        makeTip: function (e) {
+            console.log("dropCard " + e);
 
-        });
+        }
+    });
     </script>
 
 </dom-module>
