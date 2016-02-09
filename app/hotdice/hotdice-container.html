@@ -34,9 +34,11 @@
                     <board-game-dice on-track="trackElement" draggable="true" color="{{item.color}}" items="{{item.items}}"></board-game-dice>
                 </template>
             </div>
+            <template is="dom-if" if="{{notStack(container)}}">
             <div class="card-actions">
                 <iron-icon icon="refresh" on-tap="reroll"></iron-icon>
             </div>
+            </template>
         </paper-card>
     </template>
 
@@ -47,7 +49,12 @@
             reroll: function () {
                 Polymer.dom(this.root).querySelectorAll("board-game-dice")
                     .forEach(function(entry) {entry.reroll()});
-            }
+            },
+            notStack: function (container) {
+                return container != "stack";
+
+            },
+            
         });
     </script>
 
