@@ -3,6 +3,7 @@
 <link rel="import" href="../../bower_components/paper-styles/paper-styles.html">
 <link rel="import" href="../../bower_components/paper-card/paper-card.html">
 <link rel="import" href="../../bower_components/paper-slider/paper-slider.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="monstermob-container.html">
 <link rel="import" href="monstermob-card.html">
@@ -11,7 +12,6 @@
 
     <template>
         <style>
-            
             :host {
                 cursor: pointer;
                 padding: 4px;
@@ -22,19 +22,45 @@
                 -ms-user-select: none;
                 user-select: none;
             }
-            
-            div {
+
+            div.flex {
                 display: flex;
                 flex-wrap: wrap;
                 justify-content: space-around;
                 align-content: space-between;
             }
-            
+
+            paper-button {
+                background-color: var(--paper-orange-500) !important;
+                color: white !important;
+                padding: 4px;
+            }
         </style>
-        <div>            
+        <div class="flex">
             <template is="dom-repeat" items="{{players}}">
-                <monstermob-container container="{{item}}" data="{{data}}">
-                </monstermob-container>
+                <template is="dom-if" if="{{item.name}}">
+                    <monstermob-container container="{{item}}" data="{{data}}">
+                    </monstermob-container>
+                </template>
+                <template is="dom-if" if="{{!item.name}}">
+                    <div style="border: 5px solid black;padding: 20px;background-color: white; text-align: center;">
+                        <h1>Monster Mob</h1>
+                        <template is="dom-if" if="{{isDirection(item, 'left')}}">
+                            <iron-icon style="width: 100px;height: 100px;" icon="chevron-left"></iron-icon>
+                        </template>
+                        <img src="img/Biss.png">
+                        <br>
+                        <template is="dom-if" if="{{isDirection(item, 'right')}}">
+                            <iron-icon style="width: 100px;height: 100px;" icon="chevron-right"></iron-icon>
+                        </template>
+                        <br>
+                        <paper-button on-tap="moveMonster">
+                            weiter</paper-button>
+                        <paper-button on-tap="rotateMonster">
+                            <iron-icon icon="autorenew"></iron-icon>
+                            rotate</paper-button>
+                    </div>
+                </template>
             </template>
         </div>
     </template>
@@ -46,23 +72,48 @@
                 data: Array,
                 players : {
                     type:Array,
+                    notify: true,
                     value: function() {
                         return [
                             {name:'player1', life: 2, gold: 1, active:true},
                             {name:'player2', life: 2, gold: 1},
                             {name:'player3', life: 2, gold: 1},
                             {name:'player4', life: 2, gold: 1},
+                            {type:'monster', direction: 'left'}
                         ];
                     }
                 }
             },
             ready: function() {
-                this.data = this.shuffle(cards);   
+                this.data = this.shuffle(cards);
                 var count = 0;
                 for(idx in this.players) {
+                    if (this.players[idx].type != 'monster') {
                     this.data[count++].owner = this.players[idx].name;
                     this.data[count++].owner = this.players[idx].name;
+                    }
                 }
+            },
+            getMonsterIdx: function() {
+                return this.players.map(function(e) { return e.type; }).indexOf('monster');
+            },
+            getMonster: function() {
+                return this.players[this.getMonsterIdx()];
+            },
+            rotateMonster: function() {
+                if (this.getMonster().direction == 'left')
+                    this.getMonster().direction = 'right';
+                else
+                    this.getMonster().direction = 'left';
+                    this.notifyPath('players.splices');
+            },
+            moveMonster: function() {
+                var index = this.getMonsterIdx();
+                var monster = this.players[index];
+                var by = (monster.direction == 'left') ? -1 :  1;
+                var newPos = index + by % this.players.length;
+                this.players.splice(index,1);
+                this.players.splice(newPos,0,monster);
             },
             refill: function() {
                 var count = 0;
@@ -71,6 +122,9 @@
                     if (filtered.length == 1) {
                     }
                 }
+            },
+			isDirection: function (item, dir){
+                return item.direction == dir;
             },
 			isOwner: function (item , own){
                 return item.owner == own;

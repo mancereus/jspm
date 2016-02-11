@@ -8,6 +8,7 @@
 <link rel="import" href="../../bower_components/paper-slider/paper-slider.html">
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="monstermob-card.html">
+<script src="../../bower_components/sugar/release/sugar.min.js"></script>
 
 <link rel="import" href="../components/board-game-container/DraggableContainerBehavior.html">
 
@@ -93,14 +94,14 @@
                         <p>Welche Karte wurde gelegt?</p>
                         <div style="background-color: lightgray; border-radius: 12px;height: 35px; width:18px; padding: 20px;">?</div>
                         <div style="display:flex;flex-direction: column; justify-content: space-around;align-content: space-between;">
-                            <template is="dom-repeat" items="{{data}}" filter="hasOwner">
+                            <template is="dom-repeat" items="{{data}}" filter="hasOwner" observe="owner">
                                 <paper-button class="orange" style="height: 20px; width:80px; padding:3px" on-tap="chooseTip">{{item.type}} {{item.subtype}}</paper-button>
                             </template>
                         </div>
                     </div>
                 </template>
                 <template is="dom-if" if="{{!tipp}}">
-                    <template is="dom-repeat" items="{{data}}" filter="hasOwner">
+                    <template is="dom-repeat" items="{{data}}" filter="hasOwner" observe="owner">
                         <monstermob-card data="{{item}}" draggable="true"></monstermob-card>
                     </template>
                 </template>
@@ -117,12 +118,14 @@
             </div>
         </paper-card>
         <paper-dialog class="green" id="success">
-            <h2>Richtig</h2>
+            <h2>{{testCard.type}} {{testCard.subtype}} ist richtig.</h2>
             <p>Du hast die richtige Karte getippt. </p>
+            <monstermob-card data="{{tippCard}}"></monstermob-card>
         </paper-dialog>
         <paper-dialog class="red" id="failure">
-            <h2>Falsch</h2>
+            <h2>{{testCard.type}} {{testCard.subtype}} ist falsch</h2>
             <p>Du hast die falsche Karte getippt. </p>
+            <monstermob-card data="{{tippCard}}"></monstermob-card>
         </paper-dialog>
     </template>
 
@@ -137,6 +140,12 @@
             container: {
                 type: Object
             },
+            testCard: {
+                type: Object
+            },
+            tippCard: {
+                type: Object
+            },
             data: {
                 type: Array,
                 value: function () { return []; }
@@ -145,6 +154,7 @@
                 type: String,
                 computed: 'isActive(container)'
             }
+
         },
         isActive: function (container) {
             return container.active ? "am Zug" : "";
@@ -155,18 +165,40 @@
         attached: function () {
             console.log(this.data);
         },
+        getCards: function () {
+            var owner = this.container.name;
+            return this.data.filter(function(n) {
+                return n.owner == owner;
+            });
+
+        },
         startTip: function (e) {
             console.log("dropCard " + e);
             this.tipp = true;
+            this.tippCard = this.getCards().sample();
 
+        },
+        equals: function (card1, card2) {
+            return card1.type == card2.type && card1.subtype == card2.subtype;
+
+        },
+        indexOfCard: function (card) {
+            return this.data.indexOf(card);
         },
         chooseTip: function (e) {
             console.log("dropCard " + e);
             this.tipp = false;
-            if (Math.random() < 0.5)
-            this.$.success.open();
-            else
-            this.$.failure.open();
+            var cards = this.getCards();
+            this.testCard = e.model.item;
+            var match = this.equals(this.testCard, this.tippCard);
+            if (match) {
+                this.$.success.open();
+            }
+            else {
+                this.$.failure.open();
+            }
+            var idx = this.data.indexOf(this.tippCard);
+            this.set('data.'+ idx + '.owner', '');
 
 
         }

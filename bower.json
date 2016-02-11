@@ -47,7 +47,8 @@
     "iron-localstorage": "PolymerElements/iron-localstorage#~1.0.5",
     "paper-toggle-button": "PolymerElements/paper-toggle-button#~1.0.14",
     "paper-slider": "PolymerElements/paper-slider#^1.0.9",
-    "paper-dialog": "PolymerElements/paper-dialog#^1.0.4"
+    "paper-dialog": "PolymerElements/paper-dialog#^1.0.4",
+    "sugar": "^1.4.1"
   },
   "devDependencies": {
     "test-fixture": "polymerelements/test-fixture#^1.0.0"
