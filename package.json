@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "dev": "browser-sync start --server --files \"app/**/*,dest/**/*,bower_components/**/*\" --startPath \"/app\" --directory --no-notify"
+    "dev": "browser-sync start --server --files \"app/**/*,dest/**/*,bower_components/**/*\" --startPath \"/app\" --directory --no-notify",
+    "lint": "polylint -v -r app/ -i zenmaster/index.html"
   },
   "jspm": {
     "directories": {},
