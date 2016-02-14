@@ -21,7 +21,7 @@ gulp.task('clean', function () {
 })
 
 gulp.task('vulcan', function () {
-  return gulp.src('app/**/*.html')
+  return gulp.src(['app/**/index.html', 'app/**/print.html','app/**/tipps.html','app/**/help.html'])
     .pipe(vulcanize({
       abspath: '',
       excludes: [],
@@ -44,13 +44,8 @@ gulp.task('css', function () {
     .pipe(gulp.dest('dest'))
 })
 
-gulp.task('img', function () {
-  return gulp.src(['app/**/*.png','app/**/*.jpg'])
-    .pipe(gulp.dest('dest'))
-})
-
-gulp.task('js', function () {
-  return gulp.src('app/**/*.js')
+gulp.task('copy', function () {
+  return gulp.src(['app/**/*.png','app/**/*.jpg', 'app/**/index.js', 'app/**/print.js','app/**/tipps.js','app/**/help.js'])
     .pipe(gulp.dest('dest'))
 })
 
@@ -71,6 +66,6 @@ gulp.task('mdwatch', function () {
   gulp.watch('**/*.md', ['markdown'])
 })
 
-gulp.task('default', ['vulcan', 'img', 'js','css'], function() {
+gulp.task('default', ['vulcan', 'copy'], function() {
     gulp.start('publish');
 });
