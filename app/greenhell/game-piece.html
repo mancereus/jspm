@@ -6,8 +6,8 @@
       :host {z-index: 2000;}
 		div {
 			position: absolute;
-			width: 112px;
-			height: 112px;
+			width: 56px;
+			height: 56px;
 			border-radius: 50%;
 			color: #fff;
 			overflow: hidden;
@@ -20,19 +20,19 @@
 			z-index: 2000;
 		}
 		:host.bigsymbol {
-			height: 112px;
+			height: 56px;
 		}
 		div.bigsymbol img {
 			background-color: yellow;
-			height: 112px;
+			height: 56px;
 		}
 		div.symbol img {
-			height: 112px;
+			height: 56px;
 		}
 	</style>
   <template>
 	<div name="piece" draggable="true" on-click="clicker" class$="{{computeClass(imgclass)}}">
-		<img src="{{img}}" style="width: 120px;">
+		<img src="{{img}}" style="width: 60px;">
 	</div>
 </template>
   <script>

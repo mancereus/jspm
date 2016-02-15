@@ -13,22 +13,22 @@
             background-color: white;
             padding: 2px;
             margin: 5px;
-            width: 500px;
-            height: 800px;
+            width: 250px;
+            height: 400px;
             font-size: 1em;
-            font-weight: 300;
+            font-weight: 150;
             line-height: 1.2em;
         }
         
         h2 {
             margin: 0;
             font-size: 1.8rem;
-            font-weight: 300;
+            font-weight: 150;
         }
         
         .card-header .picture {
-            width: 70px;
-            margin: 10px;
+            width: 35px;
+            margin: 5px;
         }
         
         .card-header .picture.symbol {
@@ -41,10 +41,10 @@
         <div class="card-header" on-showdetails="handleDetails">
             <div class="layout vertical center" on-tap="talk">
                 <voice-player id="player" accent="de-DE" text="{{ text }} {{flavour}}"></voice-player>
-                <h2 style="font-size:42px">{{titleText}}</h2>
-                <img src="{{computeSrc(imgSrc)}}" style="width:60%;height:300px" class$="{{computeClass(cardData)}}">
+                <h2>{{titleText}}</h2>
+                <img src="{{computeSrc(imgSrc)}}" style="width:60%;height:100px;margin: 5px;" class$="{{computeClass(cardData)}}">
 
-                <div style="font-size:36px;line-height: 1.2em;">{{text}} <span style="font-style:italic;">{{flavour}}</span></div>
+                <div style="font-size:18px;line-height: 1.2em;">{{text}} <span style="font-style:italic;">{{flavour}}</span></div>
 
             </div>
         </div>
