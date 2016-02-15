@@ -166,7 +166,7 @@
                         
                     </template>
                     <paper-dialog id="dialog">
-                        <h2>Geheimnis Nr. {{level}}</h2>
+                        <h2>Geheimnis Nr. {{level}} <game-help text="{{secret}}"></game-help></h2>
                         <h3>Nur lesen, wenn du die Schatzkammer mit 3 Sternen gefunden hast!</h3>
                         <p>{{secret}}</p>
                     </paper-dialog>
@@ -250,6 +250,9 @@
                     if(this.config.check == undefined)
                         this.config.check = {};
                    this.config.akt2 = ['home'];
+                   if(this.config.stars == 3) {
+                       this.config.akt2 = ['exit-to-app'];
+                   }
                    if(this.config.check.jane) {
                        this.config.akt2.push('gesture');
                    }
