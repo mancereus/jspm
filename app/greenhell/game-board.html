@@ -45,6 +45,13 @@
             h2 {
                 margin: 2px 0;
             }
+            
+            paper-dialog {
+                border: 2px solid;
+                border-color: var(--paper-green-500);
+                background-color: var(--paper-light-green-50);
+                color: var(--paper-green-500);
+            }
         </style>
         <template>
             <iron-localstorage auto id="local" name="config" value="{{config}}"></iron-localstorage>
@@ -64,7 +71,7 @@
                 <div>
                     <h1 style="font-size: 200%; margin: 10px 7px;">Die grüne Hölle</h1>
 
-                
+
 
                     <div id="inv" style="margin-top: 5px;background-color: #4CBF80;padding: 5px; border: 2px solid green">
                         <table>
@@ -108,20 +115,20 @@
                                     <h2>Alle offen</h2></paper-toggle-button>
                             </td>
                         </tr>
-                            <tr>
-                                <td>
-                                    <h2>Akt 1</h2></td>
-                                <td>
-                                    <select id="sterne" value="{{config.stars::input}}">
-                                        <option value="0">ohne Sterne</option>
-                                        <option value="1">ein Stern</option>
-                                        <option value="2">zwei Sterne</option>
-                                        <option value="3">drei Sterne</option>
-                                    </select>
-                                </td>
-                                <td>
-                                </td>
-                            </tr>
+                        <tr>
+                            <td>
+                                <h2>Akt 1</h2></td>
+                            <td>
+                                <select id="sterne" value="{{config.stars::input}}">
+                                    <option value="0">ohne Sterne</option>
+                                    <option value="1">ein Stern</option>
+                                    <option value="2">zwei Sterne</option>
+                                    <option value="3">drei Sterne</option>
+                                </select>
+                            </td>
+                            <td>
+                            </td>
+                        </tr>
                         <tr>
                             <td>
                                 <h2>Akt 2</h2></td>
@@ -130,7 +137,7 @@
                                     <h2><iron-icon icon="accessibility"></iron-icon> Jäger</h2></paper-toggle-button>
                             </td>
                             <td>
-                            
+
                                 <paper-toggle-button noink checked="{{config.check.jane}}">
                                     <h2><iron-icon icon="gesture"></iron-icon> Jane</h2></paper-toggle-button>
                             </td>
@@ -157,7 +164,7 @@
 
                     <template is="dom-if" if="{{isAkt(config.akt, 2)}}">
                         <div style="border: 1px solid black; padding: 2px;margin: 5px;">
-                            <p style="margin: 1px;">Nach Gewinn einer Partie mit 3 Sternen wird ein Geheimnis gelüftet:</p>
+                            <p style="margin: 1px;">Nach Gewinn einer Partie mit 1,2 oder 3 Sternen wird das Geheimnis 1,2 oder 3 gelüftet:</p>
 
                             <template is="dom-repeat" items="{{data.secrets}}">
                                 <button style="" on-tap="openDialog">Geheimnis {{item.level}}</button>
@@ -170,7 +177,7 @@
                     </template>
                     <paper-dialog id="dialog">
                         <h2>Geheimnis Nr. {{level}} <game-help text="{{secret}}"></game-help></h2>
-                        <h3>Nur lesen, wenn du die Schatzkammer mit 3 Sternen gefunden hast!</h3>
+                        <h3>Nur lesen, wenn du die Schatzkammer mit {{level}} Stern(en) geöffnet hast!</h3>
                         <p>{{secret}}</p>
                     </paper-dialog>
 
@@ -257,7 +264,7 @@
                     if(this.config.check == undefined)
                         this.config.check = {};
                    this.config.akt2 = ['home'];
-                   if(this.config.stars == 3) {
+                   if(this.config.stars >= 1) {
                        this.config.akt2 = ['exit-to-app'];
                    }
                    if(this.config.check.jane) {
