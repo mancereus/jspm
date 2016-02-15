@@ -16,6 +16,7 @@
     <link rel="import" href="../../bower_components/paper-toggle-button/paper-toggle-button.html">
     <link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
     <link rel="import" href="../../bower_components/paper-styles/paper-styles.html">
+    <link rel="import" href="../../bower_components/paper-dialog/paper-dialog.html">
     <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
     <link rel="import" href="game-show-details.html">
 
@@ -34,6 +35,10 @@
                 font-size: 300%;
                 margin-top: 20px;
                 margin-left: 50px;
+            }
+            #dialog {
+                width: 600px;
+                z-index: 10000;
             }
         </style>
         <template>
@@ -146,6 +151,26 @@
                     <div id="bigCard" style="background-color:white; border: 2px solid black; height:850px; width: 550px; margin-left: 300px;">
                         <game-show-details id="details"></game-show-details>
                     </div>
+                    
+                    <template is="dom-if" if="{{isAkt(config.akt, 2)}}">
+                    <div style="border: 1px solid black; padding: 10px;margin: 10px;">
+                    <h2 style="font-size: 200%; margin-right: 30px;">Nach Gewinn einer Partie mit 3 Sternen wird ein Geheimnis gelüftet:</h2>
+                    
+                    <template is="dom-repeat" items="{{data.secrets}}">
+                        <button style="font-size: 300%" on-tap="openDialog">Geheimnis {{item.level}}</button>
+                        
+                    </template>
+                    
+                    
+                    </div>
+                        
+                    </template>
+                    <paper-dialog id="dialog">
+                        <h2>Geheimnis Nr. {{level}}</h2>
+                        <h3>Nur lesen, wenn du die Schatzkammer mit 3 Sternen gefunden hast!</h3>
+                        <p>{{secret}}</p>
+                    </paper-dialog>
+                    
                 </div>
                 <div>
                     <h1>Vorrat</h1>
@@ -327,6 +352,11 @@
             },
             getLeft: function (base, index) {
                 return base+index*20;
+            },
+            openDialog: function (e, nbr) {
+                this.level = e.model.item.level;
+                this.secret = e.model.item.text;
+                this.$.dialog.open();
             },
             configChanged: function(changeRecord) {
                 console.log('path: ' + changeRecord.path);
