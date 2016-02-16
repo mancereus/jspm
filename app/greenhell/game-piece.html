@@ -39,6 +39,7 @@
     Polymer({
       is: 'game-piece',
       properties: {
+          print: Boolean,
           top: Number,
           left: Number,
         img: { notify: true },
@@ -50,11 +51,15 @@
         return false;
       },
       attached: function () {
+          if(this.print) {
+              this.style.position = 'relative';
+          } else {
           if(this.top) {
               this.style.top = this.top + "px";
           }
           if(this.left) {
               this.style.left = this.left + "px";
+          }
           }
       },
       ready: function () {

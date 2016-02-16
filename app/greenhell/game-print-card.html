@@ -1,0 +1,99 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../../bower_components/paper-ripple/paper-ripple.html">
+<link rel="import" href="../../bower_components/paper-material/paper-material.html">
+<link rel="import" href="../../bower_components/voice-elements/dist/voice-player.html">
+<link rel="import" href="game-piece.html">
+<link rel="import" href="../../bower_components/paper-styles/paper-styles.html">
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<dom-module id="game-print-card">
+    <style>
+        :host {
+            margin: 1px;
+            padding: 0;
+        }
+       .card-header {
+            margin: 1px;
+            display: inline-block;
+            position: relative;
+              background-color: white;
+            border: 1px solid black;
+            padding: 2px;
+            width: 150px;
+            height: 225px;
+            font-size: 1em;
+
+        }
+
+        .card-header .picture {
+            width: 35px;
+            border: 1px dotted black;
+            margin: 2px;
+            width: 60%;
+            height: 70px;
+        }
+
+
+        .info {
+            background-color: #AEC9E8;
+        }
+
+        .warn {
+            background-color: #FFF09D;
+        }
+
+        .problem {
+            background-color: #FFCA6F;
+        }
+
+        .text {
+            font-size: 8pt;
+            line-height: 0.95em;
+        }
+
+    </style>
+    <style is="custom-style">
+        .big {
+            --iron-icon-height: 64px;
+            --iron-icon-width: 64px;
+        }
+    </style>
+    <template>
+            <div class="card-header">
+                <div class$="layout vertical center {{carddata.info}}" style="min-height: 220px;">
+                    <span>{{carddata.name}}</span>
+                    <div class="fit" style="left: 2.5px;top: 2px">
+                        <template is="dom-if" if="{{carddata.task}}"><img src="img/Stern.png" style="width:15px;height: 15px;" alt="">
+                        </template>
+                    </div>
+                    <img src$="img/{{carddata.name}}.png" class$="picture {{carddata.imgclass}}">
+
+                    <div class="handle text" style="width:90%; margin: 1px 16px 1px 7px;">{{carddata.Aktion}}</div>
+                    <template is="dom-if" if="{{carddata.flavour}}">
+                        <div class="handle text" style="width:90%; margin: 1px 16px 1px 7px;font-style:italic;">{{carddata.flavour}}</div>
+                    </template>
+                    <div class="handle" style="width:90%; font-size: 9px;margin: 1px 16px 1px 7px;"><span>{{carddata.type}}</span> (<span>{{akt}}</span> <span>{{carddata.level}}</span>)</div>
+                    <template is="dom-if" if="{{carddata.ver}}">
+                        <img class="fit " src="img/vertic.jpg" style="top: 0;left: 139px;width:15px;height: 100%;" alt="">
+                    </template>
+                    <template is="dom-if" if="{{carddata.hor}}">
+                       <img src="img/horiz.jpg" class="fit" style="top: 214px;height:15px; width: 100%;" alt="">
+                    </template>
+                </div>
+    </template>
+    <script>
+        Polymer({
+      is: 'game-print-card',
+      properties: {
+        carddata: {
+          type: Object,
+          notify: true
+        },
+        akt: String,
+        item: { notify: true },
+      },
+      ready: function () {
+      },
+    });
+    </script>
+</dom-module>
