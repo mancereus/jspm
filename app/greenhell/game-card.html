@@ -101,12 +101,12 @@
                     <template is="dom-if" if="{{carddata.flavour}}">
                         <div class="handle text" style="width:90%; margin: 1px 16px 1px 7px;font-style:italic;">{{carddata.flavour}}</div>
                     </template>
-                    <div class="handle" style="width:90%; font-size: 9px;margin: 1px 16px 1px 7px;"><span>{{carddata.type}}</span> (<span>{{akt}}</span> <span>{{carddata.level}}</span>)</div>
+                    <div class="handle" style="width:90%; font-size: 6px;margin: 1px 16px 1px 7px;"><span>{{carddata.type}}</span> (<span>Akt {{akt}}</span>)</div>
                     <template is="dom-if" if="{{carddata.ver}}">
-                        <div class="fit" style="left: 89px;"><img src="img/vertic.jpg" style="width:15px;height: 148px;" alt=""></div>
+                        <div class="fit" style="left: 89px;"><img src="img/vertic.jpg" style="width:15px;height: 154px;" alt=""></div>
                     </template>
                     <template is="dom-if" if="{{carddata.hor}}">
-                        <div class="fit" style="top: 139px;"><img src="img/horiz.jpg" style="height:15px; width: 98px;" alt=""></div>
+                        <div class="fit" style="top: 139px;"><img src="img/horiz.jpg" style="height:15px; width: 104px;" alt=""></div>
                     </template>
                     <template is="dom-if" if="{{item}}">
                         <game-piece top="-100" left="-25" img="{{computeImg(carddata)}}" imgclass="{{carddata.imgclass}}"></game-piece>
