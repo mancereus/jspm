@@ -111,7 +111,7 @@
 		          type: Object
 	          }
 			},
-            ready: function() {
+            attached: function() {
 				console.log(this.data);
 				 this.$.pic.setAttribute("src", "img/" + this.data.name + ".jpg");
 				 //this.$.card.addAttribute("class", this.data.type);

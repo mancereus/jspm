@@ -19,8 +19,9 @@
     <link rel="import" href="../../bower_components/paper-dialog/paper-dialog.html">
     <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
     <link rel="import" href="game-show-details.html">
-
     <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+    <script src="../../bower_components/sugar/release/sugar.min.js"></script>
+
 </head>
 
 <body>
@@ -30,24 +31,26 @@
             :host {
                 display: block;
             }
-            
+
             select {
                 margin-top: 0px;
                 margin-left: 5px;
             }
-            
+
             #dialog {
                 width: 300px;
                 z-index: 10000;
             }
+
             img.Rucksack {
                 opacity: 0.3;
             }
+
             h4,
             h2 {
                 margin: 2px 0;
             }
-            
+
             paper-dialog {
                 border: 2px solid;
                 border-color: var(--paper-green-500);
@@ -66,7 +69,7 @@
                         </template>
                         <game-hexagon imgsrc="Jack" top="-570" left="340"></game-hexagon>
                         <template is="dom-repeat" items="{{vorrat}}" index-as="index">
-                            <game-piece img="img/{{item}}.png" top="{{getTop(-1040, index, 60)}}" left="1155" imgclass="symbol"></game-piece>
+                            <game-piece img="{{item}}" top="{{getTop(-1040, index, item, 60)}}" left="{{getLeft(1155,item)}}" imgclass="symbol"></game-piece>
                         </template>
                     </div>
                 </div>
@@ -147,7 +150,7 @@
                         <tr>
                             <td>
                                 <form>
-                                    <input style="margin-top: 10px; margin-left: 20px;" type="button" onclick="history.go(0)" value="Neu laden">
+                                    <input style="margin-top: 10px; margin-left: 20px;" type="button" on-click="reload" value="Neu laden">
                                 </form>
                             </td>
                             <td>
@@ -166,7 +169,8 @@
 
                     <template is="dom-if" if="{{isAkt(config.akt, 2)}}">
                         <div style="border: 1px solid black; padding: 2px;margin: 5px;">
-                            <p style="margin: 1px;">Nach Gewinn einer Partie mit 1,2 oder 3 Sternen <br>wird das Geheimnis 1,2 oder 3 gelüftet:</p>
+                            <p style="margin: 1px;">Nach Gewinn einer Partie mit 1,2 oder 3 Sternen
+                                <br>wird das Geheimnis 1,2 oder 3 gelüftet:</p>
 
                             <template is="dom-repeat" items="{{data.secrets}}">
                                 <button style="" on-tap="openDialog">Geheimnis {{item.level}}</button>
@@ -217,7 +221,7 @@
                 config: Object,
                 vorrat: {
                     type: Array,
-                    value: ['Fackel','Liane','Liane','Machete','Machete','Gegengift','Gegengift','Boot','Schrumpfkopf','Rucksack','Tagebuch']
+                    value: ['Fackel','Liane','Liane','Machete','Machete','Gegengift','Gegengift','Boot','Schrumpfkopf','Rucksack','Tagebuch','Pistole']
                 },
                 inventar: {
                     type: Array,
@@ -249,9 +253,9 @@
                 }
                 if (this.config.akt == 2) {
                     this.data = data2;
-                    
+
                 }
-                
+
                 var actions = shuffle(this.data.initActions);
                 var actIn = [];
                  if (this.config.akt == 1) {
@@ -260,7 +264,7 @@
                         this.config.akt1[i+1] = 'star';
                     }
                    actIn = this.config.akt1;
-                    
+
                 }
                  if (this.config.akt == 2) {
                     if(this.config.check == undefined)
@@ -298,7 +302,7 @@
                     actions.splice(idx,1);
                     actOut.push(item);
                 });
-                
+
                 this.cards = shuffle(this.data.initcards);
                 var actionIter = shuffle(actOut).entries();
                 this.splice('cards', 0, 0, actionIter.next().value[1]);
@@ -366,11 +370,67 @@
             isAkt: function (akt, target) {
                 return akt == target;
             },
-            getTop: function (base, index,step) {
-                return base +index*step;
+            getTop: function (base, index,item,step) {
+                var it = this.config.items.find(function(n) {
+                    return n.img == item;
+                });
+                if (it == undefined) {
+                    console.log("top: " + (base +index*step));
+                    return base +index*step;
+                }
+                this.config.items.remove(it);
+                return base + it.top - 67;
             },
-            getLeft: function (base, index) {
-                return base+index*20;
+            getLeft: function (left,item) {
+                var it = this.config.items.find(function(n) {
+                    return n.img == item;
+                });
+                if (it == undefined)
+                    return left;
+                console.log("left: " + it.left);
+                return it.left -69;
+            },
+            reload: function () {
+                var inv = document.getElementById("inv");
+                var invrect = this.getOffsetRect(inv);
+                var pieces = document.getElementsByTagName("game-piece");
+                this.config.items = [];
+                for (idx in pieces) {
+                    var piece = pieces[idx];
+                    var rect = this.getOffsetRect(piece);
+                    var diffY = rect.top - invrect.top;
+                    var diffX = rect.left  - invrect.left+120;
+                    if(rect.top > 0 && rect.left > 0 && diffX > 220 && diffY > 0 && diffY < inv.getBoundingClientRect().height &&  diffX < inv.getBoundingClientRect().width) {
+                        this.config.items.push({img: piece.img, top: rect.top, left: rect.left});
+                    }
+
+                }
+                this.notifyPath('config.items',this.config.items);
+                console.log(this.config.items);
+
+               history.go(0);
+            },
+            getOffsetRect: function (elem) {
+                if (elem.getBoundingClientRect == undefined)
+                return { top: 0, left: 0};
+                var box = elem.getBoundingClientRect()
+
+                var body = document.body
+                var docElem = document.documentElement
+
+                // (2)
+                var scrollTop = window.pageYOffset || docElem.scrollTop || body.scrollTop
+                var scrollLeft = window.pageXOffset || docElem.scrollLeft || body.scrollLeft
+
+                // (3)
+                var clientTop = docElem.clientTop || body.clientTop || 0
+                var clientLeft = docElem.clientLeft || body.clientLeft || 0
+
+                // (4)
+                var top  = box.top +  scrollTop - clientTop
+                var left = box.left + scrollLeft - clientLeft
+
+                return { top: Math.round(top), left: Math.round(left) }
             },
             openDialog: function (e, nbr) {
                 this.level = e.model.item.level;
@@ -385,7 +445,7 @@
                 console.log("refresh");
                 this.$.local.
                 history.go(0);
-            }, 
+            },
         });
         </script>
     </dom-module>

@@ -109,7 +109,7 @@
                         <div class="fit" style="top: 139px;"><img src="img/horiz.jpg" style="height:15px; width: 104px;" alt=""></div>
                     </template>
                     <template is="dom-if" if="{{item}}">
-                        <game-piece top="-100" left="-25" img="{{computeImg(carddata)}}" imgclass="{{carddata.imgclass}}"></game-piece>
+                        <game-piece top="-100" left="-25" img="{{carddata.name}}" imgclass="{{carddata.imgclass}}"></game-piece>
                     </template>
                 </div>
             </div>
