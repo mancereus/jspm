@@ -39,6 +39,12 @@
                 --paper-slider-active-color: var(--google-yellow-500);
             }
 
+            paper-button.blue {
+                background-color: var(--paper-blue-500) !important;
+                color: white !important;
+                padding: 4px;
+            }
+
             paper-button.green {
                 background-color: var(--paper-green-500) !important;
                 color: white !important;
@@ -115,6 +121,13 @@
                     </paper-button>
 
                 </template>
+                <template is="dom-if" if="{{container.active}}">
+                    <paper-button class="blue" on-tap="finishTurn">
+                        <iron-icon icon="home"></iron-icon>
+                        Zug beendet
+                    </paper-button>
+
+                </template>
             </div>
         </paper-card>
         <paper-dialog class="green" id="success">
@@ -138,7 +151,8 @@
                 value: false
             },
             container: {
-                type: Object
+                type: Object,
+                notify: true
             },
             testCard: {
                 type: Object
@@ -176,6 +190,10 @@
             console.log("dropCard " + e);
             this.tipp = true;
             this.tippCard = this.getCards().sample();
+
+        },
+        finishTurn: function (e) {
+            this.fire("finish", this.container);
 
         },
         equals: function (card1, card2) {
