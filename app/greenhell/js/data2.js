@@ -52,7 +52,7 @@ var data2 = {
         { name: "Alligator", Aktion: "Am Fluß wird Jack von einem Alligator angefallen. Wenn ihr keine Pistole habt, wird er verletzt und ihr könnt pro Zug nur noch maximal 4 Schritte gehen.", task: true },
         { name: "Affenhorde",  Aktion: "Die Affenhorde klaut einen offen liegenden Gegenstand auf dem Plan. Wähle einen Gegenstand aus und lege ihn den Vorrat", info: "problem", task: true },
 
-        { name: "Jäger", order: "accessibility", Aktion: "Der Großwildjäger Stoephasius klaut dir alle Artefakte und bringt sie zur gegenüberliegenden Aktionskarte. Mit der Pistole kannst du sie ihm dort abnehmen.", info: "warn", task: true },
+        { name: "Jäger", order: "accessibility", Aktion: "Der Großwildjäger Stoephasius klaut dir alle Artefakte und bringt sie zur gegenüberliegenden Aktionskarte. Mit der Pistole kannst du sie ihm dort abnehmen.",  task: true },
         { name: "Jäger", order: "accessibility", Aktion: "Der Großwildjäger Stoephasius wurde von Kannibalen gefangen genommen und wird in ihr Dorf transportiert. Mit der Pistole kannst du ihn retten. Aus Dankbarkeit darfst du in der nächsten Partie einen zusätzlichen Stern verwenden.", info: "warn",  task: true },
 
         { name: "Gefangen", order: "build", Aktion: "Jack wird von den Kannibalen überrascht und gefangen. Jane muss den Kannibalen den Schrumpfkopf geben, dann lassen sie Jack frei. Bis dahin kannst du Jacks Inventarkarte nicht verwenden. ", task: true },

@@ -29,6 +29,12 @@
     <dom-module id="game-board">
         <style>
             :host {
+             -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
                 display: block;
             }
 
@@ -56,10 +62,11 @@
                 border-color: var(--paper-green-500);
                 background-color: var(--paper-light-green-50);
                 color: var(--paper-green-500);
+                z-index: 2002;
             }
         </style>
         <template>
-            <iron-localstorage auto id="local" name="config" value="{{config}}"></iron-localstorage>
+            <iron-localstorage auto id="local" name="config" value="{{config}}" on-iron-localstorage-load-empty="createConfig"></iron-localstorage>
             <div class="container layout horizontal ">
                 <div>
                     <div id="field" style="width: 780px;" class="layout horizontal wrap" on-showdetails="showCard">
@@ -125,7 +132,6 @@
                                 <h2>Akt 1</h2></td>
                             <td>
                                 <select id="sterne" value="{{config.stars::input}}">
-                                    <option value="0">ohne Sterne</option>
                                     <option value="1">ein Stern</option>
                                     <option value="2">zwei Sterne</option>
                                     <option value="3">drei Sterne</option>
@@ -181,10 +187,13 @@
                         </div>
 
                     </template>
-                    <paper-dialog id="dialog">
+                    <paper-dialog id="dialog" modal>
                         <h2>Geheimnis Nr. {{level}} <game-help text="{{secret}}"></game-help></h2>
                         <h3>Nur lesen, wenn du die Schatzkammer mit {{level}} Stern(en) geöffnet hast!</h3>
                         <p>{{secret}}</p>
+                         <div class="buttons">
+                            <paper-button dialog-confirm autofocus>OK</paper-button>
+                        </div>
                     </paper-dialog>
 
                 </div>
@@ -238,16 +247,17 @@
             observers: [
                 "configChanged(config.*)"
             ],
+            createConfig: function () {
+                 this.config = {
+                     check: {},
+                     akt: 1,
+                     open: false,
+                     stars: 1
+                 }
+                this.notifyPath('config.akt',this.config.path);
+            },
             attached: function () {
-                if (this.config == undefined) {
-                    this.config = {};
-                    this.config.check = {};
-                    this.config.akt = 1;
-                    this.config.akt2 = {};
-                    this.notifyPath('config.akt',this.config.path);
-                    this.config.open = false;
-                    this.config.stars = 0;
-                }
+              
                 if (this.config.akt == 1) {
                     this.data = data1;
                 }
