@@ -48,7 +48,8 @@
     "paper-toggle-button": "PolymerElements/paper-toggle-button#~1.0.14",
     "paper-slider": "PolymerElements/paper-slider#^1.0.9",
     "paper-dialog": "PolymerElements/paper-dialog#^1.0.4",
-    "sugar": "^1.4.1"
+    "sugar": "^1.4.1",
+    "firebase-element": "GoogleWebComponents/firebase-element#^1.0.12"
   },
   "devDependencies": {
     "test-fixture": "polymerelements/test-fixture#^1.0.0"
