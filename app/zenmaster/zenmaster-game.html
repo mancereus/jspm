@@ -37,7 +37,7 @@
                 margin: 5px;
             }
             
-            .Bewegung {
+            .Gewicht {
                 background-color: yellow;
                 width: 250px;
                 padding: 0;
@@ -45,8 +45,6 @@
             }
             
             .cards {
-                display: flex;
-                flex-wrap: wrap;
             }
             
             .card {
@@ -86,7 +84,7 @@
             }
         </style>
         <firebase-document location="https://protogames.firebaseio.com/zenmaster/" data="{{data}}" log></firebase-document>
-        <input type="button" on-click="newGame" value="Neues Spiel">
+        <input type="button" on-click="newGame" value="Neues Spiel"> <a href="tipps.html" target="_blank">Tipps Seite</a>
         <div class="cards">
             <template is="dom-repeat" items="{{data.cards}}">
 
@@ -100,8 +98,6 @@
             </template>
 
         </div>
-        <span class="try">nichts gefunden? </span>
-        <input type="button" onclick="history.go(0)" value="neu laden">
         <br/>
         <h3>2. Schreibe deine Lösung auf:</h3>
         <input style="width: 250px;" class="try inp" value="{{data.solution::input}}"></input>
@@ -140,15 +136,15 @@
                 this.set("data.solution", "");
                 this.newCards();
                 this.push('data.tips',
-                {name: 'tip',value:"", form:false,inhalt:false,ort:false,bewegung:false,},
-                {name: 'tip',value:"", form:false,inhalt:false,ort:false,bewegung:false},
-                {name: 'tip',value:"", form:false,inhalt:false,ort:false,bewegung:false},
-                {name: 'help1',value:"", form:false,inhalt:false,ort:false,bewegung:false},
-                {name: 'tip',value:"", form:false,inhalt:false,ort:false,bewegung:false},
-                {name: 'tip',value:"", form:false,inhalt:false,ort:false,bewegung:false},
-                {name: 'tip',value:"", form:false,inhalt:false,ort:false,bewegung:false},
-                {name: 'help2',value:"", form:false,inhalt:false,ort:false,bewegung:false},
-                {name: 'tip',value:"", form:false,inhalt:false,ort:false,bewegung:false});
+                {name: 'tip',value:"", form:false,inhalt:false,ort:false,gewicht:false},
+                {name: 'tip',value:"", form:false,inhalt:false,ort:false,gewicht:false},
+                {name: 'tip',value:"", form:false,inhalt:false,ort:false,gewicht:false},
+                {name: 'help1',value:"", form:false,inhalt:false,ort:false,gewicht:false},
+                {name: 'tip',value:"", form:false,inhalt:false,ort:false,gewicht:false},
+                {name: 'tip',value:"", form:false,inhalt:false,ort:false,gewicht:false},
+                {name: 'tip',value:"", form:false,inhalt:false,ort:false,gewicht:false},
+                {name: 'help2',value:"", form:false,inhalt:false,ort:false,gewicht:false},
+                {name: 'tip',value:"", form:false,inhalt:false,ort:false,gewicht:false});
             },
             attached: function() {
                                 
