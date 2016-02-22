@@ -69,6 +69,10 @@
                 align-content: space-between;
             }
 
+            .true {
+                background-color: lightgreen;
+            }
+
             paper-dialog.red {
                 border: 2px solid;
                 border-color: var(--paper-red-500);
@@ -83,7 +87,7 @@
                 color: var(--paper-green-500);
             }
         </style>
-        <paper-card heading="{{container.name}} {{activePlayer}}" container="{{container.name}}" on-drop-card="dropCard">
+        <paper-card heading="{{container.name}} {{activePlayer}}" container="{{container.name}}" on-drop-card="dropCard"  class$="{{container.active}}">
             <div class="card-content">
                 <div class="knobs">
                     <div>
@@ -162,16 +166,17 @@
             },
             data: {
                 type: Array,
+                notify: true,
                 value: function () { return []; }
             },
             activePlayer: {
                 type: String,
-                computed: 'isActive(container)'
+                computed: 'isActive(container.active)'
             }
 
         },
-        isActive: function (container) {
-            return container.active ? "am Zug" : "";
+        isActive: function (active) {
+            return active ? "am Zug" : "";
         },
         hasOwner: function (item) {
             return item.owner == this.container.name;

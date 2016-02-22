@@ -5,6 +5,7 @@
 <link rel="import" href="../../bower_components/paper-slider/paper-slider.html">
 <link rel="import" href="../../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../bower_components/firebase-element/firebase-document.html">
 <link rel="import" href="monstermob-container.html">
 <link rel="import" href="monstermob-card.html">
 
@@ -36,6 +37,8 @@
                 padding: 4px;
             }
         </style>
+        <firebase-document location="https://protogames.firebaseio.com/monstermob/" data="{{game}}" log></firebase-document>
+
         <div class="flex">
             <template is="dom-repeat" items="{{players}}">
                 <template is="dom-if" if="{{item.name}}">
@@ -45,20 +48,9 @@
                 <template is="dom-if" if="{{!item.name}}">
                     <div style="border: 5px solid black;padding: 20px;background-color: white; text-align: center;">
                         <h1>Monster Mob</h1>
-                        <template is="dom-if" if="{{isDirection(item, 'left')}}">
-                            <iron-icon style="width: 100px;height: 100px;" icon="chevron-left"></iron-icon>
-                        </template>
                         <img src="img/Biss.png">
                         <br>
-                        <template is="dom-if" if="{{isDirection(item, 'right')}}">
-                            <iron-icon style="width: 100px;height: 100px;" icon="chevron-right"></iron-icon>
-                        </template>
-                        <br>
-                        <paper-button on-tap="moveMonster">
-                            weiter</paper-button>
-                        <paper-button on-tap="rotateMonster">
-                            <iron-icon icon="autorenew"></iron-icon>
-                            rotate</paper-button>
+                        <iron-icon style="width: 100px;height: 100px;" icon="chevron-right" on-tap="moveMonster"></iron-icon>
                     </div>
                 </template>
             </template>
@@ -69,6 +61,7 @@
         Polymer({
             is: 'monstermob-game',
             properties: {
+                game: Object,
                 data: Array,
                 players : {
                     type:Array,
@@ -76,20 +69,22 @@
                     value: function() {
                         return [
                             {name:'player1', life: 2, gold: 1, active:true},
-                            {name:'player2', life: 2, gold: 1},
-                            {name:'player3', life: 2, gold: 1},
-                            {name:'player4', life: 2, gold: 1},
-                            {type:'monster', direction: 'left'}
+                            {name:'player2', life: 2, gold: 1, active:false},
+                            {name:'player3', life: 2, gold: 1, active:false},
+                            {name:'player4', life: 2, gold: 1, active:false},
+                            {type:'monster', direction: 'right'}
                         ];
                     }
                 }
             },
-            observers: [
-                 'playersChanged(players.splices)'
-            ],
              listeners: {
                 'finish': 'endTurn'},
+            attached: function() {
+                this.set('game.data', this.data);
+                this.set('game.players',this.players);
+            },
             ready: function() {
+                this.game = {};
                 this.data = this.shuffle(cards);
                 var count = 0;
                 for(idx in this.players) {
@@ -102,26 +97,16 @@
             getMonsterIdx: function() {
                 return this.players.map(function(e) { return e.type; }).indexOf('monster');
             },
-            playersChanged: function(changeRecord) {
-                console.log(changeRecord);
-            },
             getMonster: function() {
                 return this.players[this.getMonsterIdx()];
-            },
-            rotateMonster: function() {
-                if (this.getMonster().direction == 'left')
-                    this.getMonster().direction = 'right';
-                else
-                    this.getMonster().direction = 'left';
-                    this.notifyPath('players.splices');
             },
             moveMonster: function() {
                 var index = this.getMonsterIdx();
                 var monster = this.players[index];
                 var by = (monster.direction == 'left') ? -1 :  1;
-                var newPos = index + by % this.players.length;
-                this.players.splice(index,1);
-                this.players.splice(newPos,0,monster);
+                var newPos = (index + by) % this.players.length;
+                this.splice('players',index,1);
+                this.splice('players',newPos,0,monster);
             },
             refill: function() {
                 var count = 0;
@@ -133,16 +118,14 @@
             },
 			endTurn: function (e){
                 var idx = this.players.findIndex(function(n) {
-                return n.active == true; 
+                return n.active == true;
                 });
-                this.players[idx].active = false;
+                this.set('players.' + idx + '.active', false);
                 var nextIdx = (idx+1) % this.players.length;
                 if (this.players[nextIdx].type == 'monster') {
                     nextIdx = (nextIdx+1) % this.players.length;
                 }
-                this.players[nextIdx].active = true;
-                console.log(this.players[nextIdx]);
-                this.notifyPath('players.*', this.players[nextIdx])
+                this.set('players.' + nextIdx + '.active', true);
             },
 			isDirection: function (item, dir){
                 return item.direction == dir;
@@ -153,9 +136,7 @@
 			shuffle: function (o){
 			    for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
 			    return o;
-			},
-            attached: function() {
-            }
+			}
         });
     </script>
 
