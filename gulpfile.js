@@ -27,6 +27,7 @@ gulp.task('vulcan', function () {
       excludes: [],
       inlineScripts: true,
       inlineCss: true,
+      stripComments: true,
       stripExcludes: true
     }))
     .pipe(crisper())
