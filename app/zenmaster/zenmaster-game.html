@@ -11,42 +11,42 @@
                 font-size: 150%;
                 font-weight: bold;
             }
-            
+
             .inp {
                 width: 120px;
             }
-            
+
             .Inhalt {
                 background-color: lightblue;
                 width: 250px;
                 padding: 0;
                 margin: 5px;
             }
-            
+
             .Form {
                 background-color: lightcoral;
                 width: 250px;
                 padding: 0;
                 margin: 5px;
             }
-            
+
             .Ort {
                 background-color: lightgreen;
                 width: 250px;
                 padding: 0;
                 margin: 5px;
             }
-            
-            .Gewicht {
+
+            .Größe {
                 background-color: yellow;
                 width: 250px;
                 padding: 0;
                 margin: 5px;
             }
-            
+
             .cards {
             }
-            
+
             .card {
                 height: 100px;
                 border: 1px solid black;
@@ -56,25 +56,25 @@
                 font-size: 150%;
                 font-weight: bold;
             }
-            
+
             .page-break {
                 page-break-after: always;
                 background-color: red;
                 width: 650px;
             }
-            
+
             img {
                 width: 120px;
                 height: 200px;
             }
-            
+
             .info {
                 width: 250px;
                 margin: 5px;
                 border: 1px solid black;
                 background-color: lightgray;
             }
-            
+
             .header {
                 text-align: center;
                 width: 240px;
@@ -116,17 +116,18 @@
             },
             shuffle: function(o) {
                 for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
-                return o;    
+                return o;
             },
             newCards: function() {
-                this.shuffle(dataform);
-                this.shuffle(datainhalt);
-                this.shuffle(dataort);
-                this.shuffle(dataextra);
-                this.push('data.cards',dataform.pop());
-                this.push('data.cards',datainhalt.pop());
-                this.push('data.cards',dataort.pop());
-                this.push('data.cards',dataextra.pop());
+                this.shuffle(data.form.cards);
+                this.shuffle(data.inhalt.cards);
+                this.shuffle(data.ort.cards);
+                this.shuffle(data.extra.cards);
+
+                this.push('data.cards',this.getCard(data.form));
+                this.push('data.cards',this.getCard(data.inhalt));
+                this.push('data.cards',this.getCard(data.ort));
+                this.push('data.cards',this.getCard(data.extra));
             },
             newGame: function() {
                 this.data = {
@@ -146,8 +147,14 @@
                 {name: 'help2',value:"", form:false,inhalt:false,ort:false,gewicht:false},
                 {name: 'tip',value:"", form:false,inhalt:false,ort:false,gewicht:false});
             },
+            getCard: function(stack) {
+                var cardform = stack.cards.pop();
+                cardform.type = stack.type;
+                cardform.type2 = stack.type2;
+                return cardform;
+            },
             attached: function() {
-                                
+
             }
                 });
     </script>

@@ -13,35 +13,30 @@
                 font-size: 150%;
                 font-weight: bold;
             }
-            
+
             .inp {
                 width: 160px;
             }
-            
+
             .card {
-                width: 250px;
-                height: 60px;
+                margin: 2px;
+                padding: 10px;
+                width: 300px;
                 border: 1px solid black;
-                text-align: center;
-                vertical-align: middle;
-                padding: 20px 10px;
-                font-size: 150%;
-                font-weight: bold;
-                background-color: lightblue;
-                margin: 5px;
+                background-color: lightgray;
             }
-            
+
             .page-break {
                 page-break-after: always;
                 background-color: red;
                 width: 650px;
             }
-            
+
             img {
                 width: 120px;
                 height: 200px;
             }
-            
+
             .info {
                 width: 250px;
                 margin: 5px;
@@ -50,7 +45,7 @@
             }
         </style>
         <firebase-document location="https://protogames.firebaseio.com/zenmaster" data="{{data}}" log></firebase-document>
-        <table style="margin-bottom: 500px;">
+        <table>
             <tr>
                 <th></th>
                 <th width="180px">Versuch</th>
@@ -84,7 +79,7 @@
                     <tr>
                         <td><span class="try">{{index}}</span><span class="try">: </span></td>
                         <td>
-                            <input class="try inp" value="{{item.value::input}}"disabled="{{!master}}"></input>
+                            <input class="try inp" value="{{item.value::input}}" disabled="{{!master}}"></input>
                         </td>
                         <td>
                             <paper-radio-button name$="{{item}}" checked="{{item.form}}" disabled="{{master}}"></paper-radio-button>
@@ -96,13 +91,36 @@
                             <paper-radio-button name$="{{item}}" checked="{{item.ort}}" disabled="{{master}}"></paper-radio-button>
                         </td>
                         <td>
-                            <paper-radio-button name$="{{item}}" checked="{{item.gewicht}}"  disabled="{{master}}"></paper-radio-button>
+                            <paper-radio-button name$="{{item}}" checked="{{item.gewicht}}" disabled="{{master}}"></paper-radio-button>
                         </td>
                     </tr>
                 </template>
             </template>
         </table>
-
+        <template is="dom-if" if="{{!master}}">
+            <div style="float:left;margin-top: 30px;margin-left: 24px;">
+                <div class="card">
+                    <h2>A) Form oder Oberfläche</h2>
+                    <p>Wie ist die Gestalt des Dings? Ist es eher rund oder eckig? Flach oder stabförmig? Ist seine Oberfläche
+                        glatt oder rauh? Hart oder elastisch? Warm? Mit Haaren?</p>
+                </div>
+                <div class="card">
+                    <h2>B) Inhalt oder Bewegung</h2>
+                    <p>Welche Bestandteile hat das Ding? Hat es Zähne, Räder oder Gelenke? Kann sich das Ding selbständig bewegen?
+                        Schnell oder langsam? Schwimmt es? </p>
+                </div>
+                <div class="card">
+                    <h2>C) Ort oder Zeit</h2>
+                    <p>Zu welcher Zeit gibt es das Ding häufiger? Winter oder Sommer? Früher oder Jetzt? An welchen Orten gibt
+                        es das Ding häufiger? Stadt oder Wald? In der Nähe oder weiter weg?</p>
+                </div>
+                <div class="card">
+                    <h2>D) Größe oder Gewicht</h2>
+                    <p> Welche Größe hat es? Ist es klein, mittelgroß oder groß? Welches Gewicht hat es? Ist es leicht, mittel
+                        oder schwer?</p>
+                </div>
+            </div>
+        </template>
     </template>
 
     <script>
@@ -121,8 +139,8 @@
                 return false;
             },
             ready: function() {
-        		
-                
+
+
             }
         });
     </script>
