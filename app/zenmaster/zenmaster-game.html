@@ -18,38 +18,26 @@
 
             .Inhalt {
                 background-color: lightblue;
-                width: 250px;
-                padding: 0;
-                margin: 5px;
             }
 
             .Form {
                 background-color: lightcoral;
-                width: 250px;
-                padding: 0;
-                margin: 5px;
             }
 
             .Ort {
                 background-color: lightgreen;
-                width: 250px;
-                padding: 0;
-                margin: 5px;
             }
 
             .Größe {
                 background-color: yellow;
-                width: 250px;
-                padding: 0;
-                margin: 5px;
             }
 
             .cards {
             }
 
             .card {
-                height: 100px;
                 border: 1px solid black;
+                width: 400px;
                 text-align: center;
                 vertical-align: middle;
                 padding: 5px 10px;
@@ -88,12 +76,10 @@
         <div class="cards">
             <template is="dom-repeat" items="{{data.cards}}">
 
-                <div class$="{{item.type}}">
-                    <div class="card">
+                <div class$="{{item.type}} card">
                         <span class="header">{{item.type}} / {{item.type2}}</span>
                         <br/>
                         <span>{{item.name}}</span>
-                    </div>
                 </div>
             </template>
 
@@ -101,7 +87,7 @@
         <br/>
         <h3>2. Schreibe deine Lösung auf:</h3>
         <input style="width: 250px;" class="try inp" value="{{data.solution::input}}"></input>
-        <button on-click="finishTurn">Fertig</button>
+        <button on-click="startGame">Fertig</button>
     </template>
 
     <script>
@@ -112,11 +98,14 @@
                     type: Array,
                     notify:true
                 },
-                data: Object,
+                data: Object
             },
             shuffle: function(o) {
                 for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
                 return o;
+            },
+            startGame: function() {
+                this.set("data.started", true);
             },
             newCards: function() {
                 this.shuffle(data.form.cards);
@@ -135,6 +124,7 @@
                 this.set("data.cards", []);
                 this.set("data.tips", []);
                 this.set("data.solution", "");
+                this.set("data.started", false);
                 this.newCards();
                 this.push('data.tips',
                 {name: 'tip',value:"", form:false,inhalt:false,ort:false,gewicht:false},
@@ -160,4 +150,3 @@
     </script>
 
 </dom-module>
-</head>

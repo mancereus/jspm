@@ -45,6 +45,9 @@
             }
         </style>
         <firebase-document location="https://protogames.firebaseio.com/zenmaster" data="{{data}}" log></firebase-document>
+        <template is="dom-if" if="{{data.started}}">
+            <h3 style="color:green;background-color: lightgray;width:400px;">Der Zenmeister ist bereit.</h3>
+        </template>
         <table>
             <tr>
                 <th></th>
