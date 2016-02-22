@@ -87,7 +87,10 @@
                 color: var(--paper-green-500);
             }
         </style>
-        <paper-card heading="{{container.name}} {{activePlayer}}" container="{{container.name}}" on-drop-card="dropCard"  class$="{{container.active}}">
+        <paper-card container="{{container.name}}" on-drop-card="dropCard"  class$="{{container.active}}">
+            <div>
+                <h4 style="margin: 2px 30px;"><paper-input style="width: 120px;" value="{{container.label}}"></paper-input></h4>
+            </div>
             <div class="card-content">
                 <div class="knobs">
                     <div>

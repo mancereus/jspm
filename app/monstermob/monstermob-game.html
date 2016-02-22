@@ -32,17 +32,17 @@
             }
 
             paper-button {
-                background-color: var(--paper-orange-500) !important;
+                background-color: orange !important;
                 color: white !important;
                 padding: 4px;
             }
         </style>
         <firebase-document location="https://protogames.firebaseio.com/monstermob/" data="{{game}}" log></firebase-document>
-
+        <paper-button on-tap="newGame">neues Spiel</paper-button>
         <div class="flex">
-            <template is="dom-repeat" items="{{players}}">
+            <template is="dom-repeat" items="{{game.players}}">
                 <template is="dom-if" if="{{item.name}}">
-                    <monstermob-container container="{{item}}" data="{{data}}">
+                    <monstermob-container container="{{item}}" data="{{game.data}}">
                     </monstermob-container>
                 </template>
                 <template is="dom-if" if="{{!item.name}}">
@@ -62,16 +62,15 @@
             is: 'monstermob-game',
             properties: {
                 game: Object,
-                data: Array,
                 players : {
                     type:Array,
                     notify: true,
                     value: function() {
                         return [
-                            {name:'player1', life: 2, gold: 1, active:true},
-                            {name:'player2', life: 2, gold: 1, active:false},
-                            {name:'player3', life: 2, gold: 1, active:false},
-                            {name:'player4', life: 2, gold: 1, active:false},
+                            {name:'player1', label:'player1', life: 2, gold: 1, active:true},
+                            {name:'player2', label:'player2',life: 2, gold: 1, active:false},
+                            {name:'player3', label:'player3',life: 2, gold: 1, active:false},
+                            {name:'player4', label:'player4',life: 2, gold: 1, active:false},
                             {type:'monster', direction: 'right'}
                         ];
                     }
@@ -80,52 +79,61 @@
              listeners: {
                 'finish': 'endTurn'},
             attached: function() {
-                this.set('game.data', this.data);
                 this.set('game.players',this.players);
             },
-            ready: function() {
-                this.game = {};
-                this.data = this.shuffle(cards);
+            newGame: function() {
+                if (this.game == undefined) {
+                 this.game = {};
+                }
+                this.game.data = this.shuffle(cards);
+                for(idx in this.game.data) {
+                   this.set('game.data.' + idx + '.owner', '');
+                 }
                 var count = 0;
-                for(idx in this.players) {
-                    if (this.players[idx].type != 'monster') {
-                    this.data[count++].owner = this.players[idx].name;
-                    this.data[count++].owner = this.players[idx].name;
+                for(idx in this.game.players) {
+                    if (this.game.players[idx].type != 'monster') {
+                    this.set('game.data.' + count++ + '.owner', this.game.players[idx].name);
+                    this.set('game.data.' + count++ + '.owner', this.game.players[idx].name);
                     }
                 }
             },
+            ready: function() {
+                if (this.game == undefined) {
+                    this.newGame();
+                }
+            },
             getMonsterIdx: function() {
-                return this.players.map(function(e) { return e.type; }).indexOf('monster');
+                return this.game.players.map(function(e) { return e.type; }).indexOf('monster');
             },
             getMonster: function() {
-                return this.players[this.getMonsterIdx()];
+                return this.game.players[this.getMonsterIdx()];
             },
             moveMonster: function() {
                 var index = this.getMonsterIdx();
-                var monster = this.players[index];
+                var monster = this.game.players[index];
                 var by = (monster.direction == 'left') ? -1 :  1;
-                var newPos = (index + by) % this.players.length;
-                this.splice('players',index,1);
-                this.splice('players',newPos,0,monster);
+                var newPos = (index + by) % this.game.players.length;
+                this.splice('game.players',index,1);
+                this.splice('game.players',newPos,0,monster);
             },
             refill: function() {
                 var count = 0;
-                for(idx in this.players) {
-                    var filtered = this.data.filter(isOwner(this.players[idx].name));
+                for(idx in this.game.players) {
+                    var filtered = this.data.filter(isOwner(this.game.players[idx].name));
                     if (filtered.length == 1) {
                     }
                 }
             },
 			endTurn: function (e){
-                var idx = this.players.findIndex(function(n) {
+                var idx = this.game.players.findIndex(function(n) {
                 return n.active == true;
                 });
-                this.set('players.' + idx + '.active', false);
-                var nextIdx = (idx+1) % this.players.length;
-                if (this.players[nextIdx].type == 'monster') {
-                    nextIdx = (nextIdx+1) % this.players.length;
+                this.set('game.players.' + idx + '.active', false);
+                var nextIdx = (idx+1) % this.game.players.length;
+                if (this.game.players[nextIdx].type == 'monster') {
+                    nextIdx = (nextIdx+1) % this.game.players.length;
                 }
-                this.set('players.' + nextIdx + '.active', true);
+                this.set('game.players.' + nextIdx + '.active', true);
             },
 			isDirection: function (item, dir){
                 return item.direction == dir;
