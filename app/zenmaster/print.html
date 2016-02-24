@@ -14,11 +14,11 @@
             font-size: 150%;
             font-weight: bold;
         }
-        
+
         .inp {
             width: 120px;
         }
-        
+
         .Inhalt {
             border: 6px solid lightblue;
             border-radius: 4px;
@@ -27,7 +27,7 @@
             width: 94%;
             height: 102px;
         }
-        
+
         .Form {
             border: 6px solid lightcoral;
             border-radius: 4px;
@@ -36,7 +36,7 @@
             width: 94%;
             height: 102px;
         }
-        
+
         .Ort {
             border: 6px solid lightgreen;
             border-radius: 4px;
@@ -45,8 +45,8 @@
             width: 94%;
             height: 102px;
         }
-        
-        .Bewegung {
+
+        .Größe {
             border: 6px solid yellow;
             border-radius: 4px;
             padding: 0;
@@ -54,7 +54,7 @@
             width: 94%;
             height: 102px;
         }
-        
+
         .card {
             width: 213px;
             height: 112px;
@@ -67,25 +67,25 @@
             font-size: 120%;
             font-weight: bold;
         }
-        
+
         .page-break {
             page-break-after: always;
             background-color: red;
             width: 650px;
         }
-        
+
         img {
             width: 120px;
             height: 200px;
         }
-        
+
         .info {
             width: 250px;
             margin: 5px;
             border: 1px solid black;
             background-color: lightgray;
         }
-        
+
         .header {
             text-align: center;
             width: 240px;
@@ -117,11 +117,21 @@
 
     <script>
         var t = document.querySelector('#tmpl');
+        t.enhance = function(stack) {
+                stack.cards.forEach(function(item){
+                    item.type = stack.type;
+                    item.type2 = stack.type2;
+                });
+            };
 		t.cards = [];
-		t.cards = t.cards.concat(dataform.cards);
-		t.cards = t.cards.concat(datainhalt.cards);
-		t.cards = t.cards.concat(dataort.cards);
-		t.cards = t.cards.concat(dataextra.cards);
+        t.enhance(data.form);
+        t.enhance(data.inhalt);
+        t.enhance(data.ort);
+        t.enhance(data.extra);
+		t.cards = t.cards.concat(data.form.cards);
+		t.cards = t.cards.concat(data.inhalt.cards);
+		t.cards = t.cards.concat(data.ort.cards);
+		t.cards = t.cards.concat(data.extra.cards);
     </script>
 </body>
 
