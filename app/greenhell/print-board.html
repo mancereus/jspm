@@ -20,11 +20,12 @@
     <template>
 
         <div id="gameTable">
-           <!-- <template is="dom-repeat" items="{{cards}}" as="card" index-as="cardIndex">
+           <template is="dom-repeat" items="{{cards}}" as="card" index-as="cardIndex">
                 <game-print-card selected="1" cardData="{{card}}"></game-print-card>
                 <page-break-div nmbr="{{cardIndex}}" max="16"></page-break-div>
             </template>
-            <br>-->
+            <br>
+             <div style="page-break-before: always; width: 800px;">symbols</div>
             <template is="dom-repeat" items="{{cards}}" as="card" index-as="cardIndex">
                 <template is="dom-if" if="{{ card.imgclass}}">
                     <game-piece print style="margin: 2px;" img="{{card.name}}" imgclass="{{card.imgclass}}"></game-piece>
