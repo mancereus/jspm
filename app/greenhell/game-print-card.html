@@ -1,5 +1,6 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
 <link rel="import" href="../../bower_components/paper-ripple/paper-ripple.html">
 <link rel="import" href="../../bower_components/paper-material/paper-material.html">
 <link rel="import" href="../../bower_components/voice-elements/dist/voice-player.html">
@@ -12,18 +13,18 @@
             margin: 0;
             padding: 0;
         }
-       .card-header {
+
+        .card-header {
             margin: 0.3mm 0;
             display: inline-block;
             position: relative;
-              background-color: white;
+            background-color: white;
             border: 1px solid lightslategray;
             border-radius: 1%;
             padding: 0;
             width: 42mm;
             height: 63mm;
             font-size: 1em;
-
         }
 
         .card-header .picture {
@@ -34,6 +35,12 @@
             height: 18mm;
         }
 
+        .card-header .picture.symbol {
+            border-radius: 50%;
+            border: 2px solid green;
+            opacity: 0.5;
+            height: 24mm;
+        }
 
         .info {
             background-color: #AEC9E8;
@@ -49,38 +56,43 @@
 
         .text {
             font-size: 8pt;
-            line-height: 0.95em;
+            line-height: 1em;
         }
-
     </style>
     <style is="custom-style">
         .big {
-            --iron-icon-height: 64px;
-            --iron-icon-width: 64px;
+            color: gray;
+            --iron-icon-height: 16px;
+            --iron-icon-width: 16px;
         }
     </style>
     <template>
-            <div class="card-header">
-                <div class$="layout vertical center {{carddata.info}}" style="min-height: 63mm;">
-                    <span>{{carddata.name}}</span>
-                    <div class="fit" style="left: 1mm;top: 1mm">
-                        <template is="dom-if" if="{{carddata.task}}"><img src="img/Stern.png" style="width:15px;height: 15px;" alt="">
-                        </template>
-                    </div>
-                    <img src$="img/{{carddata.name}}.png" class$="picture {{carddata.imgclass}}">
-
-                    <div class="handle text" style="width:90%; margin: 1px 18px 1px 7px;">{{carddata.Aktion}}</div>
-                    <template is="dom-if" if="{{carddata.flavour}}">
-                        <div class="handle text" style="width:90%; margin: 1px 16px 1px 7px;font-style:italic;">{{carddata.flavour}}</div>
-                    </template>
-                    <div class="handle" style="width:90%; font-size: 9px;margin: 1px 16px 1px 7px;"><span>{{carddata.type}}</span> (<span>{{akt}}</span> <span>{{carddata.level}}</span>)</div>
-                    <template is="dom-if" if="{{carddata.ver}}">
-                        <img class="fit " src="img/vertic.jpg" style="top: 0;left: 38mm;width:4mm;height: 100%;" alt="">
-                    </template>
-                    <template is="dom-if" if="{{carddata.hor}}">
-                       <img src="img/horiz.jpg" class="fit" style="top: 59mm;height:4mm; width: 100%;" alt="">
+        <div class="card-header">
+            <div class$="layout vertical center {{carddata.info}}" style="min-height: 63mm;">
+                <span>{{carddata.name}}</span>
+                <div class="fit" style="left: 1mm;top: 1mm">
+                    <template is="dom-if" if="{{carddata.task}}"><img src="img/Stern.png" style="width:15px;height: 15px;" alt="">
                     </template>
                 </div>
+                <div class="fit" style="left: 36mm;top: 0mm">
+                    <template is="dom-if" if="{{carddata.order}}">
+                        <iron-icon class="big" icon="{{carddata.order}}"></iron-icon>
+                    </template>
+                </div>
+                <img src$="img/{{carddata.name}}.png" class$="picture {{carddata.imgclass}}">
+
+                <div class="handle text" style="width:90%; margin: 1px 18px 1px 7px;">{{carddata.Aktion}}</div>
+                <template is="dom-if" if="{{carddata.flavour}}">
+                    <div class="handle text" style="width:90%; margin: 1px 16px 1px 7px;font-style:italic;">{{carddata.flavour}}</div>
+                </template>
+                <div class="handle" style="width:90%; font-size: 9px;margin: 1px 16px 1px 7px;"><span>{{carddata.type}}</span> (Akt {{carddata.akt}}<span>{{carddata.level}}</span>)</div>
+                <template is="dom-if" if="{{carddata.ver}}">
+                    <img class="fit " src="img/vertic.jpg" style="top: 0;left: 38mm;width:4mm;height: 100%;" alt="">
+                </template>
+                <template is="dom-if" if="{{carddata.hor}}">
+                    <img src="img/horiz.jpg" class="fit" style="top: 59mm;height:4mm; width: 100%;" alt="">
+                </template>
+            </div>
     </template>
     <script>
         Polymer({

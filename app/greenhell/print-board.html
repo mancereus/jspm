@@ -12,23 +12,24 @@
         game-print-card {
             margin: 0 -1px;
         }
+
         #gameTable {
             width: 180mm;
         }
     </style>
     <template>
 
-        <div id="gameTable" >
-            <template is="dom-repeat" items="{{cards}}" as="card" index-as="cardIndex">
+        <div id="gameTable">
+           <!-- <template is="dom-repeat" items="{{cards}}" as="card" index-as="cardIndex">
                 <game-print-card selected="1" cardData="{{card}}"></game-print-card>
                 <page-break-div nmbr="{{cardIndex}}" max="16"></page-break-div>
             </template>
-            <br>
-            <!--<template is="dom-repeat" items="{{cards}}" as="card" index-as="cardIndex">
+            <br>-->
+            <template is="dom-repeat" items="{{cards}}" as="card" index-as="cardIndex">
                 <template is="dom-if" if="{{ card.imgclass}}">
                     <game-piece print style="margin: 2px;" img="{{card.name}}" imgclass="{{card.imgclass}}"></game-piece>
                 </template>
-            </template>-->
+            </template>
         </div>
     </template>
     <script src="js/base.js"></script>
@@ -40,6 +41,11 @@
         initcards.push.apply(initcards,data1.initcards);
         initcards.push.apply(initcards,data1.initActions);
         initcards.push.apply(initcards,data1.start);
+        initcards.forEach(function(c) {if (c.akt == undefined) c.akt=1});
+        initcards.push.apply(initcards,data2.initcards);
+        initcards.push.apply(initcards,data2.initActions);
+        initcards.push.apply(initcards,data2.start);
+        initcards.forEach(function(c) {if (c.akt == undefined) c.akt=2});
 
     Polymer({
       is: 'print-board',

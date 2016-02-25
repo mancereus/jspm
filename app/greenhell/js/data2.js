@@ -34,7 +34,7 @@ var data2 = {
         { name: "Kannibalen", Aktion: "Die Kannibalen durchstreifen das Tal. Habt ihr den Schrunpfkopf bei euch, lassen sie euch vorbeiziehen. Ansonsten könnt ihr das Feld nicht betreten.", info: "problem" },
         { name: "Fels", Aktion: "Du kannst dieses Feld nicht betreten und nicht mit der Liane überfliegen.", info: "problem" },
         { name: "Schrumpfkopf", Aktion: "Ihr findet einen Schrumpfkopf der Kannibalen.", hor: true, imgclass: "symbol"},
-        { name: "Dynamit", Aktion: "Du findest einen versteckten Vorrat an Dynamit und kannst damit einen Felsen sprengen. Lege dazu das Dynamit von einem Nachbarfeld aus ohne Wand dazwischen auf den Felsen.", imgclass: "symbol", type: "Erweiterung Aktionskarte" },
+        { name: "Dynamit", Aktion: "Du findest einen versteckten Vorrat an Dynamit und kannst damit einen Felsen sprengen. Lege dazu das Dynamit von einem Nachbarfeld aus ohne Wand dazwischen auf den Felsen.", imgclass: "symbol"},
         { name: "Fels", Aktion: "Du kannst dieses Feld nicht betreten und nicht mit der Liane überfliegen.", info: "problem" },
 
         { name: "Artefakt", Aktion: "Du findest ein Artefakt einer unbekannten Zivilisation. ", imgclass: "symbol", hor: true },
@@ -53,13 +53,13 @@ var data2 = {
         { name: "Affenhorde",  Aktion: "Die Affenhorde klaut einen offen liegenden Gegenstand auf dem Plan. Wähle einen Gegenstand aus und lege ihn den Vorrat", info: "problem", task: true },
 
         { name: "Jäger", order: "accessibility", Aktion: "Der Großwildjäger Stoephasius klaut dir alle Artefakte und bringt sie zur gegenüberliegenden Aktionskarte. Mit der Pistole kannst du sie ihm dort abnehmen.",  task: true },
-        { name: "Jäger", order: "accessibility", Aktion: "Der Großwildjäger Stoephasius wurde von Kannibalen gefangen genommen und wird in ihr Dorf transportiert. Mit der Pistole kannst du ihn retten. Aus Dankbarkeit darfst du in der nächsten Partie einen zusätzlichen Stern verwenden.", info: "warn",  task: true },
+        { name: "Jäger", order: "accessibility", Aktion: "Der Großwildjäger Stoephasius wurde von Kannibalen gefangen genommen und wird in ihr Dorf transportiert. Mit der Pistole kannst du ihn retten. Aus Dankbarkeit erhälst du einen Bonuspunkt.", info: "warn",  task: true },
 
         { name: "Gefangen", order: "build", Aktion: "Jack wird von den Kannibalen überrascht und gefangen. Jane muss den Kannibalen den Schrumpfkopf geben, dann lassen sie Jack frei. Bis dahin kannst du Jacks Inventarkarte nicht verwenden. ", task: true },
 
         { name: "Treibsand", order: "build", Aktion: "Jack bleibt im Treibsand stecken. Jane muss eine Liane hierherbringen, um ihn zu retten. Gib die Liane dazu ab. Bis dahin kannst du Jacks Inventarkarte nicht verwenden. Ist Jane nicht dabei, stirbt Jack und das Abenteuer ist zu Ende.", task: true },
 
-        { name: "Diamantenmine", order: "select-all", Aktion: "Mit der Fackel findest du in der dunklen Mine große Diamanten. Wenn du Sie herausholst, verlierst du die Fackel.", info: "warn", imgclass: "symbol", task: true },
+        { name: "Diamantenmine", order: "select-all", Aktion: "Mit der Fackel findest du in der dunklen Mine große Diamanten. Wenn du Sie herausholst, verlierst du die Fackel. Du erhälst einen Bonuspunkt.", info: "warn", imgclass: "symbol", task: true },
 
 
         { name: "Königin", order: "gesture", Aktion: "Jane wird von den Kannibalen als Dschungelkönigin verehrt. Lege mit der Fackel ein Feuer, dann kann Jane unbemerkt fliehen. Die Fackel geht in den Vorrat.", task: true },

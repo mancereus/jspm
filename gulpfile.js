@@ -33,7 +33,16 @@ gulp.task('vulcan', function () {
     .pipe(crisper())
     .pipe(gulp.dest('dest'))
 })
+gulp.task('generate-service-worker', function(callback) {
+  var path = require('path');
+  var swPrecache = require('sw-precache');
+  var rootDir = 'dest';
 
+  swPrecache.write(path.join(rootDir, 'service-worker.js'), {
+    staticFileGlobs: [rootDir + '/**/*.{js,html,css,png,jpg,gif}'],
+    stripPrefix: rootDir
+  }, callback);
+});
 gulp.task('polybuild', function () {
   return gulp.src('app/**/*.html')
     .pipe(polybuild({maximumCrush: true}))
@@ -46,7 +55,7 @@ gulp.task('css', function () {
 })
 
 gulp.task('copy', function () {
-  return gulp.src(['app/**/*.png','app/**/*.jpg', 'app/**/index.js', 'app/**/print.js','app/**/tipps.js','app/**/help.js'])
+  return gulp.src(['app/**/*.png','app/**/*.jpg','app/**/*.json', 'app/**/index.js', 'app/**/print.js','app/**/tipps.js','app/**/help.js'])
     .pipe(gulp.dest('dest'))
 })
 

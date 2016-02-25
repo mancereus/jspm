@@ -12,7 +12,7 @@
             -ms-user-select: none;
             user-select: none;
         }
-        
+
         div {
             position: absolute;
             width: 56px;
@@ -28,23 +28,23 @@
             background-color: white;
             z-index: 99;
         }
-        
+
         :host.bigsymbol {
             height: 56px;
         }
-        
+
         div.bigsymbol img {
             background-color: yellow;
             height: 56px;
         }
-        
+
         div.symbol img {
             height: 56px;
         }
     </style>
     <template>
-        <div name="piece" draggable="true" on-tap="clicker" class$="{{computeClass(imgclass)}}">
-            <img src="img/{{img}}.png" style="width: 60px;">
+        <div id="piece" draggable="true" on-tap="clicker" class$="{{computeClass(imgclass)}}">
+            <img id="image" src="img/{{img}}.png" style="width: 60px;">
         </div>
     </template>
     <script>
@@ -65,7 +65,11 @@
       },
       attached: function () {
           if(this.print) {
-              this.style.position = 'relative';
+              this.$.piece.style.position = 'static';
+              this.$.piece.style.display = 'inline-block';
+              this.$.piece.style.width = '24mm';
+              this.$.piece.style.height = '24mm';
+              this.$.image.style.margin = '4mm';
           } else {
           if(this.top) {
               this.style.top = this.top + "px";
