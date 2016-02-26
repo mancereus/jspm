@@ -31,22 +31,28 @@
             color: black;
             text-align: center;
         }
+
         .item {
             height: 100%;
             margin-top: 10mm;
         }
+
         .red {
             background-color: #EF5350;
         }
+
         .orange {
             background-color: #FFA726;
         }
+
         .yellow {
             background-color: #FFEE58;
         }
+
         .green {
             background-color: #9CCC65;
         }
+
         .blue {
             background-color: #29B6F6;
         }
@@ -57,7 +63,14 @@
     <template id="tmpl" is="dom-bind">
         <div class="game">
             <template is="dom-repeat" items="{{cards}}">
-                <div class$="card {{item.color}}" >
+                <div class$="card {{item.color}}">
+                    <div class="item">{{item.name}}</div>
+                </div>
+            </template>
+        </div>
+        <div class="game">
+            <template is="dom-repeat" items="{{numbers}}">
+                <div class$="card {{item.color}}">
                     <div class="item">{{item.name}}</div>
                 </div>
             </template>
@@ -67,6 +80,7 @@
     <script>
         var t = document.querySelector('#tmpl');
 		t.cards = cards;
+		t.numbers = numbers;
     </script>
 
 </body>
