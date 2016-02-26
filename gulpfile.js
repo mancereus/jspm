@@ -55,7 +55,7 @@ gulp.task('css', function () {
 })
 
 gulp.task('copy', function () {
-  return gulp.src(['app/**/*.png','app/**/*.jpg','app/**/*.json', 'app/**/index.js', 'app/**/print.js','app/**/tipps.js','app/**/help.js'])
+  return gulp.src(['app/**/*.png','app/*.ico','app/**/*.jpg','app/**/*.json', 'app/**/index.js', 'app/**/print.js','app/**/tipps.js','app/**/help.js'])
     .pipe(gulp.dest('dest'))
 })
 
