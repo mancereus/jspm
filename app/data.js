@@ -10,6 +10,7 @@ var pipeline = [
     { name: "Heisse Würfel", type: "cantStop", link: "hotdice/index.html", desc: "", status: "dev" },
     { name: "Dracula", type: "SoloCardGame", link: "dracula/index.html", desc: "Neue Version des SoloCardGames mit Dracula", status: "concept" },
     { name: "StadtChronik", type: "Partieübergreifend", link: "", desc: "Ergebnis der Partie wird in den folgenden Partien verwendet.", status: "concept" },
+    { name: "Wiege der Zivilisation", type: "Civi", link: "/index.html", desc: "", status: "dev" },
 ];
 var archive = [
     { name: "Tiger", type: "SoloCardGame", link: "tiger/index.html", desc: "Erste Version des SoloCardGames", status: "test" },
