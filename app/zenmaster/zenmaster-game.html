@@ -1,7 +1,10 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/firebase-element/firebase-document.html">
+<link rel="import" href="../../bower_components/firebase-element/firebase-collection.html">
 <link rel="import" href="zenmaster-create.html">
 <script src="data.js"></script>
+<script src="../../bower_components/sugar/release/sugar.min.js"></script>
+
 <link rel="stylesheet" href="../css/main.css">
 
 <dom-module id="zenmaster-game">
@@ -89,7 +92,17 @@
         <h3>2. Schreibe deine Lösung auf:</h3>
         <input style="width: 250px;" class="try inp" value="{{data.solution::input}}"></input>
         <button on-click="startGame">Fertig</button>
-        <zenmaster-create opened key="{{key}}"></zenmaster-create>
+       <!-- <zenmaster-create opened key="{{key}}"></zenmaster-create>-->
+        <firebase-collection id="col" limit-to-last="10" location="https://protogames.firebaseio.com/zenmaster/games"
+      data="{{games}}"></firebase-collection>
+      <input type="button" on-click="saveGame" value="Speichere Spiel">
+      <br>
+      <select id="game">
+      <template is="dom-repeat" items="{{games}}">
+          <option value="{{item.solution}}">{{item.solution}}</option>
+      </template>
+      </select>
+          Lade Spiel: <input type="button" on-click="loadGame" value="load">
     </template>
 
     <script>
@@ -97,6 +110,10 @@
             is: 'zenmaster-game',
             properties: {
                 cards: {
+                    type: Array,
+                    notify:true
+                },
+                games: {
                     type: Array,
                     notify:true
                 },
@@ -109,6 +126,18 @@
             },
             startGame: function() {
                 this.set("data.started", true);
+            },
+            saveGame: function() {
+                this.push("games", this.data);
+                this.$.col.add(this.data);
+            },
+            loadGame: function() {
+                var val = this.$.game.value;
+                var item = this.games.find(
+                    function(n) {
+                        return n.solution == val;
+                    });
+                this.set('data', item);
             },
             newCards: function() {
                 this.shuffle(data.form.cards);
