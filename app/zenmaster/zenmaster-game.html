@@ -75,7 +75,7 @@
                 padding: 0;
             }
         </style>
-        <firebase-document location="https://protogames.firebaseio.com/zenmaster/" data="{{data}}" log></firebase-document>
+        <firebase-document location="https://protogames.firebaseio.com/zenmaster/data" data="{{data}}" log></firebase-document>
         <input type="button" on-click="newGame" value="Neues Spiel"> <a href="tipps.html" target="_blank">Tipps Seite</a>
         <div class="cards">
             <template is="dom-repeat" items="{{data.cards}}">
@@ -91,18 +91,18 @@
         <br/>
         <h3>2. Schreibe deine Lösung auf:</h3>
         <input style="width: 250px;" class="try inp" value="{{data.solution::input}}"></input>
-        <button on-click="startGame">Fertig</button>
+        <button on-tap="startGame">Fertig</button>
        <!-- <zenmaster-create opened key="{{key}}"></zenmaster-create>-->
         <firebase-collection id="col" limit-to-last="10" location="https://protogames.firebaseio.com/zenmaster/games"
       data="{{games}}"></firebase-collection>
-      <input type="button" on-click="saveGame" value="Speichere Spiel">
+      <input type="button" on-tap="saveGame" value="Speichere Spiel">
       <br>
-      <select id="game">
+          <b>Lade Spiel:</b>
+      <select id="game" on-change="loadGame">
       <template is="dom-repeat" items="{{games}}">
           <option value="{{item.solution}}">{{item.solution}}</option>
       </template>
       </select>
-          Lade Spiel: <input type="button" on-click="loadGame" value="load">
     </template>
 
     <script>
@@ -129,7 +129,6 @@
             },
             saveGame: function() {
                 this.push("games", this.data);
-                this.$.col.add(this.data);
             },
             loadGame: function() {
                 var val = this.$.game.value;

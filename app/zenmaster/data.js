@@ -8,7 +8,7 @@ var data = {
             { name: "ist im wesentlichen flach" },
             { name: "ist kugel- oder eiförmig" },
             { name: "ist Kistenförmig oder rechteckig" },
-            { name: "besteht aus mehreren Teilen, die sich trennen lassen?" },
+            { name: "besteht aus mehreren Teilen, die sich trennen lassen" },
             { name: "Oberfläche ist warm oder heiss" },
             { name: "Oberfläche ist vorwiegend glatt" },
             { name: "Oberfläche ist vorwiegend rauh" },
@@ -64,7 +64,7 @@ var data = {
         cards: [
             { name: "kleiner als eine Maus" },
             { name: "kleiner als eine Katze" },
-            { name: "grösser als ein Tisch" },
+            { name: "höher als ein Tisch" },
             { name: "passt in ein Gartenhäuschen" },
             { name: "höher als ein 2-stöckiges Reihenhaus" },
             { name: "passt in eine quadratische Kiste mit 1 Meter Seitenlänge" },
