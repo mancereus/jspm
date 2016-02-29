@@ -1,12 +1,55 @@
 <!doctype html>
+
 <head>
-	<title>Protos</title>
+    <title>Protos</title>
+    <script src="../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+    <link rel="import" href="../../bower_components/polymer/polymer.html">
+    <link rel="import" href="../../bower_components/paper-card/paper-card.html">
+    <script src="data.js"></script>
+    <link rel="import" href="../../bower_components/font-roboto/roboto.html">
+
+  <link rel="import" href="../../bower_components/paper-styles/color.html">
+  <link rel="import" href="../../bower_components/paper-styles/typography.html">
+    <style  is="custom-style">
+        body {
+            font-family: Roboto, 'Noto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+        paper-card {
+            background: var(--paper-yellow-500);
+            width: 400px;
+            margin: 10px;
+        }
+        paper-card.test {
+            background: var(--paper-green-500);
+        }
+        paper-card.dev {
+            background: var(--paper-orange-500);
+        }
+    </style>
+
 </head>
+
 <body>
-	<a href="zenmaster/index.html">ZenMeister</a>
-	<a href="zenmaster/tipps.html">ZenMeister Tipps</a>
-	<a href="monstermob/print.html">Monstermob</a>
-	<a href="crimescene/index.html">CrimeScene</a>
-	<a href="tiger/index.html">Tiger</a>
-	<a href="greenhell/index.html">Die Grüne Hölle</a>
+    <template id="tmpl" is="dom-bind">
+        <div class="flex">
+            <template is="dom-repeat" items="{{games}}">
+                <paper-card elevation="5" heading="{{item.name}}" class$="{{item.status}}">
+                    <div class="card-content">
+                        <h3>{{item.pitch}}</h3>
+                        <p><b>Kategorie:</b> {{item.type}}</p>
+                        <p><b>Inhalt:</b> {{item.desc}}</p>
+                    </div>
+                    <div class="card-actions">
+                        <a href="{{item.link}}" target="{{item.name}}">Starten</a>
+                    </div>
+                </paper-card>
+            </template>
+        </div>
+    </template>
+
+    <script>
+        var t = document.querySelector('#tmpl');
+		t.games = games;
+
+    </script>
 </body>

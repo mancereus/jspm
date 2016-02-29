@@ -1,5 +1,6 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/firebase-element/firebase-document.html">
+<link rel="import" href="zenmaster-create.html">
 <script src="data.js"></script>
 <link rel="stylesheet" href="../css/main.css">
 
@@ -88,6 +89,7 @@
         <h3>2. Schreibe deine Lösung auf:</h3>
         <input style="width: 250px;" class="try inp" value="{{data.solution::input}}"></input>
         <button on-click="startGame">Fertig</button>
+        <zenmaster-create opened key="{{key}}"></zenmaster-create>
     </template>
 
     <script>
@@ -98,7 +100,8 @@
                     type: Array,
                     notify:true
                 },
-                data: Object
+                data: Object,
+                key: String
             },
             shuffle: function(o) {
                 for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
