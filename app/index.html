@@ -8,22 +8,25 @@
     <script src="data.js"></script>
     <link rel="import" href="../../bower_components/font-roboto/roboto.html">
 
-  <link rel="import" href="../../bower_components/paper-styles/color.html">
-  <link rel="import" href="../../bower_components/paper-styles/typography.html">
-    <style  is="custom-style">
+    <link rel="import" href="../../bower_components/paper-styles/color.html">
+    <link rel="import" href="../../bower_components/paper-styles/typography.html">
+    <style is="custom-style">
         body {
             font-family: Roboto, 'Noto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
         }
+
         paper-card {
-            background: var(--paper-yellow-500);
+            background: var(--paper-yellow-400);
             width: 400px;
             margin: 10px;
         }
+
         paper-card.test {
-            background: var(--paper-green-500);
+            background: var(--paper-green-400);
         }
+
         paper-card.dev {
-            background: var(--paper-orange-500);
+            background: var(--paper-blue-400);
         }
     </style>
 
@@ -31,11 +34,12 @@
 
 <body>
     <template id="tmpl" is="dom-bind">
+        <h2>Aktiv</h2>
         <div class="flex">
-            <template is="dom-repeat" items="{{games}}">
+            <template is="dom-repeat" items="{{active}}">
                 <paper-card elevation="5" heading="{{item.name}}" class$="{{item.status}}">
                     <div class="card-content">
-                        <h3>{{item.pitch}}</h3>
+                        <p><b>Pitch:</b> {{item.pitch}}</p>
                         <p><b>Kategorie:</b> {{item.type}}</p>
                         <p><b>Inhalt:</b> {{item.desc}}</p>
                     </div>
@@ -45,11 +49,35 @@
                 </paper-card>
             </template>
         </div>
+        <h2>Pipeline</h2>
+        <div class="flex">
+            <template is="dom-repeat" items="{{pipeline}}">
+                <paper-card elevation="5" heading="{{item.name}}" class$="{{item.status}}">
+                    <div class="card-content">
+                        <h3>{{item.pitch}}</h3>
+                        <p><b>Kategorie:</b> {{item.type}}</p>
+                        <p><b>Inhalt:</b> {{item.desc}}</p>
+                    </div>
+                </paper-card>
+            </template>
+        </div>
+        <h2>Archiv</h2>
+        <div class="flex">
+            <template is="dom-repeat" items="{{archive}}">
+                <paper-card elevation="5" heading="{{item.name}}" class$="{{item.status}}">
+                    <div class="card-content">
+                        <h3>{{item.pitch}}</h3>
+                        <p><b>Kategorie:</b> {{item.type}}</p>
+                    </div>
+                </paper-card>
+            </template>
+        </div>
     </template>
 
     <script>
         var t = document.querySelector('#tmpl');
-		t.games = games;
-
+		t.active = active;
+		t.archive = archive;
+		t.pipeline = pipeline;
     </script>
 </body>
