@@ -18,25 +18,25 @@
             font-size: 1em;
             font-weight: 150;
             line-height: 1.2em;
-             -webkit-touch-callout: none;
+            -webkit-touch-callout: none;
             -webkit-user-select: none;
             -khtml-user-select: none;
             -moz-user-select: none;
             -ms-user-select: none;
             user-select: none;
         }
-        
+
         h2 {
             margin: 0;
             font-size: 1.8rem;
             font-weight: 150;
         }
-        
+
         .card-header .picture {
             width: 35px;
             margin: 5px;
         }
-        
+
         .card-header .picture.symbol {
             border-radius: 50%;
             border: 2px solid green;
@@ -46,7 +46,7 @@
     <template>
         <div class="card-header" on-showdetails="handleDetails">
             <div class="layout vertical center" on-tap="talk">
-                <voice-player id="player" accent="de-DE" text="{{ text }} {{flavour}}"></voice-player>
+                <voice-player id="player" accent="de-DE" text="{{voiceText(text,flavour)}}"></voice-player>
                 <h2>{{titleText}}</h2>
                 <img src="{{computeSrc(imgSrc)}}" style="width:60%;height:100px;margin: 5px;" class$="{{computeClass(cardData)}}">
 
@@ -67,9 +67,9 @@
           notify: true
         },
         symbol: { notify: true },
-        text: { notify: true },
-        flavour: { notify: true },
-        titleText: { notify: true }
+        text: { type: String, notify: true },
+        flavour: {  type: String, notify: true },
+        titleText: { type: String, notify: true }
       },
       ready: function () {
       },
@@ -85,6 +85,9 @@
       },
       computeSrc: function (imgSrc) {
         return 'img/' + imgSrc + '.png';
+      },
+      voiceText: function (text, flavour) {
+        return this.text + " " + this.flavour;
       },
       handleDetails: function(e, detail, sender) {
         this.message = 'heard: ' + detail.message;

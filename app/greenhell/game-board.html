@@ -17,6 +17,7 @@
     <link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
     <link rel="import" href="../../bower_components/paper-styles/paper-styles.html">
     <link rel="import" href="../../bower_components/paper-dialog/paper-dialog.html">
+    <link rel="import" href="../../bower_components/paper-button/paper-button.html">
     <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
     <link rel="import" href="game-show-details.html">
     <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
@@ -242,7 +243,9 @@
                     type: String,
                     value: '1480px',
                     notify: true
-                }
+                },
+                secret: String,
+                level: String,
             },
             observers: [
                 "configChanged(config.*)"
@@ -257,7 +260,7 @@
                 this.notifyPath('config.akt',this.config.path);
             },
             attached: function () {
-              
+
                 if (this.config.akt == 1) {
                     this.data = data1;
                 }
