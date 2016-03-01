@@ -2,7 +2,7 @@
   "scripts": {
     "dev": "browser-sync start --server --files \"app/**/*,dest/**/*,bower_components/**/*\" --startPath \"/app\" --directory --no-notify",
     "lint": "polylint -v -r app/ -i zenmaster/index.html",
-     "precache": "node_modules/sw-precache/cli.js --root=dest/zenmaster"
+    "precache": "node_modules/sw-precache/cli.js --root=dest/zenmaster"
   },
   "jspm": {
     "directories": {},
@@ -13,7 +13,7 @@
       "lodash": "npm:lodash@^3.9.3",
       "text": "github:systemjs/plugin-text@^0.0.2",
       "ts": "github:frankwallis/plugin-typescript@^1.0.5",
-       "sw-precache": "^3.0.0"
+      "sw-precache": "^3.0.0"
     },
     "devDependencies": {
       "traceur": "github:jmcriffey/bower-traceur@0.0.88",
@@ -34,6 +34,7 @@
     "jspm": "^0.16.1"
   },
   "dependencies": {
+    "eslint-plugin-html": "^1.4.0",
     "gulp-crisper": "^1.0.0",
     "polybuild": "^1.1.0",
     "polyclean": "^1.3.1"
