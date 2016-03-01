@@ -1,15 +1,15 @@
 <!doctype html>
 
 <head>
-    <title>Protos</title>
-    <script src="../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
-    <link rel="import" href="../../bower_components/polymer/polymer.html">
-    <link rel="import" href="../../bower_components/paper-card/paper-card.html">
+    <title>ProtoGames</title>
+    <script src="../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+    <link rel="import" href="../bower_components/polymer/polymer.html">
+    <link rel="import" href="../bower_components/paper-card/paper-card.html">
     <script src="data.js"></script>
-    <link rel="import" href="../../bower_components/font-roboto/roboto.html">
+    <link rel="import" href="../bower_components/font-roboto/roboto.html">
 
-    <link rel="import" href="../../bower_components/paper-styles/color.html">
-    <link rel="import" href="../../bower_components/paper-styles/typography.html">
+    <link rel="import" href="../bower_components/paper-styles/color.html">
+    <link rel="import" href="../bower_components/paper-styles/typography.html">
     <style is="custom-style">
         body {
             font-family: Roboto, 'Noto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -21,11 +21,20 @@
             margin: 10px;
         }
 
-        paper-card.test {
+        .concept {
+            margin-left: 12px;
+            padding: 2px 5px;
+            background: var(--paper-yellow-400);
+        }
+        .test {
+            margin-left: 12px;
+            padding: 2px 5px;
             background: var(--paper-green-400);
         }
 
-        paper-card.dev {
+        .dev {
+            margin-left: 12px;
+            padding: 2px 5px;
             background: var(--paper-blue-400);
         }
     </style>
@@ -33,6 +42,8 @@
 </head>
 
 <body>
+    <span style="font-size:36px;font-weight: bold;">Brettspielprototypen</span>
+    <b>Status:</b><span class="concept">in Konzeption</span><span class="dev">in Entwicklung</span><span class="test">im Test</span>
     <template id="tmpl" is="dom-bind">
         <h2>Aktiv</h2>
         <div class="flex">
