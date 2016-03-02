@@ -46,22 +46,9 @@
                 font-weight: bold;
             }
 
-            .page-break {
-                page-break-after: always;
-                background-color: red;
-                width: 650px;
-            }
-
             img {
                 width: 120px;
                 height: 200px;
-            }
-
-            .info {
-                width: 250px;
-                margin: 5px;
-                border: 1px solid black;
-                background-color: lightgray;
             }
 
             .header {
@@ -76,30 +63,28 @@
         <input type="button" on-click="newGame" value="Neues Spiel"> <a href="tipps.html" target="_blank">Tipps Seite</a>
         <div class="cards">
             <template is="dom-repeat" items="{{data.cards}}">
-
                 <div class$="{{item.type}} card">
-                        <span class="header">{{item.type}} / {{item.type2}}</span>
-                        <br/>
-                        <span>{{item.name}}</span>
+                    <span class="header">{{item.type}} / {{item.type2}}</span>
+                    <br/>
+                    <span>{{item.name}}</span>
                 </div>
             </template>
 
         </div>
         <br/>
-        <h3>2. Schreibe deine Lösung auf:</h3>
+        <h3>Schreibe deine Lösung auf:</h3>
         <input style="width: 250px;" class="try inp" value="{{data.solution::input}}"></input>
         <button on-tap="startGame">Fertig</button>
-       <!-- <zenmaster-create opened key="{{key}}"></zenmaster-create>-->
         <firebase-collection id="col" limit-to-last="10" location="https://protogames.firebaseio.com/zenmaster/games"
-      data="{{games}}"></firebase-collection>
-      <input type="button" on-tap="saveGame" value="Speichere Spiel">
-      <br>
-          <b>Lade Spiel:</b>
-      <select id="game" on-change="loadGame">
-      <template is="dom-repeat" items="{{games}}">
-          <option value="{{item.solution}}">{{item.solution}}</option>
-      </template>
-      </select>
+                             data="{{games}}"></firebase-collection>
+        <input type="button" on-tap="saveGame" value="Speichere Spiel">
+        <br>
+        <b>Lade Spiel:</b>
+        <select id="game" on-change="loadGame">
+            <template is="dom-repeat" items="{{games}}">
+                <option value="{{item.solution}}">{{item.solution}}</option>
+            </template>
+        </select>
     </template>
 
     <script>
@@ -108,73 +93,72 @@
             properties: {
                 cards: {
                     type: Array,
-                    notify:true
+                    notify: true
                 },
                 games: {
                     type: Array,
-                    notify:true
+                    notify: true
                 },
                 data: Object,
                 key: String
             },
-            shuffle: function(o) {
-                for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+            shuffle: function (o) {
+                for (var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
                 return o;
             },
-            startGame: function() {
+            startGame: function () {
                 this.set("data.started", true);
             },
-            saveGame: function() {
+            saveGame: function () {
                 this.push("games", this.data);
             },
-            loadGame: function() {
+            loadGame: function () {
                 var val = this.$.game.value;
                 var item = this.games.find(
-                    function(n) {
-                        return n.solution == val;
-                    });
+                        function (n) {
+                            return n.solution == val;
+                        });
                 this.set('data', item);
             },
-            newCards: function() {
+            newCards: function () {
                 this.shuffle(data.form.cards);
                 this.shuffle(data.inhalt.cards);
                 this.shuffle(data.ort.cards);
                 this.shuffle(data.extra.cards);
 
-                this.push('data.cards',this.getCard(data.form));
-                this.push('data.cards',this.getCard(data.inhalt));
-                this.push('data.cards',this.getCard(data.ort));
-                this.push('data.cards',this.getCard(data.extra));
+                this.push('data.cards', this.getCard(data.form));
+                this.push('data.cards', this.getCard(data.inhalt));
+                this.push('data.cards', this.getCard(data.ort));
+                this.push('data.cards', this.getCard(data.extra));
             },
-            newGame: function() {
-                this.data = {
-                };
+            newGame: function () {
+                this.data = {};
                 this.set("data.cards", []);
                 this.set("data.tips", []);
                 this.set("data.solution", "");
                 this.set("data.started", false);
                 this.newCards();
                 this.push('data.tips',
-                {name: 'tip',value:"", form:false,inhalt:false,ort:false,gewicht:false},
-                {name: 'tip',value:"", form:false,inhalt:false,ort:false,gewicht:false},
-                {name: 'tip',value:"", form:false,inhalt:false,ort:false,gewicht:false},
-                {name: 'help1',value:"", form:false,inhalt:false,ort:false,gewicht:false},
-                {name: 'tip',value:"", form:false,inhalt:false,ort:false,gewicht:false},
-                {name: 'tip',value:"", form:false,inhalt:false,ort:false,gewicht:false},
-                {name: 'tip',value:"", form:false,inhalt:false,ort:false,gewicht:false},
-                {name: 'help2',value:"", form:false,inhalt:false,ort:false,gewicht:false},
-                {name: 'tip',value:"", form:false,inhalt:false,ort:false,gewicht:false});
+                        {name: 'tip', value: "", form: false, inhalt: false, ort: false, gewicht: false},
+                        {name: 'tip', value: "", form: false, inhalt: false, ort: false, gewicht: false},
+                        {name: 'tip', value: "", form: false, inhalt: false, ort: false, gewicht: false},
+                        {name: 'help1', value: "", form: false, inhalt: false, ort: false, gewicht: false},
+                        {name: 'tip', value: "", form: false, inhalt: false, ort: false, gewicht: false},
+                        {name: 'tip', value: "", form: false, inhalt: false, ort: false, gewicht: false},
+                        {name: 'tip', value: "", form: false, inhalt: false, ort: false, gewicht: false},
+                        {name: 'help2', value: "", form: false, inhalt: false, ort: false, gewicht: false},
+                        {name: 'tip', value: "", form: false, inhalt: false, ort: false, gewicht: false});
             },
-            getCard: function(stack) {
+            getCard: function (stack) {
                 var cardform = stack.cards.pop();
                 cardform.type = stack.type;
                 cardform.type2 = stack.type2;
                 return cardform;
             },
-            attached: function() {
+            attached: function () {
 
             }
-                });
+        });
     </script>
 
 </dom-module>
