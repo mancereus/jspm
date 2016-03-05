@@ -92,7 +92,7 @@
                 </template>
             </div>
             <div class="card-header">
-                <voice-player id="player" accent="de-DE" text="{{carddata.Aktion}}"></voice-player>
+                <voice-player id="player" accent="de-DE" text="{{carddata.Aktion}} {{carddata.flavour}}"></voice-player>
                 <div class$="layout vertical center {{carddata.info}}">
                     <span>{{carddata.name}}</span>
                     <template is="dom-if" if="{{akt}}">
