@@ -78,16 +78,18 @@ var data = {
         type2: "Gewicht",
         desc: "Wie gross ist es? Klein, Mittel, groß oder sehr groß? Wie schwer ist es? Leicht, mittel oder schwer?",
         cards: [
-            { name: "kleiner als eine Maus" },
-            { name: "kleiner als eine Katze" },
-            { name: "höher als ein Tisch" },
-            { name: "passt in ein Gartenhäuschen" },
-            { name: "höher als ein 2-stöckiges Reihenhaus" },
+            { name: "zwischen halb so groß und doppelt so groß wie eine Maus" },
+            { name: "zwischen halb so groß und doppelt so groß wie eine Katze" },
+            { name: "zwischen halb so groß und doppelt so groß wie ein Tisch" },
+            { name: "zwischen halb so groß und doppelt so groß wie ein Gartenhäuschen" },
+            { name: "zwischen halb so groß und doppelt so groß wie 2-stöckiges Reihenhaus" },
             { name: "passt in eine quadratische Kiste mit 1 Meter Seitenlänge" },
             { name: "passt in einen Schuhkarton" },
-            { name: "ist 10kg oder leichter" },
+            { name: "leichter als 100gr" },
+            { name: "ist zwischen 100gr und 1kg" },
+            { name: "ist zwischen 1kg und 10kg" },
             { name: "ist zwischen 10kg und 100kg" },
-            { name: "ist 100kg oder schwerer" },
+            { name: "schwerer als 100kg" },
         ]
     }
 }
