@@ -6,6 +6,7 @@
 <link rel="import" href="../../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../../bower_components/firebase-element/firebase-document.html">
+<link rel="import" href="../../bower_components/iron-localstorage/iron-localstorage.html">
 <link rel="import" href="monstermob-container.html">
 <link rel="import" href="monstermob-card.html">
 
@@ -30,15 +31,10 @@
                 justify-content: space-around;
                 align-content: space-between;
             }
-
-            paper-button {
-                background-color: orange !important;
-                color: white !important;
-                padding: 4px;
-            }
         </style>
+        <iron-localstorage auto id="local" name="config" value="{{config}}" on-iron-localstorage-load-empty="createConfig"> </iron-localstorage>
         <firebase-document location="https://protogames.firebaseio.com/monstermob/" data="{{game}}" log></firebase-document>
-        <paper-button on-tap="newGame">neues Spiel</paper-button>
+        <paper-button on-tap="newGame" raised class="warning">neues Spiel</paper-button>
         <div class="flex">
             <template is="dom-repeat" items="{{game.players}}">
                 <template is="dom-if" if="{{item.name}}">
@@ -62,6 +58,7 @@
             is: 'monstermob-game',
             properties: {
                 game: Object,
+                config: Object,
                 players : {
                     type:Array,
                     notify: true,
@@ -101,6 +98,12 @@
                 if (this.game == undefined) {
                     this.newGame();
                 }
+            },
+             createConfig: function () {
+                 this.config = {
+                     me: {}
+                 }
+                this.notifyPath('config.me',this.config.me);
             },
             getMonsterIdx: function() {
                 return this.game.players.map(function(e) { return e.type; }).indexOf('monster');
