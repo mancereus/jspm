@@ -1,0 +1,65 @@
+<!doctype html>
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-styles/paper-styles.html">
+<link rel="import" href="../../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../../bower_components/paper-slider/paper-slider.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../bower_components/firebase-element/firebase-document.html">
+<link rel="import" href="../../bower_components/iron-localstorage/iron-localstorage.html">
+<link rel="import" href="tigereye-card.html">
+
+<dom-module id="tigereye-game">
+
+    <template>
+        <style>
+            :host {
+                cursor: pointer;
+                padding: 4px;
+                -webkit-touch-callout: none;
+                -webkit-user-select: none;
+                -khtml-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+            }
+
+            div.flex {
+                width: 1100px;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-around;
+                align-content: space-between;
+            }
+        </style>
+        <div class="flex">
+            <template is="dom-repeat" items="{{game.cards}}">
+                <tigereye-card data="{{item}}"></tigereye-card>
+            </template>
+        </div>
+    </template>
+
+    <script>
+        Polymer({
+            is: 'tigereye-game',
+            properties: {
+                game: Object,
+                notify: true
+            },
+            ready: function() {
+                this.game = game;
+                this.game.cards =  this.shuffle(game.cards);
+                this.game.cards.push(game.end);
+                this.game.cards.unshift(game.start);
+                this.notifyPath('game.cards.slices', this.game.cards);
+            },
+            attached: function() {
+            },
+			shuffle: function (o){
+			    for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+			    return o;
+			}
+        });
+    </script>
+
+</dom-module>
