@@ -3,13 +3,14 @@
 <script src="data.js"></script>
 <title>MonsterMob</title>
 <link href="tigereye.css" rel="stylesheet" type="text/css" />
-
+<style>
+    .card {
+        position: relative;
+    }
+</style>
 <dom-module id="tigereye-card">
 
     <template>
-        <style>
-            .fit {position: absolute;}
-        </style>
         <iron-pages selected="{{selected}}">
             <div class="card"><img style="margin:0;width: 100%; height: 100%" src="img/back.png"></img>
             </div>
@@ -19,12 +20,11 @@
                 </div>
                 <img style="margin:0;width: 100px; height: 100px" src="img/{{data.type}}.png"></img>
                 <template is="dom-if" if="{{data.ver}}">
-                    <div class="fit" style="left: 89px;"><img src="img/vertic.jpg" style="width:15px;height: 154px;" alt=""></div>
+                    <img src="img/vertic.jpg" style="position:absolute; top:-10px;right: 0px;width:15px;height: 190px;" alt="">
                 </template>
                 <template is="dom-if" if="{{data.hor}}">
-                    <div class="fit" style="top: 50px;"><img src="img/horiz.jpg" style="height:15px; width: 104px;" alt=""></div>
+                    <img src="img/horiz.jpg" style="position:absolute; left: 0;bottom: -10px;height:15px; width: 190px;" alt="">
                 </template>
-
             </div>
         </iron-pages>
 
