@@ -31,8 +31,8 @@ var data = {
     },
     inhalt: {
         type: "Inhalt",
-        type2: "Extra",
-        desc: "Welche Bestandteile hat das Ding? Hat es Zähne, Räder oder Gelenke? Bewegt es sich selbständig? Hat es Symbole oder leuchtet es? Macht es Geräusche oder braucht es Elektrizität? Schmeckt es gut oder riecht es? Ist es teuer oder gibt es viele davon? ",
+        type2: "Bestandteil",
+        desc: "Welche Bestandteile hat das Ding? Hat es Zähne, Räder oder Gelenke? Bewegt es sich selbständig oder schwimmt es? Hat es Symbole oder leuchtet es? Macht es Geräusche oder braucht es Elektrizität? Schmeckt es gut oder riecht es? Ist es teuer oder gibt es viele davon? Enthält es Papier oder sind Symbole darauf? Kann es leicht kaputt gehen?",
         cards: [
             { name: "enthält Papier oder Karton" },
             { name: "hat Zähne oder spitze Teile" },
@@ -76,19 +76,22 @@ var data = {
     extra: {
         type: "Größe",
         type2: "Gewicht",
-        desc: "Wie gross ist es? Klein, Mittel, groß oder sehr groß? Wie schwer ist es? Leicht, mittel oder schwer? Passt es in eine Kiste?",
+        desc: "Wie hoch oder lang ist es? Klein, Mittel, groß oder sehr groß? Wie schwer ist es? Leicht, mittel oder schwer? Passt es in eine grosse oder kleine Kiste?",
         cards: [
-            { name: "zwischen halb so groß und doppelt so groß wie eine Maus" },
-            { name: "zwischen halb so groß und doppelt so groß wie eine Katze" },
-            { name: "zwischen halb so groß und doppelt so groß wie ein Tisch" },
-            { name: "zwischen halb so groß und doppelt so groß wie ein Gartenhäuschen" },
-            { name: "zwischen halb so groß und doppelt so groß wie 2-stöckiges Reihenhaus" },
+            { name: "weniger als 1cm hoch" },
+            { name: "zwischen 1cm und 10cm hoch" },
+            { name: "zwischen 10cm und 1m hoch" },
+            { name: "zwischen 1m und 10m hoch" },
+            { name: "mehr als 10m hoch" },
+            { name: "weniger als 1m lang <-->" },
+            { name: "zwischen 1m und 5m lang <-->" },
+            { name: "mehr als 5 m lang <-->" },
             { name: "passt in eine quadratische Kiste mit 1 Meter Seitenlänge" },
             { name: "passt in einen Schuhkarton" },
             { name: "leichter als 100gr" },
-            { name: "ist zwischen 100gr und 1kg" },
-            { name: "ist zwischen 1kg und 10kg" },
-            { name: "ist zwischen 10kg und 100kg" },
+            { name: "ist zwischen 100gr und 1kg schwer" },
+            { name: "ist zwischen 1kg und 10kg schwer" },
+            { name: "ist zwischen 10kg und 100kg schwer" },
             { name: "schwerer als 100kg" },
         ]
     }
