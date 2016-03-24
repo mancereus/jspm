@@ -1,0 +1,31 @@
+<link rel="import" href="../../../bower_components/polymer/polymer.html">
+<dom-module id="html-canvas">
+    <template>
+        <canvas id="canvas" width="{{width}}" height="{{height}}" style="border:1px solid #000000;">
+            <content></content>
+        </canvas>
+    </template>
+</dom-module>
+<script>
+    Polymer({
+		    is: 'html-canvas',
+            properties: {
+              width: {
+                  type: Number,
+                  value: 600
+              },
+              height: {
+                  type: Number,
+                  value: 400
+              }
+            },
+            attached: function() {
+                var c = this.$.canvas;
+                var ctx = c.getContext("2d");
+                ctx.fillStyle = "#FF0000";
+                ctx.fillRect(0,0,150,75);
+
+	        }
+		});
+
+</script>
