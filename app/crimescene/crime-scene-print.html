@@ -2,30 +2,30 @@
 <link rel="import" href="../../bower_components/iron-pages/iron-pages.html">
 <link rel="import" href="crime-scene-card.html">
 <dom-module id="crime-scene-print">
-	<style>
-		:host {}
+    <style>
+        :host {}
 
-		.item {
-			width: 30px;
-			height: 30px;
-		}
-	</style>
-	<template>
-		<div style="width: 780px; ">
-			<template is="dom-repeat" items="{{cards}}">
-				<crime-scene-card front="{{item.front}}" back="{{item.back}}"></crime-scene-card>
-			</template>
-		</div>
-		<div style="width: 780px; page-break-after: always; border: 1px solid black">break</div>
-		<div style="width: 780px;">
-			<template is="dom-repeat" items="{{cards}}">
-				<crime-scene-card front="{{item.front}}" back="{{item.back}}" open="open"></crime-scene-card>
-			</template>
-		</div>
-	</template>
+        .item {
+            width: 30px;
+            height: 30px;
+        }
+    </style>
+    <template>
+        <div style="width: 780px; ">
+            <template is="dom-repeat" items="{{cards}}">
+                <crime-scene-card front="{{item.front}}" back="{{item.back}}"></crime-scene-card>
+            </template>
+        </div>
+        <div style="width: 780px; page-break-after: always; border: 1px solid black">break</div>
+        <div style="width: 780px;">
+            <template is="dom-repeat" items="{{cards}}">
+                <crime-scene-card front="{{item.front}}" back="{{item.back}}" open="open"></crime-scene-card>
+            </template>
+        </div>
+    </template>
 </dom-module>
 <script>
-	Polymer({
+    Polymer({
 		    is: 'crime-scene-print',
 			properties: {
 				solution: {},
