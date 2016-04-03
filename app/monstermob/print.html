@@ -82,22 +82,22 @@
 <body>
   <template id="tmpl" is="dom-bind">
     <div style="width:1050px">
-        <template is="dom-repeat" items="{{cards}}">
+        <template is="dom-repeat" items="[[cards]]">
 
-            <div class$="card {{item.dark}}">
-                <div class="head"><span class="count">{{item.count}}x</span>
-                    <div class="titel">{{item.type}}</div><span class="count">{{item.subtype}}</span></div>
-                <img src="img/{{item.type}}.png"></img>
-                <hr/><img class="icon" src="img/{{item.type}}icon.png"></img>
+            <div class$="card [[item.dark]]">
+                <div class="head"><span class="count">[[item.count]]x</span>
+                    <div class="titel">[[item.type]]</div><span class="count">[[item.subtype]]</span></div>
+                <img src="img/[[item.type]].png"></img>
+                <hr/><img class="icon" src="img/[[item.type]]icon.png"></img>
             </div>
-            <page-break-div nmbr="{{index}}" max="18"></page-break-div>
+            <page-break-div nmbr="[[index]]" max="18"></page-break-div>
         </template>
     </div>
 </template>
 
 <script>
     var t = document.querySelector('#tmpl');
-		t.cards = cards;
+		t.cards = engine.cards;
 </script>
 </body>
 

@@ -27,60 +27,60 @@
                 -ms-user-select: none;
                 user-select: none;
             }
-
+            
             paper-slider.red {
                 color: var(--paper-red-500);
                 --paper-slider-knob-color: var(--paper-red-500);
                 --paper-slider-active-color: var(--paper-red-500);
             }
-
+            
             paper-slider.yellow {
                 color: var(--google-yellow-500);
                 --paper-slider-knob-color: var(--google-yellow-500);
                 --paper-slider-active-color: var(--google-yellow-500);
             }
-
+            
             paper-button.blue {
                 background-color: var(--paper-blue-500) !important;
                 color: white !important;
                 padding: 4px;
             }
-
+            
             paper-button.green {
                 background-color: var(--paper-green-500) !important;
                 color: white !important;
                 padding: 4px;
             }
-
+            
             paper-button.orange {
                 background-color: var(--paper-orange-500) !important;
                 color: white !important;
                 padding: 4px;
             }
-
+            
             .knobs {
                 display: flex;
                 justify-content: space-around;
                 align-content: space-between;
             }
-
+            
             .tipp {
                 display: flex;
                 justify-content: space-around;
                 align-content: space-between;
             }
-
+            
             .true {
                 background-color: lightgreen;
             }
-
+            
             paper-dialog.red {
                 border: 2px solid;
                 border-color: var(--paper-red-500);
                 background-color: var(--paper-light-red-50);
                 color: var(--paper-red-500);
             }
-
+            
             paper-dialog.green {
                 border: 2px solid;
                 border-color: var(--paper-green-500);
@@ -89,66 +89,66 @@
             }
         </style>
         <iron-localstorage auto id="local" name="config" value="{{config}}">
-        <paper-card container="{{container.name}}" on-drop-card="dropCard"  class$="{{container.active}}">
-            <div>
-                <h4 style="margin: 2px 30px;"><paper-input style="width: 120px;" value="{{container.label}}"></paper-input></h4>
-            </div>
-            <div class="card-content">
-                <div class="knobs">
-                    <div>
-                        <iron-icon style="color: red" class="red" icon="favorite"></iron-icon>
-                    </div>
-                    <paper-slider class="red" min="0" max="5" snaps editable pin value="{{container.life}}"></paper-slider>
-                    <div>
-                        <iron-icon icon="info" style="color: orange"></iron-icon>
-                    </div>
-                    <paper-slider class="yellow" min="0" max="5" snaps editable pin value="{{container.gold}}"></paper-slider>
+            <paper-card container="[[container.name]]" on-drop-card="dropCard" class$="[[container.active]]">
+                <div>
+                    <h4 style="margin: 2px 30px;"><paper-input style="width: 120px;" value="[[container.label]]"></paper-input></h4>
                 </div>
-                <template is="dom-if" if="{{tipp}}">
-                    <div class="tipp">
-                        <p>Welche Karte wurde gelegt?</p>
-                        <div style="background-color: lightgray; border-radius: 12px;height: 35px; width:18px; padding: 20px;">?</div>
-                        <div style="display:flex;flex-direction: column; justify-content: space-around;align-content: space-between;">
-                            <template is="dom-repeat" items="{{data}}" filter="hasOwner" observe="owner">
-                                <paper-button class="orange" style="height: 20px; width:80px; padding:3px" on-tap="chooseTip">{{item.type}} {{item.subtype}}</paper-button>
-                            </template>
+                <div class="card-content">
+                    <div class="knobs">
+                        <div>
+                            <iron-icon style="color: red" class="red" icon="favorite"></iron-icon>
                         </div>
+                        <paper-slider class="red" min="0" max="5" snaps editable pin value="[[container.life]]"></paper-slider>
+                        <div>
+                            <iron-icon icon="info" style="color: orange"></iron-icon>
+                        </div>
+                        <paper-slider class="yellow" min="0" max="5" snaps editable pin value="[[container.gold]]"></paper-slider>
                     </div>
-                </template>
-                <template is="dom-if" if="{{!tipp}}">
-                    <template is="dom-repeat" items="{{data}}" filter="hasOwner" observe="owner">
-                        <monstermob-card data="{{item}}" draggable="true"></monstermob-card>
+                    <template is="dom-if" if="[[tipp]]">
+                        <div class="tipp">
+                            <p>Welche Karte wurde gelegt?</p>
+                            <div style="background-color: lightgray; border-radius: 12px;height: 35px; width:18px; padding: 20px;">?</div>
+                            <div style="display:flex;flex-direction: column; justify-content: space-around;align-content: space-between;">
+                                <template is="dom-repeat" items="[[data]]" filter="hasOwner" observe="owner">
+                                    <paper-button class="orange" style="height: 20px; width:80px; padding:3px" on-tap="chooseTip">[[item.type]] [[item.subtype]]</paper-button>
+                                </template>
+                            </div>
+                        </div>
                     </template>
-                </template>
-            </div>
-            <div class="card-actions">
-                Aktionen:
-                <template is="dom-if" if="{{!container.active}}">
-                    <paper-button class="green" on-tap="startTip">
-                        <iron-icon icon="menu"></iron-icon>
-                        Tippen
-                    </paper-button>
+                    <template is="dom-if" if="[[!tipp]]">
+                        <template is="dom-repeat" items="[[data]]" filter="hasOwner" observe="owner">
+                            <monstermob-card data="[[item]]" draggable="true"></monstermob-card>
+                        </template>
+                    </template>
+                </div>
+                <div class="card-actions">
+                    Aktionen:
+                    <template is="dom-if" if="[[!container.active]]">
+                        <paper-button class="green" on-tap="startTip">
+                            <iron-icon icon="menu"></iron-icon>
+                            Tippen
+                        </paper-button>
 
-                </template>
-                <template is="dom-if" if="{{container.active}}">
-                    <paper-button class="blue" on-tap="finishTurn">
-                        <iron-icon icon="home"></iron-icon>
-                        Zug beendet
-                    </paper-button>
+                    </template>
+                    <template is="dom-if" if="[[container.active]]">
+                        <paper-button class="blue" on-tap="finishTurn">
+                            <iron-icon icon="home"></iron-icon>
+                            Zug beendet
+                        </paper-button>
 
-                </template>
-            </div>
-        </paper-card>
-        <paper-dialog class="green" id="success">
-            <h2>{{testCard.type}} {{testCard.subtype}} ist richtig.</h2>
-            <p>Du hast die richtige Karte getippt. </p>
-            <monstermob-card data="{{tippCard}}"></monstermob-card>
-        </paper-dialog>
-        <paper-dialog class="red" id="failure">
-            <h2>{{testCard.type}} {{testCard.subtype}} ist falsch</h2>
-            <p>Du hast die falsche Karte getippt. </p>
-            <monstermob-card data="{{tippCard}}"></monstermob-card>
-        </paper-dialog>
+                    </template>
+                </div>
+            </paper-card>
+            <paper-dialog class="green" id="success">
+                <h2>[[testCard.type]] [[testCard.subtype]] ist richtig.</h2>
+                <p>Du hast die richtige Karte getippt. </p>
+                <monstermob-card data="[[tippCard]]"></monstermob-card>
+            </paper-dialog>
+            <paper-dialog class="red" id="failure">
+                <h2>[[testCard.type]] [[testCard.subtype]] ist falsch</h2>
+                <p>Du hast die falsche Karte getippt. </p>
+                <monstermob-card data="[[tippCard]]"></monstermob-card>
+            </paper-dialog>
     </template>
 
     <script>

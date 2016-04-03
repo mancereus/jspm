@@ -36,12 +36,12 @@
         <firebase-document location="https://protogames.firebaseio.com/monstermob/" data="{{game}}" log></firebase-document>
         <paper-button on-tap="newGame" raised class="warning">neues Spiel</paper-button>
         <div class="flex">
-            <template is="dom-repeat" items="{{game.players}}">
-                <template is="dom-if" if="{{item.name}}">
-                    <monstermob-container container="{{item}}" data="{{game.data}}">
+            <template is="dom-repeat" items="[[game.players]]">
+                <template is="dom-if" if="[[item.name]]">
+                    <monstermob-container container="[[item]]" data="[[game.data]]">
                     </monstermob-container>
                 </template>
-                <template is="dom-if" if="{{!item.name}}">
+                <template is="dom-if" if="[[!item.name]]">
                     <div style="border: 5px solid black;padding: 20px;background-color: white; text-align: center;">
                         <h1>Monster Mob</h1>
                         <img src="img/Biss.png">
@@ -82,7 +82,7 @@
                 if (this.game == undefined) {
                  this.game = {};
                 }
-                this.game.data = this.shuffle(cards);
+                this.game.data = engine.shuffle();
                 for(idx in this.game.data) {
                    this.set('game.data.' + idx + '.owner', '');
                  }
@@ -144,10 +144,7 @@
 			isOwner: function (item , own){
                 return item.owner == own;
             },
-			shuffle: function (o){
-			    for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
-			    return o;
-			}
+			
         });
     </script>
 
