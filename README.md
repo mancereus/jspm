@@ -33,3 +33,6 @@
 
 ## tasks
 
+MonsterMob:
+* Define engine with possible actions/methods on game
+* püolymer in react style 
