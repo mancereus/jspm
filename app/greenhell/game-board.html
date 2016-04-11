@@ -118,7 +118,7 @@
                             <td>
                                 <h2>Konfiguration</h2></td>
                             <td>
-                                <select id="akt" value="{{config.akt::input}}">
+                                <select id="akt" value="{{config.akt::change}}">
                                     <option value="1">Akt 1</option>
                                     <option value="2">Akt 2</option>
                                 </select>
@@ -132,7 +132,7 @@
                             <td>
                                 <h2>Akt 1</h2></td>
                             <td>
-                                <select id="sterne" value="{{config.stars::input}}">
+                                <select id="sterne" value="{{config.stars::change}}">
                                     <option value="1">ein Stern</option>
                                     <option value="2">zwei Sterne</option>
                                     <option value="3">drei Sterne</option>
@@ -188,7 +188,13 @@
                         </div>
 
                     </template>
-                    <paper-dialog id="dialog" modal>
+
+                </div>
+                <div>
+                    <h1>Vorrat</h1>
+                </div>
+            </div>
+                    <paper-dialog id="dialog">
                         <h2>Geheimnis Nr. {{level}} <game-help text="{{secret}}"></game-help></h2>
                         <h3>Nur lesen, wenn du die Schatzkammer mit {{level}} Stern(en) geöffnet hast!</h3>
                         <p>{{secret}}</p>
@@ -196,12 +202,6 @@
                             <paper-button dialog-confirm autofocus>OK</paper-button>
                         </div>
                     </paper-dialog>
-
-                </div>
-                <div>
-                    <h1>Vorrat</h1>
-                </div>
-            </div>
         </template>
         <script>
             function get(name) {
@@ -449,6 +449,8 @@
                 this.level = e.model.item.level;
                 this.secret = e.model.item.text;
                 this.$.dialog.open();
+                this.$.dialog.center();
+
             },
             configChanged: function(changeRecord) {
                 console.log('path: ' + changeRecord.path);
