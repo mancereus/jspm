@@ -1,0 +1,90 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<script>
+    Polymer({
+            is: 'voice-player',
+
+            /* -- Attributes ------------------------------------------------ */
+            properties: {
+                autoplay: {
+                    type: Boolean,
+                    value: false
+                },
+                accent: {
+                    type: String,
+                    value: 'en-US',
+                    observer: '_accentChanged',
+                    notify: true
+                },
+                text: {
+                    type: String,
+                    value: 'You are awesome',
+                    observer: '_textChanged',
+                    notify: true
+                }
+            },
+
+            /* -- Lifecycle ------------------------------------------------- */
+            created: function() {
+                if ('speechSynthesis' in window) {
+                    this.speech = new SpeechSynthesisUtterance();
+                }
+            },
+            ready: function() {
+                // Initialize attributes
+                this._textChanged();
+                this._accentChanged();
+
+                // Initialize event listeners
+                var events = ['start', 'end', 'error', 'pause', 'resume'];
+                events.forEach(this._propagateEvent.bind(this));
+
+                if (this.autoplay) {
+                    this.speak();
+                }
+            },
+
+            /* -- Private Methods ------------------------------------------- */
+            _accentChanged: function() {
+                if ('speechSynthesis' in window) {
+                    this.speech.lang = this.accent;
+                }
+            },
+            _textChanged: function() {
+                if ('speechSynthesis' in window) {
+                    this.speech.text = this.text;
+                }
+            },
+            _propagateEvent: function (eventName) {
+                var that = this;
+
+                if ('speechSynthesis' in window) {
+                    this.speech.addEventListener(eventName, function(e) {
+                        that.fire(eventName, e);
+                    });
+                }
+            },
+
+            /* -- Public Methods -------------------------------------------- */
+            speak: function() {
+                if ('speechSynthesis' in window) {
+                window.speechSynthesis.speak(this.speech);
+                }
+            },
+            cancel: function() {
+                if ('speechSynthesis' in window) {
+                    window.speechSynthesis.cancel();
+                }
+            },
+            pause: function() {
+                if ('speechSynthesis' in window) {
+                window.speechSynthesis.pause();
+                }
+            },
+            resume: function() {
+                if ('speechSynthesis' in window) {
+                window.speechSynthesis.resume();
+                }
+            }
+        });
+</script>
