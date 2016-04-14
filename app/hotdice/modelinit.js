@@ -1,4 +1,4 @@
-var cards = {
+var model = {
     stack: [
         {color: 'lightblue', items: [1, 1, 1, 2, 3, 0], val: "z"},
         {color: 'lightblue', items: [1, 1, 1, 2, 3, 0], val: "z"},

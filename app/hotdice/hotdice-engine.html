@@ -1,0 +1,43 @@
+<!doctype html>
+<script src="modelinit.js"></script>
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+
+<dom-module id="hotdice-engine">
+    <script>
+        Polymer({
+            is: 'hotdice-engine',
+            properties: {
+                model: {
+                    notify: true
+                }
+            },
+            listeners: {
+        'reroll': 'rerollAll'
+      },
+            ready: function () {
+                this.init();
+            },
+            init: function() {
+                this.model = model;
+            },
+            reroll: function(item) {
+              item.val = item.items[Math.floor(Math.random() * item.items.length)];
+            },
+            rerollAll: function(event) {
+                var stack = event.detail.stack
+                var cont = this.model[stack];
+                if (cont) {
+                    cont.forEach(function(item) {
+                        console.log(item);
+                        item.val = item.items[Math.floor(Math.random() * item.items.length)];
+                        //if(item.reroll) {
+                        //    item.reroll();
+                        //}
+                    })
+                    this.notifyPath("model." + stack, cont);
+                }
+            }
+        });
+    </script>
+</dom-module>

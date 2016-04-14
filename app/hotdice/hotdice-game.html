@@ -1,0 +1,94 @@
+<link rel="import" href="../../bower_components/paper-drawer-panel/paper-drawer-panel.html">
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-header-panel/paper-header-panel.html">
+<link rel="import" href="../../bower_components/paper-toolbar/paper-toolbar.html">
+<link rel="import" href="../../bower_components/paper-styles/paper-styles.html">
+<link rel="import" href="../../bower_components/paper-menu/paper-menu.html">
+<link rel="import" href="../../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../../bower_components/paper-tabs/paper-tabs.html">
+<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../../bower_components/font-roboto/roboto.html">
+<link rel="import" href="../components/board-game-dice/board-game-dice.html">
+<link rel="import" href="hotdice-engine.html">
+<link rel="import" href="hotdice-container.html">
+<link rel="import" href="../components/board-game-container/board-game-container.html">
+
+<dom-module id="hotdice-game">
+    <style>
+        .container {
+            display: flex;
+            cursor: pointer;
+            max-width: 800px;
+            justify-content: space-around;
+            align-content: space-between;
+            padding: 4px;
+            background-color: lightgray;
+        }
+
+        .item {
+            padding: 10px;
+            border-radius: 20%;
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            font-size: 32px;
+            color: darkslategray;
+            text-shadow: 12px;
+            font-weight: bold;
+            vertical-align: baseline;
+            border: 1px solid darkslategray;
+            background-color: white;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+    </style>
+    <template>
+        <hotdice-engine id="engine" model="{{data}}"></hotdice-engine>
+        <div class="container">
+            <hotdice-container container="roll" data="{{data}}">
+            </hotdice-container>
+            <hotdice-container container="stack" data="{{data}}">
+            </hotdice-container>
+        </div>
+        <div class="container">
+            <div class="item field">2</div>
+            <div class="item field">3</div>
+            <div class="item field">4</div>
+            <div class="item field">5</div>
+            <div class="item field">6</div>
+            <div class="item field">7</div>
+            <div class="item field">8</div>
+            <div class="item field">9</div>
+            <div class="item field">10</div>
+            <div class="item field">11</div>
+            <div class="item field">12</div>
+        </div>
+
+    </template>
+    <script>
+        Polymer({
+            is: 'hotdice-game',
+            properties: {
+                config: {
+                    notify: true
+                }
+            },
+            attached: function () {
+                var self = this;
+                var engine = this.$.engine;
+                //setInterval(console.log, 3000, engine);
+                this.fire('reroll', {stack: 'stack'}, {node: engine});
+                setInterval(function() {
+                    engine.fire('reroll', {stack: 'roll'}, {node: engine});
+                }, 3000);
+                //setInterval(this.$.engine.reroll, 3000, 'stack');
+            }
+        });
+    </script>
+</dom-module>

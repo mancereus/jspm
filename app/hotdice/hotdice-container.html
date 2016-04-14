@@ -31,7 +31,7 @@
         <paper-card heading="{{container}}" container="{{container}}">
             <div class="card-content">
                 <template is="dom-repeat" id="tmpl">
-                    <board-game-dice on-track="trackElement" draggable="true" color="{{item.color}}" items="{{item.items}}"></board-game-dice>
+                    <board-game-dice on-track="trackElement" draggable="true" val="{{item.val}}" color="{{item.color}}" items="{{item.items}}"></board-game-dice>
                 </template>
             </div>
             <template is="dom-if" if="{{notStack(container)}}">
@@ -54,7 +54,7 @@
                 return container != "stack";
 
             },
-            
+
         });
     </script>
 

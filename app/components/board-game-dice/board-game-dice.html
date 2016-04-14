@@ -55,7 +55,8 @@
     is: 'board-game-dice',
     behaviors: [],
     properties: {
-            val: String,
+            val: {type: String,
+                notify: true},
             dark: {
                 type: Boolean,
                 value: false
