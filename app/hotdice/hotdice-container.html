@@ -3,7 +3,7 @@
 <link rel="import" href="../../bower_components/paper-styles/paper-styles.html">
 <link rel="import" href="../../bower_components/paper-card/paper-card.html">
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
-<link rel="import" href="../components/board-game-dice/board-game-dice.html">
+<link rel="import" href="hotdice-dice.html">
 
 <link rel="import" href="../components/board-game-container/DraggableContainerBehavior.html">
 
@@ -31,7 +31,7 @@
         <paper-card heading="{{container}}" container="{{container}}">
             <div class="card-content">
                 <template is="dom-repeat" id="tmpl">
-                    <board-game-dice on-track="trackElement" draggable="true" val="{{item.val}}" color="{{item.color}}" items="{{item.items}}"></board-game-dice>
+                    <hotdice-dice on-track="trackElement" draggable="true" data="{{item}}"></hotdice-dice>
                 </template>
             </div>
             <template is="dom-if" if="{{notStack(container)}}">
@@ -46,6 +46,17 @@
         Polymer({
             is: 'hotdice-container',
             behaviors: [DraggableContainerBehavior],
+            attached : function() {
+                var c = this.data[this.container];
+                var cnt = this;
+                setInterval(
+                  function() {
+                      c.forEach(function(entry) {
+                          cnt.set("data." + this.container, "2");
+                      })
+                  }, 3000);
+
+            },
             reroll: function () {
                 Polymer.dom(this.root).querySelectorAll("board-game-dice")
                     .forEach(function(entry) {entry.reroll()});
@@ -54,7 +65,6 @@
                 return container != "stack";
 
             },
-
         });
     </script>
 

@@ -1,0 +1,79 @@
+<link rel="import" href="../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../bower_components/paper-styles/paper-styles.html">
+<link rel="import" href="../../../bower_components/iron-flex-layout/iron-flex-layout.html">
+
+<dom-module id="hotdice-dice">
+    <template>
+        <style>
+            :host {
+                display: inline-block;
+            }
+            #front {
+                color: black;
+                border: 1px solid black;
+                border-radius: 20%;
+                padding: 3px;
+                cursor: pointer;
+                text-align: center;
+                display: table-cell;
+                vertical-align: middle;
+                font-size: 200%;
+                font-weight: bold;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                -webkit-user-select: none;
+                user-select: none;
+            }
+
+            #front.dark {
+                color: white;
+                background-color: black;
+                border: 1px solid white;
+            }
+            .lightgreen {
+                background-color: lightgreen;
+            }
+            .lightblue {
+                background-color: lightblue;
+            }
+            .orange {
+                background-color: orange
+            }
+            .lightyellow {
+                background-color: lightyellow;
+            }
+        </style>
+        <div draggable="true" class$="{{data.color}} layout vertical center" id="front">{{data.val}}</div>
+
+    </template>
+
+</dom-module>
+
+<script>
+    Polymer({
+
+    is: 'hotdice-dice',
+    properties: {
+            data: {type: Object,
+                notify: true},
+            dark: {
+                type: Boolean,
+                value: false
+            },
+	      },       
+          ready: function() {
+              this.$.front.style.width = '50px';
+              this.$.front.style.height = '50px';
+              this.toggleClass("dark", this.dark, this.$.front);
+              var dice = this;
+	      },
+          reroll: function(e) {
+              this.set("data.val", this.data.items[Math.floor(Math.random() * this.data.items.length)]);
+          },
+            refresh: function(event) {
+                console.log(event);
+            }
+
+  });
+
+</script>
