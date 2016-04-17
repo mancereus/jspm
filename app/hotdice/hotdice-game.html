@@ -51,9 +51,9 @@
     <template>
         <hotdice-engine id="engine" model="{{data}}"></hotdice-engine>
         <div class="container">
-            <hotdice-container container="roll" data="{{data}}">
+            <hotdice-container container="roll" data="{{data.1.content}}">
             </hotdice-container>
-            <hotdice-container container="stack" data="{{data}}">
+            <hotdice-container container="stack" data="{{data.0.content}}">
             </hotdice-container>
         </div>
         <div class="container">

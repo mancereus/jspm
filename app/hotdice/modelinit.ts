@@ -14,7 +14,7 @@ var model = [{
             { color: 'orange', items: [3, 4, 4, 5, 5, 'X'], val: "z" },
             { color: 'orange', items: [3, 4, 4, 5, 5, 'X'], val: "z" },
         ]
-    },
+        },
     {
         name: "roll",
         content: [

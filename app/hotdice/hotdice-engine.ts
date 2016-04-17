@@ -21,16 +21,16 @@ Polymer({
     },
     rerollAll: function (event) {
         var stack = event.detail.stack
-        var cont = this.model[stack];
+        var cont = this.model.filter(x => x.name=="roll")[0];
         var self = this;
         if (cont) {
-            cont.forEach(function (item) {
-                console.log(item);
+            cont.content.forEach(function (item) {
                 item.val = item.items[Math.floor(Math.random() * item.items.length)];
-                self.notifyPath('item.val', item.val);
+                self.notifyPath('item.splices', item);
                 //if(item.reroll) {
                 //    item.reroll();
                 //}
+                console.log(item);
             })
         }
     }
