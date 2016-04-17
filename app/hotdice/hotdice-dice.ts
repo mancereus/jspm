@@ -1,4 +1,6 @@
+
 Polymer({
+    
     is: 'hotdice-dice',
     properties: {
         data: {
@@ -22,4 +24,5 @@ Polymer({
     refresh: function (event) {
         console.log(event);
     }
+
 });

@@ -1,3 +1,4 @@
+
 Polymer({
     is: 'hotdice-engine',
     properties: {
@@ -19,7 +20,7 @@ Polymer({
         item.val = item.items[Math.floor(Math.random() * item.items.length)];
     },
     rerollAll: function (event) {
-        var stack = event.detail.stack;
+        var stack = event.detail.stack
         var cont = this.model[stack];
         var self = this;
         if (cont) {
@@ -30,7 +31,7 @@ Polymer({
                 //if(item.reroll) {
                 //    item.reroll();
                 //}
-            });
+            })
         }
     }
 });

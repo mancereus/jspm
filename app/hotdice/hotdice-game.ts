@@ -1,3 +1,4 @@
+
 Polymer({
     is: 'hotdice-game',
     properties: {
