@@ -14,14 +14,15 @@ Polymer({
         data: {
             type: Array,
             value: function () { return []; },
-            notify: true
+            notify: true,
+            observer: 'refresh'
         }
     },
     observers: [
-        'refresh(data.*)'
+        'refresh(data.content.*)'
     ],
     refresh: function (e) {
-        this.$.tmpl.render();
+        console.log("container: " + e);
     },
     attached: function () : void {
         var cnt = this;

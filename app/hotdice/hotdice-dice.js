@@ -3,7 +3,11 @@ Polymer({
     properties: {
         data: {
             type: Object,
-            notify: true
+            notify: true,
+            observer: "dataChanged"
+        },
+        val: {
+            type: String
         },
         dark: {
             type: Boolean,
@@ -15,6 +19,9 @@ Polymer({
         this.$.front.style.height = '50px';
         this.toggleClass("dark", this.dark, this.$.front);
         var dice = this;
+    },
+    dataChanged: function (e) {
+        console.log(e);
     },
     reroll: function (e) {
         this.set("data.val", this.data.items[Math.floor(Math.random() * this.data.items.length)]);
