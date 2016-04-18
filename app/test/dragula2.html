@@ -84,7 +84,7 @@
         <div id="columns3" class="drag-container">
 
         <template is="dom-repeat" items="{{dice1}}">
-            <board-game-dice></board-game-dice>
+            <board-game-dice valx="{{item.val}}"></board-game-dice>
         </template>
         </div>
     </template>
@@ -107,11 +107,15 @@
             el.className += ' ex-moved';
         });
         var t = document.querySelector('#tmpl');
-		t.dice1 = ["1", "2","3"];
+		t.dice1 = [{val:"1"},{val:"1"},{val:"1"}];
 		t.dice2 = ["1", "2","3"];
         window.addEventListener('WebComponentsReady', function(e) {
             drake.containers.push(document.getElementById("columns3"));
         });
+        setInterval(function() {
+            console.log(t.dice1[0]);
+            t.set("dice1.0.val", 2)
+        }, 3000)
     </script>
 </body>
 

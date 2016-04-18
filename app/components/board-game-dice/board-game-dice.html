@@ -43,7 +43,7 @@
                 background-color: lightyellow;
             }
         </style>
-        <div draggable="true" class$="{{color}} layout vertical center" id="front">{{val}}</div>
+        <div draggable="true" class$="{{color}} layout vertical center" id="front">{{valx}}</div>
 
     </template>
 
@@ -55,7 +55,7 @@
     is: 'board-game-dice',
     behaviors: [],
     properties: {
-            val: {type: String,
+            valx: {type: String,
                 notify: true},
             dark: {
                 type: Boolean,
@@ -70,12 +70,12 @@
           ready: function() {
               this.$.front.style.width = '50px';
               this.$.front.style.height = '50px';
-              if (this.val == undefined)
+              if (this.valx == undefined)
                   this.reroll();
               this.toggleClass("dark", this.dark, this.$.front);
 	      },
           reroll: function(e) {
-              this.val = this.items[Math.floor(Math.random() * this.items.length)];
+              this.valx = this.items[Math.floor(Math.random() * this.items.length)];
           }
 
   });

@@ -3,11 +3,12 @@ Polymer({
     properties: {
         data: {
             type: Object,
-            notify: true,
-            observer: "dataChanged"
+            notify: true
         },
-        val: {
-            type: String
+        valx: {
+            type: String,
+            notify: true,
+            observer: "valChanged"
         },
         dark: {
             type: Boolean,
@@ -20,11 +21,11 @@ Polymer({
         this.toggleClass("dark", this.dark, this.$.front);
         var dice = this;
     },
-    dataChanged: function (e) {
+    valChanged: function (e) {
         console.log(e);
     },
     reroll: function (e) {
-        this.set("data.val", this.data.items[Math.floor(Math.random() * this.data.items.length)]);
+        this.set("valx", this.data.items[Math.floor(Math.random() * this.data.items.length)]);
     },
     refresh: function (event) {
         console.log(event);

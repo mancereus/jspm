@@ -21,14 +21,7 @@ Polymer({
     },
     attached: function () {
         var cnt = this;
-        // this.$.tmpl.set('items', this.data);
-        // setInterval(
-        //     function () {
-        //         c.forEach(function (entry) {
-        //             cnt.set("data." + this.container + ".splices", "2");
-        //         })
-        //     }, 3000);
-        // this.notifyPath("data." + this.container + ".splices", "2");
+        var c = this.data;
     },
     reroll: function () {
         this.

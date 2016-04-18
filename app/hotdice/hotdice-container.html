@@ -31,7 +31,7 @@
         <paper-card heading="{{container}}" container="{{container}}">
             <div class="card-content">
                 <template is="dom-repeat" items="{{data}}">
-                    <hotdice-dice on-track="trackElement" draggable="true" data="{{item}}" val="{{item.val}}"></hotdice-dice>
+                    <hotdice-dice on-track="trackElement" draggable="true" data="{{item}}" valx="{{item.val}}"></hotdice-dice>
                 </template>
             </div>
             <template is="dom-if" if="{{notStack(container)}}">
