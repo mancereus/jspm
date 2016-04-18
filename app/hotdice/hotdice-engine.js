@@ -2,7 +2,7 @@ Polymer({
     is: 'hotdice-engine',
     properties: {
         model: {
-            type: Object,
+            type: Array,
             notify: true
         }
     },
@@ -23,16 +23,19 @@ Polymer({
         console.log(event.detail);
         var detail = event.detail;
         if (detail.target == detail.src) {
-            var removearr = this.splice('model.' + this._modelIdx(detail.src) + '.content', detail.index, 1);
-            this.push('model.' + this._modelIdx(detail.target) + '.content', removearr[0]);
+            var removearr = this.splice(this._getPath(detail.src), detail.index, 1);
+            this.push(this._getPath(detail.target), removearr[0]);
         }
         else {
-            this.push('model.' + this._modelIdx(detail.target) + '.content', detail.item);
-            this.splice('model.' + this._modelIdx(detail.src) + '.content', detail.index, 1);
+            this.push(this._getPath(detail.target), detail.item);
+            this.splice(this._getPath(detail.src), detail.index, 1);
         }
     },
     _modelIdx: function (name) {
         return this.model.findIndex(function (x) { return x.name == name; });
+    },
+    _getPath(name) {
+        return 'model.' + this._modelIdx(name) + '.content';
     },
     rerollAll: function (event) {
         var stack = event.detail.stack;
@@ -41,12 +44,12 @@ Polymer({
         if (cont) {
             cont.content.forEach(function (item) {
                 item.val = item.items[Math.floor(Math.random() * item.items.length)];
-                self.notifyPath('item.splices', item);
                 //if(item.reroll) {
                 //    item.reroll();
                 //}
                 console.log(item);
             });
+            this.notifyPath(this._getPath(stack) + '.*', cont.content);
         }
     }
 });

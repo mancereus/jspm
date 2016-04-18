@@ -1,4 +1,4 @@
-var model = [{
+var model: Array<Model> = [{
         name: "stack",
         content: [
             { color: 'lightblue', items: [1, 1, 1, 2, 3, 0], val: "z" },

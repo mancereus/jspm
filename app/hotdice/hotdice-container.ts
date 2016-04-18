@@ -13,7 +13,8 @@ Polymer({
         },
         data: {
             type: Array,
-            value: function () { return []; }
+            value: function () { return []; },
+            notify: true
         }
     },
     observers: [
@@ -24,7 +25,7 @@ Polymer({
     },
     attached: function () : void {
         var cnt = this;
-        this.$.tmpl.set('items', this.data);
+        // this.$.tmpl.set('items', this.data);
         // setInterval(
         //     function () {
         //         c.forEach(function (entry) {

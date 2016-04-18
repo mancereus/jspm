@@ -30,7 +30,7 @@
         </style>
         <paper-card heading="{{container}}" container="{{container}}">
             <div class="card-content">
-                <template is="dom-repeat" id="tmpl">
+                <template is="dom-repeat" items="{{data}}" id="tmpl">
                     <hotdice-dice on-track="trackElement" draggable="true" data="{{item}}"></hotdice-dice>
                 </template>
             </div>
