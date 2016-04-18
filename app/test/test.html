@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>polymer game items</title>
+    <script src="../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../bower_components/polymer/polymer.html">
+</head>
+
+<body>
+    <h2>Array manipulation</h2>
+    <template id="tmpl" is="dom-bind">
+        <template is="dom-repeat" items="{{data}}">
+            <div>{{item.val}}</div>
+        </template>
+    </template>
+    <script>
+        var t = document.querySelector('#tmpl');
+		t.dice1 = [ {arr: [{val:"1"},{val:"1"},{val:"1"}]},{} ];
+        window.addEventListener('WebComponentsReady', function(e) {
+            drake.containers.push(document.getElementById("columns3"));
+        });
+        setInterval(function() {
+            console.log(t.dice1[0][0]);
+            t.set('dice1.0.val', 2)
+        }, 3000)
+    </script>
+</body>
+
+</html>

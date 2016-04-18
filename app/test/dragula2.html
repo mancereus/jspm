@@ -107,14 +107,22 @@
             el.className += ' ex-moved';
         });
         var t = document.querySelector('#tmpl');
-		t.dice1 = [{val:"1"},{val:"1"},{val:"1"}];
+		t.dice1 = [ {arr: [{val:1},{val:"1"},{val:"1"}]},{} ];
+        t.dice1 = [{val:1},{val:"1"},{val:"1"}];
 		t.dice2 = ["1", "2","3"];
         window.addEventListener('WebComponentsReady', function(e) {
             drake.containers.push(document.getElementById("columns3"));
         });
         setInterval(function() {
-            console.log(t.dice1[0]);
-            t.set("dice1.0.val", 2)
+            var value = t.dice1[0];
+            // var value = t.dice1[0]['arr'][0];
+            console.log(value);
+            var ar = t.dice1[0];
+            // t.set( ["arr", 0, "val"], value.val +1, ar)
+            t.set( ["val"], value.val +1, ar)
+            // var ok = t.notifyPath( ["dice1", 0, "arr", 0, "val"], value.val, false)
+            var ok = t.notifyPath( ["dice1", 0, "val"], value.val, true)
+            console.log(ok)
         }, 3000)
     </script>
 </body>
