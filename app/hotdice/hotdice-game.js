@@ -1,3 +1,4 @@
+/// <reference path="../../typings/polymer/polymer.d.ts" />
 Polymer({
     is: 'hotdice-game',
     properties: {
@@ -12,8 +13,8 @@ Polymer({
         //setInterval(console.log, 3000, engine);
         this.fire('reroll', { stack: 'stack' }, { node: engine });
         setInterval(function () {
-            engine.fire('reroll', { stack: 'roll' }, { node: engine });
+            self.fire('reroll', { stack: 'stack' }, { node: engine });
         }, 3000);
-        //setInterval(this.$.engine.reroll, 3000, 'stack');
+        // setInterval(this.$.engine.reroll, 3000, 'stack');
     }
 });

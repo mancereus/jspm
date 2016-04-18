@@ -22,7 +22,7 @@ Polymer({
     refresh: function (e) {
         this.$.tmpl.render();
     },
-    attached: function () {
+    attached: function () : void {
         var cnt = this;
         this.$.tmpl.set('items', this.data);
         // setInterval(
@@ -68,16 +68,9 @@ Polymer({
                 console.log(e.model.item);
                 var container = this._getContainer(e.detail.hover());
                 var srccontainer = this.container;
-                if (container == srccontainer) {
-                    var removearr = this.splice('data.' + srccontainer, e.model.index, 1);
-                    this.push('data.' + container, removearr[0]);
-
-                }
-                else {
-                    this.push('data.' + container, e.model.item);
-                    this.splice('data.' + srccontainer, e.model.index, 1);
-                }
-                break;
+                var engine = this.parentElement.querySelector('#engine');
+                this.fire("moveItem", {item: e.model.item, index: e.model.index, src: srccontainer, target: container}, {node: engine})
+               
         }
     },
 });
