@@ -4,26 +4,112 @@
 <head>
     <title>polymer game items</title>
     <script src="../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="../../bower_components/dragula.js/dist/dragula.js"></script>
 
     <link rel="import" href="../../bower_components/polymer/polymer.html">
+    <link rel="import" href="../../bower_components/paper-styles/paper-styles.html">
+    <link rel="import" href="../../bower_components/iron-pages/iron-pages.html">
+    <link rel="import" href="../../bower_components/paper-card/paper-card.html">
+    <link rel="import" href="../../bower_components/paper-button/paper-button.html">
+    <link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+    <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+    <link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
+    <link rel="import" href="../../bower_components/font-roboto/roboto.html">
+    <link rel="import" href="../components/board-game-dice/board-game-dice.html">
+    <link rel="import" href="../components/board-game-dice/board-game-dice-box.html">
+
+    <link href="../../bower_components/dragula.js/dist/dragula.min.css" rel="stylesheet" type="text/css" />
+    <style>
+        body {
+            font-family: Roboto, 'Noto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+
+        [draggable] {
+            -moz-user-select: none;
+            -khtml-user-select: none;
+            -webkit-user-select: none;
+            user-select: none;
+            /* Required to make elements draggable in old WebKit */
+            -khtml-user-drag: element;
+            -webkit-user-drag: element;
+        }
+
+        .drag-container {
+            min-height: 100px;
+            width: 150px;
+            float: left;
+            border: 2px solid #666666;
+            background-color: #ccc;
+            margin-right: 5px;
+            -webkit-border-radius: 10px;
+            -ms-border-radius: 10px;
+            -moz-border-radius: 10px;
+            border-radius: 10px;
+            -webkit-box-shadow: inset 0 0 3px #000;
+            -ms-box-shadow: inset 0 0 3px #000;
+            box-shadow: inset 0 0 3px #000;
+            text-align: center;
+            cursor: move;
+        }
+
+        .column header {
+            color: #fff;
+            text-shadow: #000 0 1px;
+            box-shadow: 5px;
+            padding: 5px;
+            background: -moz-linear-gradient(left center, rgb(0, 0, 0), rgb(79, 79, 79), rgb(21, 21, 21));
+            background: -webkit-gradient(linear, left top, right top, color-stop(0, rgb(0, 0, 0)), color-stop(0.50, rgb(79, 79, 79)), color-stop(1, rgb(21, 21, 21)));
+            background: -webkit-linear-gradient(left center, rgb(0, 0, 0), rgb(79, 79, 79), rgb(21, 21, 21));
+            background: -ms-linear-gradient(left center, rgb(0, 0, 0), rgb(79, 79, 79), rgb(21, 21, 21));
+            border-bottom: 1px solid #ddd;
+            -webkit-border-top-left-radius: 10px;
+            -moz-border-radius-topleft: 10px;
+            -ms-border-radius-topleft: 10px;
+            border-top-left-radius: 10px;
+            -webkit-border-top-right-radius: 10px;
+            -ms-border-top-right-radius: 10px;
+            -moz-border-radius-topright: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        .column.over {
+            border: 2px dashed #000;
+        }
+    </style>
 </head>
 
 <body>
-    <h2>Array manipulation</h2>
+    <h2>Polymer set</h2>
     <template id="tmpl" is="dom-bind">
-        <template is="dom-repeat" items="{{data}}">
-            <div>{{item.val}}</div>
+
+        <template is="dom-repeat" items="{{dice1.arr1}}">
+            <board-game-dice valx="{{item.val}}"></board-game-dice>
+        </template>
+
+        <template is="dom-repeat" items="{{dice2}}">
+            <board-game-dice valx="{{item.val}}"></board-game-dice>
         </template>
     </template>
+
     <script>
         var t = document.querySelector('#tmpl');
-		t.dice1 = [ {arr: [{val:"1"},{val:"1"},{val:"1"}]},{} ];
-        window.addEventListener('WebComponentsReady', function(e) {
-            drake.containers.push(document.getElementById("columns3"));
-        });
+		t.dice1 = {arr1: [{val:1},{val:1},{val:1}], arr2: [{val:1},{val:1},{val:1}]};
+        t.dice2 = [{val:2},{val:2},{val:2}];
+
         setInterval(function() {
-            console.log(t.dice1[0][0]);
-            t.set('dice1.0.val', 2)
+            var value = t.dice1['arr1'][0];
+            var ar = t.dice1['arr1'];
+            console.log("value1: " + value.val);
+            // t.set( ["arr", 0, "val"], value.val +1, ar)
+            t.set( ["dice1", "arr1", 0, 'val'], (value.val +1))
+            // var ok = t.notifyPath( ["dice1", "arr", 0], {val: (value.val +1)}, true)
+
+            var val2 = t.dice2[0];
+            console.log("value2: " + val2.val);
+            var ar2 = t.dice2[0];
+            t.set( ["val"], value.val +1, ar2)
+            var ok = t.notifyPath( ["dice2", 0, "val"], val2.val, true)
+            console.log(ok)
         }, 3000)
     </script>
 </body>

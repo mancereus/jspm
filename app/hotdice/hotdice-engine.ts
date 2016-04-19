@@ -21,7 +21,7 @@ Polymer({
         item.val = item.items[Math.floor(Math.random() * item.items.length)];
     },
     observers: [
-        'diceMoved(model.splices)'
+        'diceMoved(model.*)'
     ],
     moveItem: function (event) {
         console.log("moveItem: " + event.detail);
@@ -36,28 +36,22 @@ Polymer({
             this.splice(this._getPath(detail.src), detail.index, 1);
         }
     },
-    _modelIdx: function (name) {
-        return this.model.findIndex(function (x) { return x.name == name });
-    },
     diceMoved(ev) {
         console.log("engine: " + ev);
     },
     _getPath(name) {
-        return 'model.' + this._modelIdx(name) + '.content';
+        return 'model.' + name;
     },
     rerollAll: function (event) {
         console.log("rerollAll: " + event.detail);
-        var stack = event.detail.stack
-        var cont = this.model.filter(x => x.name == stack)[0];
+        var name = event.detail.stack
+        var cont = this.model[name];
         var self = this;
         if (cont) {
-            cont.content.forEach(function (item, idx) {
+            cont.forEach(function (item, idx) {
                 var val = item.items[Math.floor(Math.random() * item.items.length)];
-                //if(item.reroll) {
-                //    item.reroll();
-                //}
-                self.set(self._getPath(stack)+ "." + idx + ".val", val);
-                console.log(item);
+                self.set("model." + name + "." + idx + ".val", val);
+                console.log("new dice: " + item.val);
             })
         }
     }

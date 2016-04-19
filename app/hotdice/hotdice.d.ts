@@ -1,6 +1,6 @@
 interface Model {
-    name: String,
-    content: [Dice]
+    stack: [Dice]
+    roll: [Dice]
 }
 
 interface Dice {

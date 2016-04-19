@@ -14,8 +14,8 @@ Polymer({
         //setInterval(console.log, 3000, engine);
         this.fire('reroll', { stack: 'stack' }, { node: engine });
         setInterval(function () {
-            self.fire('reroll', { stack: 'stack' }, { node: engine });
-        }, 6000);
+            self.fire('reroll', { stack: 'roll' }, { node: engine });
+        }, 3000);
         // setInterval(this.$.engine.reroll, 3000, 'stack');
     }
 });
