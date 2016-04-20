@@ -19,9 +19,6 @@ Polymer({
     reroll: function (item) {
         item.val = item.items[Math.floor(Math.random() * item.items.length)];
     },
-    observers: [
-        'diceMoved(model.*)'
-    ],
     moveItem: function (event) {
         console.log("moveItem: " + event.detail);
         var detail = event.detail;
@@ -33,9 +30,6 @@ Polymer({
             this.push(this._getPath(detail.target), detail.item);
             this.splice(this._getPath(detail.src), detail.index, 1);
         }
-    },
-    diceMoved: function (ev) {
-        console.log("engine: " + ev);
     },
     _getPath: function (name) {
         return 'model.' + name;
