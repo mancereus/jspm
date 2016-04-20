@@ -25,9 +25,39 @@ declare module polymer {
 
     /* polymer-micro */
 
+
+    // Behaviors
+    // use interface fpr Behaviors
+    behaviors?:Object[];
+    
+    customStyle?: Object;
     // Attributes
 
-    hostAttributes?: {[name:string]:any};
+    listeners?: {[key:string]:string;};
+
+    properties?:{[prop:string]:(PropConstructorType|PropObjectType);};
+
+    //methods
+    $$?(selector: string): Element;
+
+    arrayDelete?(path: string|Array<string|number>, item: any): any[];
+
+    async?(callback: ()=>void, waitTime?: number): number;
+
+    attachedCallback?(): void;
+
+    attributeFollows?(name: string, toElement: HTMLElement, fromElement: HTMLElement): void;
+
+    cancelAsync?(handle: number): void;
+
+    cancelDebouncer?(jobName: string): void;
+
+    classFollows?(name: string, toElement: HTMLElement, fromElement: HTMLElement): void;
+
+    create?(tag: string, props: Object): Element;
+
+
+    //old definitions
 
     reflectPropertiesToAttribute?(name: string): void;
 
@@ -42,9 +72,6 @@ declare module polymer {
 
     serialize?(value: any): string;
 
-    // Behaviors
-
-    behaviors?:Object[];
 
     // Constructors
 
@@ -58,8 +85,6 @@ declare module polymer {
 
     flushDebouncer?(jobName: string): void;
 
-    cancelDebouncer?(jobName: string): void;
-
     // Extends
 
     extends?: string;
@@ -67,8 +92,6 @@ declare module polymer {
     getNativePrototype?(tag: string): Object;
 
     // Properties
-
-    properties?:{[prop:string]:(PropConstructorType|PropObjectType);};
 
     getPropertyInfo?(property: string): Object;
 
@@ -82,7 +105,6 @@ declare module polymer {
 
     ready?(): void;
 
-    attachedCallback?(): void;
 
     // Shady
 
@@ -104,8 +126,6 @@ declare module polymer {
     $?: any;
 
     // Events
-
-    listeners?: {[key:string]:string;};
 
     listen?(node: Element, eventName: string, methodName: string): void;
 
@@ -147,15 +167,9 @@ declare module polymer {
 
     // Utils
 
-    $$?(selector: string): Element;
-
     toggleClass?(name: string, bool?: boolean, node?: HTMLElement): void;
 
     toggleAttribute?(name: string, bool?: boolean, node?: HTMLElement): void;
-
-    classFollows?(name: string, toElement: HTMLElement, fromElement: HTMLElement): void;
-
-    attributeFollows?(name: string, toElement: HTMLElement, fromElement: HTMLElement): void;
 
     getContentChildNodes?(selector: string): Node[];
 
@@ -163,19 +177,11 @@ declare module polymer {
 
     fire?(type: string, detail?: any, options?: Object): CustomEvent;
 
-    async?(callback: ()=>void, waitTime?: number): number;
-
-    cancelAsync?(handle: number): void;
-
-    arrayDelete?(path: string|any[], item: any): any[];
-
     transform?(transform: string, node?: HTMLElement): void;
 
     translate3d?(x: number, y: number, z: number, node?: HTMLElement): void;
 
     importHref?(href: string, onload?: Function, onerror?: Function): HTMLLinkElement;
-
-    create?(tag: string, props: Object): Element;
 
     isLightDescendant?(node: HTMLElement): boolean;
 
