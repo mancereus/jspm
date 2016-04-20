@@ -10,7 +10,6 @@ Polymer({
         valx: {
             type: String,
             notify: true,
-            observer: "valChanged"
         },
         dark: {
             type: Boolean,
@@ -22,10 +21,6 @@ Polymer({
         this.$.front.style.height = '50px';
         this.toggleClass("dark", this.dark, this.$.front);
         var dice = this;
-    },
-
-    valChanged: function (e) {
-        console.log(e);
     },
 
     reroll: function (e) {

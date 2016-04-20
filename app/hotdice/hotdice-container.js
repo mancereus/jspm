@@ -10,14 +10,7 @@ Polymer({
             type: Array,
             value: function () { return []; },
             notify: true,
-            observer: 'refresh'
         }
-    },
-    observers: [
-        'refresh(data.content.*)'
-    ],
-    refresh: function (e) {
-        console.log("container: " + e);
     },
     attached: function () {
         var cnt = this;

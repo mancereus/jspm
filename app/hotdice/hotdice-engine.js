@@ -22,20 +22,22 @@ Polymer({
     moveItem: function (event) {
         console.log("moveItem: " + event.detail);
         var detail = event.detail;
-        if (detail.target == detail.src) {
-            var removearr = this.splice(this._getPath(detail.src), detail.index, 1);
-            this.push(this._getPath(detail.target), removearr[0]);
+        this._moveItem(detail.item, detail.index, detail.src, detail.target);
+    },
+    _moveItem: function (item, index, src, target) {
+        if (target == src) {
+            var removearr = this.splice(this._getPath(src), index, 1);
+            this.push(this._getPath(target), removearr[0]);
         }
         else {
-            this.push(this._getPath(detail.target), detail.item);
-            this.splice(this._getPath(detail.src), detail.index, 1);
+            this.push(this._getPath(target), item);
+            this.splice(this._getPath(src), index, 1);
         }
     },
     _getPath: function (name) {
         return 'model.' + name;
     },
     rerollAll: function (event) {
-        console.log("rerollAll: " + event.detail);
         var name = event.detail.stack;
         var cont = this.model[name];
         var self = this;
@@ -43,7 +45,9 @@ Polymer({
             cont.forEach(function (item, idx) {
                 var val = item.items[Math.floor(Math.random() * item.items.length)];
                 self.set("model." + name + "." + idx + ".val", val);
-                console.log("new dice: " + item.val);
+                if (val == 'X') {
+                    self._moveItem(item, idx, name, 'stack');
+                }
             });
         }
     }
