@@ -13,9 +13,7 @@ Polymer({
         var engine = this.$.engine;
         //setInterval(console.log, 3000, engine);
         this.fire('reroll', { stack: 'stack' }, { node: engine });
-        setInterval(function () {
-            self.fire('reroll', { stack: 'roll' }, { node: engine });
-        }, 3000);
+        this.fire('reroll', { stack: 'roll' }, { node: engine });
         // setInterval(this.$.engine.reroll, 3000, 'stack');
     }
 });

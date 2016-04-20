@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>polymer game items</title>
+    <base href="http://polygit.org/polymer+:master/components/">
+    <script src="webcomponentsjs/webcomponents-lite.js"></script>
+    <link href="polymer/polymer.html" rel="import">
+</head>
+
+<body>
+    <h2>test in dom-module</h2>
+    <test-dom-module></test-dom-module>
+
+    <dom-module id="test-dom-module">
+        <template>
+            <template is="dom-repeat" items="{{array1}}">
+                <span style="margin-right: 20px;">[[item]]</span>
+            </template>
+            <br>
+            <template is="dom-repeat" items="{{array1.1}}">
+                <span style="margin-right: 20px;">[[item]]</span>
+            </template>
+            <button on-click="click">Update Data</button>
+        </template>
+        <script>
+            addEventListener('WebComponentsReady', function() {
+      
+            Polymer({
+            is: 'test-dom-module',
+            properties: {
+                data: {
+                    type: Object,
+                    
+                }
+            },
+            ready: function() {
+                this.array1 = ["check update", ["no update"]];
+            },
+            click: function() {
+                this.set('array1.0',"update ok"); //this works
+                this.set('array1.1.0',"update ok"); //this won't works
+            }
+        });
+      
+    });
+        </script>
+
+    </dom-module>
+    
+    <h2>test in template dom-bind</h2>
+    <template id="tmpl" is="dom-bind">
+        <template is="dom-repeat" items="{{data}}">
+            <span style="margin-right: 20px;">[[item]]</span>
+        </template>
+        <br>
+        <template is="dom-repeat" items="{{data.1}}">
+            <span style="margin-right: 20px;">[[item]]</span>
+        </template>
+        <button on-click="updateData">Update Data</button>
+    </template>
+
+    <script>
+        var t = document.querySelector('#tmpl');
+        t.ready = function() {
+            t.data = ["check update", ["no update"]];
+        }
+        t.updateData = function() {
+            t.set('data.0',"update ok"); //this works
+            t.set('data.1.0',"update ok"); //this won't works
+        }
+    </script>
+</body>
+
+</html>

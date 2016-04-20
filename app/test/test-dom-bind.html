@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>polymer game items</title>
+    <script src="../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+    
+    <link rel="import" href="../../bower_components/polymer/polymer.html">
+    <style>
+        body {
+            font-family: Roboto, 'Noto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+
+      
+    </style>
+</head>
+
+<body>
+    <h2>Polymer set</h2>
+    <template id="tmpl" is="dom-bind">
+        <div>{{data.name}}</div>
+        Array 1: 
+        <template is="dom-repeat" items="{{data.arr1}}">
+            <span>[[item.val]]</span>
+        </template>
+        <br>
+        Array 2:         
+        <template is="dom-repeat" items="{{data.arr2}}">
+            <span>[[item]]</span>
+            sub:
+            <template is="dom-repeat" as="subitem" items="{{item}}">
+                <span>[[subitem]]</span>
+            </template>
+        </template>
+        <button on-click="click" >Update Data</button>
+    </template>
+
+    <script>
+        var t = document.querySelector('#tmpl');
+        t.ready = function() {
+            console.log("ready")
+            t.data = {name: "test", 
+                arr1: [{val:1},{val:[1,2,3]},{val:1}], 
+                arr2: [1,[2,2,2],1]
+            };
+        }
+        t.click = function() {
+            t.set('data.arr2.0',"click");
+            t.set('data.arr2.1.1',"click");
+            
+        }
+        
+        document.addEventListener('dom-change', function(event) {
+            console.log(event);
+            t.set('data.name',"ok");
+            t.set('data.arr1.1.val.1',"ok");
+            t.set('data.arr1.0.val',"ok");
+
+            t.set('data.arr2.0',"ok");
+            t.set('data.arr2.1.1',"ok");
+            
+        });
+    </script>
+</body>
+
+</html>

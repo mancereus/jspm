@@ -29,12 +29,7 @@ Polymer({
         var c = this.data;
     },
     reroll: function () {
-        this.
-            Polymer.dom(this.root).querySelectorAll("board-game-dice")
-            .forEach(function (entry) {
-                if (entry.reroll)
-                    entry.reroll()
-            });
+        this.fire('reroll', { stack: this.container }, { node: engine });
     },
     notStack: function (container) {
         return container != "stack";
