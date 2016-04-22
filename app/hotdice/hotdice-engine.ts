@@ -1,4 +1,3 @@
-
 Polymer({
     is: 'hotdice-engine',
     properties: {

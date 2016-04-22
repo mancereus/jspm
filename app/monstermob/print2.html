@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<script src="../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+	<link rel="import" href="../../bower_components/polymer/polymer.html">
+	<link rel="import" href="../components/page-break-div/page-break-div.html">
+	<script src="data2.js"></script>
+	<title>MonsterMob</title>
+	<style>
+		.card {
+			width: 190px;
+			height: 270px;
+			border: 3px solid black;
+			display: inline-block;
+			text-align: center;
+			vertical-align: middle;
+			margin: 1px;
+		}
+		
+		.page-break {
+			page-break-after: always;
+			width: 500px;
+		}
+		
+		img {
+			width: 100px;
+			height: 120px;
+			margin: 10px 0;
+			-webkit-filter: brightness(1.5);
+    		filter: brightness(1.5);
+		}
+		
+		hr {
+			margin: 0;
+		}
+		
+		.dark {
+			background-color: #aaaaaa;
+		}
+		
+		.head {
+			font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+			font-size: 18pt;
+			font-weight: bold;
+			margin: 2px 0 2px 0;
+			width: 98%;
+			display: flex;
+			justify-content: space-around
+		}
+		
+		.titel {
+			font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+			font-size: 18pt;
+			font-weight: bold;
+			display: inline-block;
+			width: 60%;
+			font-size: 150%;
+			text-align: center;
+		}
+		
+		.count {
+			text-align: left;
+			padding: 2px 5px;
+			border: 1px solid black;
+			border-top: none;
+		}
+		
+		.foot {
+			font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+			font-size: 12pt;
+			margin: 5px 0 5px 0;
+		}
+		
+		.small {
+			margin-top: 10px;
+			width: 40px;
+			height: 50px;
+		}
+		
+		.icon {
+			margin-top: 5px;
+			width: 113px;
+			height: 44px;
+		}
+	</style>
+</head>
+
+<body>
+	<template id="tmpl" is="dom-bind">
+   <div style="width:700px">
+	<template is="dom-repeat" items="[[chars]]">
+            <div class="card">
+				<div>
+                    <div class="titel">[[item.name]]</div>
+				</div>
+                <img src="img/[[item.name]].png"></img>
+                <hr/>
+				<div class="foot">[[item.desc]]</div>
+            </div>
+        </template>
+</div>
+	</template>
+
+	<script>
+		var t = document.querySelector('#tmpl');
+		t.chars = chars;
+
+	</script>
+</body>
+
+</html>
