@@ -10,7 +10,18 @@
     <link rel="stylesheet" href="../css/main.css">
 
     <style>
-        .try {
+       
+    </style>
+</head>
+
+<body>
+   <print-cards></print-cards>
+    
+    
+    <dom-module id="print-cards">
+        <template>
+            <style>
+                .try {
             font-size: 150%;
             font-weight: bold;
         }
@@ -19,45 +30,10 @@
             width: 120px;
         }
 
-        .Inhalt {
-            border: 6px solid lightblue;
-            border-radius: 4px;
-            padding: 0;
-            margin: 0;
-            width: 94%;
-            height: 102px;
-        }
-
-        .Form {
-            border: 6px solid lightcoral;
-            border-radius: 4px;
-            padding: 0;
-            margin: 0;
-            width: 94%;
-            height: 102px;
-        }
-
-        .Ort {
-            border: 6px solid lightgreen;
-            border-radius: 4px;
-            padding: 0;
-            margin: 0;
-            width: 94%;
-            height: 102px;
-        }
-
-        .Größe {
-            border: 6px solid yellow;
-            border-radius: 4px;
-            padding: 0;
-            margin: 0;
-            width: 94%;
-            height: 102px;
-        }
-
+      
         .card {
-            width: 213px;
-            height: 112px;
+            width: 320px;
+            height: 455px;
             float: left;
             border: 1px solid black;
             text-align: center;
@@ -86,53 +62,124 @@
             background-color: lightgray;
         }
 
-        .header {
-            text-align: center;
-            width: 240px;
-            font-size: 80%;
-            margin: 0;
-            padding: 5px;
-        }
-    </style>
-</head>
-
-<body>
-    <template id="tmpl" is="dom-bind">
-        <div style="width:1050px">
+            </style>
+               <div style="width:1050px">
             <template is="dom-repeat" items="{{cards}}">
-
+                    
                 <div class="card">
-                    <div class$="{{item.type}}">
-                        <div style="margin: 5px;">
-                            <span class="header">{{item.type}} / {{item.type2}}</span><span class="header"></span>
-                            <br/>
-                            <span>{{item.name}}</span>
-                        </div>
-                    </div>
+                    <card-half type="{{item.type}}" letter="{{item.letter}}" text="{{item.name}}" ></card-half>
+                        <hr>
+                    <card-half type="{{item.type}}" letter="{{item.letter}}"  text="{{item.name2}}" rotate="rotate"></card-half>
                 </div>
-                <page-break-div nmbr="{{index}}" max="20"></page-break-div>
+                <page-break-div nmbr="{{index}}" max="9"></page-break-div>
             </template>
         </div>
-    </template>
-
-    <script>
-        var t = document.querySelector('#tmpl');
-        t.enhance = function(stack) {
-                stack.cards.forEach(function(item){
-                    item.type = stack.type;
-                    item.type2 = stack.type2;
+        </template>
+        <script>
+            Polymer({
+                is: 'print-cards',
+                properties: {
+                    cards: Array
+                },
+            enhance: function(stack) {
+                stack.cards.forEach(function(item, idx){
+                    item.type = stack.type + " / " + stack.type2;
+                    if (idx < stack.cards2.length)
+                    item.name2 = stack.cards2[idx].name;
+                    item.letter = stack.letter;
                 });
-            };
-		t.cards = [];
-        t.enhance(data.form);
-        t.enhance(data.inhalt);
-        t.enhance(data.ort);
-        t.enhance(data.extra);
-		t.cards = t.cards.concat(data.form.cards);
-		t.cards = t.cards.concat(data.inhalt.cards);
-		t.cards = t.cards.concat(data.ort.cards);
-		t.cards = t.cards.concat(data.extra.cards);
-    </script>
+            },
+        isEven: function(idx) {
+            return idx%2 == 0;
+        },
+        rotate: function(idx) {
+            return this.isEven(idx) ? "" : "rotate";
+        },
+        ready: function() {
+            this.cards = [];
+            this.cards2 = [];
+            this.enhance(data.form);
+            this.enhance(data.inhalt);
+            this.enhance(data.ort);
+            this.enhance(data.extra);
+            this.cards = this.cards.concat(data.form.cards);
+            this.cards = this.cards.concat(data.inhalt.cards);
+            this.cards = this.cards.concat(data.ort.cards);
+            this.cards = this.cards.concat(data.extra.cards);
+            
+        }
+            });
+        </script>
+    </dom-module>
+    
+    <dom-module id="card-half">
+        <template>
+            <style>
+                :host {
+                    display: block;
+                }
+                .rotate {
+                    transform: rotate(180deg);
+                }
+                  .innerCard {
+                    border-radius: 4px;
+                    padding: 0;
+                    margin: 0;
+                    width: 96%;
+                    height: 200px;
+                }
+
+                .Inhalt, .Besonderheit {
+                    border: 6px solid lightblue;
+                }
+
+                .Form, .Oberfläche{
+                    border: 6px solid lightcoral;
+                }
+
+                .Ort, .Zeit{
+                    border: 6px solid lightgreen;
+                }
+
+                .Größe, .Gewicht {
+                    border: 6px solid yellow;
+                }
+                .header {
+                    text-align: center;
+                    width: 100%;
+                    font-size: 160%;
+                    margin: 20px 2px 20px 2px;
+                    padding: 5px;
+                }
+
+                .text {
+                    text-align: center;
+                    width: 80%;
+                    font-size: 120%;
+                    margin: 20px;
+                }
+
+            </style>
+            <div class$="{{type}} innerCard {{rotate}}">
+                    <div class="header">{{letter}}.   {{type}}</div>
+                    <br/>
+                    <div class="text">{{text}}</div>
+            </div>
+               
+        </template>
+        <script>
+            Polymer({
+                is: 'card-half',
+                properties: {
+                    rotate: String,
+                    text: String,
+                    letter: String,
+                    type: String,
+                }
+            });
+        </script>
+    </dom-module>
+    
 </body>
 
 </html>
