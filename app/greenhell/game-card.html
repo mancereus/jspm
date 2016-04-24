@@ -135,6 +135,7 @@
         computed: 'getSymbolName(carddata)'
         },
         akt: String,
+        sound: Boolean,
         item: { notify: true },
         selected: {
           type: String,
@@ -171,7 +172,7 @@
       },
       toggle: function () {
         var card = this.$.card;
-        if(this.$.player != undefined) {
+        if(this.$.player != undefined && this.sound) {
             if (card.selected == 0) {
             this.$.player.cancel();
             this.$.player.speak();

@@ -72,7 +72,7 @@
                 <div>
                     <div id="field" style="width: 780px;" class="layout horizontal wrap" on-showdetails="showCard">
                         <template id="cards" is="dom-repeat" items="{{cards}}" as="card" index-as="cardIndex">
-                            <game-card imgsrc="{{card.name}}" carddata="{{card}}" akt="{{data.akt}}" item="{{card.imgclass}}">
+                            <game-card imgsrc="{{card.name}}" carddata="{{card}}" akt="{{data.akt}}" item="{{card.imgclass}}" sound="{{config.sound}}">
                             </game-card>
                         </template>
                         <game-hexagon imgsrc="Jack" top="-570" left="340"></game-hexagon>
@@ -139,6 +139,8 @@
                                 </select>
                             </td>
                             <td>
+                                <paper-toggle-button noink checked="{{config.sound}}">
+                                    <h2>Tonausgabe</h2></paper-toggle-button>
                             </td>
                         </tr>
                         <tr>
@@ -171,7 +173,7 @@
                         </tr>
                     </table>
                     <div id="bigCard" style="background-color:white; border: 2px solid black; height:425px; width: 275px; margin-left: 150px;">
-                        <game-show-details id="details"></game-show-details>
+                        <game-show-details id="details" sound="{{config.sound}}"></game-show-details>
                     </div>
 
                     <template is="dom-if" if="{{isAkt(config.akt, 2)}}">

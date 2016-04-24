@@ -66,6 +66,7 @@
           value: 'Jack',
           notify: true
         },
+        sound: Boolean,
         symbol: { notify: true },
         text: { type: String, notify: true },
         message: { type: String, notify: true },
@@ -88,7 +89,7 @@
         this.message = 'heard: ' + detail.message;
       },
       talk: function () {
-        if(this.$.player != undefined) {
+        if(this.$.player != undefined && this.sound) {
           this.$.player.cancel();
           this.$.player.speak();
         }
