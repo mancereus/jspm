@@ -31,15 +31,17 @@
             }
         </style>
         <firebase-document location="https://protogames.firebaseio.com/zenmaster/data" data="{{data}}" log></firebase-document>
+        <template is="dom-if" if="{{!master}}">
         <template is="dom-if" if="{{data.started}}">
             <h3 style="color:green;background-color: lightgray;width:400px;">Der Zenmeister ist bereit.</h3>
+        </template>
         </template>
         <table>
             <tr>
                 <th></th>
                 <th width="180px">Versuch</th>
                 <th width="40px">Form oder Oberfläche</th>
-                <th width="40px">Inhalt oder Bewegung</th>
+                <th width="40px">Inhalt oder Besonderheit</th>
                 <th width="40px">Ort oder Zeit</th>
                 <th width="40px">Größe oder Gewicht</th>
             </tr>

@@ -1,5 +1,6 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/firebase-element/firebase-document.html">
+<link rel="import" href="../../bower_components/iron-pages/iron-pages.html">
 <link rel="import" href="../../bower_components/firebase-element/firebase-collection.html">
 <script src="data.js"></script>
 <script src="../../bower_components/sugar/release/sugar.min.js"></script>
@@ -57,10 +58,27 @@
                 margin: 0;
                 padding: 0;
             }
+            section {
+                display: flex;
+                flex-direction: column;
+                align-content: center;
+            }
         </style>
         <firebase-document location="https://protogames.firebaseio.com/zenmaster/data" data="{{data}}" log></firebase-document>
-        <input type="button" on-click="newGame" value="Neues Spiel"> <a href="tipps.html" target="_blank">Tipps Seite</a>
+        
+        <iron-pages selected="{{selected}}">
+            <section>
+                <h2>Starte eine neue Partie als Meister...</h2>
+                <input style="width: 100px;" type="button" on-tap="switch" value="Ich bin Meister"> 
+                <br>
+                <h2>Trete als Schüler einer Partie bei...</h2>
+                <a href="tipps.html" target="_blank"><input style="width: 100px;" type="button" value="Ich bin Schüler"></a>
+            </section>
+            <section>
         <div class="cards">
+            <input style="width: 100px;" type="button" on-tap="newGame" value="Neue Karten"> 
+                <br>
+            <h2>Finde ein Ding oder Lebewesen mit den folgenden Eigenschaften..</h2>   
             <template is="dom-repeat" items="{{data.cards}}">
                 <div class$="{{item.type}} card">
                     <span class="header">{{item.type}} / {{item.type2}}</span>
@@ -68,22 +86,34 @@
                     <span>{{item.name}}</span>
                 </div>
             </template>
-
-        </div>
-        <br/>
-        <h3>Schreibe deine Lösung auf:</h3>
-        <input style="width: 250px;" class="try inp" value="{{data.solution::input}}"></input>
-        <button on-tap="startGame">Fertig</button>
-        <firebase-collection id="col" limit-to-last="10" location="https://protogames.firebaseio.com/zenmaster/games"
-                             data="{{games}}"></firebase-collection>
-        <input type="button" on-tap="saveGame" value="Speichere Spiel">
-        <br>
-        <b>Lade Spiel:</b>
-        <select id="game" on-change="loadGame">
+    <h2>oder Lade ein altes Spiel..</h2>
+    <firebase-collection id="col" limit-to-last="20" location="https://protogames.firebaseio.com/zenmaster/games" data="{{games}}"></firebase-collection>
+    <select id="game" on-change="loadGame">
             <template is="dom-repeat" items="{{games}}">
                 <option value="{{item.solution}}">{{item.solution}}</option>
             </template>
         </select>
+    <br/>
+    <h3>Schreibe deine Lösung auf:</h3>
+    <input style="width: 250px;" class="try inp" value="{{data.solution::input}}">
+    <button on-tap="startGame">Fertig</button>
+    </section>
+    <section>
+            <template is="dom-repeat" items="{{data.cards}}">
+                <div class$="{{item.type}} " style="width: 250px;font-size: 120%">
+                    <span>{{item.type}} / {{item.type2}}</span>
+                    <br/>
+                    <span>{{item.name}}</span>
+                </div>
+            </template>
+
+        <zenmaster-tipps master></zenmaster-tipps>
+        <input style="width: 120px" type="button" on-tap="saveGame" value="Speichere Spiel">
+
+    </section>
+    </iron-pages>
+
+
     </template>
 
     <script>
@@ -98,6 +128,10 @@
                     type: Array,
                     notify: true
                 },
+                selected: {
+                    type: Number,
+                    value: 0
+                },
                 data: Object,
                 key: String
             },
@@ -106,6 +140,7 @@
                 return o;
             },
             startGame: function () {
+                this.selected = 2;
                 this.set("data.started", true);
             },
             saveGame: function () {
@@ -134,6 +169,9 @@
                 this.push('data.cards', this.getCard(data.inhalt));
                 this.push('data.cards', this.getCard(data.ort));
                 this.push('data.cards', this.getCard(data.extra));
+            },
+            switch: function () {
+                this.selected = 1;
             },
             newGame: function () {
                 this.data = {};
