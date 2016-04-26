@@ -1,0 +1,94 @@
+<!doctype html>
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="grid-cell.html">
+<script type="text/javascript" src="../../bower_components/pathfinding/pathfinding-browser.js"></script>
+<dom-module id="grid-field">
+    <template>
+        <style>
+            :host {
+                display: block;
+            }
+        </style>
+        <template is="dom-repeat" items="{{grid.nodes}}" as="row" >
+            <template is="dom-repeat" items="{{row}}" as="col" >
+                <grid-cell node="{{col}}"></grid-cell>
+            </template>
+            <br>
+        </template>
+    </template>
+    <script>
+        Polymer({
+            is: 'grid-field',
+            properties: {
+                grid: {type: Object,
+                    notify: true},
+                finish: {type: Object,
+                    notify:true},
+                agent: {type: Object,
+                    notify:true},
+                loop: Object
+            },
+            observers: [
+            '_dataChanged(grid.nodes.*)'
+            ],
+            _dataChanged: function(grid) {
+                // console.log("dataChanged:" + grid);
+            },
+            setNode: function(node, property, val) {
+                this.set('grid.nodes.' + node.y+'.'+ node.x+ '.' +property, val);
+            },
+            moveAgent: function() {
+                var finder = new PF.AStarFinder();
+                var path = finder.findPath(this.agent.x, this.agent.y,this.finish.x, this.finish.y, this.grid.clone());
+                var self = this;
+                this.grid.nodes.forEach(function(row){
+                   row.forEach(function(cel) {
+                    self.setNode(cel, 'way', false);   
+                   } );
+                });
+                path.forEach(function(node){
+                    var way = self.grid.getNodeAt(node[0], node[1]);
+                    self.setNode(way, 'way', true);
+                })
+                this.addRandomBlock();
+                if (path && path.length > 1) {
+                    this.setNode(this.agent, 'agent', false);
+                    console.log("from: "+ this.agent.x + ","+ this.agent.y + "to: "  + this.finish.x+  "," + this.finish.y+ "step:" + path[0]+ " -> " +path[1]); 
+                    this.agent = this.grid.getNodeAt(path[1][0], path[1][1]);
+                    this.setNode(this.agent, 'agent', true);     
+                    if (this.agent == this.finish) {
+                        console.log("victory");
+                        clearInterval(this.loop);
+                    }           
+                }
+            },
+            addRandomBlock: function() {
+                    var rrow = Math.floor(Math.random()*this.grid.width);
+                    var rcol = Math.floor(Math.random()* this.grid.height);
+                    var block = this.grid.getNodeAt(rrow,rcol);
+                    this.addBlock(block);
+
+            },
+            addBlock: function(node) {
+                    if (!node.agent && !node.finish)
+                    this.setNode(node, "walkable", false);
+            },
+            ready: function() {
+                this.grid = new PF.Grid(20, 20);
+                for(var i= 0;i<100;i++) {
+                    this.addRandomBlock()
+                }
+                this.agent = this.grid.getNodeAt(0, 2)
+                this.finish = this.grid.getNodeAt(12, 15)
+                this.agent.agent = true;
+                this.finish.target = true;
+                var self = this;
+                this.loop = setInterval(function() {
+                    self.moveAgent()
+                }, 600)
+            },
+            
+            
+        });
+    </script>
+</dom-module>
