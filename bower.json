@@ -50,7 +50,8 @@
     "paper-dialog": "PolymerElements/paper-dialog#^1.0.4",
     "sugar": "^1.4.1",
     "firebase-element": "GoogleWebComponents/firebase-element#^1.0.12",
-    "platinum-sw": "PolymerElements/platinum-sw#^1.2.3"
+    "platinum-sw": "PolymerElements/platinum-sw#^1.2.3",
+    "pathfinding": "^0.4.17"
   },
   "devDependencies": {
     "test-fixture": "polymerelements/test-fixture#^1.0.0"

@@ -1,0 +1,63 @@
+<!doctype html>
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<script type="text/javascript" src="../../bower_components/pathfinding/pathfinding-browser.js"></script>
+<dom-module id="grid-cell">
+    <template>
+        <style>
+            :host {
+                display: inline-block;
+                background-color: gray;
+                margin: 0;
+                padding:0;
+            }
+            span {
+                display: inline-block;
+                width: 25px;
+                height: 25px;
+                margin: 0;
+                padding:0;
+                border: 1px solid black;
+                font-size: 80%;
+            }
+            span[walkable] {
+                background-color: lightgray;
+            }
+            span[way] {
+                border:1px solid yellow;
+            }
+            span[agent] {
+                background-color: red;
+            }
+            span[target] {
+                background-color: green;
+            }
+        </style>
+        <span on-tap="toggleBlock" walkable$="{{node.walkable}}" way$="{{node.way}}" agent$="{{node.agent}}" target$="{{node.target}}">{{node.x}},{{node.y}}</span>
+    </template>
+    <script>
+        Polymer({
+            is: 'grid-cell',
+            properties: {
+                node: {type: Object,
+                    notify: true},
+                
+            },
+            observers: [
+                'nodeChanged(node.*)'
+            ],
+            
+            nodeChanged: function(record) {
+                if (record.path == 'node.agent')
+                ;
+                else 
+                console.log("node: " + record);
+            },
+            toggleBlock: function() {
+                this.set("node.walkable", !this.node.walkable)
+            },
+            ready: function() {
+            },
+            
+        });
+    </script>
+</dom-module>
