@@ -1,0 +1,174 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>ZenMeister Beta</title>
+    <script src="../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+    <link rel="import" href="../../bower_components/polymer/polymer.html">
+    <script src="data.js"></script>
+
+    <link rel="stylesheet" href="../css/main.css">
+
+    <style>
+        body {}
+
+        .try {
+            font-size: 150%;
+            font-weight: bold;
+        }
+
+        .inp {
+            width: 120px;
+        }
+
+         .Inhalt {
+            background-color:  lightblue;
+        }
+
+        .Form {
+            background-color:  lightcoral;
+        }
+
+        .Ort {
+            background-color:  lightgreen;
+        }
+
+        .Größe {
+            background-color:  yellow;
+        }
+
+
+        .card {
+            margin: 0;
+            padding: 0;
+            border: 1px solid black;
+            float:left;
+        }
+
+        .pagebreak {
+            page-break-before: always;
+            background-color: red;
+            width: 650px;
+            height: 450px;
+        }
+        tr{
+            height: 36px;
+        }
+    </style>
+</head>
+
+<body>
+    <template id="tmpl" is="dom-bind">
+        <div style="display: float-right;width: 1050px">
+            
+            <template is="dom-repeat" items="{{rep}}">
+            
+            <div style="margin:2px;width: 340px;padding: 20px 50px 30px 20px;;float:left;border: 3px solid black; text-align: center;">
+                <h1><img src="title.jpg" style="width: 25px;height: 25px;">Zen Meister</h1>
+                <div  class="Form">A) {{data.form.type}} oder {{data.form.type2}}</div>
+            <div class="Inhalt">
+                B) {{data.inhalt.type}} oder {{data.inhalt.type2}}
+            </div>                
+            <div class="Ort">
+                C) {{data.ort.type}} oder {{data.ort.type2}}
+            </div>
+            <div class="Größe">
+                D) {{data.extra.type}} oder {{data.extra.type2}}
+            </div>
+            <br>
+                <table>
+                    <tr style="font-weight: bolder;">
+                        <td></td>
+                        <td style="width: 200px;">Begriffe</td>
+                        <td class="Form">A.</td>
+                        <td class="Inhalt">B.</td>
+                        <td class="Ort">C.</td>
+                        <td class="Größe">D.</td>
+                    </tr>
+                    <tr>
+                        <td>1.</td>
+                        <td>__________________________________</td>
+                        <td>___</td>
+                        <td>___</td>
+                        <td>___</td>
+                        <td>___</td>
+                    </tr>
+                    <tr>
+                        <td>2.</td>
+                        <td>__________________________________</td>
+                        <td>___</td>
+                        <td>___</td>
+                        <td>___</td>
+                        <td>___</td>
+                    </tr>
+                    <tr>
+                        <td>3.</td>
+                        <td>__________________________________</td>
+                        <td>___</td>
+                        <td>___</td>
+                        <td>___</td>
+                        <td>___</td>
+                    </tr>
+                    <tr>
+                        <td>Tipp</td>
+                        <td>__________________________________</td>
+                        <td>___</td>
+                        <td>___</td>
+                        <td>___</td>
+                        <td>___</td>
+                    </tr>
+                    <tr>
+                        <td>4.</td>
+                        <td>__________________________________</td>
+                        <td>___</td>
+                        <td>___</td>
+                        <td>___</td>
+                        <td>___</td>
+                    </tr>
+                    <tr>
+                        <td>5.</td>
+                        <td>__________________________________</td>
+                        <td>___</td>
+                        <td>___</td>
+                        <td>___</td>
+                        <td>___</td>
+                    </tr>
+                    <tr>
+                        <td>6.</td>
+                        <td>__________________________________</td>
+                        <td>___</td>
+                        <td>___</td>
+                        <td>___</td>
+                        <td>___</td>
+                    </tr>
+                    <tr>
+                        <td>Tipp</td>
+                        <td>__________________________________</td>
+                        <td>___</td>
+                        <td>___</td>
+                        <td>___</td>
+                        <td>___</td>
+                    </tr>
+                    <tr>
+                        <td>7.</td>
+                        <td>__________________________________</td>
+                        <td>___</td>
+                        <td>___</td>
+                        <td>___</td>
+                        <td>___</td>
+                    </tr>
+                </table>                
+            </div>
+            
+            </div>
+            </template>
+        </div>
+    </template>
+    <script>
+        var t = document.querySelector('#tmpl');
+		t.rep = [1,2,3,4];
+        t.data = data;
+    </script>
+</body>
+
+</html>
