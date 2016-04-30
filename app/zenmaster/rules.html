@@ -1,0 +1,147 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>ZenMeister Beta</title>
+    <script src="../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+    <link rel="import" href="../../bower_components/font-roboto/roboto.html">
+    <link rel="import" href="../../bower_components/polymer/polymer.html">
+    <script src="data.js"></script>
+
+    <link rel="stylesheet" href="../css/main.css">
+
+    <style>
+        body {}
+        
+        .try {
+            font-size: 150%;
+            font-weight: bold;
+        }
+        
+        .inp {
+            width: 120px;
+        }
+        
+        .Inhalt {
+            border: 6px solid lightblue;
+            border-radius: 4px;
+            padding: 20px;
+            margin: 0;
+            height: 400px;
+        }
+        
+        .Form {
+            border: 6px solid lightcoral;
+            border-radius: 4px;
+            padding: 20px;
+            margin: 0;
+            height: 400px;
+        }
+        
+        .Ort {
+            border: 6px solid lightgreen;
+            border-radius: 4px;
+            padding: 20px;
+            margin: 0;
+            height: 400px;
+        }
+        
+        .Größe {
+            border: 6px solid yellow;
+            border-radius: 4px;
+            margin: 0;
+            padding: 20px;
+            height: 400px;
+        }
+        
+        .card {
+            margin: 2px;
+            width: 320px;
+            height: 455px;
+            border: 1px solid black;
+            float: left;
+        }
+        
+        .pagebreak {
+            page-break-before: always;
+            background-color: red;
+            width: 650px;
+            height: 450px;
+        }
+        
+        body {
+            padding: 20px;
+            width: 400px;
+            margin-left: 100px;
+        }
+        h1,h2, image {
+            text-align: center;
+            
+        }
+        div.example {
+            margin: 5px 20px;
+            border: 1px sold black;
+            background-color: lightgray;
+            font-family:Roboto,Noto,'Helvetica Neue',Helvetica,Arial,sans-serif;
+        }
+        h3, li {
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body style="">
+    <div style="text-align: center;">
+        <img src="title.jpg" style="width: 100px;height: 100px;">
+    </div>
+    <h1>Zen Meister</h1>
+    <p style="text-align: center;">ein Kommunikationsratespiel für 2 oder mehr Spieler, <br> Dauer: 20min, ab 8 Jahren</p>
+    <h2>Spielregeln</h2>
+    <h3>Idee</h3>
+    <p>Die Schüler versuchen ein Ding zu finden, das 4 verdeckte Eigenschaften erfüllt, die vom Zen Meister ausgewählt wurden.</p>
+    <h3>Material</h3>
+    <ul>
+        <li>32 Spielkarten</li>
+        <li>1 Rateblock</li>
+        <li>1 Stift</li>
+    </ul>
+    
+    <h3>Vorbereitung</h3>
+    <ul>
+        <li>Ein Spieler wird Zen Meister. Alle anderen Spieler sind Schüler.</li>
+        <li>Die 4 Tippkarten, der Rateblock und der Stift werden offen in Spielmitte gelegt.</li>
+        <li>Die restlichen Karten werden nach den 4 Farben getrennt und zu verdeckten Stapeln gemischt.</li>
+    </ul>
+    <h3>Spielablauf</h3>
+    <h4>Der Zenmeister findet ein mögliches Lösungwort</h4>
+    <ul>
+        <li>Der Zen Meister zieht von jedem Stapel die oberste Karte verdeckt auf die Hand.</li>
+        <li>Er liest sich die obere Hälfte jeder Karte durch und überlegt sich ein Ding, dass allen vier Eigenschaften genügt.</li>
+        <li>Sollte er kein Ding finden, darf er einzelne Karten auf seiner Hand drehen, so dass die untere Seite der Karte nun oben steht und er diese Eigenschaft berücksichtigt.</li>
+        <li>Er sollte darauf achten, dass die Kombination der Eigenschaften nicht auf zu viele Dinge zutreffen. <br>(Wenn ihm spontan mehr als 10 Dinge einfallen, die auf alle Eigenschaften passen, ist die Kombination zu einfach.)</li>
+        <li>Das gefundene Ding des Zen Meisters ist im weiteren Spielverlauf nicht mehr von Bedeutung. Es dient nur dazu sicher zu stellen, dass es mindestens eine Lösung und nicht zu viele Lösungen gibt.</li>
+    </ul>
+   <div  class="example">Beispiel: <br>
+       Der Zenmeister hat die Eigenschaften "ist kugel- oder eiförmig", "mit Rad oder vollständig drehbarem Teil", "es gibt jetzt mehr als vor 100 Jahren", 
+"mehr als 10m hoch" ausgewäht. Er überlegt sich "Fesselballon" als mögliche Lösung. Ihm fallen auch kaum andere mögliche Lösungen ein. 
+   </div>
+    <h4>Die Schüler versuchen ein Lösungwort zu finden</h4>
+    <ul>
+        <li>Mit Hilfe des Rateblock versuchen die Schüler nun über mehrere Runden ein Ding zu finden, dass allen Eigenschaften entspricht.</li>
+        <li>Die vier offen ausliegenden Tippkarten geben den Schülern eine Hilfestellung, welche möglichen Eigenschaften im Spiel sind.</li>
+        <li>In den Runden 1,2,3 und 5,6,7 überlegen Sie gemeinsam ein Ding, dass sie auf den Rateblock schreiben.</li>
+        <li>Der Zenmeister überprüft dann die Eigenschaften dieses Ding gegen seine ausgewählten Eigenschaften.</li>
+        <li>Wenn das Ding eine dieser Eigenschaft erfüllt, markiert der Zenmeister die zugehörige Spalte hinter dem Ding mit einem "X". Falls nicht, markiert er die Spalte mit einem "O".</li>
+        <li>In seltenen Fällen kann der Zenmeister die Eigenschaft eines Ding nicht beantworten. Dann markiert er die Spalte mit einem "?".</li>
+        <li>In den Runden 4 und 8 können die Schüler sich vom Zenmeister einen Tipp geben lassen. Dazu markieren Sie eine Spalte mit einem "X". Der Zenmeister überlegt sich nun ein Ding, dass die Eigenschaft in dieser Spalte erfüllt und schreibt diese Ding auf den Rateblock. Über die anderen Eigenschaften wird dabei keine Aussage gemacht.</li>        
+    </ul>
+   
+    <h3>Spielende</h3>
+    Sobald die Schüler ein Ding aufschreiben, dass vom Zenmeister in allen 4 Spalten ein "X" erhält, haben Sie die Partie gewonnen. Sollte Ihnen dass in Runde 9 noch nicht gelingen, haben Sie verloren.
+    
+    <h3>Kontakt</h3>
+    <p>Matthias Schmitt, Ottostr. 75/77, 50823 Köln <br>mschmitt@db12.de, 0160/7190392</p> 
+</body>
+
+</html>
