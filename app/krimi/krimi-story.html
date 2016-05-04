@@ -1,0 +1,52 @@
+<!doctype html>
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
+<script src="../../bower_components/json-schema-faker/dist/json-schema-faker.js"></script>
+<script src="data.js"></script>
+<dom-module id="krimi-story">
+    <template>
+        <style>
+            :host {
+                display: block;
+            }
+            .frame {
+                border-radius: 30%;
+                border: 3px solid gray;
+                display: flex;
+            }
+            .card {
+                display: flex;
+                border: 1px solid black;
+                margin: 2px;
+                width: 200px;
+            }
+        </style>
+        <iron-ajax auto url="https://randomuser.me/api/"
+    params='{"inc":"gender,name,location,picture", "nat":"de", "results":"12"}'
+    handle-as="json"
+    on-response="handleResponse"
+    debounce-duration="300"></iron-ajax>
+    
+    <template is="dom-repeat" items="{{data}}">
+        <div class="card">
+            <img src="{{item.picture.thumbnail}}" class="frame"><span>{{item.name.first}} {{item.name.last}} <br> {{item.location.city}}</span>
+        </div>
+    </template>
+    
+    </template>
+    <script>
+        Polymer({
+            is: 'krimi-story',
+            properties: {
+                data: {
+                    type: Array,
+                    notify: true
+                }
+            },
+            handleResponse(event) {
+                console.log(event.detail.response.results[0]);
+                this.data = event.detail.response.results;
+            }
+        });
+    </script>
+</dom-module>
