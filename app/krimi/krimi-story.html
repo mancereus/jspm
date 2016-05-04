@@ -2,6 +2,7 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
 <script src="../../bower_components/json-schema-faker/dist/json-schema-faker.js"></script>
+<script src="persons.js"></script>
 <script src="data.js"></script>
 <dom-module id="krimi-story">
     <template>
@@ -21,15 +22,10 @@
                 width: 200px;
             }
         </style>
-        <iron-ajax auto url="https://randomuser.me/api/"
-    params='{"inc":"gender,name,location,picture", "nat":"de", "results":"12"}'
-    handle-as="json"
-    on-response="handleResponse"
-    debounce-duration="300"></iron-ajax>
     
     <template is="dom-repeat" items="{{data}}">
         <div class="card">
-            <img src="{{item.picture.thumbnail}}" class="frame"><span>{{item.name.first}} {{item.name.last}} <br> {{item.location.city}}</span>
+            <img src="{{item.picture}}" class="frame"><span>{{item.name}} <br> {{item.city}}</span>
         </div>
     </template>
     
@@ -42,6 +38,9 @@
                     type: Array,
                     notify: true
                 }
+            },
+            ready: function() {
+                this.data = personlist;
             },
             handleResponse(event) {
                 console.log(event.detail.response.results[0]);
