@@ -1,20 +1,23 @@
-var persons = {
+{
     "title": "persons",
     "type": "array",
     "minItems": 5,
-    "maxItems": 12,
+    "maxItems": 8,
     "items": {
         "type": "object",
         "properties": {
             "id": {
                 "$ref": "#/definitions/positiveInt"
             },
+            "id2": {
+                "$ref": "#/definitions/positiveInt"
+            },
              "birthday": {
                  "type": "date",
                  "faker": "date.past"
             },
-             "user": {
-                 "faker": "helpers.userCard"
+             "connection": {
+                 "pattern":"liebt | hasst"
             },
              "name": {
                  "type": "string",
@@ -26,15 +29,15 @@ var persons = {
             "id"
         ],
         "required": [
-            "id","name","user"
+            "id","id2","connection"
         ]
     },
     "definitions": {
         "positiveInt": {
             "type": "integer",
             "minimum": 0,
-            "maximum": 100,
-            "exclusiveMinimum": true
+            "maximum": 10,
+            "exclusiveMinimum": false
         }
     }
 }

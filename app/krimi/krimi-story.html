@@ -1,9 +1,8 @@
 <!doctype html>
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
-<script src="../../bower_components/json-schema-faker/dist/json-schema-faker.js"></script>
-<script src="persons.js"></script>
-<script src="data.js"></script>
+<link rel="import" href="random-user.html">
+<link rel="import" href="schema-fake.html">
 <dom-module id="krimi-story">
     <template>
         <style>
@@ -22,10 +21,16 @@
                 width: 200px;
             }
         </style>
-    
+    <schema-fake schema="schema.json" data="{{data}}"></schema-fake>
     <template is="dom-repeat" items="{{data}}">
         <div class="card">
-            <img src="{{item.picture}}" class="frame"><span>{{item.name}} <br> {{item.city}}</span>
+            <span>{{item.id}} {{item.connection}} {{item.id2}}</span>
+        </div>
+    </template>
+    <random-user count="12" data="{{persons}}"></random-user>
+    <template is="dom-repeat" items="{{persons}}">
+        <div class="card">
+            <img src="{{item.picture.thumbnail}}" class="frame"><span>{{index}}. {{item.name.first}} {{item.name.last}} </span>
         </div>
     </template>
     
@@ -40,11 +45,7 @@
                 }
             },
             ready: function() {
-                this.data = personlist;
-            },
-            handleResponse(event) {
-                console.log(event.detail.response.results[0]);
-                this.data = event.detail.response.results;
+                //this.data = personlist;
             }
         });
     </script>

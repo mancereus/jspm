@@ -1,0 +1,47 @@
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
+<dom-module id="random-user">
+    <template>
+        <style>
+            :host {
+                display: block;
+            }
+        </style>
+        <iron-ajax
+    auto
+    url="https://randomuser.me/api/"
+    params='{{options}}'
+    handle-as="json"
+    on-response="handleResponse"
+    debounce-duration="300"></iron-ajax>
+    </template>
+    <script>
+        Polymer({
+            is: 'random-user',
+            properties: {
+                count: {
+                    type: Number,
+                    value: 3
+                },
+                data: {
+                    type: Array,
+                    notify:true
+                },
+                options: {
+                    type: Object,
+                    value: function() {
+                        return {"nat":"de", "results":"4","inc":"name,location,picture"}
+                    }
+                }
+            },
+            ready: function() {
+                this.options.results = this.count;
+            },
+               
+            handleResponse(event) {
+                //console.log(event.detail.response.results[0]);
+                this.data = event.detail.response.results;
+            } 
+            
+        });
+    </script>
+</dom-module>
