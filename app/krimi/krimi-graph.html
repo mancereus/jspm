@@ -1,0 +1,37 @@
+<script src="../../bower_components/jsPlumb/dist/js/jsPlumb-2.1.1.js"></script>
+<dom-module id="krimi-graph">
+    <template>
+        <style>
+            :host {
+                display: block;
+            }
+        </style>
+        <div id="root"></div>
+    </template>
+    <script>
+        Polymer({
+            is: 'krimi-graph',
+            properties: {
+                data: {
+                    type: Object
+                }
+            },
+            ready: function() {
+                var inst = jsPlumb.getInstance();
+                jsPlumb.setContainer(this.$.root);
+                inst.importDefaults({
+                    Connector: ["Bezier", {
+                        curviness: 150
+                    }],
+                    Anchors: ["TopCenter", "BottomCenter"]
+                });
+
+                inst.connect({
+                    source: "element1",
+                    target: "element2",
+                    scope: "someScope"
+                });
+            }
+        });
+    </script>
+</dom-module>

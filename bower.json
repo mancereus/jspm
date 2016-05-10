@@ -53,7 +53,8 @@
     "platinum-sw": "PolymerElements/platinum-sw#^1.2.3",
     "pathfinding": "^0.4.17",
     "json-schema-faker": "^0.3.1",
-    "faker": "^0.0.2"
+    "faker": "^0.0.2",
+    "jsPlumb": "jsplumb#^2.1.1"
   },
   "devDependencies": {
     "test-fixture": "polymerelements/test-fixture#^1.0.0"
