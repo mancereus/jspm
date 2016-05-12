@@ -1,5 +1,5 @@
 {
-    "title": "persons",
+    "title": "gamedata",
     "type": "array",
     "minItems": 5,
     "maxItems": 8,
@@ -9,27 +9,27 @@
             "id": {
                 "$ref": "#/definitions/positiveInt"
             },
-            "id2": {
-                "$ref": "#/definitions/positiveInt"
+            "birthday": {
+                "type": "date",
+                "faker": "date.past"
             },
-             "birthday": {
-                 "type": "date",
-                 "faker": "date.past"
+            "connection": {
+                "pattern": "liebt | hasst"
             },
-             "connection": {
-                 "pattern":"liebt | hasst"
-            },
-             "name": {
-                 "type": "string",
-                 "faker": {
-                     "fake": "{{name.firstName}} {{name.lastName}}"}
+            "name": {
+                "type": "string",
+                "faker": {
+                    "fake": "{{name.firstName}} {{name.lastName}}"
+                }
             }
         },
         "uniqueItems ": [
             "id"
         ],
         "required": [
-            "id","id2","connection"
+            "id",
+            "id2",
+            "connection"
         ]
     },
     "definitions": {

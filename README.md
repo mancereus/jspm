@@ -8,10 +8,15 @@
 ## install bower polymer
 
 	bower update
+	
+## Typescript
 
+   run ctrl-B in vscode to start typescript compiler
 
 ## Run in browser
-
+	
+	npm run dev  (ctrl-r r with extension npm scripts)
+	
 	npm install -g browser-sync --save-dev
 
 	browser-sync start --server --files "*"

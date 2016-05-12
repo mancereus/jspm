@@ -20,33 +20,29 @@
                 margin: 2px;
                 width: 200px;
             }
-        </style>
-    <schema-fake schema="schema.json" data="{{data}}"></schema-fake>
-    <template is="dom-repeat" items="{{data}}">
-        <div class="card">
-            <span>{{item.id}} {{item.connection}} {{item.id2}}</span>
-        </div>
-    </template>
-    <random-user count="12" data="{{persons}}"></random-user>
-    <template is="dom-repeat" items="{{persons}}">
-        <div class="card">
-            <img src="{{item.picture.thumbnail}}" class="frame"><span>{{index}}. {{item.name.first}} {{item.name.last}} </span>
-        </div>
-    </template>
-    
-    </template>
-    <script>
-        Polymer({
-            is: 'krimi-story',
-            properties: {
-                data: {
-                    type: Array,
-                    notify: true
-                }
-            },
-            ready: function() {
-                //this.data = personlist;
+            .container {
+                border: 1px solid black;
+                display: flex;
+                flex-wrap: wrap;
+                width: 680px;
             }
-        });
+        </style>
+            <h2>Personen</h2>
+        <div class="container">
+            <random-user count="12" data="{{persons}}"></random-user>
+            <template is="dom-repeat" items="{{persons}}">
+                <div class="card">
+                    <img src="{{item.picture.thumbnail}}" class="frame"><span>{{index}}. {{item.name.first}} {{item.name.last}} </span>
+                </div>
+            </template>
+            <schema-fake schema="schema.json" data="{{data}}"></schema-fake>
+            <template is="dom-repeat" items="{{data}}">
+                <div class="card">
+                    <span>{{item.id}} {{item.connection}} {{item.id2}}</span>
+                </div>
+            </template>
+        </div>
+    </template>
+    <script src="krimistory.js">
     </script>
 </dom-module>
