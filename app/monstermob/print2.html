@@ -97,7 +97,7 @@
 
 <body>
 	<template id="tmpl" is="dom-bind">
-   <div style="width:700px">
+   <div style="width:900px">
 	<template is="dom-repeat" items="[[chars]]">
 		<div class="card">
 			<div>
@@ -108,21 +108,29 @@
 			<div class="foot">[[item.desc]]</div>
 		</div>
         </template>
+		<div class="card">
+			<div class="titel">
+				MonsterMob
+			</div>
+			<div class="field" style="border-color: blue;margin-left: 30px;">
+				MonsterMob <br> besiegt wenn Schwerter <br>= 6
+			</div>
+			<div class="field" style="border-color: red;background-color: indianred; float: left;width:60px;">
+				<img style="width: 40px;height: 40px;" src="img/Schwert.png">
+				<div>9</div>
+			</div>
+			<div class="field" style="border-color: yellow;background-color: orange;float: right;width:60px;">
+				<img style="width: 40px;height: 40px;" src="img/Schatz.png">
+				<div>12</div>
+			</div>
+		</div><div class="card">
+			<div class="titel">
+				Aktiver Spieler
+			</div>
+			<br>
+			<img style="width: 150px;height: 180px;" src="img/Schwert.png">
 		</div>
-	<div class="card">
-		<div class="titel">
-			MonsterMob
 		</div>
-		<div class="field" style="border-color: blue;margin-left: 30px;">
-			MonsterMob <br> besiegt wenn Schwerter <br>= 3+X 
-		</div>
-		<div class="field" style="border-color: red;background-color: indianred; float: left;width:60px;">
-			Schwerter: 6+X
-		</div>
-		<div class="field" style="border-color: yellow;background-color: orange;float: right;width:60px;">
-			Schätze: 6+X
-		</div>
-	</div>
 	</template>
 		
 	<script>

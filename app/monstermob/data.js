@@ -1,11 +1,11 @@
 var engine = {
     cards: [
-        { type: "Schatz", subtype: "A", count: 4, owner: "" },
-        { type: "Schatz", subtype: "B", count: 4, owner: "" },
-        { type: "Schatz", subtype: "C", count: 4, owner: "" },
-        { type: "Schatz", subtype: "D", count: 4, owner: "" },
-        { type: "Schwert", subtype: "A", count: 2, owner: "" },
-        { type: "Schwert", subtype: "B", count: 2, owner: "" },
+        { type: "Schatz", subtype: "A", count: 3, owner: "" },
+        { type: "Schatz", subtype: "B", count: 3, owner: "" },
+        { type: "Schatz", subtype: "C", count: 3, owner: "" },
+        { type: "Schwert", subtype: "A", count: 3, owner: "" },
+        { type: "Schwert", subtype: "B", count: 3, owner: "" },
+        { type: "Schwert", subtype: "C", count: 3, owner: "" },
         { type: "Tür", subtype: "A", count: 2, owner: "" },
         { type: "Tür", subtype: "B", count: 2, owner: "" },
         { type: "Mob", subtype: "A", count: 4, dark: "dark", owner: "" },
