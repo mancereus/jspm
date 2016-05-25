@@ -2,103 +2,138 @@
 <html>
 
 <head>
-	<meta charset="utf-8">
+    <meta charset="utf-8">
     <script src="../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
     <link rel="import" href="../../bower_components/polymer/polymer.html">
     <link rel="import" href="../components/page-break-div/page-break-div.html">
     <script src="data.js"></script>
-	<title>MonsterMob</title>
-	<style>
-		.card {
-			width: 190px;
-			height: 270px;
-			border: 1px solid black;
-			display: inline-block;
-			text-align: center;
-			vertical-align: middle;
-            margin: 1px;
-		}
-
-		.page-break {
-			page-break-after: always;
-			width: 500px;
-		}
-
-		img {
-			width: 100px;
-			height: 150px;
-			margin: 10px 0;
-		}
-
-		hr {
-			margin: 0;
-		}
-
-		.dark {
-			background-color: #aaaaaa;
-		}
-
-		.head {
-			font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-			font-size: 18pt;
-			font-weight: bold;
-			margin: 2px 0 2px 0;
-			width: 98%;
+    <script src="data2.js"></script>
+    <title>MonsterMob</title>
+    <style>
+        .card {
+            width: 250px;
+            height: 370px;
+            background-image: url("img/borders.png");
+            background-size: 100% 100%;
+			margin: 0 -2px;
+            display: inline-block;
+            text-align: center;
+            vertical-align: middle;
+        }
+        
+        .page-break {
+            page-break-after: always;
+            width: 500px;
+        }
+        
+        img {
+            width: 200px;
+            height: 250px;
+            margin: 10px 0;
+        }
+        
+        hr {
+            margin: 0;
+        }
+        
+        .dark {
+            background-image: url("img/bordersdark.png");
+        }
+        
+        .head {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: 24pt;
+            font-weight: bold;
+            margin: 9px 0 2px 0;
+            width: 98%;
             display: flex;
             justify-content: space-around
-		}
-		.titel {
-			display: inline-block;
-			width: 60%;
-			text-align: center;
-			}
-		.count {
-			text-align: left;
-			padding: 2px 5px;
-			border: 1px solid black;
-			border-top: none;
-		}
-
-		.foot {
-			font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-			font-size: 24pt;
-			margin: 5px 0 5px 0;
-		}
-
-		.small {
-			margin-top: 10px;
-			width: 40px;
-			height: 50px;
-		}
-
-		.icon {
-			margin-top: 5px;
-			width: 113px;
-			height: 44px;
-		}
-	</style>
+        }
+        
+        .titel {
+            display: inline-block;
+            width: 70%;
+            text-align: center;
+        }
+        
+        .count {
+            text-align: left;
+            padding: 2px 5px;
+            border: 1px solid black;
+            border-top: none;
+        }
+        
+        .foot {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: 24pt;
+            margin: 5px 0 5px 0;
+        }
+        
+        .small {
+            margin-top: 10px;
+            width: 40px;
+            height: 50px;
+        }
+        
+        .icon {
+            margin-top: 5px;
+            width: 113px;
+            height: 44px;
+        }
+        
+        .field {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            width: 100px;
+            height: 90px;
+            border-radius: 33%;
+            border: 3px solid red;
+            padding: 20px 10px 0 10px;
+        }
+    </style>
 </head>
 
 <body>
-  <template id="tmpl" is="dom-bind">
-    <div style="width:1050px">
+    <template id="tmpl" is="dom-bind">
+    <div style="width:800px">
         <template is="dom-repeat" items="[[cards]]">
 
             <div class$="card [[item.dark]]">
-                <div class="head"><span class="count">[[item.count]]x</span>
+                <div class="head">
                     <div class="titel">[[item.type]]</div><span class="count">[[item.subtype]]</span></div>
                 <img src="img/[[item.type]].png"></img>
-                <hr/><img class="icon" src="img/[[item.type]]icon.png"></img>
+                
             </div>
-            <page-break-div nmbr="[[index]]" max="18"></page-break-div>
+            <page-break-div nmbr="[[index]]" max="9"></page-break-div>
         </template>
+    <template is="dom-repeat" items="[[chars]]">
+			<div class="card">
+				<div>
+					<div class="head">[[item.name]]</div>
+				</div>
+				<img src="img/[[item.name]].png"></img>
+			</div>
+		</template>
+    <div class="card">
+        <div class="head" style="margin-bottom: 0;">
+            Spieltableau
+        </div>
+        <img style="height: 300px; width: 220px;" src="img/Tableau.png">
     </div>
-</template>
+    <div class="card">
+        <div class="head">
+            Aktiver Spieler
+        </div>
+        <br>
+        <img src="img/fackel.png">
+    </div>
+    </div>
+    </template>
 
-<script>
-    var t = document.querySelector('#tmpl');
-		t.cards = engine.cards;
-</script>
+    <script>
+        var t = document.querySelector('#tmpl');
+        t.cards = engine.cards;
+        t.chars = chars;
+    </script>
 </body>
 
 </html>
