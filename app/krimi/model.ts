@@ -53,9 +53,8 @@ interface Game {
     places: Array<Place>;
     actions: Array<Action>;
     erkundet: Array<Action>;
-    // init(): Game;
-    // _addAction(Action);
-    // getRandomAction():Action;
-    // getPersonTimeline(person: Person): Map<Time, Place>;
+    init(): Game;
+    getRandomAction():Action;
+    getPersonTimeline(person: Person): Map<String, Place>;
 }
 
