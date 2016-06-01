@@ -1,5 +1,6 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="game-print-card.html">
+<link rel="import" href="game-print-back-card.html">
 <link rel="import" href="../components/page-break-div/page-break-div.html">
 
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
@@ -25,6 +26,11 @@
                 <page-break-div nmbr="{{cardIndex}}" max="16"></page-break-div>
             </template>
             <br>
+           <template is="dom-repeat" items="{{cards}}" as="card" index-as="cardIndex">
+                <template is="dom-if" if="{{ card.order}}">
+                    <game-print-back-card cardData="{{card}}"></game-print-back-card>
+                </template>
+            </template>
              <div style="page-break-before: always; width: 800px;">symbols</div>
             <template is="dom-repeat" items="{{cards}}" as="card" index-as="cardIndex">
                 <template is="dom-if" if="{{ card.imgclass}}">
@@ -42,10 +48,10 @@
         initcards.push.apply(initcards,data1.initActions);
         initcards.push.apply(initcards,data1.start);
         initcards.forEach(function(c) {if (c.akt == undefined) c.akt=1});
-        initcards.push.apply(initcards,data2.initcards);
-        initcards.push.apply(initcards,data2.initActions);
-        initcards.push.apply(initcards,data2.start);
-        initcards.forEach(function(c) {if (c.akt == undefined) c.akt=2});
+        // initcards.push.apply(initcards,data2.initcards);
+        // initcards.push.apply(initcards,data2.initActions);
+        // initcards.push.apply(initcards,data2.start);
+        // initcards.forEach(function(c) {if (c.akt == undefined) c.akt=2});
 
     Polymer({
       is: 'print-board',
