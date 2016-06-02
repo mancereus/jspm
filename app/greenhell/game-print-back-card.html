@@ -22,8 +22,8 @@
             background-image: url("img/borders.png");
             background-size: 100% 100%;
             padding: 0;
-            width: 42mm;
-            height: 63mm;
+            width: 50mm;
+            height: 71mm;
             font-size: 1em;
         }
 
@@ -62,16 +62,18 @@
     <style is="custom-style">
         .big {
             color: gray;
-            margin-top: 60px;
+            margin-top: 10px;
             --iron-icon-height: 64px;
             --iron-icon-width: 64px;
         }
     </style>
     <template>
         <div class="card-header">
-            <div class$="layout vertical center {{carddata.info}}" style="margin: 0;width: 40mm;min-height: 63mm;">
-                    <template is="dom-if" if="{{carddata.order}}">
+            <div class="layout vertical center" style="margin: 0;width: 40mm;min-height: 63mm;">
+                    <template is="dom-if" if="{{carddata.task}}">
+                        <h2 style="margin-top: 40px;">Aktion</h2>
                         <iron-icon class="big" icon="{{carddata.order}}"></iron-icon>
+                        <h2 style="margin-top: 40px;">{{carddata.orderText}}</h2>
                     </template>
             </div>
         </div>

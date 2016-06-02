@@ -15,7 +15,7 @@
         }
 
         #gameTable {
-            width: 180mm;
+            width: 210mm;
         }
     </style>
     <template>
@@ -27,11 +27,13 @@
             </template>
             <br>
            <template is="dom-repeat" items="{{cards}}" as="card" index-as="cardIndex">
-                <template is="dom-if" if="{{ card.order}}">
+                <template is="dom-if" if="{{ card.task}}">
                     <game-print-back-card cardData="{{card}}"></game-print-back-card>
                 </template>
             </template>
-             <div style="page-break-before: always; width: 800px;">symbols</div>
+            <br>
+            <br>
+            <br>
             <template is="dom-repeat" items="{{cards}}" as="card" index-as="cardIndex">
                 <template is="dom-if" if="{{ card.imgclass}}">
                     <game-piece print style="margin: 2px;" img="{{card.name}}" imgclass="{{card.imgclass}}"></game-piece>
