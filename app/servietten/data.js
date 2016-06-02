@@ -61,3 +61,12 @@ var numbers = [
 
 
 ];
+var quiz = [
+    { q: "Was ist der Sinn des Lebens?", a: "Arbeit", b: "Liebe", c: "Kreativität", d: "ohne Sinn" },
+    { q: "Wer hat das Universum erschaffen?", a: "Gott", b: "Zufall", c: "Ich", d: "nur ein Traum" },
+    { q: "Was ist außerhalb des bekannten Universums?", a: "Nichts", b: "ist endlos", c: "parallele Universen", d: "zeitlose Realität" },
+    { q: "Was pasiert nach dem Tod mit dem Bewusstsein?", a: "stirbt auch", b: "ist in Seele", c: "Wiedergeburt", d: "wandert als Geist" },
+    { q: "Wer entscheidet über den Zeitpunkt deines Todes?", a: "Gott", b: "Sensenmann", c: "ich", d: "Zufall" },
+    
+
+];
