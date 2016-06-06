@@ -39,7 +39,10 @@
         .dark {
             background-image: url("img/bordersdark.png");
         }
-        
+         .break {
+            width: 710px;
+            page-break-before: always;
+        }
         .head {
             font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
             font-size: 24pt;
@@ -80,7 +83,12 @@
             width: 113px;
             height: 44px;
         }
-        
+        .Schwert {
+            border: 8px solid blue;
+        }
+        .Schatz {
+            border: 8px solid yellow;
+        }
         .field {
             font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
             width: 100px;
@@ -125,7 +133,21 @@
         </div>
         <br>
         <img src="img/fackel.png">
+    </div> <div class="card">        
     </div>
+    <div class="break">
+        page-break
+    </div>
+
+    <template is="dom-repeat" items="[[items]]">
+			<div class="card">
+				<div>
+					<div class="head">[[item.name]]</div>
+				</div>
+				<img style="border-radius: 20%; width:150px;height:200px;margin-top: 70px;" class$="[[item.type]]" src="img/[[item.type]].png"></img>
+			</div>
+            <page-break-div nmbr="[[index]]" max="9"></page-break-div>
+		</template>
     </div>
     </template>
 
@@ -133,6 +155,7 @@
         var t = document.querySelector('#tmpl');
         t.cards = engine.cards;
         t.chars = chars;
+        t.items = items;
     </script>
 </body>
 
