@@ -33,6 +33,22 @@
     <div style="width:80vw;height: 80vh;background-color: green;">
       <div id="test" style="width: 20%; height: 50%; border: 2px solid blue;">testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest</div>
     </div>
+    <script>
+      var msg = new SpeechSynthesisUtterance();
+msg.msg.voice = window.speechSynthesis.getVoices()[1]; // Note: some voices don't support altering params
+msg.voiceURI = 'native';
+msg.volume = 1; // 0 to 1
+msg.rate = 3; // 0.1 to 10
+msg.pitch = 4; //0 to 2
+msg.text = 'Hallo Welt';
+msg.lang = 'de-DE';
+
+msg.onend = function(e) {
+  console.log('Finished in ' + event.elapsedTime + ' seconds.');
+};
+
+speechSynthesis.speak(msg);
+    </script>
   </body>
 
 </html>
