@@ -8,7 +8,7 @@ var game = {
         { type: "Tiger", hor: true, ver: false},
         { type: "Tiger", hor: false, ver: true},
         { type: "Tiger", hor: true, ver: true},
-        { type: "Tiger", hor: false, ver: false},
+        { type: "Hütte", hor: false, ver: false},
         { type: "Falle", hor: true, ver: false},
         { type: "Falle", hor: false, ver: true},
         { type: "Falle", hor: false, ver: false},
@@ -24,6 +24,6 @@ var game = {
         { type: "Höhle", hor: true, ver: false},
         { type: "Höhle", hor: false, ver: true},
     ],
-    start: { type: "Start", hor: false, ver: false},
-    end: { type: "Ziel", hor: false, ver: false}
+    start: { type: "Start", hor: false, ver: false, open: true},
+    end: { type: "Ziel", hor: false, ver: false, open: true}
 };

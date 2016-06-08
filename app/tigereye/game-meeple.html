@@ -1,0 +1,54 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+
+<dom-module id="game-meeple">
+    <style>
+        :host {
+            position: absolute;
+            color: #fff;
+            overflow: hidden;
+            cursor: move;
+        }
+
+        .sized {
+            height: 32px;
+            width: 32px;
+            border-radius: 50%;
+            border: 3px solid blue;
+            background-color:red;
+        }
+        .red {
+        }
+    </style>
+    <template>
+        <div draggable="true" class="sized">
+        </div>
+    </template>
+    <script>
+        Polymer({
+      is: 'game-meeple',
+      properties: {
+        color: {
+            type: String,
+            notify: true },
+        left: {
+          type: Number,
+          value: 800,
+          notify: true
+        },
+        top: {
+          type: Number,
+          value: 1060,
+          notify: true
+        }
+      },
+      ready: function () {
+        console.log('game-meeple ready ');
+        var draggie = new Draggabilly(this);
+        this.style.top = this.top + "px";
+        this.style.left = this.left + "px";
+        this.style.backgroundColor = "green";
+      }
+    });
+    </script>
+</dom-module>

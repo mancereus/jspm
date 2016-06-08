@@ -9,6 +9,7 @@
 <link rel="import" href="../../bower_components/iron-localstorage/iron-localstorage.html">
 <link rel="import" href="tigereye-card.html">
 <link rel="import" href="game-hexagon.html">
+<link rel="import" href="game-meeple.html">
 <script src="data.js"></script>
 
 
@@ -41,6 +42,7 @@
             </template>
         </div>
         <game-hexagon imgsrc="Tiger" top="-480" left="480"></game-hexagon>
+        <game-meeple color="red" top="-1100" left="20"></game-meeple>
     </template>
 
     <script>
@@ -55,7 +57,7 @@
                 game.cards =  this.shuffle(game.cards);
                 game.cards.push(game.end);
                 game.cards.unshift(game.start);
-                game.cards.forEach(x => x.open = true);
+                 game.cards.forEach(x => x.open = true);
                 this.game = game;
             },
             attached: function() {
