@@ -36,6 +36,7 @@
             is: 'tigereye-card',
             properties: {
                 data: Object,
+                open: Boolean,
                 selected: {type: Number,
                     value: 0},
             },
@@ -47,7 +48,8 @@
                 console.log("Thank you for tapping");
             },
             attached: function () {
-                console.log(this.data);
+                if (this.data != undefined &&this.data.open)
+                this.openCard();
             },
             openCard: function (e) {
                 this.selected = 1;

@@ -9,6 +9,8 @@
 <link rel="import" href="../../bower_components/iron-localstorage/iron-localstorage.html">
 <link rel="import" href="tigereye-card.html">
 <link rel="import" href="game-hexagon.html">
+<script src="data.js"></script>
+
 
 <dom-module id="tigereye-game">
 
@@ -38,7 +40,7 @@
                 <tigereye-card data="{{item}}"></tigereye-card>
             </template>
         </div>
-        <game-hexagon imgsrc="Tiger" top="-800" left="200"></game-hexagon>
+        <game-hexagon imgsrc="Tiger" top="-480" left="480"></game-hexagon>
     </template>
 
     <script>
@@ -49,11 +51,12 @@
                 notify: true
             },
             ready: function() {
+                console.log("ready");
+                game.cards =  this.shuffle(game.cards);
+                game.cards.push(game.end);
+                game.cards.unshift(game.start);
+                game.cards.forEach(x => x.open = true);
                 this.game = game;
-                this.game.cards =  this.shuffle(game.cards);
-                this.game.cards.push(game.end);
-                this.game.cards.unshift(game.start);
-                this.notifyPath('game.cards.*', this.game.cards);
             },
             attached: function() {
             },
