@@ -8,7 +8,7 @@ var game = {
         { type: "Tiger", hor: true, ver: false, btype: "Weg", bhor: false, bver: true},
         { type: "Tiger", hor: false, ver: true, btype: "Schlange", bhor: false, bver: false},
         { type: "Tiger", hor: true, ver: true, btype: "Höhle", bhor: false, bver: true},
-        { type: "Hütte", hor: false, ver: false, btype: "Hütte", bhor: true, bver: false},
+        { type: "Hütte", hor: false, ver: true, btype: "Hütte", bhor: true, bver: false},
         { type: "Falle", hor: true, ver: false, btype: "Tiger", bhor: false, bver: true},
         { type: "Falle", hor: false, ver: true, btype: "Weg", bhor: false, bver: false},
         { type: "Falle", hor: false, ver: false, btype: "Machete", bhor: false, bver: true},
