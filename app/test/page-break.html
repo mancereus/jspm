@@ -2,131 +2,168 @@
 <html>
 
 <head>
-	<meta charset="utf-8">
-	<title>page break test</title>
-	<style>
-		.card {
-			width: 190px;
-			height: 270px;
-			border: 1px solid black;
-			display: inline-block;
-			text-align: center;
-			vertical-align: middle;
-		}
-		
-		.page-break {
-			page-break-after: always;
-						width: 500px;
-		}
-		
-		img {
-			width: 100px;
-			height: 170px;
-			margin: 10px 0;
-		}
-		
-		hr {
-			margin: 0;
-		}
-		.dark {
-			background-color: #999999;
-		}
-		.head {
-			font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-			font-size: 15pt;
-			font-weight: bold;
-			margin: 2px 0 2px 0;
-		}
-		.foot {
-			font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-			font-size: 24pt;
-			margin: 5px 0 5px 0;
-		}
-		
-		.small {
-			margin-top: 10px;
-			width: 40px;
-			height: 50px;
-		}
-	</style>
+    <meta charset="utf-8">
+    <title>page break test</title>
+    <style>
+        .card {
+            width: 64mm;
+            height: 88mm;
+            background-image: url("img/borders.png");
+            background-size: 100% 100%;
+            padding: 2px;
+            text-align: center;
+            vertical-align: middle;
+            display: inline-block;
+        }
+        
+        .page-break {
+            page-break-after: always;
+            width: 500px;
+        }
+        
+        img {
+            width: 100px;
+            height: 170px;
+            margin: 10px 0;
+        }
+        
+        hr {
+            margin: 0;
+        }
+        
+        .head {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: 15pt;
+            font-weight: bold;
+            margin: 2px 0;
+        }
+        
+        .foot {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: 24pt;
+            margin: 5px 0;
+        }
+        
+        .small {
+            margin-top: 10px;
+            width: 40px;
+            height: 50px;
+        }
+    </style>
 </head>
 
 <body>
-	<div class="card dark">
-		<div class="head">Schritte</div>
-		<img src="img/schritte.jpg"></img>
-		<hr/><div class="foot">4x</div>
-	</div>
-	<div class="card dark">
-		<div class="head">Schritte</div>
-		<img src="img/schritte.jpg"></img>
-		<hr/><div class="foot">4x</div>
-	</div>
-	<div class="card dark"><div class="head">Schritte</div>
-		<img src="img/schritte.jpg"></img>
-		<hr/><div class="foot">4x</div>
-	</div>
-	<div class="card dark"><div class="head">Schritte</div>
-		<img src="img/schritte.jpg"></img>
-		<hr/><div class="foot">4x</div>
-	</div>
-	<div class="card dark"><div class="head">Monster</div>
-		<img src="img/monster.jpg"></img>
-		<hr/><div class="foot">3x</div>
-	</div>
-	<div class="card dark"><div class="head">Monster</div>
-		<img src="img/monster.jpg"></img>
-		<hr/><div class="foot">3x</div>
-	</div>
-	<div class="card dark"><div class="head">Monster</div>
-		<img src="img/monster.jpg"></img>
-		<hr/><div class="foot">3x</div>
-	</div>
-	<div class="card dark"><div class="head">Dieb</div>
-		<img src="img/dieb.jpg"></img>
-		<hr/><div class="foot">3x</div>
-	</div>
-	<div class="card dark"><div class="head">Dieb</div>
-		<img src="img/dieb.jpg"></img>
-		<hr/><div class="foot">3x</div>
-	</div>
-	<div class="page-break">page-break</div>
-	<div class="card dark"><div class="head">Dieb</div>
-		<img src="img/dieb.jpg"></img>
-		<hr/><div class="foot">3x</div>
-	</div>
-	<div class="card"><div class="head">Herz</div>
-		<img src="img/herz.jpg"></img>
-		<hr/><div class="foot">2x</div>
-	</div>
-	<div class="card"><div class="head">Herz</div>
-		<img src="img/herz.jpg"></img>
-		<hr/><div class="foot">2x</div>
-	</div>
-	<div class="card"><div class="head">Schatz</div>
-		<img src="img/schatz.png"></img>
-		<hr/><div class="foot">4x</div>
-	</div>
-	<div class="card"><div class="head">Schatz</div>
-		<img src="img/schatz.png"></img>
-		<hr/><div class="foot">4x</div>
-	</div>
-	<div class="card"><div class="head">Schatz</div>
-		<img src="img/schatz.png"></img>
-		<hr/><div class="foot">4x</div>
-	</div>
-	<div class="card"><div class="head">Schatz</div>
-		<img src="img/schatz.png"></img>
-		<hr/><div class="foot">4x</div>
-	</div>
-	<div class="card"><div class="head">Tür</div>
-		<img src="img/tuer.jpg"></img>
-		<hr/><div class="foot">2x</div>
-	</div>
-	<div class="card"><div class="head">Tür</div>
-		<img src="img/tuer.jpg"></img>
-		<hr/><div class="foot">2x</div>
-	</div>
+    <div style="width: 210mm">
+        <div class="card dark">
+            <div class="head">Front 1</div>
+            <img src="img/borders.png"></img>
+            <hr/>
+            <div class="foot">footer</div>
+        </div>
+        <div class="card dark">
+            <div class="head">Front 2</div>
+            <img src="img/borders.png"></img>
+            <hr/>
+            <div class="foot">footer</div>
+        </div>
+        <div class="card dark">
+            <div class="head">Front 3</div>
+            <img src="img/borders.png"></img>
+            <hr/>
+            <div class="foot">footer</div>
+        </div>
+        <div class="card dark">
+            <div class="head">Front 4</div>
+            <img src="img/borders.png"></img>
+            <hr/>
+            <div class="foot">footer</div>
+        </div>
+        <div class="card dark">
+            <div class="head">Front 5</div>
+            <img src="img/borders.png"></img>
+            <hr/>
+            <div class="foot">footer</div>
+        </div>
+        <div class="card dark">
+            <div class="head">Front 6</div>
+            <img src="img/borders.png"></img>
+            <hr/>
+            <div class="foot">footer</div>
+        </div>
+        <div class="card dark">
+            <div class="head">Front 7</div>
+            <img src="img/borders.png"></img>
+            <hr/>
+            <div class="foot">footer</div>
+        </div>
+        <div class="card dark">
+            <div class="head">Front 8</div>
+            <img src="img/borders.png"></img>
+            <hr/>
+            <div class="foot">footer</div>
+        </div>
+        <div class="card dark">
+            <div class="head">Front 9</div>
+            <img src="img/borders.png"></img>
+            <hr/>
+            <div class="foot">footer</div>
+        </div>
+        <div class="page-break">page-break</div>
+        <div class="card dark">
+            <div class="head">Back 3</div>
+            <img src="img/borders.png"></img>
+            <hr/>
+            <div class="foot">footer</div>
+        </div>
+        <div class="card dark">
+            <div class="head">Back 2</div>
+            <img src="img/borders.png"></img>
+            <hr/>
+            <div class="foot">footer</div>
+        </div>
+        <div class="card dark">
+            <div class="head">Back 1</div>
+            <img src="img/borders.png"></img>
+            <hr/>
+            <div class="foot">footer</div>
+        </div>
+        <div class="card dark">
+            <div class="head">Back 6</div>
+            <img src="img/borders.png"></img>
+            <hr/>
+            <div class="foot">footer</div>
+        </div>
+        <div class="card dark">
+            <div class="head">Back 5</div>
+            <img src="img/borders.png"></img>
+            <hr/>
+            <div class="foot">footer</div>
+        </div>
+        <div class="card dark">
+            <div class="head">Back 4</div>
+            <img src="img/borders.png"></img>
+            <hr/>
+            <div class="foot">footer</div>
+        </div>
+        <div class="card dark">
+            <div class="head">Back 9</div>
+            <img src="img/borders.png"></img>
+            <hr/>
+            <div class="foot">footer</div>
+        </div>
+        <div class="card dark">
+            <div class="head">Back 8</div>
+            <img src="img/borders.png"></img>
+            <hr/>
+            <div class="foot">footer</div>
+        </div>
+        <div class="card dark">
+            <div class="head">Back 7</div>
+            <img src="img/borders.png"></img>
+            <hr/>
+            <div class="foot">footer</div>
+        </div>
+    </div>
 </body>
 
 </html>

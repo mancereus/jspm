@@ -12,7 +12,7 @@
                 },
                 accent: {
                     type: String,
-                    value: 'en-US',
+                    value: 'de-DE',
                     observer: '_accentChanged',
                     notify: true
                 },
@@ -35,6 +35,8 @@
                 this._textChanged();
                 this._accentChanged();
 
+                var voices = window.speechSynthesis.getVoices();
+                this.speech.voice = voices.filter(function(voice) { return voice.lang == this.accent; })[0];
                 // Initialize event listeners
                 var events = ['start', 'end', 'error', 'pause', 'resume'];
                 events.forEach(this._propagateEvent.bind(this));
@@ -68,6 +70,8 @@
             /* -- Public Methods -------------------------------------------- */
             speak: function() {
                 if ('speechSynthesis' in window) {
+                var voices = window.speechSynthesis.getVoices();
+                this.speech.voice = voices.filter(function(voice) { return voice.lang == this.accent; })[0];
                 window.speechSynthesis.speak(this.speech);
                 }
             },
