@@ -121,6 +121,7 @@
                                 <select id="akt" value="{{config.akt::change}}">
                                     <option value="1">Akt 1</option>
                                     <option value="2">Akt 2</option>
+                                    <option value="3">Akt 3</option>
                                 </select>
                             </td>
                             <td>
@@ -268,7 +269,9 @@
                 }
                 if (this.config.akt == 2) {
                     this.data = data2;
-
+                }
+                if (this.config.akt == 3) {
+                    this.data = data3;
                 }
 
                 var actions = shuffle(this.data.initActions);
@@ -304,6 +307,27 @@
                         this.config.akt2[i+1] = undefined;
                     }
                    actIn = this.config.akt2;
+                }
+                 if (this.config.akt == 3) {
+                    if(this.config.check == undefined)
+                        this.config.check = {};
+                       this.config.akt3 = ['exit-to-app'];
+                   if(this.config.check.jane) {
+                       this.config.akt3.push('gesture');
+                   }
+                   if(this.config.check.jaeger) {
+                       this.config.akt3.push('accessibility');
+                   }
+                   if(this.config.check.jack) {
+                       this.config.akt3.push('build');
+                   }
+                   if(this.config.check.mine) {
+                       this.config.akt3.push('select-all');
+                   }
+                     for (var i=this.config.akt3.length; i<4;i++) {
+                        this.config.akt3[i+1] = undefined;
+                    }
+                   actIn = this.config.akt3;
                 }
                 console.log(actIn);
                 var actOut = [];
