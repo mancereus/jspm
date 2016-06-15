@@ -48,11 +48,11 @@
                 <tigereye-card data="{{item}}"></tigereye-card>
             </template>
         </div>
-        <game-hexagon imgsrc="Tiger" top="-400" left="900"></game-hexagon>
-        <game-piece color="red" top="-750" left="60"></game-piece>
-        <game-piece color="green" top="-780" left="20"></game-piece>
-        <game-piece color="blue" top="-810" left="60"></game-piece>
-        <game-piece color="orange" top="-840" left="20"></game-piece>
+        <game-hexagon imgsrc="Tiger" top="-500" left="900"></game-hexagon>
+        <game-piece color="red" top="-200" left="60"></game-piece>
+        <game-piece color="green" top="-230" left="20"></game-piece>
+        <game-piece color="blue" top="-260" left="60"></game-piece>
+        <game-piece color="orange" top="-290" left="20"></game-piece>
     </template>
 
     <script>
@@ -65,8 +65,8 @@
             ready: function() {
                 console.log("ready");
                 game.cards =  this.shuffle(game.cards);
-                game.cards.push(game.end);
-                game.cards.unshift(game.start);
+                game.cards.splice(5,0, game.end);
+                game.cards.splice(18,0,game.start);
                  game.cards.forEach(x => x.open = Math.random()<.5);
                 this.game = game;
             },
