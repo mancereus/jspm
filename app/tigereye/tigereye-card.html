@@ -14,30 +14,30 @@
     <template>
         <iron-pages selected="{{selected}}">
             <div class="card">
-                <div class="head">
+                <div id="front" class="head">
                     <div class="titel">{{data.btype}}</div>
                 </div>
                 <img style="margin:0;width: 100px; height: 100px" src="img/{{data.btype}}.png"></img>
                 <template is="dom-if" if="{{data.bver}}">
                     <img src="img/vertic.jpg" style="position:absolute; top:-10px;right: 0px;width:15px;height: 190px;" alt="">
                 </template>
-                <template is="dom-if" if="{{data.bhor}}">
+    <template is="dom-if" if="{{data.bhor}}">
                     <img src="img/horiz.jpg" style="position:absolute; left: 0;bottom: -10px;height:15px; width: 190px;" alt="">
-                </template>                
-            </div>
-            <div class="card">
-                <div class="head">
-                    <div class="titel">{{data.type}}</div>
-                </div>
-                <img style="margin:0;width: 100px; height: 100px" src="img/{{data.type}}.png"></img>
-                <template is="dom-if" if="{{data.ver}}">
+                </template>
+    </div>
+    <div id="back" class="card">
+        <div class="head">
+            <div class="titel">{{data.type}}</div>
+        </div>
+        <img style="margin:0;width: 100px; height: 100px" src="img/{{data.type}}.png"></img>
+        <template is="dom-if" if="{{data.ver}}">
                     <img src="img/vertic.jpg" style="position:absolute; top:-10px;right: 0px;width:15px;height: 190px;" alt="">
                 </template>
-                <template is="dom-if" if="{{data.hor}}">
+        <template is="dom-if" if="{{data.hor}}">
                     <img src="img/horiz.jpg" style="position:absolute; left: 0;bottom: -10px;height:15px; width: 190px;" alt="">
                 </template>
-            </div>
-        </iron-pages>
+    </div>
+    </iron-pages>
 
 
     </template>
@@ -48,24 +48,37 @@
             properties: {
                 data: Object,
                 open: Boolean,
-                selected: {type: Number,
-                    value: 0},
+                selected: {
+                    type: Number,
+                    value: 0
+                },
             },
             listeners: {
                 'track': 'handleTrack',
                 'tap': 'openCard',
             },
-            regularTap: function (e) {
+            regularTap: function(e) {
                 console.log("Thank you for tapping");
             },
-            attached: function () {
-                if (this.data != undefined &&this.data.open)
-                this.openCard();
+            attached: function() {
+                if (this.data != undefined && this.data.open)
+                    this.openCard();
+                if (this.data != undefined && this.data.width) {
+                    this.style.width = this.data.width + "px";
+                    this.$.back.style.width = this.data.width + "px";
+                    this.$.front.style.width = this.data.width + "px";
+                }
+                if (this.data != undefined && this.data.height) {
+                    this.style.height = this.data.height + "px";
+                    this.$.back.style.height = this.data.height + "px";
+                    this.$.front.style.height = this.data.height + "px";
+                }
+
             },
-            openCard: function (e) {
-                this.selected = (this.selected +1 ) % 2;
+            openCard: function(e) {
+                this.selected = (this.selected + 1) % 2;
             },
-            handleTrack: function (e) {
+            handleTrack: function(e) {
                 switch (e.detail.state) {
                     case 'start':
                         console.log('Tracking started!');
@@ -75,7 +88,9 @@
                         break;
                     case 'end':
                         var target = e.detail.hover();
-                        this.fire("dropCard", this.data, {node: target});
+                        this.fire("dropCard", this.data, {
+                            node: target
+                        });
                         break;
                 }
             }

@@ -11,6 +11,7 @@
 <link rel="import" href="game-hexagon.html">
 <link rel="import" href="game-meeple.html">
 <link rel="import" href="game-piece.html">
+<link rel="import" href="tigereye-pointcard.html">
 <script src="data.js"></script>
 
 
@@ -37,7 +38,12 @@
                 align-content: space-between;
             }
         </style>
+        <tigereye-pointcard color="orange" ></tigereye-pointcard>
+        <tigereye-pointcard color="blue" ></tigereye-pointcard>
+        <tigereye-pointcard color="green" ></tigereye-pointcard>
+        <tigereye-pointcard color="red" ></tigereye-pointcard>
         <div class="flex">
+        <br>
             <template is="dom-repeat" items="{{game.cards}}">
                 <tigereye-card data="{{item}}"></tigereye-card>
             </template>

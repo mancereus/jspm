@@ -1,0 +1,92 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="../../bower_components/paper-ripple/paper-ripple.html">
+<dom-module id="tigereye-pointcard">
+    <style>
+        :host {
+            display: inline-block;
+        }
+
+        #piece {
+            width: 120px;
+            height: 120px;
+            color: #fff;
+            display: flex;
+            flex-wrap: wrap;
+             justify-content: space-around;
+        }
+        .side {
+            font-size: 150%;
+        }
+        .north {
+            width: 100%;
+            justify-content: center;
+            text-align: center;
+            vertical-align: bottom;
+        }
+        .south {
+            width: 100%;
+            justify-content: center;
+            text-align: center;
+            transform: rotate(180deg);
+        }
+        .east {
+            transform: rotate(270deg);
+            
+        }
+        .west {
+            transform: rotate(90deg);
+            
+        }
+        :host.bigsymbol {
+            height: 56px;
+        }
+
+        div.bigsymbol img {
+            background-color: yellow;
+            height: 56px;
+        }
+
+        div.symbol img {
+            height: 56px;
+        }
+    </style>
+    <template>
+        <div id="piece" on-tap="clicker" class$="fab green symbol {{imgclass}}">
+            <div class="side north">3</div>
+            <div class="side middle east">2</div>
+            <div class="side middle west">tot</div>
+            <div class="side south">1</div>
+        </div>
+    </template>
+    <script>
+        Polymer({
+      is: 'tigereye-pointcard',
+      properties: {
+          print: Boolean,
+          top: Number,
+          color: String,
+          left: Number,
+        img: { notify: true,
+            reflectToAttribute: true },
+        imgclass: { notify: true }
+      },
+      clicker: function (ev) {
+        ev.preventDefault();
+        ev.stopPropagation();
+        this.left--;
+        this.style.transitionDuration = "1s";
+        this.style.transform = "rotate(" + (3-this.left)*90 +"deg)";
+        return false;
+      },
+      attached: function () {
+          this.left = 3;
+          if(this.color) {
+              this.$.piece.style.backgroundColor = this.color;
+          }
+      },
+      ready: function () {
+      }
+    });
+    </script>
+</dom-module>
