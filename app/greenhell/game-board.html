@@ -277,11 +277,12 @@
                 var actions = shuffle(this.data.initActions);
                 var actIn = [];
                  if (this.config.akt == 1) {
-                   this.config.akt1 = ['home', undefined, undefined, undefined];
+                   this.config.akt1 = ['home', 'announcement', undefined, undefined];
                     for (var i=0; i<this.config.stars;i++) {
-                        this.config.akt1[i+1] = 'star';
+                        this.config.akt1[i+2] = 'star';
                     }
                    actIn = this.config.akt1;
+                   this.showCard("", {card: this.data.intro});
 
                 }
                  if (this.config.akt == 2) {
@@ -395,7 +396,6 @@
                     }
 
                 });
-
             },
             openAll: function () {
                 for (var i = 0; i < 49; i++) {

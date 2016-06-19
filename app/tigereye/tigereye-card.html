@@ -66,36 +66,9 @@
             attached: function() {
                 if (this.data != undefined && this.data.open)
                     this.openCard();
-                if (this.data != undefined && this.data.width) {
-                    this.style.width = this.data.width + "px";
-                    this.$.back.style.width = this.data.width + "px";
-                    this.$.front.style.width = this.data.width + "px";
-                }
-                if (this.data != undefined && this.data.height) {
-                    this.style.height = this.data.height + "px";
-                    this.$.back.style.height = this.data.height + "px";
-                    this.$.front.style.height = this.data.height + "px";
-                }
-
             },
             openCard: function(e) {
                 this.selected = (this.selected + 1) % 2;
-            },
-            handleTrack: function(e) {
-                switch (e.detail.state) {
-                    case 'start':
-                        console.log('Tracking started!');
-                        break;
-                    case 'track':
-                        console.log('Tracking in progress... ');
-                        break;
-                    case 'end':
-                        var target = e.detail.hover();
-                        this.fire("dropCard", this.data, {
-                            node: target
-                        });
-                        break;
-                }
             }
         });
     </script>

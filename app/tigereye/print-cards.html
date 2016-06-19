@@ -1,0 +1,60 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-styles/paper-styles.html">
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="tigereye-card.html">
+<link rel="import" href="tigereye-pointcard.html">
+
+<dom-module id="print-cards">
+        <style>
+            :host {
+                display: block;
+            }
+            
+            game-print-card {
+                margin: 0 -1px;
+            }
+            
+            #gameTable {
+                width: 210mm;
+            }
+            tigereye-card {
+                display: inline-block;
+                
+            }
+        </style>
+        <template>
+
+            <div id="gameTable">
+                <template is="dom-repeat" items="{{game.cards}}" index-as="cardIndex">
+                    <tigereye-card data="{{item}}"></tigereye-card>
+                </template>
+                <template is="dom-repeat" items="{{game.back}}" index-as="cardIndex">
+                    <tigereye-card data="{{item}}"></tigereye-card>
+                </template>
+            </div>
+        </template>
+
+    <script>
+        Polymer({
+        is: 'print-cards',
+        properties: {
+                game: Object,
+                notify: true
+            },
+            ready: function() {
+                console.log("ready");
+                game.cards.splice(0,0, game.end);
+                game.cards.splice(0,0,game.start);
+                 var copy = JSON.parse(JSON.stringify(game.cards));
+                game.back = [];
+                for (var i = 0;i<6;i++) {
+                    game.back = game.back.concat(copy.slice(i*4,(i+1)*4).reverse());
+                }
+                game.back.forEach(x => x.open = true);
+                this.game = game;
+            },
+            attached: function() {
+            }
+        });
+    </script>
+</dom-module>
