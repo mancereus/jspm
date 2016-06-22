@@ -31,7 +31,8 @@
             }
 
             div.flex {
-                width: 1200px;
+                /*width: 1200px;*/
+                width: 1000px;
                 display: flex;
                 flex-wrap: wrap;
                 justify-content: space-around;
@@ -48,7 +49,7 @@
                 <tigereye-card data="{{item}}"></tigereye-card>
             </template>
         </div>
-        <game-hexagon imgsrc="Tiger" top="-500" left="900"></game-hexagon>
+        <game-hexagon imgsrc="Tiger" top="-500" left="500"></game-hexagon>
         <game-piece color="red" top="-200" left="60"></game-piece>
         <game-piece color="green" top="-230" left="20"></game-piece>
         <game-piece color="blue" top="-260" left="60"></game-piece>
@@ -65,8 +66,10 @@
             ready: function() {
                 console.log("ready");
                 game.cards =  this.shuffle(game.cards);
-                game.cards.splice(5,0, game.end);
-                game.cards.splice(18,0,game.start);
+                // game.cards.splice(5,0, game.end);
+                // game.cards.splice(18,0,game.start);
+                game.cards.splice(4,0, game.end);
+                game.cards.splice(15,0,game.start);
                  game.cards.forEach(x => x.open = Math.random()<.5);
                 this.game = game;
             },
