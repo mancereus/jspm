@@ -1,0 +1,126 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<script src="js/draggabilly.pkgd.js">
+
+</script>
+<dom-module id="game-hexagon">
+    <template>
+        <style>
+            :host {
+                position: absolute;
+                color: #fff;
+                overflow: hidden;
+                cursor: move;
+                z-index: 3000;
+                height: 78px;
+            }
+
+            .hexagon {
+                position: relative;
+                width: 64px;
+                height: 36.95px;
+                margin: 18.48px 0;
+                background-size: auto 69.2820px;
+                background-image: var(--game-hexagon-background-url);
+                background-position: center;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+                border-left: solid 2px #333333;
+                border-right: solid 2px #333333;
+            }
+
+            .hexTop,
+            .hexBottom {
+                position: absolute;
+                z-index: 1;
+                width: 45.25px;
+                height: 45.25px;
+                overflow: hidden;
+                -webkit-transform: scaleY(0.5774) rotate(-45deg);
+                -ms-transform: scaleY(0.5774) rotate(-45deg);
+                transform: scaleY(0.5774) rotate(-45deg);
+                background: inherit;
+                left: 7.37px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+            }
+            /*counter transform the bg image on the caps*/
+
+            .hexTop:after,
+            .hexBottom:after {
+                content: "";
+                position: absolute;
+                width: 60.0000px;
+                height: 34.64101615137755px;
+                -webkit-transform: rotate(45deg) scaleY(1.7321) translateY(-17.3205px);
+                -ms-transform: rotate(45deg) scaleY(1.7321) translateY(-17.3205px);
+                transform: rotate(45deg) scaleY(1.7321) translateY(-17.3205px);
+                -webkit-transform-origin: 0 0;
+                -ms-transform-origin: 0 0;
+                transform-origin: 0 0;
+                background: inherit;
+            }
+
+            .hexTop {
+                top: -22.6274px;
+                border-top: solid 2.8284px #333333;
+                border-right: solid 2.8284px #333333;
+            }
+
+            .hexTop:after {
+                background-position: center top;
+            }
+
+            .hexBottom {
+                bottom: -22.6274px;
+                border-bottom: solid 2.8284px #333333;
+                border-left: solid 2.8284px #333333;
+            }
+
+            .hexBottom:after {
+                background-position: center bottom;
+            }
+
+            .hexagon:after {
+                content: "";
+                position: absolute;
+                top: 1.1547px;
+                left: 0;
+                width: 60.0000px;
+                height: 34.6410px;
+                z-index: 2;
+                background: inherit;
+            }
+        </style>
+        <div class="hexagon" draggable="true">
+            <div class="hexTop"></div>
+            <div class="hexBottom"></div>
+        </div>
+    </template>
+    <script>
+        Polymer({
+      is: 'game-hexagon',
+      properties: {
+        imgsrc: {
+            type: String,
+            notify: true },
+        left: {
+          type: Number,
+          value: 800,
+          notify: true
+        },
+        top: {
+          type: Number,
+          value: 1060,
+          notify: true
+        }
+      },
+      ready: function () {
+        console.log('game-hexagon ready ');
+        this.customStyle['--game-hexagon-background-url'] = 'url(img/' + this.imgsrc + '.png)';
+        this.updateStyles();
+        var draggie = new Draggabilly(this);
+        this.style.top = this.top + "px";
+        this.style.left = this.left + "px";
+      }
+    });
+    </script>
+</dom-module>
