@@ -13,6 +13,14 @@
     .Kreuzung, .Start {
         background-image: url('img/Kreuzung.png');
     }
+    .Kreuzung .horiz {
+        width: 66px !important;
+        left: 61px !important;
+    }
+    .Kreuzung .vertic {
+        height: 66px !important;
+        top: 55px !important;
+    }
     .titel {
         margin-top: 20px;
     }
@@ -29,10 +37,10 @@
                     <img style="margin:0;width: 100px; height: 100px" src="img/{{data.btype}}.png"></img>
                 </template>
                 <template is="dom-if" if="{{data.bver}}">
-                    <img src="img/vertic.png" style="position:absolute; top:-10px;right: 0px;width:28px;height: 190px;" alt="">
+                    <img class="vertic" src="img/vertic.png" style="position:absolute; top:-10px;right: 0px;width:28px;height: 190px;" alt="">
                 </template>
                 <template is="dom-if" if="{{data.bhor}}">
-                    <img src="img/horiz.png" style="position:absolute; left: 0;top: -10px;height:28px; width: 190px;" alt="">
+                    <img class="horiz" src="img/horiz.png" style="position:absolute; left: 0;top: -10px;height:28px; width: 190px;" alt="">
                 </template>
             </div>
             <div id="back" class$="card {{data.type}}">
@@ -43,11 +51,11 @@
                     <img style="margin:0;width: 100px; height: 100px" src="img/{{data.type}}.png"></img>
                 </template>
                 <template is="dom-if" if="{{data.ver}}">
-                            <img src="img/vertic.png" style="position:absolute; top:-10px;right: 0px;width:28px;height: 190px;" alt="">
-                        </template>
+                    <img class="vertic" src="img/vertic.png" style="position:absolute; top:-10px;right: 0px;width:28px;height: 190px;" alt="">
+                </template>
                 <template is="dom-if" if="{{data.hor}}">
-                            <img src="img/horiz.png" style="position:absolute; left: 0;top: -10px;height:28px; width: 190px;" alt="">
-                        </template>
+                    <img class="horiz" src="img/horiz.png" style="position:absolute; left: 0;top: -10px;height:28px; width: 190px;" alt="">
+                </template>
             </div>
         </iron-pages>
 
