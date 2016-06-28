@@ -25,13 +25,13 @@ __Weg__:
 nichts passiert.
 
 __Heilung__:
-1 Puntk dazu
+1 Punkt dazu
 
 __Schlange__:
 1 Punkt weniger. Mit 0 Punkten -> Tot.
 
 __Seil__:
-direkt beim Betreten des Feldes kann man auf eine leere Wand dieses feldes ziehen.
+direkt beim Betreten des Feldes kann man auf eine leere Wand dieses Feldes ziehen.
 
 __Tiger__:
 1 Feld waagrecht oder senkrecht in Richtung der eigenen Figur. Tiger beisst alle Figuren auf Feld (nicht auf Wand.) -> zurück auf Start.
