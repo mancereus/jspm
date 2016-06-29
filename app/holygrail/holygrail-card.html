@@ -1,0 +1,98 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-pages/iron-pages.html">
+<script src="data.js"></script>
+<title>MonsterMob</title>
+<link href="holygrail.css" rel="stylesheet" type="text/css" />
+<style>
+    .card {
+        background-image: url('img/map4.png');
+        background-size: 100% 100%;
+        position: relative;
+        user-select: none;
+    }
+    .Kreuzung, .Start {
+        background-image: url('img/Kreuzung.png');
+    }
+    .Kreuzung .horiz {
+        width: 66px !important;
+        left: 61px !important;
+    }
+    .Kreuzung .vertic {
+        height: 66px !important;
+        top: 55px !important;
+    }
+    .titel {
+        margin-top: 20px;
+    }
+</style>
+<dom-module id="holygrail-card">
+
+    <template>
+        <iron-pages selected="{{selected}}">
+            <div class$="card {{data.btype}}">
+                <div id="front" class="head">
+                    <div class="titel">{{data.btype}}</div>
+                </div>
+                <template is="dom-if" if="{{hasImage(data.btype)}}">
+                    <img style="margin:0;width: 100px; height: 100px" src="img/{{data.btype}}.png"></img>
+                </template>
+                <template is="dom-if" if="{{data.bver}}">
+                    <img class="vertic" src="img/vertic.png" style="position:absolute; top:-10px;right: 0px;width:28px;height: 190px;" alt="">
+                </template>
+                <template is="dom-if" if="{{data.bhor}}">
+                    <img class="horiz" src="img/horiz.png" style="position:absolute; left: 0;top: -10px;height:28px; width: 190px;" alt="">
+                </template>
+            </div>
+            <div id="back" class$="card {{data.type}}">
+                <div class="head">
+                    <div class="titel">{{data.type}}</div>
+                </div>
+                <template is="dom-if" if="{{hasImage(data.type)}}">
+                    <img style="margin:0;width: 100px; height: 100px" src="img/{{data.type}}.png"></img>
+                </template>
+                <template is="dom-if" if="{{data.ver}}">
+                    <img class="vertic" src="img/vertic.png" style="position:absolute; top:-10px;right: 0px;width:28px;height: 190px;" alt="">
+                </template>
+                <template is="dom-if" if="{{data.hor}}">
+                    <img class="horiz" src="img/horiz.png" style="position:absolute; left: 0;top: -10px;height:28px; width: 190px;" alt="">
+                </template>
+            </div>
+        </iron-pages>
+
+
+    </template>
+
+    <script>
+        Polymer({
+            is: 'holygrail-card',
+            properties: {
+                data: Object,
+                open: Boolean,
+                selected: {
+                    type: Number,
+                    value: 0
+                },
+            },
+            listeners: {
+                'track': 'handleTrack',
+                'tap': 'openCard',
+            },
+            hasImage: function(type) {
+                if (type == "Kreuzung" || type == "Start" )
+                   return false;
+                return true;
+            },
+            regularTap: function(e) {
+                console.log("Thank you for tapping");
+            },
+            attached: function() {
+                if (this.data != undefined && this.data.open)
+                    this.openCard();
+            },
+            openCard: function(e) {
+                this.selected = (this.selected + 1) % 2;
+            }
+        });
+    </script>
+
+</dom-module>
