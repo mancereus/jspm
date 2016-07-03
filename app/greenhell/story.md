@@ -34,8 +34,14 @@ Jack leidet noch unter dem Alkoholentzug. Jane fühlt sich unterschätzt. Sie ka
 * Jack: Was will das Püppchen eigentlich hier? Sie hat mir noch nicht gesagt, was Sie hier sucht.
 * 
 
-### Besondere Orte 
+### Bewegung
 
+* Macheten
+* Schlangen 
+* keine Hängebrücken
+
+### Besondere Orte 
+Die Basiskarten sollten mehr ungewöhnliche Dschungelorte enthalten. Diese werden von den Aktionskarten in unterschiedlichen Kontexten verwendet. 
 * Tempelanlage
 * grosse Höhle 
 * 
@@ -59,7 +65,7 @@ __Tierfalle__: Jacks Bein verletzt sich in einer Tierfalle des Jägers Stoephasi
 
 #### Aktion Jäger 1
 
-__verlassenes Lager__: Ihr findet ein verlassenes Lager. Es ist also noch jemand hier im Dschungel unterwegs. Ihr könnt bis zu 2 Dinge aus dem Vorrat auf passende leere Karten legen. (z.B.: Liane auf Lianenkarte)
+__verlassenes Lager__: Ihr findet ein verlassenes Lager. Scheinbar ist noch jemand hier im Dschungel unterwegs. Ihr könnt bis zu 2 Dinge aus dem Vorrat auf passende leere Karten legen. (z.B.: Liane auf Lianenkarte)
 
 #### Aktion Jäger 2
 
@@ -80,15 +86,120 @@ __Fluss__: Wenn ihr den Weg zum 'Tal der Kannibalen' kennt, könnt ihr mit dem B
 
 __Minenfahrt__: Wenn ihr den Weg zum 'Tal der Kannibalen' kennt, alle 4 Höhlen im Spielplan gefunden sind und ihr eine Fackel besitzt, könnt ihr mit einer Lore in das 'Tal der Kannibalen' fahren. Dabei musst du die Fackel abgeben. Verwende in Akt 2 eine Aktionskarte mit 'Mine'"
 
-#### Ausgang 3
 
 ### Abschluss Akt 1
+
+#### Misserfolg
+Jane: "Hier kommen wir nicht mehr weiter. Was sollen wir jetzt tun?"
+Jack sieht plötzlich ein helles Licht auf sich zukommen. In einem Zeitstrudel wird er und Jane in die Vergangenheit zurückgeschleudert. Er sitzt mit Jane in dem abgestürzten Flugzeug und beginnt das Abenteuer von vorne. Jack und Jane können sich nicht mehr an die Ereignisse erinnern.
+
+#### Erfolg
+Jane: 'Danke Jack, dass wir es bis hier geschafft haben. Ich schulde dir ein paar Hintergründe: Prof. Hampton ist mein Vater. Meine Mutter ist bei der Geburt gestorben. Vater sucht schon seit vielen Jahren nach dem untergegangenen Reich von Atlantis. Von seiner letzten Expedition hier in den Dschungel ist er nicht mehr zurückgekehrt. Ich spüre aber, dass er noch lebt. Lass uns weitersuchen.'
+
+## Akt 2:
+
+### Intro:
+
+### Start 
+
+Jane und Jack haben mit den Boot den Berg der Kannibalen erreicht. Sie landen an einer gechützten Stelle. Ihr Ziel ist ein weitauslaufenden Bergplateau. Jetzt müssen sie den dicht bewaldeten Berganstieg erklimmen und sich dort auf die Suche nach Hinweisen zu Prof Hampton machen. Es ist merkwürdig still.
+
+### Flavourtexte
+
+Jack und Jane haben sich ein bisschen kennengelernt, Nun wird ihr Zusammenhalt auf viele Proben gestellt.
+
+* 
+
+### Besondere Orte 
+
+### Aktionskarten 
+
+Die Aktionskarten müssen im Akt 2 ergeben sich aus den Abenteuern in Akt 1.
+
+#### Aktion Jack 1
+
+#### Aktion Jack 2
+
+#### Aktion Jane 1
+
+#### Aktion Jane 2
+
+#### Aktion Jäger 1
+
+#### Aktion Jäger 2
+
+
+#### Natur 1
+
+#### Natur 2
+
+#### Ausgang 1
+
+
+#### Ausgang 2
+
+
+#### Ausgang 3
+
+### Abschluss Akt 2
 
 
 
 #### Misserfolg
-Jane: "Hier kommen wir nicht mehr weiter. Was sollen wir jetzt tun?"
-Jack sieht plötzlich ein helles Licht auf sich zukommen. In einem Zeitstrudel wird er und Jane drei Tage in die Vergangenheit zurückgeschleudert. Er sitzt mit Jane in dem abgestürzten Flugzeug und beginnt das Abenteuer von vorne. Jack und Jane können sich nicht mehr an die Ereignisse erinnern.
+
 
 #### Erfolg
-Jane: 'Danke Jack, dass wir es bis hier geschafft haben. Ich schulde dir ein paar Hintergründe: Prof. Hampton ist mein Vater. Meine Mutter ist bei der Geburt gestorben. Vater sucht schon seit vielen Jahren nach dem untergegangenen Reich von Atlantis. Von seiner letzten Expedition hier in den Dschungel ist er nicht mehr zurückgekehrt. Ich spüre aber, dass er noch lebt. Lass uns weitersuchen.'
+
+## Akt 3:
+
+### Intro:
+
+### Start 
+
+In der Mitte des Bergplateaus ist der riesiger Höhleneingang der tief in ein unterirdischen Dschungelreich führt. Dort sind leuchtende Pflanzen, die ständig eine bläuliches Licht erzeugen. Die Luft ist Schwül und heiss. Der Boden ist warm, wie wenn unter ihm ein Vulkan brodelt.
+
+
+### Flavourtexte
+Die letzte grosse Herausforderungen
+
+* 
+
+### Besondere Orte 
+
+### Aktionskarten 
+
+Die Aktionskarten müssen im Akt 2 ergeben sich aus den Abenteuern in Akt 1.
+
+#### Aktion Jack 1
+
+#### Aktion Jack 2
+
+#### Aktion Jane 1
+
+#### Aktion Jane 2
+
+#### Aktion Jäger 1
+
+#### Aktion Jäger 2
+
+
+#### Natur 1
+
+#### Natur 2
+
+#### Ausgang 1
+
+
+#### Ausgang 2
+
+
+#### Ausgang 3
+
+### Abschluss Akt 2
+
+
+
+#### Misserfolg
+
+
+#### Erfolg
