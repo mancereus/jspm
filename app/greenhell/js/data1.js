@@ -50,6 +50,7 @@ var data1 = {
         { name: "Inschrift", order: "announcement", Aktion: "Eine Steininschrift ist hinter Dschungelpflanzen verborgen. Lege eine Machete hier ab, um die Inschrift freizulegen. Mit dem Tagebuch könnt ihr den Text übersetzen. Er verrät euch die Position des 'Tal der Kannibalen'", task: true },
        { name: "Traum", order: "announcement", Aktion: "Jane hat einen mysteriösen Traum. Im Tempel findet Sie mit der Fackel und dem Tagebuch den Weg zum Tal der Kanibalen. Legt die Fackel dort ab, dann kennt ihr den Weg zum 'Tal der Kannibalen'.", task: true },
         { name: "Lager", Aktion: "Du findest ein verlassenes Lager. Du kannst bis zu 2 Dinge aus dem Vorrat auf passende leere Karten legen. (z.B.: Liane auf Lianenkarte)", task: true },
+        { name: "Explosion", Aktion: "In der Ferne hört ihr ein riesige Explosion. Das Flugzeug ist explodiert. Nehmt die Startkarte aus dem Spiel.", task: true },
 
         { name: "Tierfalle", Aktion: "Jacks Bein verletzt sich in einer Tierfalle des Jägers Stoephasius. Du kannst bis zu einem anderen Eckfeld pro Zug nur 3 Felder weit ziehen. Verwende in Akt 2 eine Aktionskarte mit 'Jäger'", task: true },
         { name: "Überfall", order: "star", Aktion: "Jack kommt ins Lager zurück und Jane ist verschwunden. Er findet Spuren eines Kampfes und Pfeile der Kannibalen. Lege Janes Inventarkarte zur Seite.Verwende in Akt 2 eine Aktionskarte mit 'Jane'", task: true },
