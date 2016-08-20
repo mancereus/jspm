@@ -106,10 +106,8 @@
             <div class="Form">
                 <h2>A) {{data.form.type}} oder {{data.form.type2}}</h2>
                 <template is="dom-repeat" items="{{data.form.cards}}">
-                    <p>* {{item.name}}</p>
-                </template>
-                <template is="dom-repeat" items="{{data.form.cards2}}">
-                    <p>* {{item.name}}</p>
+                    <div>{{item.name}}</div>
+                    <hr/>
                 </template>
             </div>                
             </div>
@@ -117,10 +115,8 @@
             <div class="Inhalt">
                 <h2>B) {{data.inhalt.type}} oder {{data.inhalt.type2}}</h2>
                 <template is="dom-repeat" items="{{data.inhalt.cards}}">
-                    <p>* {{item.name}}</p>
-                </template>
-                <template is="dom-repeat" items="{{data.inhalt.cards2}}">
-                    <p>* {{item.name}}</p>
+                    <div>{{item.name}}</div>
+                    <hr/>
                 </template>
             </div>                
             </div>
@@ -128,10 +124,8 @@
             <div class="Ort">
                 <h2>C) {{data.ort.type}} oder {{data.ort.type2}}</h2>
                 <template is="dom-repeat" items="{{data.ort.cards}}">
-                    <p>* {{item.name}}</p>
-                </template>
-                <template is="dom-repeat" items="{{data.ort.cards2}}">
-                    <p>* {{item.name}}</p>
+                    <div>{{item.name}}</div>
+                    <hr/>
                 </template>
             </div>
             </div>
@@ -139,10 +133,8 @@
             <div class="Größe">
                 <h2>D) {{data.extra.type}} oder {{data.extra.type2}}</h2>
                 <template is="dom-repeat" items="{{data.extra.cards}}">
-                    <p>* {{item.name}}</p>
-                </template>
-                <template is="dom-repeat" items="{{data.extra.cards2}}">
-                    <p>* {{item.name}}</p>
+                    <div>{{item.name}}</div>
+                    <hr/>
                 </template>
             </div>
             </div>
