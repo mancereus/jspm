@@ -10,8 +10,8 @@
                 display: block;
             }
             
-            game-print-card {
-                margin: 0 -1px;
+            tigereye-card {
+                margin: 1px 1.5px;
             }
             
             #gameTable {
@@ -28,6 +28,7 @@
                 <template is="dom-repeat" items="{{game.cards}}" index-as="cardIndex">
                     <tigereye-card data="{{item}}"></tigereye-card>
                 </template>
+                <div style="page-break:after;">test</div>
                 <template is="dom-repeat" items="{{game.back}}" index-as="cardIndex">
                     <tigereye-card data="{{item}}"></tigereye-card>
                 </template>
