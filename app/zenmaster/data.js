@@ -9,7 +9,7 @@ var data = {
             { name: "ist im wesentlichen flach" },
             { name: "ist kugel- oder eiförmig" },
             { name: "ist Kistenförmig oder rechteckig" },
-            { name: "steht auf 4 Beinen" },
+            { name: "steht auf 4 oder mehr Beinen" },
             { name: "gitterförmig oder verzweigt" },
         ],
         cards2: [
