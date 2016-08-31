@@ -23,7 +23,11 @@
         .inp {
             width: 120px;
         }
-
+        div {
+            font-weight: bold;
+            font-size: 105%;
+            height: 36px;
+        }
          .Inhalt {
             border: 6px solid lightblue;
             border-radius: 4px;
@@ -104,37 +108,37 @@
         <div style="display: float-right;width: 1050px">
             <div class="card">
             <div class="Form">
-                <h2>A) {{data.form.type}} oder {{data.form.type2}}</h2>
+                <h2>A) {{data.form.type}}</h2>
                 <template is="dom-repeat" items="{{data.form.cards}}">
-                    <div>{{item.name}}</div>
                     <hr/>
+                    <div>{{item.name}}</div>
                 </template>
             </div>                
             </div>
             <div class="card">
             <div class="Inhalt">
-                <h2>B) {{data.inhalt.type}} oder {{data.inhalt.type2}}</h2>
+                <h2>B) {{data.inhalt.type}}</h2>
                 <template is="dom-repeat" items="{{data.inhalt.cards}}">
-                    <div>{{item.name}}</div>
                     <hr/>
+                    <div>{{item.name}}</div>
                 </template>
             </div>                
             </div>
             <div class="card">
             <div class="Ort">
-                <h2>C) {{data.ort.type}} oder {{data.ort.type2}}</h2>
+                <h2>C) {{data.ort.type}}</h2>
                 <template is="dom-repeat" items="{{data.ort.cards}}">
-                    <div>{{item.name}}</div>
                     <hr/>
+                    <div>{{item.name}}</div>
                 </template>
             </div>
             </div>
             <div class="card">
             <div class="Größe">
-                <h2>D) {{data.extra.type}} oder {{data.extra.type2}}</h2>
+                <h2>D) {{data.extra.type}}</h2>
                 <template is="dom-repeat" items="{{data.extra.cards}}">
-                    <div>{{item.name}}</div>
                     <hr/>
+                    <div>{{item.name}}</div>
                 </template>
             </div>
             </div>

@@ -5,10 +5,10 @@ var data = {
         type2: "Oberfläche",
         desc: "Wie ist die Gestalt des Dings? Ist es eher rund oder eckig? Flach oder stabförmig? Ist seine Oberfläche glatt oder rauh? Hart oder elastisch? Fühlt es sich warm an? Hat es Haare? Steht es auf 4 Beinen? Besteht es aus mehreren Teilen?",
         cards: [
-            { name: "ist lang und dünn oder stabförmig" },
-            { name: "ist im wesentlichen flach" },
+            { name: "ist stabförmig" },
+            { name: "ist flach" },
             { name: "ist kugel- oder eiförmig" },
-            { name: "ist Kistenförmig oder rechteckig" },
+            { name: "ist kistenförmig" },
             { name: "steht auf 4 oder mehr Beinen" },
             { name: "gitterförmig oder verzweigt" },
         ],

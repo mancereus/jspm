@@ -33,7 +33,7 @@
       
         .card {
             width: 320px;
-            height: 455px;
+            height: 215px;
             float: left;
             border: 1px solid black;
             text-align: center;
@@ -68,10 +68,8 @@
                     
                 <div class="card">
                     <card-half type="{{item.type}}" letter="{{item.letter}}" text="{{item.name}}" ></card-half>
-                        <hr>
-                    <card-half type="{{item.type}}" letter="{{item.letter}}"  text="{{item.name2}}" rotate="rotate"></card-half>
                 </div>
-                <page-break-div nmbr="{{index}}" max="9"></page-break-div>
+                <page-break-div nmbr="{{index}}" max="12"></page-break-div>
             </template>
         </div>
         </template>
@@ -83,7 +81,7 @@
                 },
             enhance: function(stack) {
                 stack.cards.forEach(function(item, idx){
-                    item.type = stack.type + " / " + stack.type2;
+                    item.type = stack.type;
                     if (idx < stack.cards2.length)
                     item.name2 = stack.cards2[idx].name;
                     item.letter = stack.letter;
@@ -129,19 +127,19 @@
                     height: 200px;
                 }
 
-                .Inhalt, .Besonderheit {
+                .B, .Besonderheit {
                     border: 6px solid lightblue;
                 }
 
-                .Form, .Oberfläche{
+                .A, .Oberfläche{
                     border: 6px solid lightcoral;
                 }
 
-                .Ort, .Zeit{
+                .C, .Zeit{
                     border: 6px solid lightgreen;
                 }
 
-                .Größe, .Gewicht {
+                .D, .Gewicht {
                     border: 6px solid yellow;
                 }
                 .header {
@@ -160,7 +158,7 @@
                 }
 
             </style>
-            <div class$="{{type}} innerCard {{rotate}}">
+            <div class$="{{letter}} innerCard {{rotate}}">
                     <div class="header">{{letter}}.   {{type}}</div>
                     <br/>
                     <div class="text">{{text}}</div>
