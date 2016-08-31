@@ -1,0 +1,173 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Krazy Moviez</title>
+    <script src="../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+    <link rel="import" href="../../bower_components/polymer/polymer.html">
+    <link rel="import" href="../components/page-break-div/page-break-div.html">
+    <script src="data.js"></script>
+    <link rel="stylesheet" href="../css/main.css">
+
+    <style>
+       
+    </style>
+</head>
+
+<body>
+   <print-cards></print-cards>
+    
+    
+    <dom-module id="print-cards">
+        <template>
+            <style>
+                .try {
+            font-size: 150%;
+            font-weight: bold;
+        }
+
+        .inp {
+            width: 120px;
+        }
+
+      
+        .card {
+            width: 320px;
+            height: 140px;
+            float: left;
+            border: 1px solid black;
+            text-align: center;
+            vertical-align: middle;
+            padding: 5px;
+            margin: 2px;
+            font-size: 120%;
+            font-weight: bold;
+        }
+
+        .page-break {
+            page-break-after: always;
+            background-color: red;
+            width: 650px;
+        }
+
+        img {
+            width: 120px;
+            height: 200px;
+        }
+
+        .info {
+            width: 250px;
+            margin: 5px;
+            border: 1px solid black;
+            background-color: lightgray;
+        }
+
+            </style>
+               <div style="width:1050px">
+            <template is="dom-repeat" items="{{words}}">
+                    
+                <div class="card">
+                    <card-half text="{{item}}" ></card-half>
+                </div>
+                <page-break-div nmbr="{{index}}" max="27"></page-break-div>
+            </template>
+            <template is="dom-repeat" items="{{movies}}">
+                    
+                <div class="card" style="height: 200px">
+                    <card-half text="{{item}}" letter="A"></card-half>
+                </div>
+                <page-break-div nmbr="{{index}}" max="18"></page-break-div>
+            </template>
+        </div>
+        </template>
+        <script>
+            Polymer({
+                is: 'print-cards',
+                properties: {
+                    cards: Array
+                },
+                isEven: function(idx) {
+                    return idx%2 == 0;
+                },
+                rotate: function(idx) {
+                    return this.isEven(idx) ? "" : "rotate";
+                },
+                ready: function() {
+                    this.words = data.words;            
+                    this.movies = data.movies;            
+                }
+            });
+        </script>
+    </dom-module>
+    
+    <dom-module id="card-half">
+        <template>
+            <style>
+                :host {
+                    display: block;
+                }
+                .rotate {
+                    transform: rotate(180deg);
+                }
+                  .innerCard {
+                    border-radius: 4px;
+                    padding: 0;
+                    margin: 0;
+                    width: 96%;
+                    height: 120px;
+                }
+
+                .B {
+                    border: 6px solid lightblue;
+                }
+
+                .A{
+                    border: 6px solid lightcoral;
+                }
+
+                .C{
+                    border: 6px solid lightgreen;
+                }
+
+                .D {
+                    border: 6px solid yellow;
+                }
+                .header {
+                    text-align: center;
+                    width: 100%;
+                    line-height: 120%;
+                    font-size: 160%;
+                    margin: 20px 2px 20px 2px;
+                    padding: 5px;
+                }
+
+                .text {
+                    text-align: center;
+                    width: 80%;
+                    font-size: 120%;
+                    margin: 20px;
+                }
+
+            </style>
+            <div class$="{{letter}} innerCard {{rotate}}">
+                    <div class="header">{{text}}</div>
+                    
+            </div>
+               
+        </template>
+        <script>
+            Polymer({
+                is: 'card-half',
+                properties: {
+                    rotate: String,
+                    text: String,
+                    letter: String,
+                    type: String,
+                },
+            });
+        </script>
+    </dom-module>
+    
+</body>
+
+</html>
