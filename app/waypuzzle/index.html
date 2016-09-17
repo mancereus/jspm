@@ -1,0 +1,63 @@
+<!doctype html>
+
+<head>
+    <title>Way Puzzle</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <script src="../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+    <link rel="import" href="../../bower_components/polymer/polymer.html">
+    <link rel="import" href="../../bower_components/paper-card/paper-card.html">
+    <script src="data.js"></script>
+    <link rel="import" href="../../bower_components/font-roboto/roboto.html">
+
+    <link rel="import" href="../../bower_components/paper-styles/color.html">
+    <link rel="import" href="../../bower_components/paper-styles/typography.html">
+
+    <style is="custom-style">
+        body {
+            font-family: Courier, 'Noto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+        .field {
+            width: 25px;
+            height: 25px;
+            border: 1px dotted black;
+            flex: 1;
+        }
+        .border {
+            border 2px solid black;
+            width: 600px;
+            background-color: lightyellow;          
+        }
+        .row {
+            display: flex;
+
+        }
+    </style>
+
+</head>
+
+<body>
+    <template id="tmpl" is="dom-bind">
+        <h2> way puzzle</h2>
+        <div class="border">
+            <template is="dom-repeat" items="{{data.rows}}"  as="row">
+                <div class="row">
+                    <template is="dom-repeat" items="{{split(row)}}">
+                        <div class="field">
+                            {{item}}
+                        </div>
+                    </template>
+                </div>
+            </template>
+        </div>
+    </template>
+
+    <script>
+        var t = document.querySelector('#tmpl');
+        t.data = data;
+        t.split = function(row)  {
+            var cols = row.split("");
+            return cols
+        }
+    </script>
+
+</body>
