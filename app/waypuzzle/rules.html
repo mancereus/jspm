@@ -6,7 +6,7 @@
     <script src="../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
     <link rel="import" href="../../bower_components/polymer/polymer.html">
     <link rel="import" href="../../bower_components/paper-card/paper-card.html">
-    <script src="data.js"></script>
+    <script src="rules.js"></script>
     <link rel="import" href="../../bower_components/font-roboto/roboto.html">
 
     <link rel="import" href="../../bower_components/paper-styles/color.html">
@@ -15,7 +15,7 @@
     <style is="custom-style">
         body {
             font-family: Courier, 'Noto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            font-size: 24px;
+            font-size: 14px;
             font-weight: bold;
         }
         .field {
@@ -23,6 +23,7 @@
             height: 25px;
             border: 1px dotted black;
             flex: 1;
+            font-size: 24px;
         }
         .border {
             border 2px solid black;
@@ -32,18 +33,17 @@
         .row {
             display: flex;
         }
-        .dark {
-            background-color: orange;
-        }
+       
     </style>
 
 </head>
 
 <body>
     <template id="tmpl" is="dom-bind">
-        <h2> way puzzle</h2>
+        <h2> way puzzle rules</h2>
+    <h3>Regel 1: Die Bewegungsweite sinkt jeweils um 1. Bei 0 ist man tot.</h3>
         <div class="border">
-            <template is="dom-repeat" items="{{data.rows}}"  as="row">
+            <template is="dom-repeat" items="{{data.rule1}}"  as="row">
                 <div class="row">
                     <template is="dom-repeat" items="{{split(row)}}">
                         <flip-field data="{{item}}"></flip-field>
@@ -79,11 +79,11 @@
                     border: 1px dotted black;
                     flex: 1;
                 }
-                .dark {
+                .dark, .s {
                     background-color: orange;
                 }
             </style>
-            <div on-click="click" class="field">
+            <div on-click="click" class$="field {{data}}">
                 {{data}}
             </div>
         </template>

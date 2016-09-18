@@ -1,4 +1,9 @@
 var data = {
+    rule1: [
+       "                  Z",
+       " 4   s  s ss       ",
+       "                   ",
+            ],
     rows: [
        "       ~~      ~~~Z",
        "      ~~ AD   ~~ ~ ",
