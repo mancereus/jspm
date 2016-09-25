@@ -13,13 +13,13 @@
             body,
             h1,
             h2,
-            h3 {
+            h3, li {
                 font-family: Roboto, 'Noto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
                 font-size: 24px;
                 font-weight: bold;
             }
             
-            h3 {
+            h3, li {
                 font-size: 16px;
                 margin: 2px;
             }
@@ -32,9 +32,10 @@
             }
             
             .border {
-                border 2px solid black;
-                width: 600px;
-                background-color: lightyellow;
+                margin-left: 20px;
+                padding: 15px;
+                border: 2px solid black;
+                width: 630px;
             }
             
             .row {
@@ -54,12 +55,12 @@
         <div class="border">
             <template is="dom-repeat" items="{{data}}" as="part">
                 <h2>{{part.name}}</h2>
-                    <div style="margin-bottom: 15px;background-color: lightgray; border: 1px solid black; padding: 3px;">
+                    <ul style="margin-left: 30px;margin-bottom: 15px;background-color: lightgray; border: 1px solid black; padding: 3px;">
                     <template is="dom-repeat" items="{{part.rules}}">
-                        <h3>{{item}}</h3>
+                        <li>{{item}}</li>
 
                     </template>
-                    </div>
+                    </ul>
                         <template is="dom-repeat" items="{{part.rows}}" as="row">
                             <div class="row">
                                 <template is="dom-repeat" items="{{split(row)}}">
