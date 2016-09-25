@@ -78,6 +78,7 @@ var data = [
             "4   A  D  WWW      ",
         ],
         rules: [
+            "grosses Puzzle"
         ]
 
     }
