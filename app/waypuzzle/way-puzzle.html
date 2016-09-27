@@ -45,7 +45,10 @@
             .dark {
                 background-color: orange;
             }
-            
+            .pagebreak {
+                page-break-after: always;
+                width: 500px;
+            }
             .flex {
                 display: flex;
             }
@@ -61,7 +64,9 @@
 
                     </template>
                     </ul>
-                        <template is="dom-repeat" items="{{part.rows}}" as="row">
+                    </ul>
+                        <template is="dom-repeat" items="{{part.rows}}" as="puzzle">
+                        <template is="dom-repeat" items="{{puzzle}}" as="row">
                             <div class="row">
                                 <template is="dom-repeat" items="{{split(row)}}">
                                     <flip-field data="{{item}}"></flip-field>
@@ -69,7 +74,13 @@
                                 </template>
                             </div>
                         </template>
-                        <hr>
+                        <hr>    
+                        </template>
+                        
+                        <template is="dom-if" if="{{part.pagebreak}}">
+                            <div class="pagebreak">break</div>
+                        </template>
+                        
             </template>
         </div>
     </template>
