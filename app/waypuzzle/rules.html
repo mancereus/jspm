@@ -1,0 +1,108 @@
+<!doctype html>
+
+<head>
+    <title>Way Puzzle</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <script src="../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+    <link rel="import" href="../../bower_components/polymer/polymer.html">
+    <link rel="import" href="../../bower_components/paper-card/paper-card.html">
+    <script src="rules.js"></script>
+    <link rel="import" href="../../bower_components/font-roboto/roboto.html">
+
+    <link rel="import" href="../../bower_components/paper-styles/color.html">
+    <link rel="import" href="../../bower_components/paper-styles/typography.html">
+
+    <style is="custom-style">
+        body {
+            font-family: Courier, 'Noto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        .field {
+            width: 25px;
+            height: 25px;
+            border: 1px dotted black;
+            flex: 1;
+            font-size: 24px;
+        }
+        .border {
+            border 2px solid black;
+            width: 600px;
+            background-color: lightyellow;          
+        }
+        .row {
+            display: flex;
+        }
+       
+    </style>
+
+</head>
+
+<body>
+    <template id="tmpl" is="dom-bind">
+        <h2> way puzzle rules</h2>
+    <h3>Regel 1: Die Bewegungsweite sinkt jeweils um 1. Bei 0 ist man tot.</h3>
+        <div class="border">
+            <template is="dom-repeat" items="{{data.rule1}}"  as="row">
+                <div class="row">
+                    <template is="dom-repeat" items="{{split(row)}}">
+                        <flip-field data="{{item}}"></flip-field>
+                       
+                    </template>
+                </div>
+            </template>
+        </div>
+    </template>
+    <h3>Symbole</h3>
+    <ul>
+        <li>A Berg: kein Durchgang</li>
+        <li>~ Wasser: Kein Stop</li>
+        <li>W Wald: Bewegung ohne -1</li>
+        <li>D Dorf: Bewegung +1</li>
+        <li>Z Zielfeld</li>
+    </ul>
+
+    <script>
+        var t = document.querySelector('#tmpl');
+        t.data = data;
+        t.split = function(row)  {
+            var cols = row.split("");
+            return cols
+        }
+    </script>
+ <dom-module id="flip-field">
+        <template>
+            <style is="custom-style">
+                .field {
+                    width: 25px;
+                    height: 25px;
+                    border: 1px dotted black;
+                    flex: 1;
+                }
+                .dark, .s {
+                    background-color: orange;
+                }
+            </style>
+            <div on-click="click" class$="field {{data}}">
+                {{data}}
+            </div>
+        </template>
+        <script>
+        addEventListener('WebComponentsReady', function() {
+        
+            Polymer({
+                is: 'flip-field',
+                properties: {
+                    data: String
+                },
+                click: function() {
+                    console.log("test");
+                    this.toggleClass("dark");
+                }
+            });
+      
+        });
+        </script>
+
+    </dom-module>
+</body>

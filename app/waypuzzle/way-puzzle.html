@@ -1,0 +1,118 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-card/paper-card.html">
+<script src="data.js"></script>
+<link rel="import" href="../../bower_components/font-roboto/roboto.html">
+
+<link rel="import" href="../../bower_components/paper-styles/color.html">
+<link rel="import" href="../../bower_components/paper-styles/typography.html">
+
+
+<dom-module id="way-puzzle">
+    <template>
+        <style is="custom-style">
+            body,
+            h1,
+            h2,
+            h3, li {
+                font-family: Roboto, 'Noto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+                font-size: 24px;
+                font-weight: bold;
+            }
+            
+            h3, li {
+                font-size: 16px;
+                margin: 2px;
+            }
+            
+            .field {
+                width: 25px;
+                height: 25px;
+                border: 1px dotted black;
+                flex: 1;
+            }
+            
+            .border {
+                margin-left: 20px;
+                padding: 15px;
+                border: 2px solid black;
+                width: 630px;
+            }
+            
+            .row {
+                display: flex;
+            }
+            
+            .dark {
+                background-color: orange;
+            }
+            .pagebreak {
+                page-break-after: always;
+                width: 500px;
+            }
+            .flex {
+                display: flex;
+            }
+        </style>
+
+        <h1> Wege Puzzle</h1>
+        <div class="border">
+            <template is="dom-repeat" items="{{data}}" as="part">
+                <h2>{{part.name}}</h2>
+                    <ul style="margin-left: 30px;margin-bottom: 15px;background-color: lightgray; border: 1px solid black; padding: 3px;">
+                    <template is="dom-repeat" items="{{part.rules}}">
+                        <li>{{item}}</li>
+
+                    </template>
+                    </ul>
+                    </ul>
+                        <template is="dom-repeat" items="{{part.rows}}" as="puzzle">
+                        <template is="dom-repeat" items="{{puzzle}}" as="row">
+                            <div class="row">
+                                <template is="dom-repeat" items="{{split(row)}}">
+                                    <flip-field data="{{item}}"></flip-field>
+
+                                </template>
+                            </div>
+                        </template>
+                        <hr>    
+                        </template>
+                        
+                        <template is="dom-if" if="{{part.pagebreak}}">
+                            <div class="pagebreak">break</div>
+                        </template>
+                        
+            </template>
+        </div>
+    </template>
+    <h3>Symbole</h3>
+    <ul>
+        <li>A Berg: kein Durchgang</li>
+        <li>~ Wasser: Kein Stop</li>
+        <li>W Wald: Bewegung ohne -1</li>
+        <li>D Dorf: Bewegung +1</li>
+        <li>Z Zielfeld</li>
+    </ul>
+
+    </template>
+    <script>
+        Polymer({
+            is: 'way-puzzle',
+            properties: {
+                data: {
+                    type: Object,
+                    notify: true,
+                    value: function() {
+                        return data;
+                    }
+                }
+            },
+            ready: function()  {
+                this.set('data.rows', data.puzzle5);
+            },
+            split: function(row)  {
+                var cols = row.split("");
+                return cols
+            }
+        });
+    </script>
+</dom-module>
