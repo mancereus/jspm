@@ -22,9 +22,9 @@
 
 		<template>
 			<h4 id="header">DIVS</h4>
-			<slot select="div"></slot>
+			<slot name="div"></slot>
 			<h4 id="footer">SPAN</h4>
-			<slot select="span"></slot>
+			<slot name="span"></slot>
 			<input type="button" on-click="insert" value="insert" />
 		</template>
 
@@ -34,10 +34,11 @@
 				ready: function() {
 				},
 				insert: function() {
+					console.log("insert")
 					var div = document.createElement("div");
 					div.innerHTML = "test";
 					//Polymer.dom(this.$.footer).appendChild(div);
-					Polymer.dom(this).appendChild(div);
+					this.appendChild(div);
 				}
 			});
 		</script>
