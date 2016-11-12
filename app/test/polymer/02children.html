@@ -22,9 +22,9 @@
 
 		<template>
 			<h4 id="header">DIVS</h4>
-			<content select="div"></content>
+			<slot select="div"></slot>
 			<h4 id="footer">SPAN</h4>
-			<content select="span"></content>
+			<slot select="span"></slot>
 			<input type="button" on-click="insert" value="insert" />
 		</template>
 
@@ -57,7 +57,7 @@
 		<template>
 			test
 			<h4>HEADER</h4>
-			<content id="content"></content>
+			<slot id="content"></slot>
 			<h4 id="footer">FOOTER</h4>
 			<input type="button" on-click="insert" value="insert" />
 		</template>

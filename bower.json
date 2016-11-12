@@ -36,7 +36,7 @@
     "iron-input": "polymerelements/iron-input#^1.0.0",
     "paper-item": "polymerelements/paper-item#^1.0.0",
     "paper-menu": "polymerelements/paper-menu#^1.0.0",
-    "polymer": "Polymer/polymer#^1.4",
+    "polymer": "Polymer/polymer#^1.7",
     "web-component-tester": "Polymer/web-component-tester#~3.3.15",
     "voice-elements": "^1.0.0",
     "paper-drawer-panel": "PolymerElements/paper-drawer-panel#^1.0.6",

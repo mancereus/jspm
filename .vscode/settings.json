@@ -6,6 +6,8 @@
 	"files.autoSaveDelay": 1000,
 	"files.exclude": {
 		"**/.git": true,
+		"**/dest": true,
+		"**/build": true,
 		"**/.DS_Store": true,
 		"**/*.js": {
 			"when": "$(basename).ts"
