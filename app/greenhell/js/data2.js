@@ -59,6 +59,7 @@ var data2 = {
 
         { name: "Abendrot", order: "build",orderText: "Jack", Aktion: "Im Sonnenuntergang verliebt sich Jack in Jane. Er weis nicht, ob Sie seine Liebe erwidert. Er hat das Gefühl, schon viele Abenteuer mit Jane erlebt zu haben. Schau dir die nächsten drei Karten vom Stapel an und lege Sie gemeinsam zurück oder unter den Stapel.", task: true },
         { name: "Treibsand", order: "build", orderText: "Jack",Aktion: "Jack bleibt im Treibsand stecken. Jane muss eine Liane hierherbringen, um ihn zu retten. Gib die Liane dazu ab. Bis dahin kannst du Jacks Inventarkarte nicht verwenden. Ist Jane nicht dabei, stirbt Jack und das Abenteuer ist zu Ende.", task: true },
+        { name: "Minenfahrt", order: "home", orderText: "Ausgang", Aktion: "Wenn ihr den Weg zum 'Tal der Kannibalen' kennt, alle 4 Höhlen im Spielplan gefunden sind und ihr eine Fackel besitzt, könnt ihr mit einer Lore in das 'Tal der Kannibalen' fahren. Dabei musst du die Fackel abgeben. Verwende in Akt 2 eine Aktionskarte mit 'Mine'", task: true },
 
         { name: "Diamantenmine", order: "select-all", orderText: "Mine", Aktion: "Mit der Fackel findest du in der dunklen Mine große Diamanten. Wenn du Sie herausholst, verlierst du die Fackel. Du erhälst einen Bonuspunkt.",  imgclass: "symbol", task: true },
         { name: "Altar", order: "select-all", orderText: "Mine", Aktion: "Ihr findet einen geheimen Zeremonienaltar der Kannibalen. Von dort könnt ihr euch 2 Macheten mitnehmen.", imgclass: "Machete", task: true },

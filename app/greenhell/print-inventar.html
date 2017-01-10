@@ -2,13 +2,13 @@
 <link rel="import" href="game-print-card.html">
 <link rel="import" href="game-print-back-card.html">
 <link rel="import" href="../components/page-break-div/page-break-div.html">
-
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
 <dom-module id="print-inventar">
     <style>
-        :host {
+         :host {
             display: block;
         }
+        
         .card {
             width: 71mm;
             height: 57mm;
@@ -18,95 +18,98 @@
             padding-top: 20px;
             padding-left: 4px;
             padding-right: 4px;
-
         }
+        
         .circle {
-            width: 80px; 
-            height:80px; 
-            border: 1px solid black; 
+            width: 80px;
+            height: 80px;
+            border: 1px solid black;
             background-color: #aaa;
             border-radius: 50%;
             margin: 10px;
         }
+        
         game-print-card {
             margin: 0 -1px;
         }
-
+        
         #gameTable {
             width: 210mm;
         }
     </style>
     <template>
-
-                                   
-                                    <template is="dom-repeat" items="{{secrets}}">
-                                        
-                                        <div class="layout vertical card">
-                                            <h4 style="margin: 0 5px;">Geheimnis {{item.level}}:</h4>
-                                            <p style="margin: 2px; font-size: 8pt">{{item.text}}</p>
-                                        </div>
-                                        <div class="layout vertical center card">
-                                            <h4 >Geheimnis {{item.level}}</h4>
-                                            <p style="padding: 10px;background-color: orange; ">Erst lesen, <br>wenn du das Spiel mit {{item.level}} Stern(en) geschafft hast.</p>
-                                            </div>
-                                    </template>
-                                        <div class="layout vertical card">
-                                            </div>
-                                        <div class="layout vertical card">
-                                            </div>
-                                        <div class="layout vertical card">
-                                            </div>
-                                        <div class="layout vertical card">
-                                            </div>
-                                     <template is="dom-repeat" items="{{inventar}}">
-                                        
-                                        <div class="layout horizontal card">
-                                            <div class="circle"></div>
-                                            <div >
-                                                <img src="img/{{item}}.png" class$="{{item}}" style="border-radius: 50%;width:80px;height:80px; "><h4>{{item}}</h4>
-                                            </div>
-                                            <div class="circle"></div>
-                                        </div>
-                                    </template>
+        <template is="dom-repeat" items="{{secrets}}">
+            <div class="layout vertical card">
+                <h4 style="margin: 0 5px;">Geheimnis {{item.level}}:</h4>
+                <p style="margin: 2px; font-size: 8pt">{{item.text}}</p>
+            </div>
+            <div class="layout vertical center card">
+                <h4>Geheimnis {{item.level}}</h4>
+                <p style="padding: 10px;background-color: orange; ">Erst lesen, <br>wenn du das Spiel mit {{item.level}} Stern(en) geschafft hast.</p>
+            </div>
+        </template>
+        <div class="layout vertical card">
+        </div>
+        <div class="layout vertical card">
+        </div>
+        <div class="layout vertical card">
+        </div>
+        <div class="layout vertical card">
+        </div>
+        <template is="dom-repeat" items="{{inventar}}">
+            <div class="layout horizontal card">
+                <div class="circle"></div>
+                <div>
+                    <img src="img/{{item}}.png" class$="{{item}}" style="border-radius: 50%;width:80px;height:80px; ">
+                    <h4>{{item}}</h4>
+                </div>
+                <div class="circle"></div>
+            </div>
+        </template>
     </template>
     <script src="js/base.js"></script>
     <script src="js/data1.js"></script>
     <script src="js/data2.js"></script>
     <script>
-        var initcards=[];
-        initcards.push.apply(initcards,data1.initcards);
-        initcards.push.apply(initcards,data1.initActions);
-        initcards.push.apply(initcards,data1.start);
-        initcards.forEach(function(c) {if (c.akt == undefined) c.akt=1});
+        var initcards = [];
+        initcards.push.apply(initcards, data1.initcards);
+        initcards.push.apply(initcards, data1.initActions);
+        initcards.push.apply(initcards, data1.start);
+        initcards.forEach(function (c) {
+            if (c.akt == undefined) c.akt = 1
+        });
         // initcards.push.apply(initcards,data2.initcards);
         // initcards.push.apply(initcards,data2.initActions);
         // initcards.push.apply(initcards,data2.start);
         // initcards.forEach(function(c) {if (c.akt == undefined) c.akt=2});
 
-    Polymer({
-      is: 'print-inventar',
-      properties: {
-        cards: { type: Array, notify: true},
-          inventar: {
+        Polymer({
+            is: 'print-inventar',
+            properties: {
+                cards: {
                     type: Array,
-                    value: ['Jack','Jane','Rucksack']
+                    notify: true
                 },
-        width: {
-          type: String,
-          value: '180mm',
-          notify: true
-        }
-      },
-      attached: function () {
-        this.cards = initcards;
-      },
-      ready: function () {
-        this.style.width = this.width;
-        this.secrets = data2.secrets;
-      },
-      computeImg: function (card) {
-        return 'img/' + card.name + '.png';
-      }
-    });
+                inventar: {
+                    type: Array,
+                    value: ['Jack', 'Jane', 'Rucksack']
+                },
+                width: {
+                    type: String,
+                    value: '180mm',
+                    notify: true
+                }
+            },
+            attached: function () {
+                this.cards = initcards;
+            },
+            ready: function () {
+                this.style.width = this.width;
+                this.secrets = data2.secrets;
+            },
+            computeImg: function (card) {
+                return 'img/' + card.name + '.png';
+            }
+        });
     </script>
 </dom-module>

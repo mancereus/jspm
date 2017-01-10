@@ -2,86 +2,84 @@
 <link rel="import" href="game-print-card.html">
 <link rel="import" href="game-print-back-card.html">
 <link rel="import" href="../components/page-break-div/page-break-div.html">
-
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
-<dom-module id="print-board">
+<dom-module id="print-board2">
     <style>
-        :host {
+         :host {
             display: block;
         }
-
+        
         game-print-card {
             margin: 0 -1px;
         }
-
+        
         #gameTable {
             width: 210mm;
         }
     </style>
     <template>
-
         <div id="gameTable">
-           <template is="dom-repeat" items="{{cards}}" as="card" index-as="cardIndex">
+            <div style="margin-left: 20px;">
+            <template is="dom-repeat" items="{{actions}}" as="card" index-as="cardIndex">
                 <game-print-card selected="1" cardData="{{card}}"></game-print-card>
                 <page-break-div nmbr="{{cardIndex}}" max="16"></page-break-div>
             </template>
-            <br>
-           <template is="dom-repeat" items="{{cards}}" as="card" index-as="cardIndex">
+            <template is="dom-repeat" items="{{reverseactions}}" as="card" index-as="cardIndex">
                 <template is="dom-if" if="{{ card.task}}">
                     <game-print-back-card cardData="{{card}}"></game-print-back-card>
                 </template>
             </template>
-            <page-break-div nmbr="0" max="0"></page-break-div>
-            <template is="dom-repeat" items="{{cards}}" as="card" index-as="cardIndex">
-                <template is="dom-if" if="{{ card.imgclass}}">
-                    <game-piece print style="margin: 2px;" img="{{card.name}}" imgclass="{{card.imgclass}}"></game-piece>
-                </template>
-            </template>
+            </div>
         </div>
     </template>
     <script src="js/base.js"></script>
     <script src="js/data1.js"></script>
     <script src="js/data2.js"></script>
     <script>
-        var initcards=[];
-        initcards.push.apply(initcards,data1.initcards);
-        initcards.forEach(function(c) {if (c.akt == undefined) c.akt=1});
-
-        var initcards2=[];
-        initcards2.push.apply(initcards2,data1.initActions);
-        initcards2.push.apply(initcards2,data1.start);
-        initcards2.forEach(function(c) {if (c.akt == undefined) c.akt=1});
+        var initcards2 = [];
+        initcards2.push.apply(initcards2, data1.initActions);
+        initcards2.push(data1.start);
+        initcards2.push(data1.intro);
+        initcards2.push(data1.erfolg);
+        initcards2.push(data1.misserfolg1);
+        initcards2.push(data1.misserfolg2);
+        initcards2.push.apply(initcards2, data1.intro);
+        initcards2.forEach(function (c) {
+            if (c.akt == undefined) c.akt = 1
+        });
         var copy = JSON.parse(JSON.stringify(initcards2));
-                gameback = [];
+        var gameback = [];
         for (var i = 0;i<6;i++) {
             gameback = gameback.concat(copy.slice(i*4,(i+1)*4).reverse());
         }
-
         // initcards.push.apply(initcards,data2.initcards);
         // initcards.push.apply(initcards,data2.initActions);
         // initcards.push.apply(initcards,data2.start);
         // initcards.forEach(function(c) {if (c.akt == undefined) c.akt=2});
 
-    Polymer({
-      is: 'print-board',
-      properties: {
-        cards: { type: Array, notify: true},
-        width: {
-          type: String,
-          value: '180mm',
-          notify: true
-        }
-      },
-      attached: function () {
-        this.cards = initcards;
-        this.actions = initcards2;
-      },
-      ready: function () {
-        this.style.width = this.width;
-      },
-      computeImg: function (card) {
-        return 'img/' + card.name + '.png';
-      }
-    });
+        Polymer({
+            is: 'print-board2',
+            properties: {
+                actions: {
+                    type: Array,
+                    notify: true
+                },
+                width: {
+                    type: String,
+                    value: '180mm',
+                    notify: true
+                }
+            },
+            attached: function () {
+                this.actions = initcards2;
+                this.reverseactions = gameback;
+            },
+            ready: function () {
+                this.style.width = this.width;
+            },
+            computeImg: function (card) {
+                return 'img/' + card.name + '.png';
+            }
+        });
     </script>
 </dom-module>

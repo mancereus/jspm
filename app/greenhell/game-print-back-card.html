@@ -12,6 +12,7 @@
         :host {
             margin: 0;
             padding: 0;
+            width: 189px;
         }
 
         .card-header {
@@ -19,7 +20,6 @@
             display: inline-block;
             position: relative;
             background-color: white;
-            background-image: url("img/borders.png");
             background-size: 100% 100%;
             padding: 0;
             width: 50mm;
@@ -71,10 +71,10 @@
         <div class="card-header">
             <div class="layout vertical center" style="margin: 0;width: 40mm;min-height: 63mm;">
                     <template is="dom-if" if="{{carddata.task}}">
-                        <h2 style="margin-top: 40px;">Aktion</h2>
+                        <h2 style="margin-top: 40px;">{{backName}}</h2>
+                    </template>
                         <iron-icon class="big" icon="{{carddata.order}}"></iron-icon>
                         <h2 style="margin-top: 40px;">{{carddata.orderText}}</h2>
-                    </template>
             </div>
         </div>
     </template>
@@ -88,6 +88,15 @@
         },
         akt: String,
         item: { notify: true },
+        backName: {
+        type: String,
+        computed: 'getBackName(carddata)'
+        },
+      },
+       getBackName: function (carddata) {
+        if(carddata.type)
+            return carddata.type;
+        return 'Aktion';
       },
       ready: function () {
       },

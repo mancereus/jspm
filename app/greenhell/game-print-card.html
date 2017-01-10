@@ -78,8 +78,9 @@
                         <iron-icon class="big" icon="{{carddata.order}}"></iron-icon>
                     </template>
                 </div>
-                <img src$="img/{{carddata.name}}.png" class$="picture {{carddata.imgclass}}">
-
+                <template is="dom-if" if="{{!carddata.noImage}}">
+                    <img src$="img/{{carddata.name}}.png" class$="picture {{carddata.imgclass}}">
+                </template>
                 <div class="handle text" style="width:90%; margin: 1px 18px 1px 7px;">{{carddata.Aktion}}</div>
                 <template is="dom-if" if="{{carddata.flavour}}">
                     <div class="handle text" style="width:90%; margin: 1px 16px 1px 7px;font-style:italic;">{{carddata.flavour}}</div>

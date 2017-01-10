@@ -28,14 +28,18 @@
               },
               pageBreak: {
                   type: Boolean,
-                  computed: "isPageBreak(nmbr)"
+                  computed: "isPageBreak(nmbr, max)"
               }
             },
             ready: function() {
 
 	        },
 	        isPageBreak: function() {
-	            return (this.nmbr+1) % this.max == 0;
+                if (this.max > 0) {
+    	            return (this.nmbr+1) % this.max == 0;
+                }
+                
+                return true
 	        }
 		});
 
