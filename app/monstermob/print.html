@@ -6,8 +6,8 @@
     <script src="../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
     <link rel="import" href="../../bower_components/polymer/polymer.html">
     <link rel="import" href="../components/page-break-div/page-break-div.html">
-    <script src="data.js"></script>
-    <script src="data2.js"></script>
+    <script src="data3.js"></script>
+    <!--<script src="data2.js"></script>-->
     <title>MonsterMob</title>
     <style>
         .card {
@@ -20,22 +20,25 @@
             text-align: center;
             vertical-align: middle;
         }
-        
+        .info {
+            margin: 20px;
+            width: 80%;
+        }
         .page-break {
             page-break-after: always;
             width: 500px;
         }
-        
+
         img {
             width: 200px;
             height: 250px;
             margin: 10px 0;
         }
-        
+
         hr {
             margin: 0;
         }
-        
+
         .dark {
             background-image: url("img/bordersdark.png");
         }
@@ -52,32 +55,32 @@
             display: flex;
             justify-content: space-around
         }
-        
+
         .titel {
             display: inline-block;
             width: 70%;
             text-align: center;
         }
-        
+
         .count {
             text-align: left;
             padding: 2px 5px;
             border: 1px solid black;
             border-top: none;
         }
-        
+
         .foot {
             font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
             font-size: 24pt;
             margin: 5px 0 5px 0;
         }
-        
+
         .small {
             margin-top: 10px;
             width: 40px;
             height: 50px;
         }
-        
+
         .icon {
             margin-top: 5px;
             width: 113px;
@@ -107,9 +110,17 @@
 
             <div class$="card [[item.dark]]">
                 <div class="head">
-                    <div class="titel">[[item.type]]</div><span class="count">[[item.subtype]]</span></div>
-                <img src="img/[[item.type]].png"></img>
-                
+                    <div class="titel">[[item.type]]</div>
+                    <template is="dom-if" if="[[item.subtype]]">
+                        <span class="count">[[item.subtype]]</span>
+                    </template>
+                    </div>
+                <img src="img/[[item.type]].png" style="height: [[item.height]]px"></img>
+                <template is="dom-if" if="[[item.text]]">
+                    <br/>
+                    <span class="info" >[[item.text]]</span>
+                </template>
+
             </div>
             <page-break-div nmbr="[[index]]" max="9"></page-break-div>
         </template>
@@ -121,23 +132,6 @@
 				<img src="img/[[item.name]].png"></img>
 			</div>
 		</template>
-    <div class="card">
-        <div class="head" style="margin-bottom: 0;">
-            Spieltableau
-        </div>
-        <img style="height: 300px; width: 220px;" src="img/Tableau.png">
-    </div>
-    <div class="card">
-        <div class="head">
-            Aktiver Spieler
-        </div>
-        <br>
-        <img src="img/fackel.png">
-    </div> <div class="card">        
-    </div>
-    <div class="break">
-        page-break
-    </div>
 
     <template is="dom-repeat" items="[[items]]">
 			<div class="card">
@@ -153,7 +147,7 @@
 
     <script>
         var t = document.querySelector('#tmpl');
-        t.cards = engine.cards;
+        t.cards = engine.shuffle();
         t.chars = chars;
         t.items = items;
     </script>
