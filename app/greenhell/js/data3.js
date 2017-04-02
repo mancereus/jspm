@@ -46,6 +46,8 @@ var data3 = {
     { name: "Machete", akt: "3", Aktion: "Die Machete kann eine Dschungelwand öffnen. Lege die Machete dazu auf die Wand.", hor: "true", imgclass: "symbol", type: "Feldkarte" },
     { name: "Schw. Kugel", akt: "3", Aktion: "Die schwarze Kugel ist faustgross und aus einem unbekannten Material. Sie scheint von innen heraus zu leuchten.", imgclass: "symbol", ver: "true", type: "Feldkarte" },
     { name: "Weiße Kugel", akt: "3", Aktion: "Die weisse Kugel ist faustgross und aus einem unbekannten Material. Sie scheint von innen heraus zu leuchten.", imgclass: "symbol", hor: "true", type: "Feldkarte" }
+    ],
+    initEvents: [
   ],
     initActions: [
         { name: "Wasserfall", Aktion: "Nach den vielen Erlebnissen und der schwülen Luft erfrischen sich Jack und Jane im See unter dem Wasserfall. Einschliesslich Kuss und erotischer Sexszene.", task: true },

@@ -79,6 +79,10 @@
                         <template is="dom-repeat" items="{{vorrat}}" index-as="index">
                             <game-piece img="{{item}}" top="{{getTop(-1040, index, item, 60)}}" left="{{getLeft(1155,item)}}" imgclass="symbol"></game-piece>
                         </template>
+                        <template id="events" is="dom-repeat" items="{{eventcards}}" as="card" index-as="cardIndex">
+                            <game-card imgsrc="{{card.name}}" carddata="{{card}}" akt="{{data.akt}}" item="{{card.imgclass}}" sound="{{config.sound}}">
+                            </game-card>
+                        </template>
                     </div>
                 </div>
                 <div>
@@ -183,7 +187,7 @@
                                 <br>wird das Geheimnis 1,2 oder 3 gelüftet:</p>
 
                             <template is="dom-repeat" items="{{data.secrets}}">
-                                <button style="" on-tap="openDialog">Geheimnis {{item.level}}</button>
+                                <button on-tap="openDialog">Geheimnis {{item.level}}</button>
 
                             </template>
 
@@ -241,6 +245,7 @@
                     value: ['Jack','Jane','Rucksack']
                 },
                cards: { notify: true },
+               eventcards: { notify: true },
                 // initialize the element's model
                 width: {
                     type: String,
@@ -277,13 +282,12 @@
                 var actions = shuffle(this.data.initActions);
                 var actIn = [];
                  if (this.config.akt == 1) {
-                   this.config.akt1 = ['home', 'announcement', undefined, undefined];
-                    for (var i=0; i<this.config.stars;i++) {
-                        this.config.akt1[i+2] = 'star';
-                    }
+                   this.config.akt1 = ['home', 'announcement', 'star', 'star'];
+                    // for (var i=0; i<this.config.stars;i++) {
+                    //     this.config.akt1[i+2] = 'star';
+                    // }
                    actIn = this.config.akt1;
                    this.showCard("", {card: this.data.intro});
-
                 }
                  if (this.config.akt == 2) {
                     if(this.config.check == undefined)
@@ -343,7 +347,9 @@
                     actOut.push(item);
                 });
 
+
                 this.cards = shuffle(this.data.initcards);
+                this.eventcards = shuffle(this.data.initEvents).slice(0,3);
                 var actionIter = shuffle(actOut).entries();
                 this.splice('cards', 0, 0, actionIter.next().value[1]);
                 this.splice('cards', 6, 0, actionIter.next().value[1]);
@@ -378,25 +384,37 @@
                         42,
                         48
                     ];
-                    for (var i = 0; i <= 49; i++) {
-                        if (startarr.contains(i)) {
-                            this.$.field.children[i].show();
-                        } else {
-                            if (!questarr.contains(i)) {
-                                if (!this.config.open)
-                                  this.$.field.children[i].move();
-                                else
-                                  this.$.field.children[i].show();
-                            }
-                            else {
-                                 if (this.config.open)
-                                  this.$.field.children[i].show();
+                    var items = this.$.field.children
+                    var length = items.length
+                    for (var i = 0; i < length; i++) {
+                        var child = items[i]
+                        if (child.tagName == "GAME-CARD") {
+                            if (startarr.contains(i)) {
+                                child.show();
+                            } else {
+                                if (!questarr.contains(i)) {
+                                    if (!this.config.open) {
+                                        if (i>48)
+                                        child.move(160, 0);
+                                        else
+                                        child.move();
+                                    } else
+                                    child.show();
+                                }
+                                else {
+                                    if (this.config.open)
+                                    child.show();
+                                }
                             }
                         }
                     }
-
                 });
             },
+            swapSibling: function (node1, node2) {
+                node1.parentNode.replaceChild(node1, node2);
+                node1.parentNode.insertBefore(node2, node1); 
+            },
+
             openAll: function () {
                 for (var i = 0; i < 49; i++) {
                     this.$.field.children[i].show();

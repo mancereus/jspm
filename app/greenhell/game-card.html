@@ -61,6 +61,9 @@
         .problem {
             background-color: #FFCA6F;
         }
+        .event {
+            background-color: orange;
+        }
         .text {
             font-size: 6pt;
             line-height: 0.9em;
@@ -157,9 +160,11 @@
           this.fire('showdetails', { card: this.carddata });
         }
       },
-      move: function () {
-        this.style.top =120 - this.offsetTop + 'px';
-        this.style.left = 790 - this.offsetLeft + 'px';
+      move: function (x, y) {
+        var addx = x || 0
+        var addy = y || 0
+        this.style.top =120 + addx - this.offsetTop + 'px';
+        this.style.left = 790 + addy - this.offsetLeft + 'px';
       },
       show: function () {
         var card = this.$.card;
