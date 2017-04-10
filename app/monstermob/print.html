@@ -23,6 +23,8 @@
         .info {
             margin: 20px;
             width: 80%;
+            font-size: 200%;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;            
         }
         .page-break {
             page-break-after: always;
@@ -71,7 +73,7 @@
 
         .foot {
             font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-            font-size: 24pt;
+            font-size: 12pt;
             margin: 5px 0 5px 0;
         }
 
@@ -120,6 +122,10 @@
                     <br/>
                     <span class="info" >[[item.text]]</span>
                 </template>
+                                
+                    <br/>
+                    <span class="foot"><template is="dom-if" if="[[item.player]]">Spieler: [[item.player]]</template></span>
+                
 
             </div>
             <page-break-div nmbr="[[index]]" max="9"></page-break-div>
