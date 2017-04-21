@@ -45,8 +45,6 @@ var data1 = {
         { name: "Schlange", Aktion: "Die Schlange hat ein tödliches Gift und beißt dich. Lege ein Gegengift hier ab, um vor der Schlange geschützt zu sein.", info: "problem", ver: true },
         { name: "Schlange", Aktion: "Die Schlange hat ein tödliches Gift und beißt dich. Lege ein Gegengift hier ab, um vor der Schlange geschützt zu sein.", info: "problem", ver: true },
         { name: "Schlange", Aktion: "Die Schlange hat ein tödliches Gift und beißt dich. Lege ein Gegengift hier ab, um vor der Schlange geschützt zu sein.", info: "problem", hor: true  },
-    ],
-    initEvents: [
         { name: "Tiger", info: "event", Aktion: "Ein Tiger zieht langsam an euch vorbei. Der aktive Spieler darf sich für 1min nicht bewegen und nicht sprechen. sonst frisst der Tiger jack und jane und ihr habt die Partie verloren. Starte jetzt." },
         { name: "Sturm", info: "event",Aktion: "Ein Sturm zieht durch den Dschungel. Er entfernt 2 Macheten (deiner Wahl) vom Spielplan in den Vorrat." },
         { name: "Karte", info: "event",Aktion: "Du findest eine Karte des Dschungels. Ab sofort kannst du Karten auch diagonal anlegen." },
@@ -54,6 +52,8 @@ var data1 = {
         { name: "Lager", info: "event", Aktion: "Du findest ein verlassenes Lager. Du kannst bis zu 2 Dinge aus dem Vorrat auf passende leere Karten legen. (z.B.: Liane auf Lianenkarte)" },
         { name: "Tierfalle", info: "event", Aktion: "Jacks Bein verletzt sich in einer Tierfalle des Jägers Stoephasius. Du kannst bis zu einem anderen Eckfeld pro Zug nur 3 Felder weit ziehen. Verwende in Akt 2 eine Aktionskarte mit 'Jäger'" },
         { name: "Schrumpfkopf", info: "event", Aktion: "Ihr findet einen alte verfallenen Brunnen. Wenn ihr in diesen mit einer Fackel hinabsteigt, findet ihr darin einen Schrumpfkopf der Kannibalen. Die Fackel müsst ihr dann abgeben.", imgclass: "symbol"},
+    ],
+    initEvents: [
     ],
     initActions: [
         { name: "Inschrift", order: "announcement", Aktion: "Eine Steininschrift ist hinter Dschungelpflanzen verborgen. Lege eine Machete hier ab, um die Inschrift freizulegen. Mit dem Tagebuch könnt ihr den Text übersetzen. Er verrät euch die Position des 'Tal der Kannibalen'", task: true },

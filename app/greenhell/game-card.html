@@ -49,7 +49,9 @@
             border: 2px solid green;
             opacity: 0.5;
         }
-
+        .akt2 {
+            background-color: tan; 
+        }
         .info {
             background-color: #AEC9E8;
         }
@@ -94,7 +96,7 @@
                     </div>.
                 </template>
             </div>
-            <div class="card-header">
+            <div class$="card-header akt[[akt]]">
                 <voice-player id="player" accent="de-DE" text="{{carddata.Aktion}} {{carddata.flavour}}"></voice-player>
                 <div class$="layout vertical center {{carddata.info}}">
                     <span>{{carddata.name}}</span>
@@ -112,10 +114,10 @@
                     </template>
                     <div class="handle" style="width:90%; font-size: 6px;margin: 1px 16px 1px 7px;"><span>{{carddata.type}}</span> (<span>Akt {{akt}}</span>)</div>
                     <template is="dom-if" if="{{carddata.ver}}">
-                        <div class="fit" style="left: 89px;"><img src="img/vertic.jpg" style="width:15px;height: 154px;" alt=""></div>
+                        <div class="fit" style="left: 89px;"><img src="img/vertic[[akt]].jpg" style="width:15px;height: 154px;" alt=""></div>
                     </template>
                     <template is="dom-if" if="{{carddata.hor}}">
-                        <div class="fit" style="top: 139px;"><img src="img/horiz.jpg" style="height:15px; width: 104px;" alt=""></div>
+                        <div class="fit" style="top: 139px;"><img src="img/horiz[[akt]].jpg" style="height:15px; width: 104px;" alt=""></div>
                     </template>
                     <template is="dom-if" if="{{item}}">
                         <game-piece top="-100" left="-25" img="{{symbolName}}" imgclass="{{carddata.imgclass}}"></game-piece>
