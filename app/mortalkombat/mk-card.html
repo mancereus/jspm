@@ -1,0 +1,73 @@
+<dom-module id="mk-card">
+    <template>
+        <style>
+             :host {
+                display: block;
+            }
+
+            .rotate {
+                transform: rotate(180deg);
+            }
+
+            .card {
+                padding: 10px;
+                display: grid;
+                grid-template-columns: 1fr 4fr 1fr;
+                grid-template-rows: 1fr 3fr 1fr 3fr 1fr;
+                width: 350px;
+                height: 450px;
+                background-image: url("img/borders.png");
+                background-size: 100% 100%;
+                margin: 0 -2px;
+                /* 3 */
+                text-align: center;
+                vertical-align: middle;
+            }
+        </style>
+        <div class$="card [[card.dark]]">
+            <mk-icon typ="[[card.upLeft]]"></mk-icon>
+            <div class="titel">Standard</div>
+            <mk-icon typ="[[card.upRight]]" rotate></mk-icon>
+            <div>
+                <mk-infobox></mk-infobox>
+            </div>
+            <mk-icon typ="normal[[card.back]]" big></mk-icon>
+            <div>
+                <mk-infobox></mk-infobox>
+            </div>
+
+            <div>
+                <hr>
+            </div>
+            <div ><span class="titel">[[card.name]]</span>
+                    <template is="dom-if" if="[[card.hearts]]">
+                        <mk-icon typ="heart" mini></mk-icon>[[card.hearts]]
+                        <mk-icon typ="action" mini></mk-icon>[[card.special]]
+                    </template>
+            </div>
+            <div>
+                <hr>
+            </div>
+
+            <div>
+                <mk-infobox rotate></mk-infobox>
+            </div>
+            <mk-icon typ="special[[card.back]]" rotate big></mk-icon>
+            <div>
+                <mk-infobox rotate></mk-infobox>
+            </div>
+
+            <img src="img/[[card.downLeft]].png" class="icon" />
+            <div class="titel rotate">Spezial</div>
+            <img src="img/[[card.downRight]].png" class=" rotate icon" />
+
+    </template>
+    <script>
+        Polymer({
+            is: 'mk-card',
+            properties: {
+                card: Object
+            }
+        });
+    </script>
+</dom-module>

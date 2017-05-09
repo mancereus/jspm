@@ -3,7 +3,8 @@
     <template>
         <style>
             :host {
-                display: block;
+                display: inline-block;
+                white-space: nowrap;
             }
             .icon {
                 width: 40px;
@@ -22,9 +23,19 @@
                 typ: {type: String,
                 notify: true},
                 rotate: Boolean,
+                mini: Boolean,
+                big: Boolean,
             },
             ready() {
                 this.toggleClass("rotate", this.rotate, this.$.i);
+                if (this.mini) {
+                    this.$.i.style.width = '10px'
+                    this.$.i.style.height = '10px'
+                }
+                if (this.big) {
+                    this.$.i.style.width = '120px'
+                    this.$.i.style.height = '120px'
+                }
             }
         });
     </script>

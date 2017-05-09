@@ -7,7 +7,7 @@
 
         .break {
             width: 710px;
-            page-break-before: always;
+            page-break-after: always;
         }
     </style>
     <template>
@@ -38,7 +38,7 @@
                 if (this.max > 0) {
     	            return (this.nmbr+1) % this.max == 0;
                 }
-                
+
                 return true
 	        }
 		});

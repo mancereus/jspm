@@ -1,0 +1,51 @@
+<dom-module id="mk-infobox">
+    <template>
+        <style>
+             :host {}
+
+            .box {
+                display: grid;
+                border: 1px solid black;
+                grid-template-columns: 1fr 1fr 1fr;
+                grid-template-rows: 1fr 1fr 1fr;
+                vertical-align: center;
+            }
+
+            .rotate {
+                transform: rotate(180deg);
+            }
+        </style>
+        <div id="box" class="box rotate">
+            <div> </div>
+            <div>
+                <mk-icon typ="A" mini></mk-icon>
+            </div>
+            <div> </div>
+            <div> </div>
+            <div>
+                <mk-icon typ="D" mini></mk-icon>
+            </div>
+            <div> </div>
+            <div> </div>
+            <div>
+                <mk-icon typ="X" mini></mk-icon>
+            </div>
+            <div> </div>
+    </template>
+    <script>
+        Polymer({
+            is: 'mk-infobox',
+            properties: {
+                typ: {
+                    type: String,
+                    notify: true
+                },
+                rotate: Boolean,
+            },
+
+            ready() {
+                this.toggleClass("rotate", this.rotate, this.$.box);
+            }
+        });
+    </script>
+</dom-module>
