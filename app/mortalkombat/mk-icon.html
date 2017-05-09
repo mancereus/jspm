@@ -1,0 +1,31 @@
+
+<dom-module id="mk-icon">
+    <template>
+        <style>
+            :host {
+                display: block;
+            }
+            .icon {
+                width: 40px;
+                height: 40px;
+            }
+           .rotate {
+	    		transform: rotate(180deg);
+	    	}
+        </style>
+        <img id="i" src="img/[[typ]].png" class="icon" />
+    </template>
+    <script>
+        Polymer({
+            is: 'mk-icon',
+            properties: {
+                typ: {type: String,
+                notify: true},
+                rotate: Boolean,
+            },
+            ready() {
+                this.toggleClass("rotate", this.rotate, this.$.i);
+            }
+        });
+    </script>
+</dom-module>
