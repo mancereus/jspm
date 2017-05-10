@@ -13,6 +13,12 @@
            .rotate {
 	    		transform: rotate(180deg);
 	    	}
+            .flip {
+                transform: scaleX(-1);
+            }
+           .rotate.flip {
+	    		transform: rotate(180deg) scaleX(-1) ;
+            }
         </style>
         <img id="i" src="img/[[typ]].png" class="icon" />
     </template>
@@ -23,18 +29,21 @@
                 typ: {type: String,
                 notify: true},
                 rotate: Boolean,
+                flip: Boolean,
                 mini: Boolean,
                 big: Boolean,
             },
             ready() {
+                this.toggleClass("flip", this.flip, this.$.i);
                 this.toggleClass("rotate", this.rotate, this.$.i);
                 if (this.mini) {
-                    this.$.i.style.width = '10px'
-                    this.$.i.style.height = '10px'
+                    this.$.i.style.width = '20px'
+                    this.$.i.style.height = '20px'
                 }
                 if (this.big) {
                     this.$.i.style.width = '120px'
                     this.$.i.style.height = '120px'
+                    this.$.i.style.scale = 1.45
                 }
             }
         });

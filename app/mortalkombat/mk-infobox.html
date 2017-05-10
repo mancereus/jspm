@@ -5,10 +5,12 @@
 
             .box {
                 display: grid;
+                padding-top: 10px;
                 border: 1px solid black;
                 grid-template-columns: 1fr 1fr 1fr;
                 grid-template-rows: 1fr 1fr 1fr;
                 vertical-align: center;
+                height: 92%;
             }
 
             .rotate {
@@ -16,21 +18,21 @@
             }
         </style>
         <div id="box" class="box rotate">
-            <div> </div>
+            <div>[[effects.0]]</div>
             <div>
-                <mk-icon typ="A" mini></mk-icon>
+                <mk-icon typ="A" mini flip=[[flip]]></mk-icon>
             </div>
-            <div> </div>
-            <div> </div>
+            <div>[[effects.1]]</div>
+            <div>[[effects.2]]</div>
             <div>
                 <mk-icon typ="D" mini></mk-icon>
             </div>
-            <div> </div>
-            <div> </div>
+            <div>[[effects.3]]</div>
+            <div>[[effects.4]]</div>
             <div>
-                <mk-icon typ="X" mini></mk-icon>
+                <mk-icon typ="X" mini flip=[[!flip]]></mk-icon>
             </div>
-            <div> </div>
+            <div>[[effects.5]]</div>
     </template>
     <script>
         Polymer({
@@ -40,7 +42,9 @@
                     type: String,
                     notify: true
                 },
+                effects: Array,
                 rotate: Boolean,
+                flip: Boolean,
             },
 
             ready() {
