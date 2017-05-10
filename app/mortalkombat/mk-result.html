@@ -1,0 +1,35 @@
+    <link rel="import" href="./mk-icon.html">
+
+<dom-module id="mk-result">
+    <template>
+        <style>
+            :host {
+                display: block;
+            }
+        </style>
+        <template is="dom-if" if="[[valIsNumber]]">
+            [[content]]
+        </template>
+        <template is="dom-if" if="[[heart]]">
+            <mk-icon typ="heart" mini></mk-icon>
+        </template>
+        <template is="dom-if" if="[[special]]">
+            <mk-icon typ="action" mini></mk-icon>
+        </template>
+    </template>
+    <script>
+        Polymer({
+            is: 'mk-result',
+            properties: {
+                content: String
+            },
+            ready: function() {
+                this.valIsNumber = !isNaN(this.content)
+                this.heart = this.content === 'h'
+                this.special = this.content === 's'
+                console.log(this.content)
+                console.log(this.valIsNumber)
+            }
+        });
+    </script>
+</dom-module>

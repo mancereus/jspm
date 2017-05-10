@@ -8,14 +8,14 @@ var engine = {
         downRight:{ typ: "A", effects: ["", "", "", "", "", ""] },
         name: "Ryu",
         desc: "",
-        hearts: 6,
-        special: 3
+        hearts: 5,
+        special: 4
       },
       {
-        upLeft: { typ: "A", effects: ["", "", "", "", "", ""] },
-        upRight:{ typ: "D", effects: ["", "", "", "", "", ""] },
+        upLeft: { typ: "A", effects: ["-2", "-1", "", "", "-2", ""] },
+        upRight:{ typ: "X", effects: ["", "", "", "", "", ""] },
         downLeft:{ typ: "X", effects: ["", "", "", "", "", ""] },
-        downRight:{ typ: "D", effects: ["", "", "", "", "", ""] },
+        downRight:{ typ: "A", effects: ["-3", "-1", "-2", "", "-4", ""] },
         name: "Tank",
         desc: "",
         hearts: 8,
@@ -25,32 +25,32 @@ var engine = {
         upLeft: { typ: "A", effects: ["", "", "", "", "", ""] },
         upRight:{ typ: "D", effects: ["", "", "", "", "", ""] },
         downLeft:{ typ: "X", effects: ["", "", "", "", "", ""] },
-        downRight:{ typ: "D", effects: ["", "", "", "", "", ""] },
+        downRight:{ typ: "A", effects: ["", "", "", "", "", ""] },
         name: "Cammy",
         desc: "",
-        hearts: 2,
-        special: 7
+        hearts: 4,
+        special: 5
       },
       {
         upLeft: { typ: "A", effects: ["", "", "", "", "", ""] },
         upRight:{ typ: "D", effects: ["", "", "", "", "", ""] },
         downLeft:{ typ: "X", effects: ["", "", "", "", "", ""] },
-        downRight:{ typ: "D", effects: ["", "", "", "", "", ""] },
+        downRight:{ typ: "A", effects: ["", "", "", "", "", ""] },
         name: "Laura",
         desc: "",
-        hearts: 4,
-        special: 5
+        hearts: 3,
+        special: 6
       }
     ],
     [
       {
         back: "Right",
-        upLeft: { typ: "A", effects: ["", "", "", "", "", ""] },
-        upRight:{ typ: "D", effects: ["", "", "", "", "", ""] },
-        downLeft:{ typ: "X", effects: ["", "", "", "", "", ""] },
-        downRight:{ typ: "D", effects: ["", "", "", "", "", ""] },
+        upLeft:{ typ: "X", effects: ["", "", "", "", "", ""] },
+        upRight: { typ: "A", effects: ["-1", "-2", "", "", "", "-2"] },
+        downLeft:{ typ: "X", effects: ["", "", "", "", "h", ""] },
+        downRight:{ typ: "D", effects: ["", "", "", "s", "", "s"] },
         name: "Tank",
-        desc: ""
+        desc: "massiver Angriff nach links; kaum Blocken"
       },
       {
         back: "Right",
@@ -63,8 +63,8 @@ var engine = {
       },
       {
         back: "Right",
-        upLeft: { typ: "A", effects: ["", "", "", "", "", ""] },
-        upRight:{ typ: "D", effects: ["", "", "", "", "", ""] },
+        upLeft: { typ: "D", effects: ["", "", "", "", "", ""] },
+        upRight:{ typ: "A", effects: ["", "", "", "", "", ""] },
         downLeft:{ typ: "X", effects: ["", "", "", "", "", ""] },
         downRight:{ typ: "D", effects: ["", "", "", "", "", ""] },
         name: "Laura",
@@ -72,8 +72,8 @@ var engine = {
       },
       {
         back: "Right",
-        upLeft: { typ: "A", effects: ["", "", "", "", "", ""] },
-        upRight:{ typ: "D", effects: ["", "", "", "", "", ""] },
+        upLeft: { typ: "D", effects: ["", "", "", "", "", ""] },
+        upRight:{ typ: "A", effects: ["", "", "", "", "", ""] },
         downLeft:{ typ: "X", effects: ["", "", "", "", "", ""] },
         downRight:{ typ: "D", effects: ["", "", "", "", "", ""] },
         name: "Cammy",
@@ -88,8 +88,8 @@ var engine = {
         downRight:{ typ: "D", effects: ["", "", "", "", "", ""] },
         name: "Necalli",
         desc: "",
-        hearts: 3,
-        special: 6
+        hearts: 6,
+        special: 3
       },
       {
         upLeft: { typ: "A", effects: ["", "", "", "", "", ""] },
@@ -98,7 +98,7 @@ var engine = {
         downRight:{ typ: "D", effects: ["", "", "", "", "", ""] },
         name: "ChunLi",
         desc: "",
-        hearts: 5,
+        hearts: 6,
         special: 3
       },
       {
@@ -108,8 +108,8 @@ var engine = {
         downRight:{ typ: "D", effects: ["", "", "", "", "", ""] },
         name: "Xara",
         desc: "",
-        hearts: 7,
-        special: 2
+        hearts: 5,
+        special: 4
       },
       {
         upLeft: { typ: "A", effects: ["", "", "", "", "", ""] },
@@ -118,15 +118,15 @@ var engine = {
         downRight:{ typ: "D", effects: ["", "", "", "", "", ""] },
         name: "El Fuerte",
         desc: "",
-        hearts: 6,
-        special: 3
+        hearts: 7,
+        special: 2
       }
     ],
     [
       {
         back: "Right",
-        upLeft: { typ: "A", effects: ["", "", "", "", "", ""] },
-        upRight:{ typ: "D", effects: ["", "", "", "", "", ""] },
+        upLeft: { typ: "D", effects: ["", "", "", "", "", ""] },
+        upRight:{ typ: "A", effects: ["", "", "", "", "", ""] },
         downLeft:{ typ: "X", effects: ["", "", "", "", "", ""] },
         downRight:{ typ: "D", effects: ["", "", "", "", "", ""] },
         name: "ChunLi",
@@ -134,8 +134,8 @@ var engine = {
       },
       {
         back: "Right",
-        upLeft: { typ: "A", effects: ["", "", "", "", "", ""] },
-        upRight:{ typ: "D", effects: ["", "", "", "", "", ""] },
+        upLeft: { typ: "D", effects: ["", "", "", "", "", ""] },
+        upRight:{ typ: "A", effects: ["", "", "", "", "", ""] },
         downLeft:{ typ: "X", effects: ["", "", "", "", "", ""] },
         downRight:{ typ: "D", effects: ["", "", "", "", "", ""] },
         name: "Necalli",
@@ -143,8 +143,8 @@ var engine = {
       },
       {
         back: "Right",
-        upLeft: { typ: "A", effects: ["", "", "", "", "", ""] },
-        upRight:{ typ: "D", effects: ["", "", "", "", "", ""] },
+        upLeft: { typ: "D", effects: ["", "", "", "", "", ""] },
+        upRight:{ typ: "A", effects: ["", "", "", "", "", ""] },
         downLeft:{ typ: "X", effects: ["", "", "", "", "", ""] },
         downRight:{ typ: "D", effects: ["", "", "", "", "", ""] },
         name: "El Fuerte",
@@ -152,8 +152,8 @@ var engine = {
       },
       {
         back: "Right",
-        upLeft: { typ: "A", effects: ["", "", "", "", "", ""] },
-        upRight:{ typ: "D", effects: ["", "", "", "", "", ""] },
+        upLeft: { typ: "D", effects: ["", "", "", "", "", ""] },
+        upRight:{ typ: "A", effects: ["", "", "", "", "", ""] },
         downLeft:{ typ: "X", effects: ["", "", "", "", "", ""] },
         downRight:{ typ: "D", effects: ["", "", "", "", "", ""] },
         name: "Xara",

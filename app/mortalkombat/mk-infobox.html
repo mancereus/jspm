@@ -1,3 +1,5 @@
+    <link rel="import" href="./mk-result.html">
+
 <dom-module id="mk-infobox">
     <template>
         <style>
@@ -18,21 +20,21 @@
             }
         </style>
         <div id="box" class="box rotate">
-            <div>[[effects.0]]</div>
+            <mk-result content=[[effects.0]]></mk-result>
             <div>
                 <mk-icon typ="A" mini flip=[[flip]]></mk-icon>
             </div>
-            <div>[[effects.1]]</div>
-            <div>[[effects.2]]</div>
+            <mk-result content=[[effects.1]]></mk-result>
+            <mk-result content=[[effects.2]]></mk-result>
             <div>
                 <mk-icon typ="D" mini></mk-icon>
             </div>
-            <div>[[effects.3]]</div>
-            <div>[[effects.4]]</div>
+            <mk-result content=[[effects.3]]></mk-result>
+            <mk-result content=[[effects.4]]></mk-result>
             <div>
                 <mk-icon typ="X" mini flip=[[!flip]]></mk-icon>
             </div>
-            <div>[[effects.5]]</div>
+            <mk-result content=[[effects.5]]></mk-result>
     </template>
     <script>
         Polymer({
