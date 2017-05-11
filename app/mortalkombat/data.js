@@ -8,7 +8,7 @@ var engine = {
         downRight:{ typ: "A", effects: ["", "", "", "", "", ""] },
         name: "Ryu",
         desc: "",
-        hearts: 5,
+        hearts: 8,
         special: 4
       },
       {
@@ -18,7 +18,7 @@ var engine = {
         downRight:{ typ: "A", effects: ["-3", "-1", "-2", "", "-4", ""] },
         name: "Tank",
         desc: "",
-        hearts: 8,
+        hearts: 11,
         special: 1
       },
       {
@@ -28,7 +28,7 @@ var engine = {
         downRight:{ typ: "A", effects: ["", "", "", "", "", ""] },
         name: "Cammy",
         desc: "",
-        hearts: 4,
+        hearts: 7,
         special: 5
       },
       {
@@ -38,7 +38,7 @@ var engine = {
         downRight:{ typ: "A", effects: ["", "", "", "", "", ""] },
         name: "Laura",
         desc: "",
-        hearts: 3,
+        hearts: 6,
         special: 6
       }
     ],
@@ -87,9 +87,8 @@ var engine = {
         downLeft:{ typ: "X", effects: ["", "", "", "", "", ""] },
         downRight:{ typ: "D", effects: ["", "", "", "", "", ""] },
         name: "Necalli",
-        desc: "",
-        hearts: 6,
-        special: 3
+        hearts: 10,
+        special: 2
       },
       {
         upLeft: { typ: "A", effects: ["", "", "", "", "", ""] },
@@ -98,7 +97,7 @@ var engine = {
         downRight:{ typ: "D", effects: ["", "", "", "", "", ""] },
         name: "ChunLi",
         desc: "",
-        hearts: 6,
+        hearts: 9,
         special: 3
       },
       {
@@ -108,7 +107,7 @@ var engine = {
         downRight:{ typ: "D", effects: ["", "", "", "", "", ""] },
         name: "Xara",
         desc: "",
-        hearts: 5,
+        hearts: 8,
         special: 4
       },
       {
@@ -117,9 +116,8 @@ var engine = {
         downLeft:{ typ: "X", effects: ["", "", "", "", "", ""] },
         downRight:{ typ: "D", effects: ["", "", "", "", "", ""] },
         name: "El Fuerte",
-        desc: "",
-        hearts: 7,
-        special: 2
+        hearts: 9,
+        special: 3
       }
     ],
     [
@@ -127,10 +125,10 @@ var engine = {
         back: "Right",
         upLeft: { typ: "D", effects: ["", "", "", "", "", ""] },
         upRight:{ typ: "A", effects: ["", "", "", "", "", ""] },
-        downLeft:{ typ: "X", effects: ["", "", "", "", "", ""] },
-        downRight:{ typ: "D", effects: ["", "", "", "", "", ""] },
+        downLeft:{ typ: "X", effects: ["0", "", "s", "", "*", ""] },
+        downRight:{ typ: "D", effects: ["", "0", "", "h", "", "*"] },
         name: "ChunLi",
-        desc: ""
+        desc: "* Jump: kann die Position wechseln"
       },
       {
         back: "Right",
@@ -139,7 +137,7 @@ var engine = {
         downLeft:{ typ: "X", effects: ["", "", "", "", "", ""] },
         downRight:{ typ: "D", effects: ["", "", "", "", "", ""] },
         name: "Necalli",
-        desc: ""
+        desc: "kein Ausweichen, nur Blocken",
       },
       {
         back: "Right",
@@ -148,7 +146,7 @@ var engine = {
         downLeft:{ typ: "X", effects: ["", "", "", "", "", ""] },
         downRight:{ typ: "D", effects: ["", "", "", "", "", ""] },
         name: "El Fuerte",
-        desc: ""
+        desc: "der schnellste Läufer"
       },
       {
         back: "Right",
@@ -157,7 +155,7 @@ var engine = {
         downLeft:{ typ: "X", effects: ["", "", "", "", "", ""] },
         downRight:{ typ: "D", effects: ["", "", "", "", "", ""] },
         name: "Xara",
-        desc: ""
+        desc: "durchbricht die Blocker"
       }
     ]
   ],

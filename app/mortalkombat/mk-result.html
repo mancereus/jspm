@@ -24,7 +24,7 @@
                 content: String
             },
             ready: function() {
-                this.valIsNumber = !isNaN(this.content)
+                this.valIsNumber = !isNaN(this.content) || this.content === '*'
                 this.heart = this.content === 'h'
                 this.special = this.content === 's'
                 console.log(this.content)

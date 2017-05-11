@@ -77,11 +77,8 @@
                 <mk-infobox effects=[[card.upRight.effects]]>></mk-infobox>
 
                 <mk-icon typ="logo"></mk-icon>
-                <div style="border: 1px solid black;"><span class="small rotate">[[card.desc]]</span>
-                    <template is="dom-if" if="[[flip]]">
-                        <mk-icon typ="heart" mini></mk-icon>[[flip]]
-                        <mk-icon typ="action" mini></mk-icon>[[card.special]]
-                    </template>
+                <div style="border: 1px solid black;font-weight: normal;font-size: 12pt;"> <div class="rotate">[[card.desc]]
+                </div>
                 </div>
                 <mk-icon typ="logo" rotate></mk-icon>
 
@@ -89,7 +86,7 @@
                 <div>
                     <mk-infobox rotate effects=[[card.downLeft.effects]]>></mk-infobox>
                 </div>
-                <mk-icon typ="[[card.name]]Special" rotate big flip=[[!flip]]></mk-icon>
+                <mk-icon typ="[[card.name]]Defense" rotate big flip=[[!flip]]></mk-icon>
                 <div>
                     <mk-infobox rotate flip effects=[[card.downRight.effects]]>></mk-infobox>
                 </div>
