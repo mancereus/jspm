@@ -24,7 +24,7 @@ var engine = {
       {
         upLeft: { typ: "A", effects: ["", "", "", "", "", ""] },
         upRight:{ typ: "D", effects: ["", "", "", "", "", ""] },
-        downLeft:{ typ: "X", effects: ["", "", "", "", "", ""] },
+        downLeft:{ typ: "D", effects: ["", "", "", "", "", ""] },
         downRight:{ typ: "A", effects: ["", "", "", "", "", ""] },
         name: "Cammy",
         desc: "",
@@ -32,10 +32,10 @@ var engine = {
         special: 5
       },
       {
-        upLeft: { typ: "A", effects: ["", "", "", "", "", ""] },
-        upRight:{ typ: "D", effects: ["", "", "", "", "", ""] },
-        downLeft:{ typ: "X", effects: ["", "", "", "", "", ""] },
-        downRight:{ typ: "A", effects: ["", "", "", "", "", ""] },
+        upLeft: { typ: "A", effects: ["-1", "-2", "", "-1", "-1", "+2"] },
+        upRight:{ typ: "D", effects: ["+2", "", "+2", "", "+2", ""] },
+        downLeft:{ typ: "X", effects: ["+3", "", "", "-2", "", "-2"] },
+        downRight:{ typ: "A", effects: ["", "+2", "-2", "", "-2", ""] },
         name: "Laura",
         desc: "",
         hearts: 6,
@@ -59,16 +59,16 @@ var engine = {
         downLeft:{ typ: "X", effects: ["", "", "", "", "", ""] },
         downRight:{ typ: "D", effects: ["", "", "", "", "", ""] },
         name: "Ryu",
-        desc: ""
+        desc: "leite den Angriff zurück"
       },
       {
         back: "Right",
-        upLeft: { typ: "D", effects: ["", "", "", "", "", ""] },
-        upRight:{ typ: "A", effects: ["", "", "", "", "", ""] },
-        downLeft:{ typ: "X", effects: ["", "", "", "", "", ""] },
-        downRight:{ typ: "D", effects: ["", "", "", "", "", ""] },
+        upLeft: { typ: "D", effects: ["", "+2", "", "+2", "", "+2"] },
+        upRight:{ typ: "A", effects: ["+2", "-1", "-1", "", "+2", "-1"] },
+        downLeft:{ typ: "X", effects: ["+3", "", "s", "", "h", "-1"] },
+        downRight:{ typ: "X", effects: ["", "+3", "", "s", "-1", "h"] },
         name: "Laura",
-        desc: ""
+        desc: "Magieangriff"
       },
       {
         back: "Right",
@@ -77,7 +77,7 @@ var engine = {
         downLeft:{ typ: "X", effects: ["", "", "", "", "", ""] },
         downRight:{ typ: "D", effects: ["", "", "", "", "", ""] },
         name: "Cammy",
-        desc: ""
+        desc: "Allrounder"
       }
     ],
     [
@@ -101,20 +101,20 @@ var engine = {
         special: 3
       },
       {
-        upLeft: { typ: "A", effects: ["", "", "", "", "", ""] },
-        upRight:{ typ: "D", effects: ["", "", "", "", "", ""] },
-        downLeft:{ typ: "X", effects: ["", "", "", "", "", ""] },
-        downRight:{ typ: "D", effects: ["", "", "", "", "", ""] },
+        upLeft: { typ: "A", effects: ["-1", "+2", "-2", "", "", ""] },
+        upRight:{ typ: "A", effects: ["+2", "-1", "", "-2", "", ""] },
+        downLeft:{ typ: "D", effects: ["+3", "", "", "-2", "", "-2"] },
+        downRight:{ typ: "D", effects: ["", "+3", "-2", "", "-2", ""] },
         name: "Xara",
         desc: "",
         hearts: 8,
         special: 4
       },
       {
-        upLeft: { typ: "A", effects: ["", "", "", "", "", ""] },
-        upRight:{ typ: "D", effects: ["", "", "", "", "", ""] },
-        downLeft:{ typ: "X", effects: ["", "", "", "", "", ""] },
-        downRight:{ typ: "D", effects: ["", "", "", "", "", ""] },
+        upLeft: { typ: "X", effects: ["-1", "+3", "", "", "-2", ""] },
+        upRight:{ typ: "X", effects: ["", "", "", "", "", ""] },
+        downLeft:{ typ: "A", effects: ["", "", "", "", "", ""] },
+        downRight:{ typ: "A", effects: ["", "", "", "", "", ""] },
         name: "El Fuerte",
         hearts: 9,
         special: 3
@@ -137,25 +137,25 @@ var engine = {
         downLeft:{ typ: "X", effects: ["", "", "", "", "", ""] },
         downRight:{ typ: "D", effects: ["", "", "", "", "", ""] },
         name: "Necalli",
-        desc: "kein Ausweichen, nur Blocken",
+        desc: "kein Ausweichen, steht fest",
       },
       {
         back: "Right",
-        upLeft: { typ: "D", effects: ["", "", "", "", "", ""] },
-        upRight:{ typ: "A", effects: ["", "", "", "", "", ""] },
-        downLeft:{ typ: "X", effects: ["", "", "", "", "", ""] },
+        upLeft: { typ: "X", effects: ["", "", "", "", "", ""] },
+        upRight:{ typ: "X", effects: ["+3", "-1", "", "", "", "-2"] },
+        downLeft:{ typ: "D", effects: ["", "", "", "", "", ""] },
         downRight:{ typ: "D", effects: ["", "", "", "", "", ""] },
         name: "El Fuerte",
         desc: "der schnellste Läufer"
       },
       {
         back: "Right",
-        upLeft: { typ: "D", effects: ["", "", "", "", "", ""] },
-        upRight:{ typ: "A", effects: ["", "", "", "", "", ""] },
-        downLeft:{ typ: "X", effects: ["", "", "", "", "", ""] },
-        downRight:{ typ: "D", effects: ["", "", "", "", "", ""] },
+        upLeft: { typ: "A", effects: ["", "+2", "-2", "", "", ""] },
+        upRight:{ typ: "A", effects: ["+2", "-2", "", "-3", "", ""] },
+        downLeft:{ typ: "X", effects: ["h", "-1", "s", "", "h", ""] },
+        downRight:{ typ: "X", effects: ["-1", "h", "", "h", "", "s"] },
         name: "Xara",
-        desc: "durchbricht die Blocker"
+        desc: "durchbricht mit Doppelangriff"
       }
     ]
   ],
