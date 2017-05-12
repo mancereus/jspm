@@ -6,27 +6,3 @@ var chars =  [
         { "name": "Halbling", "desc": "legt seine Karten verdeckt vor sich ab." },
         { "name": "Bastler", "desc": "kann durch eine vor ihm liegende Tür fliehen, wenn helle Karten in der Mitte aktiviert werden." },
     ]
-
-var items =  [
-        { type: "Schatz" },
-        { type: "Schatz" },
-        { type: "Schatz" },
-        { type: "Schatz" },
-        { type: "Schatz" },
-        { type: "Schatz" },
-        { type: "Schatz" },
-        { type: "Schatz" },
-        { type: "Schatz" },
-        { type: "Schatz" },
-        { type: "Schatz" },
-        { type: "Schatz" },
-        { type: "Schwert" },
-        { type: "Schwert" },
-        { type: "Schwert" },
-        { type: "Schwert" },
-        { type: "Schwert" },
-        { type: "Schwert" },
-        { type: "Schwert" },
-        { type: "Schwert" },
-        { type: "Schwert" },
-    ]

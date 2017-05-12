@@ -18,12 +18,12 @@
             vertical-align: middle;
             margin: 1px;
         }
-        
+
         .page-break {
             page-break-after: always;
             width: 500px;
         }
-        
+
         img {
             width: 100px;
             height: 120px;
@@ -31,15 +31,15 @@
             -webkit-filter: brightness(1.5);
             filter: brightness(1.5);
         }
-        
+
         hr {
             margin: 0;
         }
-        
+
         .dark {
             background-color: #aaaaaa;
         }
-        
+
         .head {
             font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
             font-size: 18pt;
@@ -49,7 +49,7 @@
             display: flex;
             justify-content: space-around
         }
-        
+
         .titel {
             font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
             font-size: 18pt;
@@ -59,32 +59,32 @@
             font-size: 150%;
             text-align: center;
         }
-        
+
         .count {
             text-align: left;
             padding: 2px 5px;
             border: 1px solid black;
             border-top: none;
         }
-        
+
         .foot {
             font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
             font-size: 12pt;
             margin: 5px 0 5px 0;
         }
-        
+
         .small {
             margin-top: 10px;
             width: 40px;
             height: 50px;
         }
-        
+
         .icon {
             margin-top: 5px;
             width: 113px;
             height: 44px;
         }
-        
+
         .field {
             font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
             width: 100px;
@@ -106,34 +106,22 @@
 			</div>
 			<img src="img/[[item.name]].png"></img>
 			<hr/>
-			<div class="foot">[[item.desc]]</div>
+			<!--<div class="foot">[[item.desc]]</div>-->
 		</div>
         </template>
-    <div class="card">
-        <div class="titel">
-            MonsterMob
-        </div>
-        <div class="field" style="border-color: blue;margin-left: 30px;">
-            MonsterMob <br> besiegt wenn Schwerter <br>= 6
-        </div>
-        <div class="field" style="border-color: red;background-color: indianred; float: left;width:60px;">
-            <img style="width: 40px;height: 40px;" src="img/Schwert.png">
-            <div>9</div>
-        </div>
-        <div class="field" style="border-color: yellow;background-color: orange;float: right;width:60px;">
-            <img style="width: 40px;height: 40px;" src="img/Schatz.png">
-            <div>12</div>
-        </div>
-    </div>
     <div class="card">
         <div class="titel">
             Aktiver Spieler
         </div>
         <br>
-        <img style="width: 150px;height: 180px;" src="img/Schwert.png">
+        <img style="width: 150px;height: 180px;" src="img/Fackel.png">
     </div>
     </div>
     </template>
+
+    <img src="img\grosses Monster.png" style="width: 600px; height: 350px;" ></img>
+    <br>
+    <img src="img\Tür.png" style="width: 300px; height: 350px;" ></img>
 
     <script>
         var t = document.querySelector('#tmpl');
