@@ -13,6 +13,9 @@
         <template is="dom-if" if="[[heart]]">
             <mk-icon typ="heart" mini></mk-icon>
         </template>
+        <template is="dom-if" if="[[bang]]">
+            <mk-icon typ="bang" mini></mk-icon>
+        </template>
         <template is="dom-if" if="[[special]]">
             <mk-icon typ="action" mini></mk-icon>
         </template>
@@ -24,8 +27,9 @@
                 content: String
             },
             ready: function() {
-                this.valIsNumber = !isNaN(this.content) || this.content === '*'
+                this.valIsNumber = !isNaN(this.content) || this.content === '*'|| this.content === 'X'
                 this.heart = this.content === 'h'
+                this.bang = this.content === 'b'
                 this.special = this.content === 's'
                 console.log(this.content)
                 console.log(this.valIsNumber)
