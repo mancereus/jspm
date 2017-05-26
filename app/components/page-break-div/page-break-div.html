@@ -9,10 +9,13 @@
             width: 710px;
             page-break-after: always;
         }
+        .before {
+            page-break-before: always;
+        }
     </style>
     <template>
         <template is="dom-if" if="{{pageBreak}}">
-            <div class="break">page break</div>
+            <div id="break" class="break">page break</div>
         </template>
     </template>
 </dom-module>
@@ -29,10 +32,13 @@
               pageBreak: {
                   type: Boolean,
                   computed: "isPageBreak(nmbr, max)"
+              },
+              before: {
+                  type: Boolean
               }
             },
             ready: function() {
-
+                 this.toggleClass("before", this.before, this.$.break);
 	        },
 	        isPageBreak: function() {
                 if (this.max > 0) {
