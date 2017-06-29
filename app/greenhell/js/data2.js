@@ -101,25 +101,31 @@ var data2 = {
       ver: true,
       info: "info"
     },
+    // {
+    //   name: "Zugang Fluss",
+    //   Aktion: "Hier fliesst ein unterirdischer Fluss. Ihr könnt euch von ihn nach rechts und unten zu einem anderen Zugang Fluss bringen lassen.",
+    //   info: "info"
+    // },
+    // {
+    //   name: "Zugang Fluss",
+    //   Aktion: "Hier fliesst ein unterirdischer Fluss. Ihr könnt euch von ihn nach rechts und unten zu einem anderen Zugang Fluss bringen lassen.",
+    //   info: "info"
+    // },
+    // {
+    //   name: "Zugang Fluss",
+    //   Aktion: "Hier fliesst ein unterirdischer Fluss. Ihr könnt euch von ihn nach rechts und unten zu einem anderen Zugang Fluss bringen lassen.",
+    //   info: "info"
+    // },
+    // {
+    //   name: "Zugang Fluss",
+    //   Aktion: "Hier fliesst ein unterirdischer Fluss. Ihr könnt euch von ihn nach rechts und unten zu einem anderen Zugang Fluss bringen lassen.",
+    //   info: "info"
+    // },
     {
-      name: "Zugang Fluss",
-      Aktion: "Hier fliesst ein unterirdischer Fluss. Ihr könnt euch von ihn nach rechts und unten zu einem anderen Zugang Fluss bringen lassen.",
-      info: "info"
-    },
-    {
-      name: "Zugang Fluss",
-      Aktion: "Hier fliesst ein unterirdischer Fluss. Ihr könnt euch von ihn nach rechts und unten zu einem anderen Zugang Fluss bringen lassen.",
-      info: "info"
-    },
-    {
-      name: "Zugang Fluss",
-      Aktion: "Hier fliesst ein unterirdischer Fluss. Ihr könnt euch von ihn nach rechts und unten zu einem anderen Zugang Fluss bringen lassen.",
-      info: "info"
-    },
-    {
-      name: "Zugang Fluss",
-      Aktion: "Hier fliesst ein unterirdischer Fluss. Ihr könnt euch von ihn nach rechts und unten zu einem anderen Zugang Fluss bringen lassen.",
-      info: "info"
+      name: "Fackel",
+      Aktion: "Eine Fackel steckt in der Felswand.",
+      ver: true,
+      imgclass: "symbol"
     },
     {
       name: "Fackel",
@@ -130,12 +136,6 @@ var data2 = {
     {
       name: "Fackel",
       Aktion: "Eine Fackel steckt in der Felswand.",
-      ver: true,
-      imgclass: "symbol"
-    },
-    {
-      name: "Fackel",
-      Aktion: "Eine Fackel steckt in der Felswand.",
       hor: true,
       imgclass: "symbol"
     },
@@ -186,6 +186,11 @@ var data2 = {
       name: "Kannibalen",
       Aktion: "Die Kannibalen stehen hier Wache. Habt ihr den Schrunpfkopf bei euch, lassen sie euch vorbeiziehen. Ansonsten könnt ihr das Feld nicht betreten.",
       info: "problem"
+    },
+    {
+      name: "Minenfahrt",
+      Aktion: "Mit der Lore könnt ihr von hier direkt zur einer anderen offenen Karte fahren.",
+      info: "info"
     },
     {
       name: "Gesteinswand",
@@ -305,33 +310,24 @@ var data2 = {
     //   Aktion: "Im Sonnenuntergang verliebt sich Jack in Jane. Er weis nicht, ob Sie seine Liebe erwidert. Er hat das Gefühl, schon viele Abenteuer mit Jane erlebt zu haben. Schau dir die nächsten drei Karten vom Stapel an und lege Sie gemeinsam zurück oder unter den Stapel.",
     //   task: true
     // },
+
     {
-      name: "Minenfahrt",
-      order: "home",
-      orderText: "Ausgang",
-      Aktion: "Wenn ihr den Weg zum 'Tal der Kannibalen' kennt, alle 4 Höhlen im Spielplan gefunden sind und ihr eine Fackel besitzt, könnt ihr mit einer Lore in das 'Tal der Kannibalen' fahren. Dabei musst du die Fackel abgeben. Verwende in Akt 2 eine Aktionskarte mit 'Mine'",
+      name: "Diamantenmine",
+      order: "select-all",
+      orderText: "Mine",
+      Aktion: "Mit der Fackel findest du in der dunklen Mine große Diamanten. Wenn du Sie herausholst, verlierst du die Fackel. Du erhälst einen Bonuspunkt.",
+      imgclass: "symbol",
       task: true
     },
-
     // {
-    //   name: "Diamantenmine",
-    //   order: "select-all",
+    //   name: "Altar",
     //   orderText: "Mine",
-    //   Aktion: "Mit der Fackel findest du in der dunklen Mine große Diamanten. Wenn du Sie herausholst, verlierst du die Fackel. Du erhälst einen Bonuspunkt.",
-    //   imgclass: "symbol",
+    //   Aktion: "Ihr findet einen geheimen Zeremonienaltar der Kannibalen. Von dort könnt ihr euch 2 Macheten mitnehmen.",
+    //   imgclass: "Machete",
     //   task: true
     // },
     {
-      name: "Altar",
-      order: "select-all",
-      orderText: "Mine",
-      Aktion: "Ihr findet einen geheimen Zeremonienaltar der Kannibalen. Von dort könnt ihr euch 2 Macheten mitnehmen.",
-      imgclass: "Machete",
-      task: true
-    },
-    {
       name: "Schlangengrube",
-      order: "select-all",
       orderText: "Mine",
       Aktion: "In einer Höhle seid ihr von Schlangen umzingelt. Gebt eine Fackel ab oder legt 3 Dinge vom Inventar auf ihre Felder zurück oder in den Vorrat, um den Schlangen zu entkommen. Habt ihr beides nicht, sterbt ihr in der Schlangengrube.",
       task: true
