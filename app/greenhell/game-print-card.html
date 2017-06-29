@@ -9,7 +9,7 @@
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
 <dom-module id="game-print-card">
     <style>
-        :host {
+         :host {
             margin: 0;
             padding: 0;
         }
@@ -51,6 +51,10 @@
 
         .problem {
             background-color: #FFDC97;
+        }
+
+        .event {
+            background-color: orange;
         }
 
         .text {
@@ -96,17 +100,17 @@
     </template>
     <script>
         Polymer({
-      is: 'game-print-card',
-      properties: {
-        carddata: {
-          type: Object,
-          notify: true
-        },
-        akt: String,
-        item: { notify: true },
-      },
-      ready: function () {
-      },
-    });
+            is: 'game-print-card',
+            properties: {
+                carddata: {
+                    type: Object,
+                    notify: true
+                },
+                akt: String,
+                item: { notify: true },
+            },
+            ready: function () {
+            },
+        });
     </script>
 </dom-module>

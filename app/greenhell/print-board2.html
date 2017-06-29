@@ -8,28 +8,33 @@
          :host {
             display: block;
         }
-        
+
+        .page {
+            /*background-color: lightgray;*/
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            grid-template-rows: 1fr 1fr 1fr 1fr;
+        }
+
         game-print-card {
             margin: 0 -1px;
         }
-        
-        #gameTable {
-            width: 210mm;
-        }
     </style>
     <template>
-        <div id="gameTable">
-            <div style="margin-left: 20px;">
-            <template is="dom-repeat" items="{{actions}}" as="card" index-as="cardIndex">
+        <div class="page">
+            <template is="dom-repeat" items="[[actions]]" as="card" index-as="cardIndex">
                 <game-print-card selected="1" cardData="{{card}}"></game-print-card>
-                <page-break-div nmbr="{{cardIndex}}" max="16"></page-break-div>
             </template>
+        </div>
+        <page-break-div nmbr="{{16}}" max="16"></page-break-div>
+        <div class="page">
+
             <template is="dom-repeat" items="{{reverseactions}}" as="card" index-as="cardIndex">
                 <template is="dom-if" if="{{ card.task}}">
                     <game-print-back-card cardData="{{card}}"></game-print-back-card>
+
                 </template>
             </template>
-            </div>
         </div>
     </template>
     <script src="js/base.js"></script>
@@ -49,8 +54,8 @@
         });
         var copy = JSON.parse(JSON.stringify(initcards2));
         var gameback = [];
-        for (var i = 0;i<6;i++) {
-            gameback = gameback.concat(copy.slice(i*4,(i+1)*4).reverse());
+        for (var i = 0; i < 6; i++) {
+            gameback = gameback.concat(copy.slice(i * 4, (i + 1) * 4).reverse());
         }
         // initcards.push.apply(initcards,data2.initcards);
         // initcards.push.apply(initcards,data2.initActions);

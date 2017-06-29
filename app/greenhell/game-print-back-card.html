@@ -9,7 +9,7 @@
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
 <dom-module id="game-print-back-card">
     <style>
-        :host {
+         :host {
             margin: 0;
             padding: 0;
             width: 189px;
@@ -70,36 +70,36 @@
     <template>
         <div class="card-header">
             <div class="layout vertical center" style="margin: 0;width: 40mm;min-height: 63mm;">
-                    <template is="dom-if" if="{{carddata.task}}">
-                        <h2 style="margin-top: 40px;">{{backName}}</h2>
-                    </template>
-                        <iron-icon class="big" icon="{{carddata.order}}"></iron-icon>
-                        <h2 style="margin-top: 40px;">{{carddata.orderText}}</h2>
+                <template is="dom-if" if="{{carddata.task}}">
+                    <h2 style="margin-top: 40px;">{{backName}}</h2>
+                </template>
+                <!--<iron-icon class="big" icon="{{carddata.order}}"></iron-icon>
+                        <h2 style="margin-top: 40px;">{{carddata.orderText}}</h2>-->
             </div>
         </div>
     </template>
     <script>
         Polymer({
-      is: 'game-print-back-card',
-      properties: {
-        carddata: {
-          type: Object,
-          notify: true
-        },
-        akt: String,
-        item: { notify: true },
-        backName: {
-        type: String,
-        computed: 'getBackName(carddata)'
-        },
-      },
-       getBackName: function (carddata) {
-        if(carddata.type)
-            return carddata.type;
-        return 'Aktion';
-      },
-      ready: function () {
-      },
-    });
+            is: 'game-print-back-card',
+            properties: {
+                carddata: {
+                    type: Object,
+                    notify: true
+                },
+                akt: String,
+                item: { notify: true },
+                backName: {
+                    type: String,
+                    computed: 'getBackName(carddata)'
+                },
+            },
+            getBackName: function (carddata) {
+                if (carddata.type)
+                    return carddata.type;
+                return 'Aktion';
+            },
+            ready: function () {
+            },
+        });
     </script>
 </dom-module>
