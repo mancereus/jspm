@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <script src="../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+    <link rel="import" href="../../bower_components/polymer/polymer.html">
+    <link rel="import" href="../components/page-break-div/page-break-div.html">
+    <link href="https://fonts.googleapis.com/css?family=Carter+One" rel="stylesheet">
+    <script src="js/data1.js"></script>
+    <title>MortalKombat</title>
+    <style>
+        .page {
+            background-color: lightgray;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+        }
+
+        .icon {
+            width: 40px;
+            height: 40px;
+        }
+
+        .info {
+            margin: 20px;
+            width: 80%;
+        }
+
+
+        .foot {
+            font-family: 'Carter One', cursive;
+            font-size: 24pt;
+            margin: 5px 0 5px 0;
+        }
+
+        .small {
+            margin-top: 10px;
+            width: 40px;
+            height: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <template id="tmpl" is="dom-bind">
+        <template is="dom-repeat" items="[[cards]]" as="page">
+            <div class="page">
+                <template is="dom-repeat" items="[[page]]">
+                    <mk-card card=[[item]]></mk-card>
+                </template>
+            </div>
+            <page-break-div before nmbr="[[index]]" max="1"></page-break-div>
+        </template>
+    </template>
+
+    <script>
+        var t = document.querySelector('#tmpl');
+        t.cards = engine.cards;
+    </script>
+</body>
+
+</html>

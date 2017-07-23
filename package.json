@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "dev": "browser-sync start --server --files \"app/**/*,dest/**/*,bower_components/**/*\" --startPath \"/app\" --directory --no-notify",
+    "start": "browser-sync start --server --files \"app/**/*,dest/**/*,bower_components/**/*\" --startPath \"/app\" --directory --no-notify",
     "lint": "polylint app/**/index.html",
     "precache": "node_modules/sw-precache/cli.js --root=dest/zenmaster"
   },

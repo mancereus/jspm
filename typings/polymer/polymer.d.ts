@@ -29,7 +29,7 @@ declare module polymer {
     // Behaviors
     // use interface fpr Behaviors
     behaviors?:Object[];
-    
+
     customStyle?: Object;
     // Attributes
 
