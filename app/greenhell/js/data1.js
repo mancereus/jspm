@@ -162,12 +162,6 @@ var data1 = {
       imgclass: "symbol"
     },
     {
-      name: "Fackel",
-      Aktion: "Mit einer Fackel kann man von einer Höhle zu einer anderen ziehen. Die Fackel darf man dabei behalten.",
-      ver: true,
-      imgclass: "symbol"
-    },
-    {
       name: "Pistole",
       Aktion: "Die Pistole ist alt und hat nur noch eine Kugel.",
       hor: true,
@@ -257,7 +251,7 @@ var data1 = {
     {
       name: "Tiger",
       info: "event",
-      Aktion: "Ein Tiger zieht langsam an euch vorbei. Der aktive Spieler darf sich für 20sec nicht bewegen und nicht sprechen. sonst frisst der Tiger jack und jane und ihr habt die Partie verloren. Starte jetzt."
+      Aktion: "Ein Tiger zieht langsam an euch vorbei. Der aktive Spieler darf sich für 20sec nicht bewegen und nicht sprechen. sonst frisst der Tiger Jack und Jane und ihr habt die Partie verloren. Starte jetzt."
     },
     {
       name: "Sturm",
@@ -285,11 +279,11 @@ var data1 = {
       Aktion: "Jacks Bein verletzt sich in einer Tierfalle des Jägers Stoephasius. Du kannst pro Zug nur noch 3 Felder weit ziehen bis du das Startfeld erreicht hast und das Bein verbinden konntest."
     },
     {
-      name: "Schrumpfkopf",
-      info: "event",
-      Aktion: "Ihr findet einen alte verfallenen Brunnen. Wenn ihr in diesen mit einer Fackel hinabsteigt, findet ihr darin einen Schrumpfkopf der Kannibalen. Die Fackel müsst ihr dann abgeben.",
+      name: "Rucksack",
+      Aktion: "Du findest einen alten Rucksack. Nimm die Inventarkarte Rucksack hinzu.",
+      ver: true,
       imgclass: "symbol"
-    }
+    },
   ],
   initEvents: [],
   initActions: [

@@ -76,6 +76,7 @@
                             </game-card>
                         </template>
                         <game-hexagon imgsrc="Jack" top="-570" left="340"></game-hexagon>
+                        <game-hexagon imgsrc="Jane" top="-570" left="320"></game-hexagon>
                         <template is="dom-repeat" items="{{vorrat}}" index-as="index">
                             <game-piece img="{{item}}" top="{{getTop(-1040, index, item, 60)}}" left="{{getLeft(1155,item)}}" imgclass="symbol"></game-piece>
                         </template>
@@ -307,7 +308,7 @@
                     if (this.config.akt == 2) {
                         if (this.config.check == undefined)
                             this.config.check = {};
-                        this.config.akt2 = ['home'];
+                        this.config.akt2 = [];
                         //    if(this.config.stars >= 1) {
                         //        this.config.akt2 = ['exit-to-app'];
                         //    }

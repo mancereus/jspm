@@ -60,22 +60,16 @@ var data2 = {
     {
       name: "Gang",
       Aktion: "",
-      flavour: "Jack: 'Pause.'",
+      flavour: "Jack: 'Seltsame Schriftzeichen sind an der Wand. Was Sie wohl bedeuten?'",
       ver: true,
       hor: true
     },
     {
       name: "Gang",
       Aktion: "",
-      flavour: "Jack: 'Pause.'",
+      flavour: "Jack: 'Hier kann man fast nicht erkennen.'",
       ver: true,
       hor: true
-    },
-    {
-      name: "Rucksack",
-      Aktion: "Du findest einen alten Rucksack. Nimm die Inventarkarte Rucksack hinzu.",
-      ver: true,
-      imgclass: "symbol"
     },
     {
       name: "Geheimgang",
@@ -259,7 +253,7 @@ var data2 = {
     {
       name: "Verlaufen",
       info: "event",
-      Aktion: "Ihr habt euch komplett verlaufen. Legt alle direkt benachbarten Feldkarten unter den Nachziehstapel. (Das gilt nicht für Aktionskarten!) ",
+      Aktion: "Ihr habt euch verlaufen. Legt alle direkt benachbarten Feldkarten unter den Nachziehstapel. (Das gilt nicht für Aktionskarten!) ",
       info: "event"
     },
     {
@@ -275,26 +269,23 @@ var data2 = {
     },
     {
       name: "Leiche",
-      info: "event",
-      Aktion: "Jack findet eine halbverweste Leiche. Es ist der Geschäftspartner des Jägers Stoephasius. Er wurde offensichtlich von hinten erschossen. Jack findet einen Brief, der beweist, dass Stoephasius für den Tod von Jacks Frau verantwortlich ist. Jane ist entsetzt. 1 Bonuspunkt."
+      Aktion: "Die Leiche ist der Geschäftspartner des Jägers Stoephasius. Er wurde von hinten erschossen. Jack findet in einem Brief den Beweis, dass Stoephasius für den Tod von Jacks Frau verantwortlich ist."
     }
   ],
   initEvents: [],
   initActions: [
-    {
-      name: "Jäger",
-      order: "accessibility",
-      orderText: "Jäger",
-      Aktion: "Der Jäger Stoephasius klaut dir alle Artefakte und bringt sie zur gegenüberliegenden Aktionskarte. Mit der Pistole kannst du sie ihm dort abnehmen. Er ist auf der Suche nach der geheimen Schatzkammer der Kannibalen.",
-      task: true
-    },
     // {
     //   name: "Jäger",
-    //   order: "accessibility",
     //   orderText: "Jäger",
-    //   Aktion: "Der Jäger Stoephasius wurde von Kannibalen gefangen genommen und wird in ihr Dorf transportiert. Mit der Pistole kannst du ihn retten. Aus Dankbarkeit erhälst du einen Bonuspunkt. Ansonsten wird er von den Kannibalen getötet.",
+    //   Aktion: "Der Jäger Stoephasius klaut dir alle Artefakte und bringt sie zur gegenüberliegenden Aktionskarte. Mit der Pistole kannst du sie ihm dort abnehmen. Er ist auf der Suche nach der geheimen Schatzkammer der Kannibalen.",
     //   task: true
     // },
+    {
+      name: "Jäger gefangen",
+      orderText: "Jäger",
+      Aktion: "Der Jäger Stoephasius wurde von Kannibalen gefangen genommen und gefoltert. Mit der Pistole kannst du die Wächter verjagen und ihn retten. Er schliesst sich euch an, kann aber keien Dinge tragen. Ansonsten wird er von den Kannibalen getötet.",
+      task: true
+    },
     // {
     //   name: "Gefangen",
     //   order: "build",
@@ -313,7 +304,6 @@ var data2 = {
 
     {
       name: "Diamantenmine",
-      order: "select-all",
       orderText: "Mine",
       Aktion: "Mit der Fackel findest du in der dunklen Mine große Diamanten. Wenn du Sie herausholst, verlierst du die Fackel. Du erhälst einen Bonuspunkt.",
       imgclass: "symbol",
@@ -347,16 +337,14 @@ var data2 = {
     //   Aktion: "Der Jäger Stoephsius hat Jane aus dem Dorf der Kannibalen befreit, dabei hat er allerdings mehrere Kannibalen getötet. Der Schrumpfkopf schützt euch nun nicht mehr vor den Kannibalen. Du kannst Janes Inventarkarte nun wieder verwenden.",
     //   task: true
     // },
-    // {
-    //   name: "Schatzkammer",
-    //   order: "exit-to-app",
-    //   orderText: "Ende",
-    //   Aktion: "Ihr habt die Schatzkammer der Kannibalen gefunden. Wenn ihr die 3 Artefakte hier ablegt und Jack und Jane dabei sind, könnt ihr die Tür zur Schatzkammer öffnen. Darin findet ihr ein Geheimnis und beendet die Partie erfolgreich.",
-    //   task: true
-    // },
+    {
+      name: "Schatzkammer",
+      orderText: "Ende",
+      Aktion: "Ihr habt die Schatzkammer der Kannibalen gefunden. Wählt ein beliebiges Ding aus dem Vorrat.",
+      task: true
+    },
     {
       name: "Höhlentor",
-      order: "exit-to-app",
       orderText: "Ende",
       Aktion: "Ihr habt das im Tagebuch beschriebene Höhlentor gefunden. Wenn ihr die 3 Artefakte hier ablegt, könnt ihr das Tor öffnen und erreicht den 3. Akt.",
       task: true
